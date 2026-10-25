@@ -1,0 +1,11 @@
+export { University } from "./models/University";
+export { Program } from "./models/Program";
+export { Guide } from "./models/Guide";
+export { Scholarship } from "./models/Scholarship";
+export { Lead } from "./models/Lead";
+export { FAQ } from "./models/FAQ";
+export { Testimonial } from "./models/Testimonial";
+export { User } from "./models/User";
+export { SiteSettings } from "./models/SiteSettings";
+export { Taxonomy } from "./models/Taxonomy";
+export { connectDB } from "./connection";

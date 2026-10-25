@@ -1,0 +1,814 @@
+# Text content per screen (from Figma metadata, document order; [hidden] marks hidden layers)
+
+Coordinates are absolute within the screen frame (x,y in px, 1440-wide desktop frame).
+
+
+## Köprü — Landing Desktop (`52:489`, 1440x5966)
+
+- **Hero** `52:491` (0,0, 1440x716)
+  - **Note_replace_with_photo** `52:543` (1096,108, 224x32) [hidden]
+    - `52:545` (1109,116, 198x17) [hidden]: Placeholder: replace with a photo
+  - `52:546` (120,176, 652x77): Your degree in Türkiye
+  - `52:547` (120,248, 324x77): starts here
+  - `52:548` (120,352, 490x26): Compare universities, understand scholarships and get
+  - `52:549` (120,382, 488x26): help with every step, from Pakistan to your first day on
+  - `52:550` (120,412, 75x26): campus.
+  - `52:552` (154,486, 143x21): Explore universities
+  - `52:554` (392,486, 165x21): Book free consultation
+  - `52:556` (140,571, 146x20): Free first consultation
+  - `52:558` (371,571, 155x20): Scholarships explained
+  - `52:560` (595,571, 234x20): Support from application to arrival
+- **Section_Universities** `52:561` (0,716, 1440x922)
+  - `52:563` (120,816, 568x48): Explore universities in Türkiye
+  - `52:564` (120,876, 499x23): A preview of the full list. Filter by city, field and university type
+  - `52:565` (120,904, 184x23): on the dedicated page.
+  - **University_card** `52:566` (120,978, 384x460)
+    - `52:574` (144,1134, 147x16): Campus photo placeholder
+    - `52:576` (156,1193, 36x17): Public
+    - `52:578` (230,1193, 47x17): Istanbul
+    - `52:579` (142,1226, 280x24): Istanbul Technical University
+    - `52:580` (142,1290, 263x18): Fields: Engineering, Architecture, Sciences
+    - `52:581` (142,1312, 203x18): Levels: Bachelor's, Master's, PhD
+    - `52:583` (142,1363, 70x17): Tuition from
+    - `52:584` (142,1378, 87x34): $1,200
+    - `52:585` (239,1393, 88x17): a year (sample)
+    - **Explore_button_opens_university_detail_page** `52:586` (378,1366, 104x44)
+      - `52:588` (404,1378, 53x20): Explore
+  - **University_card** `52:589` (528,978, 384x460)
+    - `52:597` (552,1134, 147x16): Campus photo placeholder
+    - `52:599` (564,1193, 36x17): Public
+    - `52:601` (633,1193, 42x17): Ankara
+    - `52:602` (550,1226, 315x24): Middle East Technical University
+    - `52:603` (550,1290, 263x18): Fields: Engineering, Sciences, Architecture
+    - `52:604` (550,1312, 203x18): Levels: Bachelor's, Master's, PhD
+    - `52:606` (550,1363, 70x17): Tuition from
+    - `52:607` (550,1378, 86x34): $1,500
+    - `52:608` (647,1393, 88x17): a year (sample)
+    - **Explore_button_opens_university_detail_page** `52:609` (786,1366, 104x44)
+      - `52:611` (812,1378, 53x20): Explore
+  - **University_card** `52:612` (936,978, 384x460)
+    - `52:620` (960,1134, 147x16): Campus photo placeholder
+    - `52:622` (972,1193, 36x17): Public
+    - `52:624` (1046,1193, 47x17): Istanbul
+    - `52:625` (958,1226, 187x24): Boğaziçi University
+    - `52:626` (958,1290, 240x18): Fields: Engineering, Sciences, Business
+    - `52:627` (958,1312, 203x18): Levels: Bachelor's, Master's, PhD
+    - `52:629` (958,1363, 70x17): Tuition from
+    - `52:630` (958,1378, 88x34): $1,800
+    - `52:631` (1055,1393, 88x17): a year (sample)
+    - **Explore_button_opens_university_detail_page** `52:632` (1194,1366, 104x44)
+      - `52:634` (1220,1378, 53x20): Explore
+  - `52:635` (631,1459, 178x20): Showing 3 of 8 universities
+  - `52:637` (643,1512, 154x22): View all universities
+- **Header_floating_pill** `52:638` (120,20, 1200x76)
+  - `52:644` (192,34, 77x31): Köprü
+  - `52:645` (350,42, 83x21): Universities
+  - `52:646` (482,42, 92x21): Scholarships
+  - `52:647` (614,42, 116x21): Admission steps
+  - `52:648` (770,42, 50x21): Guides
+  - `52:649` (852,42, 72x21): Questions
+  - `52:651` (992,42, 76x21): WhatsApp
+  - `52:653` (1120,42, 155x20): Book free consultation
+- **Section_Scholarships** `52:654` (0,1638, 1440x512)
+  - **Scholarship_CTA_panel** `52:656` (120,1710, 1200x360)
+    - `52:658` (160,1754, 505x38): Scholarships that can cover your
+    - `52:659` (160,1792, 114x38): studies
+    - `52:660` (160,1844, 470x23): Türkiye Bursları can cover tuition, housing and more. Many
+    - `52:661` (160,1872, 388x23): universities also reduce tuition for strong marks.
+    - `52:663` (175,1935, 41x17): Tuition
+    - `52:665` (253,1935, 48x17): Housing
+    - `52:667` (337,1935, 112x17): Monthly allowance
+    - `52:669` (491,1935, 100x17): Health insurance
+    - `52:671` (218,1998, 204x21): Check scholarship eligibility
+    - `52:673` (1018,1811, 44x20): Up to
+    - `52:674` (966,1838, 147x70): 100%
+    - `52:675` (925,1917, 230x20): tuition covered by Türkiye Bursları
+- **Section_Admission_steps** `52:676` (0,2150, 1440x496)
+  - `52:678` (120,2206, 699x48): Five steps from Pakistan to your first
+  - `52:679` (120,2252, 99x48): class
+  - `52:680` (120,2312, 361x23): You do not have to work out the order alone.
+  - `52:682` (138,2369, 7x24): 1
+  - `52:684` (120,2424, 170x24): Free consultation
+  - `52:685` (120,2457, 191x20): Share your marks and goals.
+  - `52:686` (120,2479, 146x20): Leave with a shortlist.
+  - `52:688` (132,2533, 34x17): Day 1
+  - `52:690` (382,2369, 12x24): 2
+  - `52:692` (366,2424, 154x24): Check eligibility
+  - `52:693` (366,2457, 173x20): Confirm which exam each
+  - `52:694` (366,2479, 126x20): university accepts.
+  - `52:696` (382,2533, 74x17): 1 to 2 weeks
+  - `52:698` (628,2369, 13x24): 3
+  - `52:700` (612,2424, 178x24): Prepare and apply
+  - `52:701` (612,2457, 145x20): Documents reviewed,
+  - `52:702` (612,2479, 156x20): applications submitted.
+  - `52:704` (628,2533, 74x17): 2 to 6 weeks
+  - `52:706` (874,2369, 13x24): 4
+  - `52:708` (858,2424, 136x24): Offer and visa
+  - `52:709` (858,2457, 181x20): Accept an offer, then apply
+  - `52:710` (858,2479, 134x20): for the student visa.
+  - `52:712` (874,2533, 74x17): 4 to 8 weeks
+  - `52:714` (1120,2369, 13x24): 5
+  - `52:715` (1104,2424, 161x24): Arrive and settle
+  - `52:716` (1104,2457, 175x20): Residence permit, housing
+  - `52:717` (1104,2479, 106x20): and orientation.
+  - `52:719` (1120,2533, 67x17): First month
+- **Section_Testimonials** `52:720` (0,2646, 1440x770)
+  - `52:722` (120,2702, 563x48): Students who made the move
+  - `52:723` (120,2762, 607x23): Sample stories for layout. Replace with real quotes from students who have
+  - `52:724` (120,2790, 176x23): agreed to share them.
+  - **Testimonial_card** `52:725` (120,2846, 384x336)
+    - `52:727` (146,2846, 31x101): “
+    - `52:729` (393,2875, 71x17): Sample text
+    - `52:730` (146,2947, 303x22): The advisor explained the exam options
+    - `52:731` (146,2973, 261x22): in plain words. I finally knew which
+    - `52:732` (146,2999, 270x22): universities were worth applying to.
+    - `52:735` (160,3126, 19x20): SN
+    - `52:736` (206,3114, 101x21): Student name
+    - `52:737` (206,3138, 153x18): From Lahore, now at ITU
+  - **Testimonial_card** `52:738` (528,2846, 384x336)
+    - `52:740` (554,2846, 31x101): “
+    - `52:742` (801,2875, 71x17): Sample text
+    - `52:743` (554,2947, 254x22): I was worried about the cost. The
+    - `52:744` (554,2973, 298x22): budget breakdown showed me a public
+    - `52:745` (554,2999, 253x22): university in Ankara was realistic.
+    - `52:748` (568,3126, 19x20): SN
+    - `52:749` (614,3114, 101x21): Student name
+    - `52:750` (614,3138, 174x18): From Karachi, now at METU
+  - **Testimonial_card** `52:751` (936,2846, 384x336)
+    - `52:753` (962,2846, 31x101): “
+    - `52:755` (1209,2875, 71x17): Sample text
+    - `52:756` (962,2947, 247x22): My parents wanted proof before
+    - `52:757` (962,2973, 263x22): deciding. The written checklist and
+    - `52:758` (962,2999, 311x22): honest answers made them comfortable.
+    - `52:761` (976,3126, 19x20): SN
+    - `52:762` (1022,3114, 101x21): Student name
+    - `52:763` (1022,3138, 218x18): From Islamabad, now at Hacettepe
+  - **Load_more_stories** `52:764` (570,3215, 300x105)
+    - `52:765` (619,3215, 202x20): Showing 3 of 9 student stories
+    - `52:769` (658,3284, 148x21): Show 6 more stories
+- **Section_Guides** `52:772` (0,3416, 1440x790)
+  - `52:774` (120,3472, 554x48): Guides for studying in Turkey
+  - `52:775` (120,3532, 548x23): Plain-language answers, written for students applying from Pakistan.
+  - **Guide_card** `52:776` (120,3606, 384x400)
+    - `52:788` (155,3791, 52x17): Applying
+    - `52:789` (142,3822, 264x24): Full application guide: from
+    - `52:790` (142,3848, 245x24): documents to offer letter
+    - `52:791` (142,3883, 288x20): Every step of applying, with a checklist you
+    - `52:792` (142,3905, 77x20): can tick off.
+    - `52:794` (142,3962, 74x18): 12 min read
+    - `52:796` (390,3960, 75x20): Read guide
+  - **Guide_card** `52:797` (528,3606, 384x400)
+    - `52:808` (571,3791, 93x17): Visa and arrival
+    - `52:809` (550,3822, 273x24): Turkey student visa: step by
+    - `52:810` (550,3848, 102x24): step guide
+    - `52:811` (550,3883, 312x20): What to prepare, where to apply and how long
+    - `52:812` (550,3905, 104x20): it usually takes.
+    - `52:814` (550,3962, 67x18): 8 min read
+    - `52:816` (798,3960, 75x20): Read guide
+  - **Guide_card** `52:817` (936,3606, 384x400)
+    - `52:825` (1041,3665, 21x38): $
+    - `52:827` (967,3791, 40x17): Money
+    - `52:828` (958,3822, 259x24): Cost of studying in Turkey:
+    - `52:829` (958,3848, 162x24): tuition and living
+    - `52:830` (958,3883, 269x20): A full-year budget for public and private
+    - `52:831` (958,3905, 160x20): universities, city by city.
+    - `52:833` (958,3962, 67x18): 7 min read
+    - `52:835` (1206,3960, 75x20): Read guide
+  - `52:836` (643,4027, 154x20): Showing 3 of 15 guides
+  - `52:838` (662,4080, 115x22): View all guides
+- **Section_Book_consultation** `52:839` (0,4206, 1440x700)
+  - `52:841` (120,4308, 392x58): Talk to an advisor
+  - `52:842` (120,4364, 341x58): for 20 minutes.
+  - `52:843` (120,4420, 193x58): It is free.
+  - `52:845` (146,4531, 370x23): A shortlist matched to your marks and budget
+  - `52:847` (146,4571, 279x23): A clear list of documents you need
+  - `52:849` (146,4611, 317x23): Honest advice on which scholarships fit
+  - `52:851` (158,4702, 223x21): Message on WhatsApp instead
+  - `52:854` (796,4306, 349x31): Book your free consultation
+  - `52:855` (796,4359, 58x17): Full name
+  - `52:857` (812,4396, 103x21): Your full name
+  - `52:858` (796,4459, 111x17): WhatsApp number
+  - `52:860` (812,4496, 125x21): +92 300 1234567
+  - `52:861` (796,4559, 92x17): City in Pakistan
+  - `52:863` (812,4594, 55x21): Karachi
+  - `52:865` (1048,4559, 83x17): Level of study
+  - `52:867` (1064,4594, 75x21): Bachelor's
+  - `52:869` (796,4659, 133x17): Best time to reach you
+  - `52:871` (812,4694, 56x21): Evening
+  - `52:874` (958,4772, 165x21): Book free consultation
+- **Section_FAQ** `52:875` (0,4906, 1440x720)
+  - `52:877` (120,4976, 192x48): Questions
+  - `52:878` (120,5022, 245x48): students ask
+  - `52:879` (120,5068, 98x48): most
+  - `52:880` (120,5139, 273x22): Cannot find your answer? Ask us on
+  - `52:881` (120,5165, 217x22): WhatsApp and we will reply.
+  - `52:883` (169,5230, 122x20): Ask on WhatsApp
+  - `52:885` (520,5026, 415x24): Is a Turkish degree recognized in Pakistan?
+  - `52:887` (520,5068, 689x21): Degrees from Turkish universities recognized by YÖK can go through equivalence with the Higher
+  - `52:888` (520,5094, 695x21): Education Commission in Pakistan. Requirements vary by program, so check with HEC before you
+  - `52:889` (520,5120, 44x21): apply.
+  - `52:891` (520,5194, 314x24): How much does it cost per year?
+  - `52:895` (520,5266, 263x24): Do I need to speak Turkish?
+  - `52:899` (520,5338, 491x24): Which exam do I need: YÖS, SAT or something else?
+  - `52:903` (520,5410, 238x24): Can I work while I study?
+  - `52:907` (520,5482, 425x24): What is daily life like for Pakistani students?
+- **Footer** `52:911` (0,5626, 1440x340)
+  - `52:915` (162,5684, 77x31): Köprü
+  - `52:916` (120,5733, 222x20): Advisors for students applying to
+  - `52:917` (120,5756, 207x20): universities in Türkiye. Köprü is
+  - `52:918` (120,5779, 122x20): Turkish for bridge.
+  - `52:919` (620,5682, 60x19): Explore
+  - `52:920` (620,5719, 78x20): Universities
+  - `52:921` (620,5749, 86x20): Scholarships
+  - `52:922` (620,5779, 109x20): Admission steps
+  - `52:923` (870,5682, 36x19): Help
+  - `52:924` (870,5719, 47x20): Guides
+  - `52:925` (870,5749, 68x20): Questions
+  - `52:926` (870,5779, 152x20): Book free consultation
+  - `52:927` (1120,5682, 62x19): Contact
+  - `52:928` (1120,5719, 71x20): WhatsApp
+  - `52:929` (1120,5749, 37x20): Email
+  - `52:930` (1120,5779, 172x20): Office address in Pakistan
+  - `52:932` (120,5908, 714x18): Universities make all admission decisions. We help you prepare a complete application and never promise a place.
+
+## Köprü — Universities (`52:935`, 1440x2484)
+
+- **Page_intro_band** `52:937` (1763,71, 1564x1952)
+  - `52:989` (1883,1018, 37x18): Home
+  - `52:990` (1920,1018, 6x18): /
+  - `52:991` (1934,1018, 74x18): Universities
+  - `52:992` (1883,1042, 544x46): Find your university in Türkiye
+  - `52:993` (1883,1101, 477x22): Use the filters below to narrow the list, then press Apply filters.
+  - `52:995` (1904,1149, 79x17): 8 universities
+  - `52:997` (2031,1149, 42x17): 3 cities
+  - `52:999` (2122,1149, 107x17): Public and private
+  - **Köprü — University Detail** `52:1280` (1887,71, 1440x1952)
+    - **Header_floating_pill** `52:1282` (120,20, 1200x76)
+      - `52:1288` (192,34, 77x31): Köprü
+      - `52:1289` (350,42, 85x21): Universities
+      - `52:1290` (482,42, 92x21): Scholarships
+      - `52:1291` (614,42, 116x21): Admission steps
+      - `52:1292` (770,42, 50x21): Guides
+      - `52:1293` (852,42, 72x21): Questions
+      - `52:1295` (992,42, 76x21): WhatsApp
+      - `52:1297` (1094,42, 155x20): Book free consultation
+    - `52:1298` (120,104, 37x18): Home
+    - `52:1299` (157,104, 6x18): /
+    - `52:1300` (171,104, 73x18): Universities
+    - `52:1301` (266,104, 6x18): /
+    - `52:1302` (280,104, 182x18): Istanbul Technical University
+    - `52:1307` (144,594, 147x16) [hidden]: Campus photo placeholder
+    - `52:1312` (960,346, 109x16) [hidden]: Photo 2 placeholder
+    - `52:1317` (1160,346, 109x16) [hidden]: Photo 3 placeholder
+    - `52:1322` (960,594, 109x16) [hidden]: Photo 4 placeholder
+    - `52:1327` (1160,594, 109x16) [hidden]: Photo 5 placeholder
+    - `52:1328` (120,646, 492x43): Istanbul Technical University
+    - `52:1330` (134,709, 36x17): Public
+    - `52:1332` (210,709, 47x17): Istanbul
+    - `52:1334` (1138,658, 33x20): Save
+    - `52:1336` (1235,658, 63x20): Compare
+    - `52:1337` (120,750, 410x29): About Istanbul Technical University
+    - `52:1338` (120,794, 659x21): Placeholder paragraph: two or three sentences about the university's history, reputation and
+    - `52:1339` (120,819, 496x21): standing in Türkiye. Replace with real, verified copy before publishing.
+    - `52:1340` (120,871, 273x29): Why students choose it
+    - `52:1341` (120,915, 620x21): Placeholder paragraph: strengths such as research output, faculty, facilities or location
+    - `52:1342` (120,940, 258x21): that matter to prospective students.
+    - `52:1343` (120,992, 233x29): Programs and fields
+    - `52:1344` (120,1036, 665x21): Placeholder paragraph: an overview of the main faculties and popular programs, with links to
+    - `52:1345` (120,1061, 190x21): the full list where relevant.
+    - `52:1346` (120,1113, 283x29): Campus and student life
+    - `52:1347` (120,1157, 623x21): Placeholder paragraph: housing, clubs, the international student community and what a
+    - `52:1348` (120,1182, 166x21): typical week looks like.
+    - **Key_facts_sidebar** `52:1349` (900,730, 420x453)
+      - `52:1351` (928,746, 91x24): Key facts
+      - `52:1353` (928,813, 29x17): Type
+      - `52:1354` (928,833, 41x20): Public
+      - `52:1356` (928,879, 25x17): City
+      - `52:1357` (928,899, 54x20): Istanbul
+      - `52:1359` (928,945, 72x17): Tuition from
+      - `52:1360` (928,965, 151x20): $1,200 a year (sample)
+      - `52:1362` (928,1011, 37x17): Levels
+      - `52:1363` (928,1031, 168x20): Bachelor's, Master's, PhD
+      - `52:1365` (928,1077, 35x17): Fields
+      - `52:1366` (928,1097, 235x20): Engineering, Architecture, Sciences
+      - `52:1368` (928,1143, 76x17): Scholarships
+      - `52:1369` (928,1163, 180x20): Eligible for Türkiye Bursları
+    - `52:1371` (1028,1215, 165x21): Book free consultation
+    - `52:1373` (1027,1277, 166x21): Message on WhatsApp
+    - **Section_Ready_to_apply** `52:1374` (0,1392, 1440x220)
+      - `52:1376` (120,1458, 683x36): Ready to apply to Istanbul Technical University?
+      - `52:1377` (120,1508, 304x21): Talk to an advisor for 20 minutes. It is free.
+      - `52:1379` (168,1562, 165x21): Book free consultation
+      - `52:1381` (402,1562, 209x20): Message on WhatsApp instead
+    - **Footer** `52:1382` (0,1612, 1440x340)
+      - `52:1386` (162,1670, 77x31): Köprü
+      - `52:1387` (120,1719, 222x20): Advisors for students applying to
+      - `52:1388` (120,1742, 207x20): universities in Türkiye. Köprü is
+      - `52:1389` (120,1765, 122x20): Turkish for bridge.
+      - `52:1390` (620,1668, 60x19): Explore
+      - `52:1391` (620,1705, 78x20): Universities
+      - `52:1392` (620,1735, 86x20): Scholarships
+      - `52:1393` (620,1765, 109x20): Admission steps
+      - `52:1394` (870,1668, 36x19): Help
+      - `52:1395` (870,1705, 47x20): Guides
+      - `52:1396` (870,1735, 68x20): Questions
+      - `52:1397` (870,1765, 152x20): Book free consultation
+      - `52:1398` (1120,1668, 62x19): Contact
+      - `52:1399` (1120,1705, 71x20): WhatsApp
+      - `52:1400` (1120,1735, 37x20): Email
+      - `52:1401` (1120,1765, 172x20): Office address in Pakistan
+      - `52:1403` (120,1894, 714x18): Universities make all admission decisions. We help you prepare a complete application and never promise a place.
+- **Header_floating_pill** `52:1000` (120,20, 1200x76)
+  - `52:1006` (192,34, 77x31): Köprü
+  - `52:1007` (350,42, 85x21): Universities
+  - `52:1008` (482,42, 92x21): Scholarships
+  - `52:1009` (614,42, 116x21): Admission steps
+  - `52:1010` (770,42, 50x21): Guides
+  - `52:1011` (852,42, 72x21): Questions
+  - `52:1013` (992,42, 76x21): WhatsApp
+  - `52:1015` (1120,42, 155x20): Book free consultation
+- **Filter_bar_top** `52:1016` (120,292, 1200x96)
+  - `52:1018` (152,307, 25x17): City
+  - `52:1020` (168,342, 60x21): All cities
+  - `52:1022` (384,307, 80x17): Field of study
+  - `52:1024` (400,342, 61x21): All fields
+  - `52:1026` (616,307, 89x17): University type
+  - `52:1028` (632,342, 63x21): All types
+  - `52:1030` (848,307, 83x17): Level of study
+  - `52:1032` (864,342, 64x21): All levels
+  - `52:1035` (1142,342, 83x20): Apply filters
+- `52:1036` (120,410, 213x26): 8 universities found
+- `52:1038` (1072,412, 172x21): Sort: Tuition, low to high
+- `52:1041` (137,471, 80x17): Engineering ×
+- `52:1042` (249,470, 55x18): Clear all
+- **University_card** `52:1043` (120,508, 384x460)
+  - `52:1051` (144,664, 147x16): Campus photo placeholder
+  - `52:1053` (156,723, 36x17): Public
+  - `52:1055` (230,723, 47x17): Istanbul
+  - `52:1056` (142,756, 280x24): Istanbul Technical University
+  - `52:1057` (142,820, 263x18): Fields: Engineering, Architecture, Sciences
+  - `52:1058` (142,842, 203x18): Levels: Bachelor's, Master's, PhD
+  - `52:1060` (142,893, 70x17): Tuition from
+  - `52:1061` (142,908, 87x34): $1,200
+  - `52:1062` (239,923, 88x17): a year (sample)
+  - **Explore_button_opens_university_detail_page** `52:1063` (378,896, 104x44)
+    - `52:1065` (404,908, 53x20): Explore
+- **University_card** `52:1068` (528,508, 384x460)
+  - `52:1076` (552,664, 147x16): Campus photo placeholder
+  - `52:1078` (564,723, 36x17): Public
+  - `52:1080` (633,723, 42x17): Ankara
+  - `52:1081` (550,756, 315x24): Middle East Technical University
+  - `52:1082` (550,820, 263x18): Fields: Engineering, Sciences, Architecture
+  - `52:1083` (550,842, 203x18): Levels: Bachelor's, Master's, PhD
+  - `52:1085` (550,893, 70x17): Tuition from
+  - `52:1086` (550,908, 86x34): $1,500
+  - `52:1087` (647,923, 88x17): a year (sample)
+  - **Explore_button_opens_university_detail_page** `52:1088` (786,896, 104x44)
+    - `52:1090` (812,908, 53x20): Explore
+- **University_card** `52:1093` (936,508, 384x460)
+  - `52:1101` (960,664, 147x16): Campus photo placeholder
+  - `52:1103` (972,723, 36x17): Public
+  - `52:1105` (1046,723, 47x17): Istanbul
+  - `52:1106` (958,756, 187x24): Boğaziçi University
+  - `52:1107` (958,820, 240x18): Fields: Engineering, Sciences, Business
+  - `52:1108` (958,842, 203x18): Levels: Bachelor's, Master's, PhD
+  - `52:1110` (958,893, 70x17): Tuition from
+  - `52:1111` (958,908, 88x34): $1,800
+  - `52:1112` (1055,923, 88x17): a year (sample)
+  - **Explore_button_opens_university_detail_page** `52:1113` (1194,896, 104x44)
+    - `52:1115` (1220,908, 53x20): Explore
+- **University_card** `52:1118` (120,992, 384x460)
+  - `52:1126` (144,1148, 147x16): Campus photo placeholder
+  - `52:1128` (156,1207, 36x17): Public
+  - `52:1130` (225,1207, 42x17): Ankara
+  - `52:1131` (142,1240, 205x24): Hacettepe University
+  - `52:1132` (142,1304, 234x18): Fields: Medicine and Health, Sciences
+  - `52:1133` (142,1326, 203x18): Levels: Bachelor's, Master's, PhD
+  - `52:1135` (142,1377, 70x17): Tuition from
+  - `52:1136` (142,1392, 73x34): $800
+  - `52:1137` (209,1407, 88x17): a year (sample)
+  - **Explore_button_opens_university_detail_page** `52:1138` (378,1380, 104x44)
+    - `52:1140` (404,1392, 53x20): Explore
+- **University_card** `52:1143` (528,992, 384x460)
+  - `52:1151` (552,1148, 147x16): Campus photo placeholder
+  - `52:1153` (564,1207, 36x17): Public
+  - `52:1155` (636,1207, 29x17): Izmir
+  - `52:1156` (550,1240, 140x24): Ege University
+  - `52:1157` (550,1304, 252x18): Fields: Engineering, Medicine and Health
+  - `52:1158` (550,1326, 203x18): Levels: Bachelor's, Master's, PhD
+  - `52:1160` (550,1377, 70x17): Tuition from
+  - `52:1161` (550,1392, 69x34): $700
+  - `52:1162` (617,1407, 88x17): a year (sample)
+  - **Explore_button_opens_university_detail_page** `52:1163` (786,1380, 104x44)
+    - `52:1165` (812,1392, 53x20): Explore
+- **University_card** `52:1168` (936,992, 384x460)
+  - `52:1176` (960,1148, 147x16): Campus photo placeholder
+  - `52:1178` (973,1207, 42x17): Private
+  - `52:1180` (1053,1207, 47x17): Istanbul
+  - `52:1181` (958,1240, 214x24): Bahçeşehir University
+  - `52:1182` (958,1304, 263x18): Fields: Business, Engineering, Architecture
+  - `52:1183` (958,1326, 171x18): Levels: Bachelor's, Master's
+  - `52:1185` (958,1377, 70x17): Tuition from
+  - `52:1186` (958,1392, 96x34): $8,000
+  - `52:1187` (1055,1407, 88x17): a year (sample)
+  - **Explore_button_opens_university_detail_page** `52:1188` (1194,1380, 104x44)
+    - `52:1190` (1220,1392, 53x20): Explore
+- `52:1194` (977,1017, 110x17): Merit scholarships
+- **University_card** `52:1195` (120,1476, 384x460)
+  - `52:1203` (144,1632, 147x16): Campus photo placeholder
+  - `52:1205` (157,1691, 42x17): Private
+  - `52:1207` (232,1691, 42x17): Ankara
+  - `52:1208` (142,1724, 173x24): Bilkent University
+  - `52:1209` (142,1788, 240x18): Fields: Business, Engineering, Sciences
+  - `52:1210` (142,1810, 203x18): Levels: Bachelor's, Master's, PhD
+  - `52:1212` (142,1861, 70x17): Tuition from
+  - `52:1213` (142,1876, 105x34): $14,000
+  - `52:1214` (254,1891, 88x17): a year (sample)
+  - **Explore_button_opens_university_detail_page** `52:1215` (378,1864, 104x44)
+    - `52:1217` (404,1876, 53x20): Explore
+- `52:1221` (161,1501, 110x17): Merit scholarships
+- **University_card** `52:1222` (528,1476, 384x460)
+  - `52:1230` (552,1632, 147x16): Campus photo placeholder
+  - `52:1232` (565,1691, 42x17): Private
+  - `52:1234` (645,1691, 47x17): Istanbul
+  - `52:1235` (550,1724, 141x24): Koç University
+  - `52:1236` (550,1788, 240x18): Fields: Engineering, Business, Sciences
+  - `52:1237` (550,1810, 203x18): Levels: Bachelor's, Master's, PhD
+  - `52:1239` (550,1861, 70x17): Tuition from
+  - `52:1240` (550,1876, 112x34): $20,000
+  - `52:1241` (662,1891, 88x17): a year (sample)
+  - **Explore_button_opens_university_detail_page** `52:1242` (786,1864, 104x44)
+    - `52:1244` (812,1876, 53x20): Explore
+- `52:1248` (569,1501, 110x17): Merit scholarships
+- **Pagination** `52:1249` (470,1974, 500x74)
+  - `52:1250` (470,1974, 500x18): That is every verified university we currently support. More are added regularly.
+  - `52:1254` (716,2020, 9x20): 1
+- **Footer** `52:1257` (0,2144, 1440x340)
+  - `52:1261` (162,2202, 77x31): Köprü
+  - `52:1262` (120,2251, 222x20): Advisors for students applying to
+  - `52:1263` (120,2274, 207x20): universities in Türkiye. Köprü is
+  - `52:1264` (120,2297, 122x20): Turkish for bridge.
+  - `52:1265` (620,2200, 60x19): Explore
+  - `52:1266` (620,2237, 78x20): Universities
+  - `52:1267` (620,2267, 86x20): Scholarships
+  - `52:1268` (620,2297, 109x20): Admission steps
+  - `52:1269` (870,2200, 36x19): Help
+  - `52:1270` (870,2237, 47x20): Guides
+  - `52:1271` (870,2267, 68x20): Questions
+  - `52:1272` (870,2297, 152x20): Book free consultation
+  - `52:1273` (1120,2200, 62x19): Contact
+  - `52:1274` (1120,2237, 71x20): WhatsApp
+  - `52:1275` (1120,2267, 37x20): Email
+  - `52:1276` (1120,2297, 172x20): Office address in Pakistan
+  - `52:1278` (120,2426, 714x18): Universities make all admission decisions. We help you prepare a complete application and never promise a place.
+
+## Köprü — University Detail (`52:1655`, 1440x1952)
+
+- **Header_floating_pill** `52:1657` (120,20, 1200x76)
+  - `52:1663` (192,34, 77x31): Köprü
+  - `52:1664` (350,42, 85x21): Universities
+  - `52:1665` (482,42, 92x21): Scholarships
+  - `52:1666` (614,42, 116x21): Admission steps
+  - `52:1667` (770,42, 50x21): Guides
+  - `52:1668` (852,42, 72x21): Questions
+  - `52:1670` (992,42, 76x21): WhatsApp
+  - `52:1672` (1120,42, 155x20): Book free consultation
+- `52:1673` (120,104, 37x18): Home
+- `52:1674` (157,104, 6x18): /
+- `52:1675` (171,104, 73x18): Universities
+- `52:1676` (266,104, 6x18): /
+- `52:1677` (280,104, 182x18): Istanbul Technical University
+- `52:1682` (144,594, 147x16) [hidden]: Campus photo placeholder
+- `52:1687` (960,346, 109x16) [hidden]: Photo 2 placeholder
+- `52:1692` (1160,346, 109x16) [hidden]: Photo 3 placeholder
+- `52:1697` (960,594, 109x16) [hidden]: Photo 4 placeholder
+- `52:1702` (1160,594, 109x16) [hidden]: Photo 5 placeholder
+- `52:1703` (120,646, 492x43): Istanbul Technical University
+- `52:1705` (134,709, 36x17): Public
+- `52:1707` (210,709, 47x17): Istanbul
+- `52:1709` (1138,658, 33x20): Save
+- `52:1711` (1235,658, 63x20): Compare
+- `52:1712` (120,750, 410x29): About Istanbul Technical University
+- `52:1713` (120,794, 659x21): Placeholder paragraph: two or three sentences about the university's history, reputation and
+- `52:1714` (120,819, 496x21): standing in Türkiye. Replace with real, verified copy before publishing.
+- `52:1715` (120,871, 273x29): Why students choose it
+- `52:1716` (120,915, 620x21): Placeholder paragraph: strengths such as research output, faculty, facilities or location
+- `52:1717` (120,940, 258x21): that matter to prospective students.
+- `52:1718` (120,992, 233x29): Programs and fields
+- `52:1719` (120,1036, 665x21): Placeholder paragraph: an overview of the main faculties and popular programs, with links to
+- `52:1720` (120,1061, 190x21): the full list where relevant.
+- `52:1721` (120,1113, 283x29): Campus and student life
+- `52:1722` (120,1157, 623x21): Placeholder paragraph: housing, clubs, the international student community and what a
+- `52:1723` (120,1182, 166x21): typical week looks like.
+- **Key_facts_sidebar** `52:1724` (900,730, 420x453)
+  - `52:1726` (928,746, 91x24): Key facts
+  - `52:1728` (928,813, 29x17): Type
+  - `52:1729` (928,833, 41x20): Public
+  - `52:1731` (928,879, 25x17): City
+  - `52:1732` (928,899, 54x20): Istanbul
+  - `52:1734` (928,945, 72x17): Tuition from
+  - `52:1735` (928,965, 151x20): $1,200 a year (sample)
+  - `52:1737` (928,1011, 37x17): Levels
+  - `52:1738` (928,1031, 168x20): Bachelor's, Master's, PhD
+  - `52:1740` (928,1077, 35x17): Fields
+  - `52:1741` (928,1097, 235x20): Engineering, Architecture, Sciences
+  - `52:1743` (928,1143, 76x17): Scholarships
+  - `52:1744` (928,1163, 180x20): Eligible for Türkiye Bursları
+- `52:1746` (1028,1215, 165x21): Book free consultation
+- `52:1748` (1027,1277, 166x21): Message on WhatsApp
+- **Section_Ready_to_apply** `52:1749` (0,1392, 1440x220)
+  - `52:1751` (120,1458, 683x36): Ready to apply to Istanbul Technical University?
+  - `52:1752` (120,1508, 304x21): Talk to an advisor for 20 minutes. It is free.
+  - `52:1754` (168,1562, 165x21): Book free consultation
+  - `52:1756` (402,1562, 209x20): Message on WhatsApp instead
+- **Footer** `52:1757` (0,1612, 1440x340)
+  - `52:1761` (162,1670, 77x31): Köprü
+  - `52:1762` (120,1719, 222x20): Advisors for students applying to
+  - `52:1763` (120,1742, 207x20): universities in Türkiye. Köprü is
+  - `52:1764` (120,1765, 122x20): Turkish for bridge.
+  - `52:1765` (620,1668, 60x19): Explore
+  - `52:1766` (620,1705, 78x20): Universities
+  - `52:1767` (620,1735, 86x20): Scholarships
+  - `52:1768` (620,1765, 109x20): Admission steps
+  - `52:1769` (870,1668, 36x19): Help
+  - `52:1770` (870,1705, 47x20): Guides
+  - `52:1771` (870,1735, 68x20): Questions
+  - `52:1772` (870,1765, 152x20): Book free consultation
+  - `52:1773` (1120,1668, 62x19): Contact
+  - `52:1774` (1120,1705, 71x20): WhatsApp
+  - `52:1775` (1120,1735, 37x20): Email
+  - `52:1776` (1120,1765, 172x20): Office address in Pakistan
+  - `52:1778` (120,1894, 714x18): Universities make all admission decisions. We help you prepare a complete application and never promise a place.
+- **Merit_table** `52:3054` (61,-326, 1200x186)
+  - `52:3056` (91,-326, 60x17): University
+  - `52:3057` (491,-326, 25x17): City
+  - `52:3058` (671,-326, 103x17): Scholarship up to
+  - `52:3059` (921,-326, 89x17): Typical criteria
+  - `52:3061` (91,-273, 158x21): Bahçeşehir University
+  - `52:3062` (491,-272, 54x20): Istanbul
+  - `52:3063` (671,-272, 76x20): 50% tuition
+  - `52:3064` (921,-272, 114x20): Top exam scores
+  - `52:3066` (91,-217, 128x21): Bilkent University
+  - `52:3067` (491,-216, 48x20): Ankara
+  - `52:3068` (671,-216, 84x20): 100% tuition
+  - `52:3069` (921,-216, 165x20): Top marks and interview
+  - `52:3071` (91,-161, 105x21): Koç University
+  - `52:3072` (491,-160, 54x20): Istanbul
+  - `52:3073` (671,-160, 76x20): 75% tuition
+  - `52:3074` (921,-160, 89x20): Strong marks
+
+## Köprü — Guides (`52:2470`, 1440x3396)
+
+- **Page_intro_band** `52:2472` (0,0, 1440x244)
+  - `52:2524` (120,94, 37x18): Home
+  - `52:2525` (157,94, 6x18): /
+  - `52:2526` (171,94, 44x18): Guides
+  - `52:2527` (120,118, 528x46): Guides for studying in Turkey
+  - `52:2528` (120,177, 517x22): Plain-language answers, written for students applying from Pakistan.
+- **Search_bar** `52:2529` (120,214, 700x60)
+  - `52:2533` (180,235, 225x20): Search guides, for example “visa”
+- **Header_floating_pill** `52:2534` (120,20, 1200x76)
+  - `52:2540` (192,34, 77x31): Köprü
+  - `52:2541` (350,42, 83x21): Universities
+  - `52:2542` (482,42, 92x21): Scholarships
+  - `52:2543` (614,42, 116x21): Admission steps
+  - `52:2544` (770,42, 51x21): Guides
+  - `52:2545` (852,42, 72x21): Questions
+  - `52:2547` (992,42, 76x21): WhatsApp
+  - `52:2549` (1120,42, 155x20): Book free consultation
+- **Guide_topic_tabs** `52:2550` (120,340, 760x40)
+  - `52:2552` (141,351, 19x20): All
+  - `52:2554` (217,351, 104x20): Getting started
+  - `52:2556` (378,351, 60x20): Applying
+  - `52:2558` (497,351, 108x20): Visa and arrival
+  - `52:2560` (659,351, 46x20): Money
+  - `52:2562` (759,351, 92x20): Life in Turkey
+- **Featured_guide** `52:2563` (120,404, 1200x340)
+  - `52:2573` (144,710, 133x16): Guide cover placeholder
+  - `52:2575` (656,441, 60x17): Start here
+  - `52:2576` (640,474, 490x36): A complete guide for international
+  - `52:2577` (640,510, 268x36): students in Turkey
+  - `52:2578` (640,566, 542x21): Everything in one place, from choosing a city to your first weeks on campus.
+  - `52:2580` (660,605, 213x20): Choosing a city and a university
+  - `52:2582` (970,605, 192x20): Applying and getting an offer
+  - `52:2584` (660,633, 156x20): Costs and scholarships
+  - `52:2586` (970,633, 226x20): Visa, residence permit and arrival
+  - `52:2588` (680,690, 179x21): Read the complete guide
+  - `52:2589` (920,692, 74x18): 15 min read
+- `52:2590` (120,774, 122x31): All guides
+- `52:2591` (1256,785, 64x20): 15 guides
+- **Guide_card** `52:2592` (120,840, 384x400)
+  - `52:2604` (155,1025, 52x17): Applying
+  - `52:2605` (142,1056, 264x24): Full application guide: from
+  - `52:2606` (142,1082, 245x24): documents to offer letter
+  - `52:2607` (142,1117, 288x20): Every step of applying, with a checklist you
+  - `52:2608` (142,1139, 77x20): can tick off.
+  - `52:2610` (142,1196, 74x18): 12 min read
+  - `52:2612` (390,1194, 75x20): Read guide
+- **Guide_card** `52:2613` (528,840, 384x400)
+  - `52:2624` (571,1025, 93x17): Visa and arrival
+  - `52:2625` (550,1056, 273x24): Turkey student visa: step by
+  - `52:2626` (550,1082, 102x24): step guide
+  - `52:2627` (550,1117, 312x20): What to prepare, where to apply and how long
+  - `52:2628` (550,1139, 104x20): it usually takes.
+  - `52:2630` (550,1196, 67x18): 8 min read
+  - `52:2632` (798,1194, 75x20): Read guide
+- **Guide_card** `52:2633` (936,840, 384x400)
+  - `52:2641` (1041,899, 21x38): $
+  - `52:2643` (967,1025, 40x17): Money
+  - `52:2644` (958,1056, 259x24): Cost of studying in Turkey:
+  - `52:2645` (958,1082, 162x24): tuition and living
+  - `52:2646` (958,1117, 269x20): A full-year budget for public and private
+  - `52:2647` (958,1139, 160x20): universities, city by city.
+  - `52:2649` (958,1196, 67x18): 7 min read
+  - `52:2651` (1206,1194, 75x20): Read guide
+- **Guide_card** `52:2652` (120,1264, 384x400)
+  - `52:2663` (161,1449, 90x17): Getting started
+  - `52:2664` (142,1480, 255x24): Study in Turkey in English:
+  - `52:2665` (142,1506, 255x24): programs and universities
+  - `52:2666` (142,1541, 313x20): Which degrees are taught in English and where
+  - `52:2667` (142,1563, 84x20): to find them.
+  - `52:2669` (142,1620, 67x18): 6 min read
+  - `52:2671` (390,1618, 75x20): Read guide
+- **Guide_card** `52:2672` (528,1264, 384x400)
+  - `52:2682` (569,1449, 90x17): Getting started
+  - `52:2683` (550,1480, 296x24): Is a Turkish degree recognized
+  - `52:2684` (550,1506, 115x24): in Pakistan?
+  - `52:2685` (550,1541, 308x20): How equivalence with HEC works and what to
+  - `52:2686` (550,1563, 161x20): check before you apply.
+  - `52:2688` (550,1620, 67x18): 6 min read
+  - `52:2690` (798,1618, 75x20): Read guide
+- **Guide_card** `52:2691` (936,1264, 384x400)
+  - `52:2701` (967,1449, 40x17): Money
+  - `52:2702` (958,1480, 289x24): Türkiye Bursları: how to apply
+  - `52:2703` (958,1541, 288x20): Eligibility, the application window and what
+  - `52:2704` (958,1563, 141x20): interviewers look for.
+  - `52:2706` (958,1620, 67x18): 9 min read
+  - `52:2708` (1206,1618, 75x20): Read guide
+- **Guide_card** `52:2709` (120,1688, 384x400)
+  - `52:2721` (155,1873, 52x17): Applying
+  - `52:2722` (142,1904, 275x24): YÖS, SAT and other entrance
+  - `52:2723` (142,1930, 163x24): exams explained
+  - `52:2724` (142,1965, 299x20): Which exam each type of university asks for,
+  - `52:2725` (142,1987, 136x20): and how to prepare.
+  - `52:2727` (142,2044, 67x18): 7 min read
+  - `52:2729` (390,2042, 75x20): Read guide
+- **Guide_card** `52:2730` (528,1688, 384x400)
+  - `52:2742` (563,1873, 52x17): Applying
+  - `52:2743` (550,1904, 237x24): Documents checklist for
+  - `52:2744` (550,1930, 197x24): Pakistani applicants
+  - `52:2745` (550,1965, 295x20): Transcripts, passport, translations and what
+  - `52:2746` (550,1987, 105x20): to prepare first.
+  - `52:2748` (550,2044, 67x18): 6 min read
+  - `52:2750` (798,2042, 75x20): Read guide
+- **Guide_card** `52:2751` (936,1688, 384x400)
+  - `52:2761` (977,1873, 90x17): Getting started
+  - `52:2762` (958,1904, 266x24): Public or private university:
+  - `52:2763` (958,1930, 214x24): which is right for you?
+  - `52:2764` (958,1965, 271x20): Cost, class size, scholarships and career
+  - `52:2765` (958,1987, 107x20): links compared.
+  - `52:2767` (958,2044, 67x18): 5 min read
+  - `52:2769` (1206,2042, 75x20): Read guide
+- **Guide_card** `52:2770` (120,2112, 384x400)
+  - `52:2781` (163,2297, 93x17): Visa and arrival
+  - `52:2782` (142,2328, 301x24): Student residence permit after
+  - `52:2783` (142,2354, 98x24): you arrive
+  - `52:2784` (142,2389, 297x20): The steps and deadlines for your first weeks
+  - `52:2785` (142,2411, 65x20): in Turkey.
+  - `52:2787` (142,2468, 67x18): 8 min read
+  - `52:2789` (390,2466, 75x20): Read guide
+- **Guide_card** `52:2790` (528,2112, 384x400)
+  - `52:2801` (571,2297, 93x17): Visa and arrival
+  - `52:2802` (550,2328, 298x24): Your first two weeks in Turkey:
+  - `52:2803` (550,2354, 155x24): arrival checklist
+  - `52:2804` (550,2389, 243x20): Airport, SIM card, bank, housing and
+  - `52:2805` (550,2411, 77x20): orientation.
+  - `52:2807` (550,2468, 67x18): 5 min read
+  - `52:2809` (798,2466, 75x20): Read guide
+- **Guide_card** `52:2810` (936,2112, 384x400)
+  - `52:2818` (1041,2171, 21x38): $
+  - `52:2820` (967,2297, 40x17): Money
+  - `52:2821` (958,2328, 232x24): Part-time work rules for
+  - `52:2822` (958,2354, 217x24): international students
+  - `52:2823` (958,2389, 283x20): What is allowed, what is not, and where to
+  - `52:2824` (958,2411, 160x20): check the current rules.
+  - `52:2826` (958,2468, 67x18): 4 min read
+  - `52:2828` (1206,2466, 75x20): Read guide
+- **Guide_card** `52:2829` (120,2536, 384x400)
+  - `52:2839` (162,2721, 80x17): Life in Turkey
+  - `52:2840` (142,2752, 310x24): Student housing: dorms, shared
+  - `52:2841` (142,2778, 158x24): flats and rentals
+  - `52:2842` (142,2813, 308x20): How to search, what it costs and how to avoid
+  - `52:2843` (142,2835, 90x20): rental scams.
+  - `52:2845` (142,2892, 67x18): 6 min read
+  - `52:2847` (390,2890, 75x20): Read guide
+- **Guide_card** `52:2848` (528,2536, 384x400)
+  - `52:2858` (570,2721, 80x17): Life in Turkey
+  - `52:2859` (550,2752, 267x24): Living in Istanbul, Ankara or
+  - `52:2860` (550,2778, 154x24): Izmir compared
+  - `52:2861` (550,2813, 288x20): Cost, transport, weather and student life in
+  - `52:2862` (550,2835, 64x20): each city.
+  - `52:2864` (550,2892, 67x18): 6 min read
+  - `52:2866` (798,2890, 75x20): Read guide
+- **Guide_card** `52:2867` (936,2536, 384x400)
+  - `52:2878` (978,2721, 80x17): Life in Turkey
+  - `52:2879` (958,2752, 290x24): Learning Turkish: do you need
+  - `52:2880` (958,2778, 182x24): it, and how to start
+  - `52:2881` (958,2813, 286x20): When English is enough, and how language
+  - `52:2882` (958,2835, 95x20): courses work.
+  - `52:2884` (958,2892, 67x18): 5 min read
+  - `52:2886` (1206,2890, 75x20): Read guide
+- **Footer** `52:2887` (0,3056, 1440x340)
+  - `52:2891` (162,3114, 77x31): Köprü
+  - `52:2892` (120,3163, 222x20): Advisors for students applying to
+  - `52:2893` (120,3186, 207x20): universities in Türkiye. Köprü is
+  - `52:2894` (120,3209, 122x20): Turkish for bridge.
+  - `52:2895` (620,3112, 60x19): Explore
+  - `52:2896` (620,3149, 78x20): Universities
+  - `52:2897` (620,3179, 86x20): Scholarships
+  - `52:2898` (620,3209, 109x20): Admission steps
+  - `52:2899` (870,3112, 36x19): Help
+  - `52:2900` (870,3149, 47x20): Guides
+  - `52:2901` (870,3179, 68x20): Questions
+  - `52:2902` (870,3209, 152x20): Book free consultation
+  - `52:2903` (1120,3112, 62x19): Contact
+  - `52:2904` (1120,3149, 71x20): WhatsApp
+  - `52:2905` (1120,3179, 37x20): Email
+  - `52:2906` (1120,3209, 172x20): Office address in Pakistan
+  - `52:2908` (120,3338, 714x18): Universities make all admission decisions. We help you prepare a complete application and never promise a place.
+
+## Köprü — Scholarships (`52:2910`, 1440x1734)
+
+- **Page_intro_band** `52:2912` (0,0, 1440x244)
+  - `52:2964` (120,94, 37x18): Home
+  - `52:2965` (157,94, 6x18): /
+  - `52:2966` (171,94, 82x18): Scholarships
+  - `52:2967` (120,118, 639x46): Scholarships for studying in Turkey
+  - `52:2968` (120,177, 550x22): Türkiye Bursları is the Turkish government scholarship. Many universities
+  - `52:2969` (120,202, 276x22): also reduce tuition for strong marks.
+- **Header_floating_pill** `52:2970` (120,20, 1200x76)
+  - `52:2976` (192,34, 77x31): Köprü
+  - `52:2977` (350,42, 83x21): Universities
+  - `52:2978` (482,42, 93x21): Scholarships
+  - `52:2979` (614,42, 116x21): Admission steps
+  - `52:2980` (770,42, 50x21): Guides
+  - `52:2981` (852,42, 72x21): Questions
+  - `52:2983` (992,42, 76x21): WhatsApp
+  - `52:2985` (1120,42, 155x20): Book free consultation
+- **Scholarship_covers_box** `52:2986` (120,316, 588x526)
+  - `52:2988` (148,344, 423x29): What Türkiye Bursları usually covers
+  - `52:2991` (200,425, 51x22): Tuition
+  - `52:2994` (472,425, 61x22): Housing
+  - `52:2997` (200,491, 144x22): Monthly allowance
+  - `52:3000` (472,491, 128x22): Health insurance
+  - `52:3003` (200,557, 166x22): Turkish language year
+  - `52:3006` (472,557, 89x22): Flight ticket
+  - `52:3008` (168,663, 420x20): Not eligible? Many private universities reduce tuition for strong
+  - `52:3009` (168,686, 387x20): marks, and public universities in smaller cities cost less to
+  - `52:3010` (168,709, 43x20): live in.
+  - `52:3012` (176,784, 94x20): Official portal
+  - `52:3014` (338,784, 198x20): University merit scholarships
+- **Eligibility_box** `52:3015` (732,316, 588x526)
+  - `52:3017` (760,344, 196x29): Eligibility criteria
+  - `52:3018` (760,394, 34x18): Level
+  - `52:3019` (962,394, 56x18): Age limit
+  - `52:3020` (1120,394, 102x18): Minimum marks
+  - `52:3022` (760,433, 76x21): Bachelor's
+  - `52:3023` (962,433, 85x21): 21 or under
+  - `52:3024` (1120,433, 30x21): 70%
+  - `52:3026` (760,477, 62x21): Master's
+  - `52:3027` (962,477, 85x21): 30 or under
+  - `52:3028` (1120,477, 30x21): 75%
+  - `52:3030` (760,521, 29x21): PhD
+  - `52:3031` (962,521, 85x21): 35 or under
+  - `52:3032` (1120,521, 30x21): 75%
+  - `52:3034` (760,565, 309x17): Last checked: [month, year]. Rules change every year.
+  - `52:3036` (760,616, 110x21): Check yourself
+  - `52:3037` (760,643, 31x17): Level
+  - `52:3039` (776,678, 75x21): Bachelor's
+  - `52:3041` (942,643, 52x17): Your age
+  - `52:3043` (958,678, 18x21): 19
+  - `52:3045` (1124,643, 58x17): Marks (%)
+  - `52:3047` (1140,678, 18x21): 82
+  - `52:3050` (778,753, 337x20): Enter your age and marks to see where you stand.
+- `52:3051` (120,904, 404x31): Merit scholarships by university
+- `52:3052` (120,946, 779x21): A sample of tuition reductions private universities offer for strong marks or test scores. Confirm current rates
+- `52:3053` (120,970, 146x21): with each university.
+- **Footer** `52:3075` (0,1394, 1440x340)
+  - `52:3079` (162,1452, 77x31): Köprü
+  - `52:3080` (120,1501, 222x20): Advisors for students applying to
+  - `52:3081` (120,1524, 207x20): universities in Türkiye. Köprü is
+  - `52:3082` (120,1547, 122x20): Turkish for bridge.
+  - `52:3083` (620,1450, 60x19): Explore
+  - `52:3084` (620,1487, 78x20): Universities
+  - `52:3085` (620,1517, 86x20): Scholarships
+  - `52:3086` (620,1547, 109x20): Admission steps
+  - `52:3087` (870,1450, 36x19): Help
+  - `52:3088` (870,1487, 47x20): Guides
+  - `52:3089` (870,1517, 68x20): Questions
+  - `52:3090` (870,1547, 152x20): Book free consultation
+  - `52:3091` (1120,1450, 62x19): Contact
+  - `52:3092` (1120,1487, 71x20): WhatsApp
+  - `52:3093` (1120,1517, 37x20): Email
+  - `52:3094` (1120,1547, 172x20): Office address in Pakistan
+  - `52:3096` (120,1676, 714x18): Universities make all admission decisions. We help you prepare a complete application and never promise a place.

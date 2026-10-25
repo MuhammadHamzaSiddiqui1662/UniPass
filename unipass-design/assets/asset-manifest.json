@@ -1,0 +1,7792 @@
+[
+ {
+  "file": "assets/figma/color-palette-board--line--2-255.svg",
+  "bytes": 223,
+  "usages": [
+   {
+    "context_file": "color-palette-board.md",
+    "const": "imgLine",
+    "node_id": "2:255",
+    "node_name": "Line",
+    "ancestors": [
+     "Frame",
+     "Frame",
+     "color-palette",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/color-palette-board--star--2-278.svg",
+  "bytes": 1990,
+  "usages": [
+   {
+    "context_file": "color-palette-board.md",
+    "const": "imgStar",
+    "node_id": "2:278",
+    "node_name": "star",
+    "ancestors": [
+     "Frame",
+     "Frame",
+     "Frame",
+     "Frame",
+     "Frame",
+     "color-palette"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/color-palette-board--clock--2-275.svg",
+  "bytes": 601,
+  "usages": [
+   {
+    "context_file": "color-palette-board.md",
+    "const": "imgClock",
+    "node_id": "2:275",
+    "node_name": "clock",
+    "ancestors": [
+     "Frame",
+     "Frame",
+     "Frame",
+     "Frame",
+     "Frame",
+     "color-palette"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--misc--vector--52-2471.svg",
+  "bytes": 243,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector",
+    "node_id": "52:2471",
+    "node_name": "Vector",
+    "ancestors": [
+     "Köprü — Guides",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--page-intro-band--hero-image-placeholder--52-2478.svg",
+  "bytes": 263,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgGroup",
+    "node_id": "52:2478",
+    "node_name": "Group",
+    "ancestors": [
+     "Hero_image_placeholder",
+     "Shared Istanbul background",
+     "Shared background — Guides intro",
+     "Page_intro_band",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgGroup",
+    "node_id": "52:497",
+    "node_name": "Group",
+    "ancestors": [
+     "Hero_image_placeholder",
+     "Shared Istanbul background",
+     "Shared background — Desktop hero",
+     "Hero",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships.md",
+    "const": "imgGroup",
+    "node_id": "52:2918",
+    "node_name": "Group",
+    "ancestors": [
+     "Hero_image_placeholder",
+     "Shared Istanbul background",
+     "Shared background — Scholarships intro",
+     "Page_intro_band",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__01-top-visual.md",
+    "const": "imgGroup",
+    "node_id": "54:7",
+    "node_name": "Group",
+    "ancestors": [
+     "Hero_image_placeholder",
+     "Shared Istanbul background",
+     "Universities top visual",
+     "Köprü — Universities",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--page-intro-band--hero-image-placeholder--52-2478-c2dbe5.svg",
+  "bytes": 6582,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgGroup1",
+    "node_id": "52:2478",
+    "node_name": "Group",
+    "ancestors": [
+     "Hero_image_placeholder",
+     "Shared Istanbul background",
+     "Shared background — Guides intro",
+     "Page_intro_band",
+     "Köprü — Guides",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--page-intro-band--shared-hero-overlay--52-2522.svg",
+  "bytes": 577,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgSharedHeroOverlay",
+    "node_id": "52:2522",
+    "node_name": "Shared hero overlay",
+    "ancestors": [
+     "Shared background — Guides intro",
+     "Page_intro_band",
+     "Köprü — Guides",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--page-intro-band--52-2523.svg",
+  "bytes": 255,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector1",
+    "node_id": "52:2523",
+    "node_name": "Vector",
+    "ancestors": [
+     "Page_intro_band",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector1",
+    "node_id": "52:2963",
+    "node_name": "Vector",
+    "ancestors": [
+     "Page_intro_band",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--search-bar--52-2530.svg",
+  "bytes": 431,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector2",
+    "node_id": "52:2530",
+    "node_name": "Vector",
+    "ancestors": [
+     "Search_bar",
+     "Köprü — Guides",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--search-bar--52-2531.svg",
+  "bytes": 340,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector3",
+    "node_id": "52:2531",
+    "node_name": "Vector",
+    "ancestors": [
+     "Search_bar",
+     "Köprü — Guides",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--search-bar--52-2532.svg",
+  "bytes": 263,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector4",
+    "node_id": "52:2532",
+    "node_name": "Vector",
+    "ancestors": [
+     "Search_bar",
+     "Köprü — Guides",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--header-floating-pill--52-2535.svg",
+  "bytes": 366,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector5",
+    "node_id": "52:2535",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector26",
+    "node_id": "52:639",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector2",
+    "node_id": "52:2971",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__02-header-pill.md",
+    "const": "imgVector",
+    "node_id": "52:1001",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "university-detail.md",
+    "const": "imgVector1",
+    "node_id": "52:1658",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — University Detail",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--header-floating-pill--52-2536.svg",
+  "bytes": 367,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector6",
+    "node_id": "52:2536",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector27",
+    "node_id": "52:640",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector3",
+    "node_id": "52:2972",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__02-header-pill.md",
+    "const": "imgVector1",
+    "node_id": "52:1002",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "university-detail.md",
+    "const": "imgVector2",
+    "node_id": "52:1659",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — University Detail",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--header-floating-pill--52-2537.svg",
+  "bytes": 402,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector7",
+    "node_id": "52:2537",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector4",
+    "node_id": "52:2973",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__02-header-pill.md",
+    "const": "imgVector2",
+    "node_id": "52:1003",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "university-detail.md",
+    "const": "imgVector3",
+    "node_id": "52:1660",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — University Detail",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--header-floating-pill--52-2538.svg",
+  "bytes": 269,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector8",
+    "node_id": "52:2538",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector29",
+    "node_id": "52:642",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector5",
+    "node_id": "52:2974",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__02-header-pill.md",
+    "const": "imgVector3",
+    "node_id": "52:1004",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "university-detail.md",
+    "const": "imgVector4",
+    "node_id": "52:1661",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — University Detail",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--header-floating-pill--52-2539.svg",
+  "bytes": 269,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector9",
+    "node_id": "52:2539",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector9",
+    "node_id": "52:2890",
+    "node_name": "Vector",
+    "ancestors": [
+     "Footer",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector30",
+    "node_id": "52:643",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector30",
+    "node_id": "52:914",
+    "node_name": "Vector",
+    "ancestors": [
+     "Footer",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector6",
+    "node_id": "52:2975",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector6",
+    "node_id": "52:3078",
+    "node_name": "Vector",
+    "ancestors": [
+     "Footer",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__02-header-pill.md",
+    "const": "imgVector4",
+    "node_id": "52:1005",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__08-footer.md",
+    "const": "imgVector2",
+    "node_id": "52:1260",
+    "node_name": "Vector",
+    "ancestors": [
+     "Footer",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "university-detail.md",
+    "const": "imgVector5",
+    "node_id": "52:1662",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — University Detail",
+     "All"
+    ]
+   },
+   {
+    "context_file": "university-detail.md",
+    "const": "imgVector5",
+    "node_id": "52:1760",
+    "node_name": "Vector",
+    "ancestors": [
+     "Footer",
+     "Köprü — University Detail",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--header-floating-pill--52-2546.svg",
+  "bytes": 601,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector10",
+    "node_id": "52:2546",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector31",
+    "node_id": "52:650",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector7",
+    "node_id": "52:2982",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__02-header-pill.md",
+    "const": "imgVector5",
+    "node_id": "52:1012",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "university-detail.md",
+    "const": "imgVector6",
+    "node_id": "52:1669",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — University Detail",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--header-floating-pill--52-2548.svg",
+  "bytes": 337,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector11",
+    "node_id": "52:2548",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector32",
+    "node_id": "52:652",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector8",
+    "node_id": "52:2984",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__02-header-pill.md",
+    "const": "imgVector6",
+    "node_id": "52:1014",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "university-detail.md",
+    "const": "imgVector7",
+    "node_id": "52:1671",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — University Detail",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--guide-topic-tabs--52-2551.svg",
+  "bytes": 343,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector12",
+    "node_id": "52:2551",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_topic_tabs",
+     "Köprü — Guides",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--guide-topic-tabs--52-2553.svg",
+  "bytes": 419,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector13",
+    "node_id": "52:2553",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_topic_tabs",
+     "Köprü — Guides",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--guide-topic-tabs--52-2555.svg",
+  "bytes": 421,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector14",
+    "node_id": "52:2555",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_topic_tabs",
+     "Köprü — Guides",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--guide-topic-tabs--52-2557.svg",
+  "bytes": 423,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector15",
+    "node_id": "52:2557",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_topic_tabs",
+     "Köprü — Guides",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--guide-topic-tabs--52-2559.svg",
+  "bytes": 412,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector16",
+    "node_id": "52:2559",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_topic_tabs",
+     "Köprü — Guides",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--guide-topic-tabs--52-2561.svg",
+  "bytes": 423,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector17",
+    "node_id": "52:2561",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_topic_tabs",
+     "Köprü — Guides",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--featured-guide--52-2564.svg",
+  "bytes": 356,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector18",
+    "node_id": "52:2564",
+    "node_name": "Vector",
+    "ancestors": [
+     "Featured_guide",
+     "Köprü — Guides",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--featured-guide--52-2565.svg",
+  "bytes": 194,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector19",
+    "node_id": "52:2565",
+    "node_name": "Vector",
+    "ancestors": [
+     "Featured_guide",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector31",
+    "node_id": "52:2594",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector31",
+    "node_id": "52:2654",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector31",
+    "node_id": "52:2711",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector31",
+    "node_id": "52:2772",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector31",
+    "node_id": "52:2831",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector42",
+    "node_id": "52:2615",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector42",
+    "node_id": "52:2635",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector42",
+    "node_id": "52:2674",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector42",
+    "node_id": "52:2693",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector42",
+    "node_id": "52:2732",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector42",
+    "node_id": "52:2753",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector42",
+    "node_id": "52:2792",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector42",
+    "node_id": "52:2812",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector42",
+    "node_id": "52:2850",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector42",
+    "node_id": "52:2869",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector59",
+    "node_id": "52:778",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector69",
+    "node_id": "52:799",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector69",
+    "node_id": "52:819",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--featured-guide--52-2566.svg",
+  "bytes": 286,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector20",
+    "node_id": "52:2566",
+    "node_name": "Vector",
+    "ancestors": [
+     "Featured_guide",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector21",
+    "node_id": "52:2567",
+    "node_name": "Vector",
+    "ancestors": [
+     "Featured_guide",
+     "Köprü — Guides",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--featured-guide--52-2568.svg",
+  "bytes": 287,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector22",
+    "node_id": "52:2568",
+    "node_name": "Vector",
+    "ancestors": [
+     "Featured_guide",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector23",
+    "node_id": "52:2569",
+    "node_name": "Vector",
+    "ancestors": [
+     "Featured_guide",
+     "Köprü — Guides",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--featured-guide--52-2570.svg",
+  "bytes": 389,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector24",
+    "node_id": "52:2570",
+    "node_name": "Vector",
+    "ancestors": [
+     "Featured_guide",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector24",
+    "node_id": "52:2640",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector24",
+    "node_id": "52:2679",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector24",
+    "node_id": "52:2758",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector24",
+    "node_id": "52:2817",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector24",
+    "node_id": "52:2874",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector56",
+    "node_id": "52:2659",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector80",
+    "node_id": "52:824",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--featured-guide--52-2571.svg",
+  "bytes": 357,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector25",
+    "node_id": "52:2571",
+    "node_name": "Vector",
+    "ancestors": [
+     "Featured_guide",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector25",
+    "node_id": "52:2680",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector25",
+    "node_id": "52:2759",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--featured-guide--52-2572.svg",
+  "bytes": 383,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector26",
+    "node_id": "52:2572",
+    "node_name": "Vector",
+    "ancestors": [
+     "Featured_guide",
+     "Köprü — Guides",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--featured-guide--52-2574.svg",
+  "bytes": 343,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector27",
+    "node_id": "52:2574",
+    "node_name": "Vector",
+    "ancestors": [
+     "Featured_guide",
+     "Köprü — Guides",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--featured-guide--52-2579.svg",
+  "bytes": 335,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector28",
+    "node_id": "52:2579",
+    "node_name": "Vector",
+    "ancestors": [
+     "Featured_guide",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector28",
+    "node_id": "52:2581",
+    "node_name": "Vector",
+    "ancestors": [
+     "Featured_guide",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector28",
+    "node_id": "52:2583",
+    "node_name": "Vector",
+    "ancestors": [
+     "Featured_guide",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector28",
+    "node_id": "52:2585",
+    "node_name": "Vector",
+    "ancestors": [
+     "Featured_guide",
+     "Köprü — Guides",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--featured-guide--52-2587.svg",
+  "bytes": 345,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector29",
+    "node_id": "52:2587",
+    "node_name": "Vector",
+    "ancestors": [
+     "Featured_guide",
+     "Köprü — Guides",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2593.svg",
+  "bytes": 438,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector30",
+    "node_id": "52:2593",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector30",
+    "node_id": "52:2614",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector30",
+    "node_id": "52:2634",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector30",
+    "node_id": "52:2653",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector30",
+    "node_id": "52:2673",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector30",
+    "node_id": "52:2692",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector30",
+    "node_id": "52:2710",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector30",
+    "node_id": "52:2731",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector30",
+    "node_id": "52:2752",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector30",
+    "node_id": "52:2771",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector30",
+    "node_id": "52:2791",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector30",
+    "node_id": "52:2811",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector30",
+    "node_id": "52:2830",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector30",
+    "node_id": "52:2849",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector30",
+    "node_id": "52:2868",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector58",
+    "node_id": "52:777",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector58",
+    "node_id": "52:798",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector58",
+    "node_id": "52:818",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2595.svg",
+  "bytes": 294,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector32",
+    "node_id": "52:2595",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector33",
+    "node_id": "52:2596",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector43",
+    "node_id": "52:2616",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector43",
+    "node_id": "52:2636",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector44",
+    "node_id": "52:2617",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector44",
+    "node_id": "52:2637",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector54",
+    "node_id": "52:2655",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector54",
+    "node_id": "52:2712",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector54",
+    "node_id": "52:2773",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector54",
+    "node_id": "52:2832",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector55",
+    "node_id": "52:2656",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector55",
+    "node_id": "52:2713",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector55",
+    "node_id": "52:2774",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector55",
+    "node_id": "52:2833",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector60",
+    "node_id": "52:2675",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector60",
+    "node_id": "52:2694",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector60",
+    "node_id": "52:2733",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector60",
+    "node_id": "52:2754",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector60",
+    "node_id": "52:2793",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector60",
+    "node_id": "52:2813",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector60",
+    "node_id": "52:2851",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector60",
+    "node_id": "52:2870",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector61",
+    "node_id": "52:2676",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector61",
+    "node_id": "52:2695",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector61",
+    "node_id": "52:2734",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector61",
+    "node_id": "52:2755",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector61",
+    "node_id": "52:2794",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector61",
+    "node_id": "52:2814",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector61",
+    "node_id": "52:2852",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector61",
+    "node_id": "52:2871",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector60",
+    "node_id": "52:779",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector61",
+    "node_id": "52:780",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector70",
+    "node_id": "52:800",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector70",
+    "node_id": "52:820",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector71",
+    "node_id": "52:801",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector71",
+    "node_id": "52:821",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2597.svg",
+  "bytes": 295,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector34",
+    "node_id": "52:2597",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector34",
+    "node_id": "52:2657",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector34",
+    "node_id": "52:2714",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector35",
+    "node_id": "52:2598",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector35",
+    "node_id": "52:2658",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector35",
+    "node_id": "52:2715",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector45",
+    "node_id": "52:2618",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector45",
+    "node_id": "52:2677",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector45",
+    "node_id": "52:2735",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector46",
+    "node_id": "52:2619",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector46",
+    "node_id": "52:2678",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector46",
+    "node_id": "52:2736",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2599.svg",
+  "bytes": 403,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector36",
+    "node_id": "52:2599",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector36",
+    "node_id": "52:2716",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector36",
+    "node_id": "52:2737",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector64",
+    "node_id": "52:783",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2600.svg",
+  "bytes": 274,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector37",
+    "node_id": "52:2600",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector37",
+    "node_id": "52:2601",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector37",
+    "node_id": "52:2717",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector37",
+    "node_id": "52:2718",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector37",
+    "node_id": "52:2738",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector37",
+    "node_id": "52:2739",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector65",
+    "node_id": "52:784",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector65",
+    "node_id": "52:785",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2602.svg",
+  "bytes": 274,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector38",
+    "node_id": "52:2602",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector38",
+    "node_id": "52:2719",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector38",
+    "node_id": "52:2740",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector66",
+    "node_id": "52:786",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2603.svg",
+  "bytes": 351,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector39",
+    "node_id": "52:2603",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector39",
+    "node_id": "52:2720",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector64",
+    "node_id": "52:2741",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector67",
+    "node_id": "52:787",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2609.svg",
+  "bytes": 225,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector40",
+    "node_id": "52:2609",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector40",
+    "node_id": "52:2629",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector40",
+    "node_id": "52:2648",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector40",
+    "node_id": "52:2668",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector40",
+    "node_id": "52:2687",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector40",
+    "node_id": "52:2705",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector40",
+    "node_id": "52:2726",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector40",
+    "node_id": "52:2747",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector40",
+    "node_id": "52:2766",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector40",
+    "node_id": "52:2786",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector40",
+    "node_id": "52:2806",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector40",
+    "node_id": "52:2825",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector40",
+    "node_id": "52:2844",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector40",
+    "node_id": "52:2863",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector40",
+    "node_id": "52:2883",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector13",
+    "node_id": "52:582",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector13",
+    "node_id": "52:605",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector13",
+    "node_id": "52:628",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector13",
+    "node_id": "52:793",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector13",
+    "node_id": "52:813",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector13",
+    "node_id": "52:832",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-1-itu.md",
+    "const": "imgVector9",
+    "node_id": "52:1059",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-2.md",
+    "const": "imgVector9",
+    "node_id": "52:1084",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-3.md",
+    "const": "imgVector9",
+    "node_id": "52:1109",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-4.md",
+    "const": "imgVector9",
+    "node_id": "52:1134",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-5.md",
+    "const": "imgVector9",
+    "node_id": "52:1159",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-6.md",
+    "const": "imgVector9",
+    "node_id": "52:1184",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-7.md",
+    "const": "imgVector9",
+    "node_id": "52:1211",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-8.md",
+    "const": "imgVector9",
+    "node_id": "52:1238",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2611.svg",
+  "bytes": 437,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector41",
+    "node_id": "52:2611",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector41",
+    "node_id": "52:2631",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector41",
+    "node_id": "52:2650",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector41",
+    "node_id": "52:2670",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector41",
+    "node_id": "52:2689",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector41",
+    "node_id": "52:2707",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector41",
+    "node_id": "52:2728",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector41",
+    "node_id": "52:2749",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector41",
+    "node_id": "52:2768",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector41",
+    "node_id": "52:2788",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector41",
+    "node_id": "52:2808",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector41",
+    "node_id": "52:2827",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector41",
+    "node_id": "52:2846",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector41",
+    "node_id": "52:2865",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector41",
+    "node_id": "52:2885",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector68",
+    "node_id": "52:795",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector68",
+    "node_id": "52:815",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector68",
+    "node_id": "52:834",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2620.svg",
+  "bytes": 403,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector47",
+    "node_id": "52:2620",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector47",
+    "node_id": "52:2797",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector68",
+    "node_id": "52:2777",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector74",
+    "node_id": "52:804",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2621.svg",
+  "bytes": 389,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector48",
+    "node_id": "52:2621",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector48",
+    "node_id": "52:2778",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector48",
+    "node_id": "52:2798",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector75",
+    "node_id": "52:805",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2622.svg",
+  "bytes": 274,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector49",
+    "node_id": "52:2622",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector49",
+    "node_id": "52:2779",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector49",
+    "node_id": "52:2799",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector76",
+    "node_id": "52:806",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2623.svg",
+  "bytes": 355,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector50",
+    "node_id": "52:2623",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector50",
+    "node_id": "52:2780",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector50",
+    "node_id": "52:2800",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector77",
+    "node_id": "52:807",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2638.svg",
+  "bytes": 304,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector51",
+    "node_id": "52:2638",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector51",
+    "node_id": "52:2696",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector51",
+    "node_id": "52:2756",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector52",
+    "node_id": "52:2639",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector52",
+    "node_id": "52:2697",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector52",
+    "node_id": "52:2757",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2642.svg",
+  "bytes": 343,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector53",
+    "node_id": "52:2642",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector53",
+    "node_id": "52:2700",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector53",
+    "node_id": "52:2819",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector81",
+    "node_id": "52:826",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2660.svg",
+  "bytes": 345,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector57",
+    "node_id": "52:2660",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector78",
+    "node_id": "52:2875",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2661.svg",
+  "bytes": 395,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector58",
+    "node_id": "52:2661",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector58",
+    "node_id": "52:2876",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2662.svg",
+  "bytes": 349,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector59",
+    "node_id": "52:2662",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector59",
+    "node_id": "52:2681",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector65",
+    "node_id": "52:2760",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2698.svg",
+  "bytes": 389,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector62",
+    "node_id": "52:2698",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2699.svg",
+  "bytes": 368,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector63",
+    "node_id": "52:2699",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2775.svg",
+  "bytes": 298,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector66",
+    "node_id": "52:2775",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector66",
+    "node_id": "52:2834",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector67",
+    "node_id": "52:2776",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector67",
+    "node_id": "52:2835",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector69",
+    "node_id": "52:2795",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector69",
+    "node_id": "52:2853",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector70",
+    "node_id": "52:2796",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector70",
+    "node_id": "52:2854",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector62",
+    "node_id": "52:781",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector63",
+    "node_id": "52:782",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector72",
+    "node_id": "52:802",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector73",
+    "node_id": "52:803",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2815.svg",
+  "bytes": 307,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector71",
+    "node_id": "52:2815",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector71",
+    "node_id": "52:2872",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector72",
+    "node_id": "52:2816",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector72",
+    "node_id": "52:2873",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector78",
+    "node_id": "52:822",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector79",
+    "node_id": "52:823",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2836.svg",
+  "bytes": 315,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector73",
+    "node_id": "52:2836",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector76",
+    "node_id": "52:2855",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2837.svg",
+  "bytes": 309,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector74",
+    "node_id": "52:2837",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector74",
+    "node_id": "52:2856",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2838.svg",
+  "bytes": 357,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector75",
+    "node_id": "52:2838",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector77",
+    "node_id": "52:2857",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "guides.md",
+    "const": "imgVector77",
+    "node_id": "52:2877",
+    "node_name": "Vector",
+    "ancestors": [
+     "Guide_card",
+     "Köprü — Guides",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--footer--52-2888.svg",
+  "bytes": 240,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector79",
+    "node_id": "52:2888",
+    "node_name": "Vector",
+    "ancestors": [
+     "Footer",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector96",
+    "node_id": "52:912",
+    "node_name": "Vector",
+    "ancestors": [
+     "Footer",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector20",
+    "node_id": "52:3076",
+    "node_name": "Vector",
+    "ancestors": [
+     "Footer",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__08-footer.md",
+    "const": "imgVector",
+    "node_id": "52:1258",
+    "node_name": "Vector",
+    "ancestors": [
+     "Footer",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "university-detail.md",
+    "const": "imgVector19",
+    "node_id": "52:1758",
+    "node_name": "Vector",
+    "ancestors": [
+     "Footer",
+     "Köprü — University Detail",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--footer--52-2889.svg",
+  "bytes": 267,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector80",
+    "node_id": "52:2889",
+    "node_name": "Vector",
+    "ancestors": [
+     "Footer",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector97",
+    "node_id": "52:913",
+    "node_name": "Vector",
+    "ancestors": [
+     "Footer",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector21",
+    "node_id": "52:3077",
+    "node_name": "Vector",
+    "ancestors": [
+     "Footer",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__08-footer.md",
+    "const": "imgVector1",
+    "node_id": "52:1259",
+    "node_name": "Vector",
+    "ancestors": [
+     "Footer",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "university-detail.md",
+    "const": "imgVector20",
+    "node_id": "52:1759",
+    "node_name": "Vector",
+    "ancestors": [
+     "Footer",
+     "Köprü — University Detail",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/guides--footer--52-2907.svg",
+  "bytes": 248,
+  "usages": [
+   {
+    "context_file": "guides.md",
+    "const": "imgVector81",
+    "node_id": "52:2907",
+    "node_name": "Vector",
+    "ancestors": [
+     "Footer",
+     "Köprü — Guides",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector98",
+    "node_id": "52:931",
+    "node_name": "Vector",
+    "ancestors": [
+     "Footer",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector22",
+    "node_id": "52:3095",
+    "node_name": "Vector",
+    "ancestors": [
+     "Footer",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__08-footer.md",
+    "const": "imgVector3",
+    "node_id": "52:1277",
+    "node_name": "Vector",
+    "ancestors": [
+     "Footer",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "university-detail.md",
+    "const": "imgVector21",
+    "node_id": "52:1777",
+    "node_name": "Vector",
+    "ancestors": [
+     "Footer",
+     "Köprü — University Detail",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--misc--kopru-landing-desktop--52-489.svg",
+  "bytes": 243,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgKopruLandingDesktop",
+    "node_id": "52:489",
+    "node_name": "Köprü — Landing Desktop",
+    "ancestors": [
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--hero--hero-image-placeholder--52-497.svg",
+  "bytes": 6582,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgGroup1",
+    "node_id": "52:497",
+    "node_name": "Group",
+    "ancestors": [
+     "Hero_image_placeholder",
+     "Shared Istanbul background",
+     "Shared background — Desktop hero",
+     "Hero",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--hero--shared-hero-overlay--52-541.svg",
+  "bytes": 579,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgSharedHeroOverlay",
+    "node_id": "52:541",
+    "node_name": "Shared hero overlay",
+    "ancestors": [
+     "Shared background — Desktop hero",
+     "Hero",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--hero--hero-overlay--52-542.svg",
+  "bytes": 200,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgHeroOverlay",
+    "node_id": "52:542",
+    "node_name": "Hero_overlay",
+    "ancestors": [
+     "Hero",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--hero--52-551.svg",
+  "bytes": 343,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector",
+    "node_id": "52:551",
+    "node_name": "Vector",
+    "ancestors": [
+     "Hero",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--hero--52-553.svg",
+  "bytes": 458,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector1",
+    "node_id": "52:553",
+    "node_name": "Vector",
+    "ancestors": [
+     "Hero",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--hero--52-555.svg",
+  "bytes": 332,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector2",
+    "node_id": "52:555",
+    "node_name": "Vector",
+    "ancestors": [
+     "Hero",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector2",
+    "node_id": "52:557",
+    "node_name": "Vector",
+    "ancestors": [
+     "Hero",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector2",
+    "node_id": "52:559",
+    "node_name": "Vector",
+    "ancestors": [
+     "Hero",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-universities--52-562.svg",
+  "bytes": 240,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector3",
+    "node_id": "52:562",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-universities--university-card--52-567.svg",
+  "bytes": 438,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector4",
+    "node_id": "52:567",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector4",
+    "node_id": "52:590",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector4",
+    "node_id": "52:613",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-1-itu.md",
+    "const": "imgVector",
+    "node_id": "52:1044",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-2.md",
+    "const": "imgVector",
+    "node_id": "52:1069",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-3.md",
+    "const": "imgVector",
+    "node_id": "52:1094",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-4.md",
+    "const": "imgVector",
+    "node_id": "52:1119",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-5.md",
+    "const": "imgVector",
+    "node_id": "52:1144",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-6.md",
+    "const": "imgVector",
+    "node_id": "52:1169",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-7.md",
+    "const": "imgVector",
+    "node_id": "52:1196",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-8.md",
+    "const": "imgVector",
+    "node_id": "52:1223",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-universities--university-card--52-568.png",
+  "bytes": 512691,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector5",
+    "node_id": "52:568",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector21",
+    "node_id": "52:614",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-1-itu.md",
+    "const": "imgVector1",
+    "node_id": "52:1045",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-2.md",
+    "const": "imgVector1",
+    "node_id": "52:1070",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-3.md",
+    "const": "imgVector1",
+    "node_id": "52:1095",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-4.md",
+    "const": "imgVector1",
+    "node_id": "52:1120",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-5.md",
+    "const": "imgVector1",
+    "node_id": "52:1145",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-6.md",
+    "const": "imgVector1",
+    "node_id": "52:1170",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-7.md",
+    "const": "imgVector1",
+    "node_id": "52:1197",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-8.md",
+    "const": "imgVector1",
+    "node_id": "52:1224",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-universities--university-card--52-569.svg",
+  "bytes": 286,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector6",
+    "node_id": "52:569",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector7",
+    "node_id": "52:570",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector16",
+    "node_id": "52:592",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector16",
+    "node_id": "52:615",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector17",
+    "node_id": "52:593",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector17",
+    "node_id": "52:616",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-1-itu.md",
+    "const": "imgVector2",
+    "node_id": "52:1046",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-1-itu.md",
+    "const": "imgVector3",
+    "node_id": "52:1047",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-2.md",
+    "const": "imgVector2",
+    "node_id": "52:1071",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-2.md",
+    "const": "imgVector3",
+    "node_id": "52:1072",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-3.md",
+    "const": "imgVector2",
+    "node_id": "52:1096",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-3.md",
+    "const": "imgVector3",
+    "node_id": "52:1097",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-4.md",
+    "const": "imgVector2",
+    "node_id": "52:1121",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-4.md",
+    "const": "imgVector3",
+    "node_id": "52:1122",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-5.md",
+    "const": "imgVector2",
+    "node_id": "52:1146",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-5.md",
+    "const": "imgVector3",
+    "node_id": "52:1147",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-6.md",
+    "const": "imgVector2",
+    "node_id": "52:1171",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-6.md",
+    "const": "imgVector3",
+    "node_id": "52:1172",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-7.md",
+    "const": "imgVector2",
+    "node_id": "52:1198",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-7.md",
+    "const": "imgVector3",
+    "node_id": "52:1199",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-8.md",
+    "const": "imgVector2",
+    "node_id": "52:1225",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-8.md",
+    "const": "imgVector3",
+    "node_id": "52:1226",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-universities--university-card--52-571.svg",
+  "bytes": 281,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector8",
+    "node_id": "52:571",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector9",
+    "node_id": "52:572",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector18",
+    "node_id": "52:594",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector19",
+    "node_id": "52:595",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-1-itu.md",
+    "const": "imgVector4",
+    "node_id": "52:1048",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-1-itu.md",
+    "const": "imgVector5",
+    "node_id": "52:1049",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-2.md",
+    "const": "imgVector4",
+    "node_id": "52:1073",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-2.md",
+    "const": "imgVector5",
+    "node_id": "52:1074",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-4.md",
+    "const": "imgVector4",
+    "node_id": "52:1123",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-4.md",
+    "const": "imgVector5",
+    "node_id": "52:1124",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-5.md",
+    "const": "imgVector4",
+    "node_id": "52:1148",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-5.md",
+    "const": "imgVector5",
+    "node_id": "52:1149",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-7.md",
+    "const": "imgVector4",
+    "node_id": "52:1200",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-7.md",
+    "const": "imgVector5",
+    "node_id": "52:1201",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-8.md",
+    "const": "imgVector4",
+    "node_id": "52:1227",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-8.md",
+    "const": "imgVector5",
+    "node_id": "52:1228",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-universities--university-card--52-573.svg",
+  "bytes": 383,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector10",
+    "node_id": "52:573",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector10",
+    "node_id": "52:596",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector10",
+    "node_id": "52:619",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-1-itu.md",
+    "const": "imgVector6",
+    "node_id": "52:1050",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-2.md",
+    "const": "imgVector6",
+    "node_id": "52:1075",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-3.md",
+    "const": "imgVector6",
+    "node_id": "52:1100",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-4.md",
+    "const": "imgVector6",
+    "node_id": "52:1125",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-5.md",
+    "const": "imgVector6",
+    "node_id": "52:1150",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-6.md",
+    "const": "imgVector6",
+    "node_id": "52:1175",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-7.md",
+    "const": "imgVector6",
+    "node_id": "52:1202",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-8.md",
+    "const": "imgVector6",
+    "node_id": "52:1229",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-universities--university-card--52-575.svg",
+  "bytes": 351,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector11",
+    "node_id": "52:575",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector11",
+    "node_id": "52:598",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector11",
+    "node_id": "52:621",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-1-itu.md",
+    "const": "imgVector7",
+    "node_id": "52:1052",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-2.md",
+    "const": "imgVector7",
+    "node_id": "52:1077",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-3.md",
+    "const": "imgVector7",
+    "node_id": "52:1102",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-4.md",
+    "const": "imgVector7",
+    "node_id": "52:1127",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-5.md",
+    "const": "imgVector7",
+    "node_id": "52:1152",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "university-detail.md",
+    "const": "imgVector8",
+    "node_id": "52:1704",
+    "node_name": "Vector",
+    "ancestors": [
+     "Köprü — University Detail",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-universities--university-card--52-577.svg",
+  "bytes": 403,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector12",
+    "node_id": "52:577",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector24",
+    "node_id": "52:623",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-1-itu.md",
+    "const": "imgVector8",
+    "node_id": "52:1054",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-3.md",
+    "const": "imgVector8",
+    "node_id": "52:1104",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-6.md",
+    "const": "imgVector8",
+    "node_id": "52:1179",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-8.md",
+    "const": "imgVector8",
+    "node_id": "52:1233",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "university-detail.md",
+    "const": "imgVector9",
+    "node_id": "52:1706",
+    "node_name": "Vector",
+    "ancestors": [
+     "Köprü — University Detail",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-universities--explore-button-opens-university-detail-page--52-587.svg",
+  "bytes": 342,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector14",
+    "node_id": "52:587",
+    "node_name": "Vector",
+    "ancestors": [
+     "Explore_button_opens_university_detail_page",
+     "University_card",
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector14",
+    "node_id": "52:610",
+    "node_name": "Vector",
+    "ancestors": [
+     "Explore_button_opens_university_detail_page",
+     "University_card",
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector14",
+    "node_id": "52:633",
+    "node_name": "Vector",
+    "ancestors": [
+     "Explore_button_opens_university_detail_page",
+     "University_card",
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-1-itu.md",
+    "const": "imgVector10",
+    "node_id": "52:1064",
+    "node_name": "Vector",
+    "ancestors": [
+     "Explore_button_opens_university_detail_page",
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-2.md",
+    "const": "imgVector10",
+    "node_id": "52:1089",
+    "node_name": "Vector",
+    "ancestors": [
+     "Explore_button_opens_university_detail_page",
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-3.md",
+    "const": "imgVector10",
+    "node_id": "52:1114",
+    "node_name": "Vector",
+    "ancestors": [
+     "Explore_button_opens_university_detail_page",
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-4.md",
+    "const": "imgVector10",
+    "node_id": "52:1139",
+    "node_name": "Vector",
+    "ancestors": [
+     "Explore_button_opens_university_detail_page",
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-5.md",
+    "const": "imgVector10",
+    "node_id": "52:1164",
+    "node_name": "Vector",
+    "ancestors": [
+     "Explore_button_opens_university_detail_page",
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-6.md",
+    "const": "imgVector10",
+    "node_id": "52:1189",
+    "node_name": "Vector",
+    "ancestors": [
+     "Explore_button_opens_university_detail_page",
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-7.md",
+    "const": "imgVector10",
+    "node_id": "52:1216",
+    "node_name": "Vector",
+    "ancestors": [
+     "Explore_button_opens_university_detail_page",
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-8.md",
+    "const": "imgVector10",
+    "node_id": "52:1243",
+    "node_name": "Vector",
+    "ancestors": [
+     "Explore_button_opens_university_detail_page",
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-universities--university-card--52-591.png",
+  "bytes": 527922,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector15",
+    "node_id": "52:591",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-universities--university-card--52-600.svg",
+  "bytes": 403,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector20",
+    "node_id": "52:600",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-2.md",
+    "const": "imgVector8",
+    "node_id": "52:1079",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-4.md",
+    "const": "imgVector8",
+    "node_id": "52:1129",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-7.md",
+    "const": "imgVector8",
+    "node_id": "52:1206",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-universities--university-card--52-617.svg",
+  "bytes": 294,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector22",
+    "node_id": "52:617",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector23",
+    "node_id": "52:618",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-3.md",
+    "const": "imgVector4",
+    "node_id": "52:1098",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-3.md",
+    "const": "imgVector5",
+    "node_id": "52:1099",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-6.md",
+    "const": "imgVector4",
+    "node_id": "52:1173",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-6.md",
+    "const": "imgVector5",
+    "node_id": "52:1174",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-universities--52-636.svg",
+  "bytes": 345,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector25",
+    "node_id": "52:636",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Universities",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector25",
+    "node_id": "52:837",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--header-floating-pill--52-641.svg",
+  "bytes": 345,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector28",
+    "node_id": "52:641",
+    "node_name": "Vector",
+    "ancestors": [
+     "Header_floating_pill",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-scholarships--52-655.svg",
+  "bytes": 240,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector33",
+    "node_id": "52:655",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Scholarships",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-scholarships--scholarship-cta-panel--52-657.svg",
+  "bytes": 444,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector34",
+    "node_id": "52:657",
+    "node_name": "Vector",
+    "ancestors": [
+     "Scholarship_CTA_panel",
+     "Section_Scholarships",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-scholarships--scholarship-cta-panel--52-662.svg",
+  "bytes": 351,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector35",
+    "node_id": "52:662",
+    "node_name": "Vector",
+    "ancestors": [
+     "Scholarship_CTA_panel",
+     "Section_Scholarships",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector35",
+    "node_id": "52:664",
+    "node_name": "Vector",
+    "ancestors": [
+     "Scholarship_CTA_panel",
+     "Section_Scholarships",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-scholarships--scholarship-cta-panel--52-666.svg",
+  "bytes": 357,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector36",
+    "node_id": "52:666",
+    "node_name": "Vector",
+    "ancestors": [
+     "Scholarship_CTA_panel",
+     "Section_Scholarships",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-scholarships--scholarship-cta-panel--52-668.svg",
+  "bytes": 355,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector37",
+    "node_id": "52:668",
+    "node_name": "Vector",
+    "ancestors": [
+     "Scholarship_CTA_panel",
+     "Section_Scholarships",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-scholarships--scholarship-cta-panel--52-670.svg",
+  "bytes": 345,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector38",
+    "node_id": "52:670",
+    "node_name": "Vector",
+    "ancestors": [
+     "Scholarship_CTA_panel",
+     "Section_Scholarships",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-scholarships--scholarship-cta-panel--52-672.svg",
+  "bytes": 352,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector39",
+    "node_id": "52:672",
+    "node_name": "Vector",
+    "ancestors": [
+     "Scholarship_CTA_panel",
+     "Section_Scholarships",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-admission-steps--52-677.svg",
+  "bytes": 238,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector40",
+    "node_id": "52:677",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Admission_steps",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-admission-steps--52-681.svg",
+  "bytes": 326,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector41",
+    "node_id": "52:681",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Admission_steps",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector41",
+    "node_id": "52:689",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Admission_steps",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector41",
+    "node_id": "52:697",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Admission_steps",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector41",
+    "node_id": "52:705",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Admission_steps",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector41",
+    "node_id": "52:713",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Admission_steps",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-admission-steps--52-683.svg",
+  "bytes": 528,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector42",
+    "node_id": "52:683",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Admission_steps",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector42",
+    "node_id": "52:691",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Admission_steps",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector42",
+    "node_id": "52:699",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Admission_steps",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector42",
+    "node_id": "52:707",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Admission_steps",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-admission-steps--52-687.svg",
+  "bytes": 396,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector43",
+    "node_id": "52:687",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Admission_steps",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-5.md",
+    "const": "imgVector8",
+    "node_id": "52:1154",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-admission-steps--52-695.svg",
+  "bytes": 406,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector44",
+    "node_id": "52:695",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Admission_steps",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector44",
+    "node_id": "52:703",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Admission_steps",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector44",
+    "node_id": "52:711",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Admission_steps",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-admission-steps--52-718.svg",
+  "bytes": 405,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector45",
+    "node_id": "52:718",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Admission_steps",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-testimonials--52-721.svg",
+  "bytes": 240,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector46",
+    "node_id": "52:721",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Testimonials",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-testimonials--testimonial-card--52-726.svg",
+  "bytes": 438,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector47",
+    "node_id": "52:726",
+    "node_name": "Vector",
+    "ancestors": [
+     "Testimonial_card",
+     "Section_Testimonials",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector47",
+    "node_id": "52:739",
+    "node_name": "Vector",
+    "ancestors": [
+     "Testimonial_card",
+     "Section_Testimonials",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector47",
+    "node_id": "52:752",
+    "node_name": "Vector",
+    "ancestors": [
+     "Testimonial_card",
+     "Section_Testimonials",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-testimonials--testimonial-card--52-728.svg",
+  "bytes": 351,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector48",
+    "node_id": "52:728",
+    "node_name": "Vector",
+    "ancestors": [
+     "Testimonial_card",
+     "Section_Testimonials",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector51",
+    "node_id": "52:741",
+    "node_name": "Vector",
+    "ancestors": [
+     "Testimonial_card",
+     "Section_Testimonials",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector51",
+    "node_id": "52:754",
+    "node_name": "Vector",
+    "ancestors": [
+     "Testimonial_card",
+     "Section_Testimonials",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-testimonials--testimonial-card--52-733.svg",
+  "bytes": 225,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector49",
+    "node_id": "52:733",
+    "node_name": "Vector",
+    "ancestors": [
+     "Testimonial_card",
+     "Section_Testimonials",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector49",
+    "node_id": "52:746",
+    "node_name": "Vector",
+    "ancestors": [
+     "Testimonial_card",
+     "Section_Testimonials",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector49",
+    "node_id": "52:759",
+    "node_name": "Vector",
+    "ancestors": [
+     "Testimonial_card",
+     "Section_Testimonials",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-testimonials--testimonial-card--52-734.svg",
+  "bytes": 326,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector50",
+    "node_id": "52:734",
+    "node_name": "Vector",
+    "ancestors": [
+     "Testimonial_card",
+     "Section_Testimonials",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector50",
+    "node_id": "52:747",
+    "node_name": "Vector",
+    "ancestors": [
+     "Testimonial_card",
+     "Section_Testimonials",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector50",
+    "node_id": "52:760",
+    "node_name": "Vector",
+    "ancestors": [
+     "Testimonial_card",
+     "Section_Testimonials",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-testimonials--load-more-stories--52-766.svg",
+  "bytes": 330,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector52",
+    "node_id": "52:766",
+    "node_name": "Vector",
+    "ancestors": [
+     "Load_more_stories",
+     "Section_Testimonials",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-testimonials--load-more-stories--52-767.svg",
+  "bytes": 322,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector53",
+    "node_id": "52:767",
+    "node_name": "Vector",
+    "ancestors": [
+     "Load_more_stories",
+     "Section_Testimonials",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-testimonials--load-more-stories--52-768.svg",
+  "bytes": 439,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector54",
+    "node_id": "52:768",
+    "node_name": "Vector",
+    "ancestors": [
+     "Load_more_stories",
+     "Section_Testimonials",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-testimonials--load-more-stories--52-770.svg",
+  "bytes": 276,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector55",
+    "node_id": "52:770",
+    "node_name": "Vector",
+    "ancestors": [
+     "Load_more_stories",
+     "Section_Testimonials",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-testimonials--load-more-stories--52-771.svg",
+  "bytes": 276,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector56",
+    "node_id": "52:771",
+    "node_name": "Vector",
+    "ancestors": [
+     "Load_more_stories",
+     "Section_Testimonials",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-guides--52-773.svg",
+  "bytes": 238,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector57",
+    "node_id": "52:773",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Guides",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-book-consultation--52-840.svg",
+  "bytes": 240,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector82",
+    "node_id": "52:840",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Book_consultation",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-book-consultation--52-844.svg",
+  "bytes": 332,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector83",
+    "node_id": "52:844",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Book_consultation",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector83",
+    "node_id": "52:846",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Book_consultation",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector83",
+    "node_id": "52:848",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Book_consultation",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-book-consultation--52-850.svg",
+  "bytes": 458,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector84",
+    "node_id": "52:850",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Book_consultation",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-book-consultation--52-852.svg",
+  "bytes": 367,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector85",
+    "node_id": "52:852",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Book_consultation",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-book-consultation--52-853.svg",
+  "bytes": 346,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector86",
+    "node_id": "52:853",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Book_consultation",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-book-consultation--52-856.svg",
+  "bytes": 453,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector87",
+    "node_id": "52:856",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Book_consultation",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector87",
+    "node_id": "52:859",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Book_consultation",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector87",
+    "node_id": "52:870",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Book_consultation",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-book-consultation--52-862.svg",
+  "bytes": 453,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector88",
+    "node_id": "52:862",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Book_consultation",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector88",
+    "node_id": "52:866",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Book_consultation",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-book-consultation--52-864.svg",
+  "bytes": 290,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector89",
+    "node_id": "52:864",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Book_consultation",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector89",
+    "node_id": "52:868",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Book_consultation",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector89",
+    "node_id": "52:872",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Book_consultation",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector18",
+    "node_id": "52:3040",
+    "node_name": "Vector",
+    "ancestors": [
+     "Eligibility_box",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector18",
+    "node_id": "52:3044",
+    "node_name": "Vector",
+    "ancestors": [
+     "Eligibility_box",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector18",
+    "node_id": "52:3048",
+    "node_name": "Vector",
+    "ancestors": [
+     "Eligibility_box",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__03-filter-bar.md",
+    "const": "imgVector2",
+    "node_id": "52:1021",
+    "node_name": "Vector",
+    "ancestors": [
+     "Filter_bar_top",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__03-filter-bar.md",
+    "const": "imgVector2",
+    "node_id": "52:1025",
+    "node_name": "Vector",
+    "ancestors": [
+     "Filter_bar_top",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__03-filter-bar.md",
+    "const": "imgVector2",
+    "node_id": "52:1029",
+    "node_name": "Vector",
+    "ancestors": [
+     "Filter_bar_top",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__03-filter-bar.md",
+    "const": "imgVector2",
+    "node_id": "52:1033",
+    "node_name": "Vector",
+    "ancestors": [
+     "Filter_bar_top",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__04d-sort-chevron.md",
+    "const": "imgVector",
+    "node_id": "52:1039",
+    "node_name": "Vector",
+    "ancestors": [
+     "Köprü — Universities",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-book-consultation--52-873.svg",
+  "bytes": 345,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector90",
+    "node_id": "52:873",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Book_consultation",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-faq--52-876.svg",
+  "bytes": 240,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector91",
+    "node_id": "52:876",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_FAQ",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-faq--52-882.svg",
+  "bytes": 345,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector92",
+    "node_id": "52:882",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_FAQ",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-faq--52-884.svg",
+  "bytes": 249,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector93",
+    "node_id": "52:884",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_FAQ",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector93",
+    "node_id": "52:890",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_FAQ",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector93",
+    "node_id": "52:894",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_FAQ",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector93",
+    "node_id": "52:898",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_FAQ",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector93",
+    "node_id": "52:902",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_FAQ",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector93",
+    "node_id": "52:906",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_FAQ",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector93",
+    "node_id": "52:910",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_FAQ",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-faq--52-886.svg",
+  "bytes": 276,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector94",
+    "node_id": "52:886",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_FAQ",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector94",
+    "node_id": "52:892",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_FAQ",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector94",
+    "node_id": "52:896",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_FAQ",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector94",
+    "node_id": "52:900",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_FAQ",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector94",
+    "node_id": "52:904",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_FAQ",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector94",
+    "node_id": "52:908",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_FAQ",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/landing--section-faq--52-893.svg",
+  "bytes": 276,
+  "usages": [
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector95",
+    "node_id": "52:893",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_FAQ",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector95",
+    "node_id": "52:897",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_FAQ",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector95",
+    "node_id": "52:901",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_FAQ",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector95",
+    "node_id": "52:905",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_FAQ",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   },
+   {
+    "context_file": "landing-desktop.md",
+    "const": "imgVector95",
+    "node_id": "52:909",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_FAQ",
+     "Köprü — Landing Desktop",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/scholarships--misc--vector--52-2911.svg",
+  "bytes": 243,
+  "usages": [
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector",
+    "node_id": "52:2911",
+    "node_name": "Vector",
+    "ancestors": [
+     "Köprü — Scholarships",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/scholarships--page-intro-band--hero-image-placeholder--52-2918.svg",
+  "bytes": 6582,
+  "usages": [
+   {
+    "context_file": "scholarships.md",
+    "const": "imgGroup1",
+    "node_id": "52:2918",
+    "node_name": "Group",
+    "ancestors": [
+     "Hero_image_placeholder",
+     "Shared Istanbul background",
+     "Shared background — Scholarships intro",
+     "Page_intro_band",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/scholarships--page-intro-band--shared-hero-overlay--52-2962.svg",
+  "bytes": 577,
+  "usages": [
+   {
+    "context_file": "scholarships.md",
+    "const": "imgSharedHeroOverlay",
+    "node_id": "52:2962",
+    "node_name": "Shared hero overlay",
+    "ancestors": [
+     "Shared background — Scholarships intro",
+     "Page_intro_band",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/scholarships--scholarship-covers-box--52-2987.svg",
+  "bytes": 438,
+  "usages": [
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector9",
+    "node_id": "52:2987",
+    "node_name": "Vector",
+    "ancestors": [
+     "Scholarship_covers_box",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector9",
+    "node_id": "52:3016",
+    "node_name": "Vector",
+    "ancestors": [
+     "Eligibility_box",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/scholarships--scholarship-covers-box--52-2989.svg",
+  "bytes": 322,
+  "usages": [
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector10",
+    "node_id": "52:2989",
+    "node_name": "Vector",
+    "ancestors": [
+     "Scholarship_covers_box",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector10",
+    "node_id": "52:2992",
+    "node_name": "Vector",
+    "ancestors": [
+     "Scholarship_covers_box",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector10",
+    "node_id": "52:2995",
+    "node_name": "Vector",
+    "ancestors": [
+     "Scholarship_covers_box",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector10",
+    "node_id": "52:2998",
+    "node_name": "Vector",
+    "ancestors": [
+     "Scholarship_covers_box",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector10",
+    "node_id": "52:3001",
+    "node_name": "Vector",
+    "ancestors": [
+     "Scholarship_covers_box",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector10",
+    "node_id": "52:3004",
+    "node_name": "Vector",
+    "ancestors": [
+     "Scholarship_covers_box",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/scholarships--scholarship-covers-box--52-2990.svg",
+  "bytes": 332,
+  "usages": [
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector11",
+    "node_id": "52:2990",
+    "node_name": "Vector",
+    "ancestors": [
+     "Scholarship_covers_box",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector11",
+    "node_id": "52:2993",
+    "node_name": "Vector",
+    "ancestors": [
+     "Scholarship_covers_box",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector11",
+    "node_id": "52:2996",
+    "node_name": "Vector",
+    "ancestors": [
+     "Scholarship_covers_box",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector11",
+    "node_id": "52:2999",
+    "node_name": "Vector",
+    "ancestors": [
+     "Scholarship_covers_box",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector11",
+    "node_id": "52:3002",
+    "node_name": "Vector",
+    "ancestors": [
+     "Scholarship_covers_box",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector11",
+    "node_id": "52:3005",
+    "node_name": "Vector",
+    "ancestors": [
+     "Scholarship_covers_box",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/scholarships--scholarship-covers-box--52-3007.svg",
+  "bytes": 350,
+  "usages": [
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector12",
+    "node_id": "52:3007",
+    "node_name": "Vector",
+    "ancestors": [
+     "Scholarship_covers_box",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/scholarships--scholarship-covers-box--52-3011.svg",
+  "bytes": 439,
+  "usages": [
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector13",
+    "node_id": "52:3011",
+    "node_name": "Vector",
+    "ancestors": [
+     "Scholarship_covers_box",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/scholarships--scholarship-covers-box--52-3013.svg",
+  "bytes": 439,
+  "usages": [
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector14",
+    "node_id": "52:3013",
+    "node_name": "Vector",
+    "ancestors": [
+     "Scholarship_covers_box",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/scholarships--eligibility-box--52-3021.svg",
+  "bytes": 225,
+  "usages": [
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector15",
+    "node_id": "52:3021",
+    "node_name": "Vector",
+    "ancestors": [
+     "Eligibility_box",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector15",
+    "node_id": "52:3025",
+    "node_name": "Vector",
+    "ancestors": [
+     "Eligibility_box",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector15",
+    "node_id": "52:3029",
+    "node_name": "Vector",
+    "ancestors": [
+     "Eligibility_box",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector15",
+    "node_id": "52:3033",
+    "node_name": "Vector",
+    "ancestors": [
+     "Eligibility_box",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/scholarships--eligibility-box--52-3035.svg",
+  "bytes": 1249,
+  "usages": [
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector16",
+    "node_id": "52:3035",
+    "node_name": "Vector",
+    "ancestors": [
+     "Eligibility_box",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/scholarships--eligibility-box--52-3038.svg",
+  "bytes": 453,
+  "usages": [
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector17",
+    "node_id": "52:3038",
+    "node_name": "Vector",
+    "ancestors": [
+     "Eligibility_box",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector17",
+    "node_id": "52:3042",
+    "node_name": "Vector",
+    "ancestors": [
+     "Eligibility_box",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector17",
+    "node_id": "52:3046",
+    "node_name": "Vector",
+    "ancestors": [
+     "Eligibility_box",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/scholarships--eligibility-box--52-3049.svg",
+  "bytes": 345,
+  "usages": [
+   {
+    "context_file": "scholarships.md",
+    "const": "imgVector19",
+    "node_id": "52:3049",
+    "node_name": "Vector",
+    "ancestors": [
+     "Eligibility_box",
+     "Köprü — Scholarships",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/university-detail--merit-table--52-3060.svg",
+  "bytes": 228,
+  "usages": [
+   {
+    "context_file": "scholarships__merit-table-offcanvas.md",
+    "const": "imgVector",
+    "node_id": "52:3060",
+    "node_name": "Vector",
+    "ancestors": [
+     "Merit_table",
+     "Köprü — University Detail",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships__merit-table-offcanvas.md",
+    "const": "imgVector",
+    "node_id": "52:3065",
+    "node_name": "Vector",
+    "ancestors": [
+     "Merit_table",
+     "Köprü — University Detail",
+     "All"
+    ]
+   },
+   {
+    "context_file": "scholarships__merit-table-offcanvas.md",
+    "const": "imgVector",
+    "node_id": "52:3070",
+    "node_name": "Vector",
+    "ancestors": [
+     "Merit_table",
+     "Köprü — University Detail",
+     "All"
+    ]
+   },
+   {
+    "context_file": "university-detail.md",
+    "const": "imgVector22",
+    "node_id": "52:3060",
+    "node_name": "Vector",
+    "ancestors": [
+     "Merit_table",
+     "Köprü — University Detail",
+     "All"
+    ]
+   },
+   {
+    "context_file": "university-detail.md",
+    "const": "imgVector22",
+    "node_id": "52:3065",
+    "node_name": "Vector",
+    "ancestors": [
+     "Merit_table",
+     "Köprü — University Detail",
+     "All"
+    ]
+   },
+   {
+    "context_file": "university-detail.md",
+    "const": "imgVector22",
+    "node_id": "52:3070",
+    "node_name": "Vector",
+    "ancestors": [
+     "Merit_table",
+     "Köprü — University Detail",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/universities--universities-top-visual--hero-image-placeholder--54-7.svg",
+  "bytes": 6622,
+  "usages": [
+   {
+    "context_file": "universities__01-top-visual.md",
+    "const": "imgGroup1",
+    "node_id": "54:7",
+    "node_name": "Group",
+    "ancestors": [
+     "Hero_image_placeholder",
+     "Shared Istanbul background",
+     "Universities top visual",
+     "Köprü — Universities",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/universities--universities-top-visual--shared-hero-overlay--54-51.svg",
+  "bytes": 575,
+  "usages": [
+   {
+    "context_file": "universities__01-top-visual.md",
+    "const": "imgSharedHeroOverlay",
+    "node_id": "54:51",
+    "node_name": "Shared hero overlay",
+    "ancestors": [
+     "Universities top visual",
+     "Köprü — Universities",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/universities--filter-bar-top--52-1017.svg",
+  "bytes": 439,
+  "usages": [
+   {
+    "context_file": "universities__03-filter-bar.md",
+    "const": "imgVector",
+    "node_id": "52:1017",
+    "node_name": "Vector",
+    "ancestors": [
+     "Filter_bar_top",
+     "Köprü — Universities",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/universities--filter-bar-top--52-1019.svg",
+  "bytes": 453,
+  "usages": [
+   {
+    "context_file": "universities__03-filter-bar.md",
+    "const": "imgVector1",
+    "node_id": "52:1019",
+    "node_name": "Vector",
+    "ancestors": [
+     "Filter_bar_top",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__03-filter-bar.md",
+    "const": "imgVector1",
+    "node_id": "52:1023",
+    "node_name": "Vector",
+    "ancestors": [
+     "Filter_bar_top",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__03-filter-bar.md",
+    "const": "imgVector1",
+    "node_id": "52:1027",
+    "node_name": "Vector",
+    "ancestors": [
+     "Filter_bar_top",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__03-filter-bar.md",
+    "const": "imgVector1",
+    "node_id": "52:1031",
+    "node_name": "Vector",
+    "ancestors": [
+     "Filter_bar_top",
+     "Köprü — Universities",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/universities--filter-bar-top--52-1034.svg",
+  "bytes": 345,
+  "usages": [
+   {
+    "context_file": "universities__03-filter-bar.md",
+    "const": "imgVector3",
+    "node_id": "52:1034",
+    "node_name": "Vector",
+    "ancestors": [
+     "Filter_bar_top",
+     "Köprü — Universities",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/universities--misc--vector--52-1037.svg",
+  "bytes": 453,
+  "usages": [
+   {
+    "context_file": "universities__04b-sort-box.md",
+    "const": "imgVector",
+    "node_id": "52:1037",
+    "node_name": "Vector",
+    "ancestors": [
+     "Köprü — Universities",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/universities--misc--vector--52-1040.svg",
+  "bytes": 357,
+  "usages": [
+   {
+    "context_file": "universities__04e-filter-chip-bg.md",
+    "const": "imgVector",
+    "node_id": "52:1040",
+    "node_name": "Vector",
+    "ancestors": [
+     "Köprü — Universities",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/universities--university-card--52-1177.svg",
+  "bytes": 351,
+  "usages": [
+   {
+    "context_file": "universities__05-card-6.md",
+    "const": "imgVector7",
+    "node_id": "52:1177",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-7.md",
+    "const": "imgVector7",
+    "node_id": "52:1204",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__05-card-8.md",
+    "const": "imgVector7",
+    "node_id": "52:1231",
+    "node_name": "Vector",
+    "ancestors": [
+     "University_card",
+     "Köprü — Universities",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/universities--misc--vector--52-1066.svg",
+  "bytes": 344,
+  "usages": [
+   {
+    "context_file": "universities__06a-bookmark-bg.md",
+    "const": "imgVector",
+    "node_id": "52:1066",
+    "node_name": "Vector",
+    "ancestors": [
+     "Köprü — Universities",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/universities--misc--vector--52-1067.svg",
+  "bytes": 238,
+  "usages": [
+   {
+    "context_file": "universities__06b-bookmark-icon.md",
+    "const": "imgVector",
+    "node_id": "52:1067",
+    "node_name": "Vector",
+    "ancestors": [
+     "Köprü — Universities",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/universities--misc--vector--52-1193.svg",
+  "bytes": 357,
+  "usages": [
+   {
+    "context_file": "universities__06c-merit-badge-bg.md",
+    "const": "imgVector",
+    "node_id": "52:1193",
+    "node_name": "Vector",
+    "ancestors": [
+     "Köprü — Universities",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/universities--pagination--52-1251.svg",
+  "bytes": 427,
+  "usages": [
+   {
+    "context_file": "universities__07-pagination.md",
+    "const": "imgVector",
+    "node_id": "52:1251",
+    "node_name": "Vector",
+    "ancestors": [
+     "Pagination",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__07-pagination.md",
+    "const": "imgVector",
+    "node_id": "52:1255",
+    "node_name": "Vector",
+    "ancestors": [
+     "Pagination",
+     "Köprü — Universities",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/universities--pagination--52-1252.svg",
+  "bytes": 290,
+  "usages": [
+   {
+    "context_file": "universities__07-pagination.md",
+    "const": "imgVector1",
+    "node_id": "52:1252",
+    "node_name": "Vector",
+    "ancestors": [
+     "Pagination",
+     "Köprü — Universities",
+     "All"
+    ]
+   },
+   {
+    "context_file": "universities__07-pagination.md",
+    "const": "imgVector1",
+    "node_id": "52:1256",
+    "node_name": "Vector",
+    "ancestors": [
+     "Pagination",
+     "Köprü — Universities",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/universities--pagination--52-1253.svg",
+  "bytes": 333,
+  "usages": [
+   {
+    "context_file": "universities__07-pagination.md",
+    "const": "imgVector2",
+    "node_id": "52:1253",
+    "node_name": "Vector",
+    "ancestors": [
+     "Pagination",
+     "Köprü — Universities",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/university-detail--misc--vector--52-1656.svg",
+  "bytes": 243,
+  "usages": [
+   {
+    "context_file": "university-detail.md",
+    "const": "imgVector",
+    "node_id": "52:1656",
+    "node_name": "Vector",
+    "ancestors": [
+     "Köprü — University Detail",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/university-detail--misc--vector--52-1708.svg",
+  "bytes": 437,
+  "usages": [
+   {
+    "context_file": "university-detail.md",
+    "const": "imgVector10",
+    "node_id": "52:1708",
+    "node_name": "Vector",
+    "ancestors": [
+     "Köprü — University Detail",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/university-detail--misc--vector--52-1710.svg",
+  "bytes": 437,
+  "usages": [
+   {
+    "context_file": "university-detail.md",
+    "const": "imgVector11",
+    "node_id": "52:1710",
+    "node_name": "Vector",
+    "ancestors": [
+     "Köprü — University Detail",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/university-detail--key-facts-sidebar--52-1725.svg",
+  "bytes": 438,
+  "usages": [
+   {
+    "context_file": "university-detail.md",
+    "const": "imgVector12",
+    "node_id": "52:1725",
+    "node_name": "Vector",
+    "ancestors": [
+     "Key_facts_sidebar",
+     "Köprü — University Detail",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/university-detail--key-facts-sidebar--52-1727.svg",
+  "bytes": 225,
+  "usages": [
+   {
+    "context_file": "university-detail.md",
+    "const": "imgVector13",
+    "node_id": "52:1727",
+    "node_name": "Vector",
+    "ancestors": [
+     "Key_facts_sidebar",
+     "Köprü — University Detail",
+     "All"
+    ]
+   },
+   {
+    "context_file": "university-detail.md",
+    "const": "imgVector13",
+    "node_id": "52:1730",
+    "node_name": "Vector",
+    "ancestors": [
+     "Key_facts_sidebar",
+     "Köprü — University Detail",
+     "All"
+    ]
+   },
+   {
+    "context_file": "university-detail.md",
+    "const": "imgVector13",
+    "node_id": "52:1733",
+    "node_name": "Vector",
+    "ancestors": [
+     "Key_facts_sidebar",
+     "Köprü — University Detail",
+     "All"
+    ]
+   },
+   {
+    "context_file": "university-detail.md",
+    "const": "imgVector13",
+    "node_id": "52:1736",
+    "node_name": "Vector",
+    "ancestors": [
+     "Key_facts_sidebar",
+     "Köprü — University Detail",
+     "All"
+    ]
+   },
+   {
+    "context_file": "university-detail.md",
+    "const": "imgVector13",
+    "node_id": "52:1739",
+    "node_name": "Vector",
+    "ancestors": [
+     "Key_facts_sidebar",
+     "Köprü — University Detail",
+     "All"
+    ]
+   },
+   {
+    "context_file": "university-detail.md",
+    "const": "imgVector13",
+    "node_id": "52:1742",
+    "node_name": "Vector",
+    "ancestors": [
+     "Key_facts_sidebar",
+     "Köprü — University Detail",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/university-detail--misc--vector--52-1745.svg",
+  "bytes": 345,
+  "usages": [
+   {
+    "context_file": "university-detail.md",
+    "const": "imgVector14",
+    "node_id": "52:1745",
+    "node_name": "Vector",
+    "ancestors": [
+     "Köprü — University Detail",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/university-detail--misc--vector--52-1747.svg",
+  "bytes": 345,
+  "usages": [
+   {
+    "context_file": "university-detail.md",
+    "const": "imgVector15",
+    "node_id": "52:1747",
+    "node_name": "Vector",
+    "ancestors": [
+     "Köprü — University Detail",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/university-detail--section-ready-to-apply--52-1750.svg",
+  "bytes": 240,
+  "usages": [
+   {
+    "context_file": "university-detail.md",
+    "const": "imgVector16",
+    "node_id": "52:1750",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Ready_to_apply",
+     "Köprü — University Detail",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/university-detail--section-ready-to-apply--52-1753.svg",
+  "bytes": 343,
+  "usages": [
+   {
+    "context_file": "university-detail.md",
+    "const": "imgVector17",
+    "node_id": "52:1753",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Ready_to_apply",
+     "Köprü — University Detail",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/university-detail--section-ready-to-apply--52-1755.svg",
+  "bytes": 458,
+  "usages": [
+   {
+    "context_file": "university-detail.md",
+    "const": "imgVector18",
+    "node_id": "52:1755",
+    "node_name": "Vector",
+    "ancestors": [
+     "Section_Ready_to_apply",
+     "Köprü — University Detail",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/university-detail--shared-background-main-campus-image--hero-image-placeholder--52-1784.svg",
+  "bytes": 275,
+  "usages": [
+   {
+    "context_file": "university-detail.md",
+    "const": "imgGroup",
+    "node_id": "52:1784",
+    "node_name": "Group",
+    "ancestors": [
+     "Hero_image_placeholder",
+     "Shared Istanbul background",
+     "Shared background — Main campus image",
+     "Köprü — University Detail",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/university-detail--shared-background-main-campus-image--hero-image-placeholder--52-1784-0172ef.svg",
+  "bytes": 7114,
+  "usages": [
+   {
+    "context_file": "university-detail.md",
+    "const": "imgGroup1",
+    "node_id": "52:1784",
+    "node_name": "Group",
+    "ancestors": [
+     "Hero_image_placeholder",
+     "Shared Istanbul background",
+     "Shared background — Main campus image",
+     "Köprü — University Detail",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/university-detail--shared-background-main-campus-image--shared-hero-overlay--52-1828.svg",
+  "bytes": 572,
+  "usages": [
+   {
+    "context_file": "university-detail.md",
+    "const": "imgSharedHeroOverlay",
+    "node_id": "52:1828",
+    "node_name": "Shared hero overlay",
+    "ancestors": [
+     "Shared background — Main campus image",
+     "Köprü — University Detail",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/university-detail--shared-background-campus-image-2--hero-image-placeholder--52-1834.svg",
+  "bytes": 275,
+  "usages": [
+   {
+    "context_file": "university-detail.md",
+    "const": "imgGroup2",
+    "node_id": "52:1834",
+    "node_name": "Group",
+    "ancestors": [
+     "Hero_image_placeholder",
+     "Shared Istanbul background",
+     "Shared background — Campus image 2",
+     "Köprü — University Detail",
+     "All"
+    ]
+   },
+   {
+    "context_file": "university-detail.md",
+    "const": "imgGroup2",
+    "node_id": "52:1884",
+    "node_name": "Group",
+    "ancestors": [
+     "Hero_image_placeholder",
+     "Shared Istanbul background",
+     "Shared background — Campus image 3",
+     "Köprü — University Detail",
+     "All"
+    ]
+   },
+   {
+    "context_file": "university-detail.md",
+    "const": "imgGroup2",
+    "node_id": "52:1934",
+    "node_name": "Group",
+    "ancestors": [
+     "Hero_image_placeholder",
+     "Shared Istanbul background",
+     "Shared background — Campus image 4",
+     "Köprü — University Detail",
+     "All"
+    ]
+   },
+   {
+    "context_file": "university-detail.md",
+    "const": "imgGroup2",
+    "node_id": "52:1984",
+    "node_name": "Group",
+    "ancestors": [
+     "Hero_image_placeholder",
+     "Shared Istanbul background",
+     "Shared background — Campus image 5",
+     "Köprü — University Detail",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/university-detail--shared-background-campus-image-2--hero-image-placeholder--52-1834-d1b014.svg",
+  "bytes": 7135,
+  "usages": [
+   {
+    "context_file": "university-detail.md",
+    "const": "imgGroup3",
+    "node_id": "52:1834",
+    "node_name": "Group",
+    "ancestors": [
+     "Hero_image_placeholder",
+     "Shared Istanbul background",
+     "Shared background — Campus image 2",
+     "Köprü — University Detail",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/university-detail--shared-background-campus-image-2--shared-hero-overlay--52-1878.svg",
+  "bytes": 572,
+  "usages": [
+   {
+    "context_file": "university-detail.md",
+    "const": "imgSharedHeroOverlay1",
+    "node_id": "52:1878",
+    "node_name": "Shared hero overlay",
+    "ancestors": [
+     "Shared background — Campus image 2",
+     "Köprü — University Detail",
+     "All"
+    ]
+   },
+   {
+    "context_file": "university-detail.md",
+    "const": "imgSharedHeroOverlay1",
+    "node_id": "52:1928",
+    "node_name": "Shared hero overlay",
+    "ancestors": [
+     "Shared background — Campus image 3",
+     "Köprü — University Detail",
+     "All"
+    ]
+   },
+   {
+    "context_file": "university-detail.md",
+    "const": "imgSharedHeroOverlay1",
+    "node_id": "52:1978",
+    "node_name": "Shared hero overlay",
+    "ancestors": [
+     "Shared background — Campus image 4",
+     "Köprü — University Detail",
+     "All"
+    ]
+   },
+   {
+    "context_file": "university-detail.md",
+    "const": "imgSharedHeroOverlay1",
+    "node_id": "52:2028",
+    "node_name": "Shared hero overlay",
+    "ancestors": [
+     "Shared background — Campus image 5",
+     "Köprü — University Detail",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/university-detail--shared-background-campus-image-3--hero-image-placeholder--52-1884.svg",
+  "bytes": 7146,
+  "usages": [
+   {
+    "context_file": "university-detail.md",
+    "const": "imgGroup4",
+    "node_id": "52:1884",
+    "node_name": "Group",
+    "ancestors": [
+     "Hero_image_placeholder",
+     "Shared Istanbul background",
+     "Shared background — Campus image 3",
+     "Köprü — University Detail",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/university-detail--shared-background-campus-image-4--hero-image-placeholder--52-1934.svg",
+  "bytes": 7144,
+  "usages": [
+   {
+    "context_file": "university-detail.md",
+    "const": "imgGroup5",
+    "node_id": "52:1934",
+    "node_name": "Group",
+    "ancestors": [
+     "Hero_image_placeholder",
+     "Shared Istanbul background",
+     "Shared background — Campus image 4",
+     "Köprü — University Detail",
+     "All"
+    ]
+   }
+  ]
+ },
+ {
+  "file": "assets/figma/university-detail--shared-background-campus-image-5--hero-image-placeholder--52-1984.svg",
+  "bytes": 7143,
+  "usages": [
+   {
+    "context_file": "university-detail.md",
+    "const": "imgGroup6",
+    "node_id": "52:1984",
+    "node_name": "Group",
+    "ancestors": [
+     "Hero_image_placeholder",
+     "Shared Istanbul background",
+     "Shared background — Campus image 5",
+     "Köprü — University Detail",
+     "All"
+    ]
+   }
+  ]
+ }
+]

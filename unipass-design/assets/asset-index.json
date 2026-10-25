@@ -1,0 +1,4938 @@
+[
+ {
+  "file": "assets/figma/color-palette-board--line--2-255.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "2:255"
+  ],
+  "contexts": [
+   "color-palette-board.md"
+  ],
+  "kind": "divider/line",
+  "w": 609.0,
+  "h": 1.0,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#242B3D"
+  ],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/color-palette-board--star--2-278.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "2:278"
+  ],
+  "contexts": [
+   "color-palette-board.md"
+  ],
+  "kind": "icon",
+  "w": 14.0,
+  "h": 14.0,
+  "paths": 1,
+  "fills": [
+   "white"
+  ],
+  "strokes": [
+   "#F59E0B"
+  ],
+  "stroke_widths": [
+   "2"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/color-palette-board--clock--2-275.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "2:275"
+  ],
+  "contexts": [
+   "color-palette-board.md"
+  ],
+  "kind": "icon",
+  "w": 14.0,
+  "h": 14.0,
+  "paths": 1,
+  "fills": [
+   "white"
+  ],
+  "strokes": [
+   "#5EEAD4"
+  ],
+  "stroke_widths": [
+   "2"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--misc--vector--52-2471.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:2471"
+  ],
+  "contexts": [
+   "guides.md"
+  ],
+  "kind": "shape",
+  "w": 1440.0,
+  "h": 3056.0,
+  "paths": 1,
+  "fills": [
+   "#F4F6FA"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--page-intro-band--hero-image-placeholder--52-2478.svg",
+  "uses": 4,
+  "usage_nodes": [
+   "52:2478",
+   "52:2918",
+   "52:497",
+   "54:7"
+  ],
+  "contexts": [
+   "guides.md",
+   "landing-desktop.md",
+   "scholarships.md",
+   "universities__01-top-visual.md"
+  ],
+  "kind": "shape",
+  "w": 1440.0,
+  "h": 716.0,
+  "paths": 1,
+  "fills": [
+   "black"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--page-intro-band--hero-image-placeholder--52-2478-c2dbe5.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:2478"
+  ],
+  "contexts": [
+   "guides.md"
+  ],
+  "kind": "illustration/graphic",
+  "w": 1536.0,
+  "h": 716.8,
+  "paths": 41,
+  "fills": [
+   "#0F1838",
+   "#141F45",
+   "#3A4A80",
+   "#FFD9A8",
+   "white"
+  ],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "2.56"
+  ],
+  "opacities": [
+   "0.18",
+   "0.55",
+   "0.7",
+   "0.85"
+  ],
+  "gradient": true,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--page-intro-band--shared-hero-overlay--52-2522.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:2522"
+  ],
+  "contexts": [
+   "guides.md"
+  ],
+  "kind": "shape",
+  "w": 1440.0,
+  "h": 244.0,
+  "paths": 1,
+  "fills": [],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [
+   "0.06",
+   "0.55",
+   "0.88"
+  ],
+  "gradient": true,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--page-intro-band--52-2523.svg",
+  "uses": 2,
+  "usage_nodes": [
+   "52:2523",
+   "52:2963"
+  ],
+  "contexts": [
+   "guides.md",
+   "scholarships.md"
+  ],
+  "kind": "shape",
+  "w": 1440.0,
+  "h": 244.0,
+  "paths": 1,
+  "fills": [
+   "#17307A"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [
+   "0.28"
+  ],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--search-bar--52-2530.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:2530"
+  ],
+  "contexts": [
+   "guides.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 701.2,
+  "h": 61.2,
+  "paths": 1,
+  "fills": [
+   "white"
+  ],
+  "strokes": [
+   "#D9E0EB"
+  ],
+  "stroke_widths": [
+   "1.2"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 16.6
+ },
+ {
+  "file": "assets/figma/guides--search-bar--52-2531.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:2531"
+  ],
+  "contexts": [
+   "guides.md"
+  ],
+  "kind": "icon",
+  "w": 18.0,
+  "h": 18.0,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#55607A"
+  ],
+  "stroke_widths": [
+   "2"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--search-bar--52-2532.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:2532"
+  ],
+  "contexts": [
+   "guides.md"
+  ],
+  "kind": "icon",
+  "w": 10.0,
+  "h": 10.0,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#55607A"
+  ],
+  "stroke_widths": [
+   "2"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--header-floating-pill--52-2535.svg",
+  "uses": 5,
+  "usage_nodes": [
+   "52:1001",
+   "52:1658",
+   "52:2535",
+   "52:2971",
+   "52:639"
+  ],
+  "contexts": [
+   "guides.md",
+   "landing-desktop.md",
+   "scholarships.md",
+   "universities__02-header-pill.md",
+   "university-detail.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 1200.0,
+  "h": 64.0,
+  "paths": 1,
+  "fills": [
+   "#0E1630"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [
+   "0.1"
+  ],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 32.0
+ },
+ {
+  "file": "assets/figma/guides--header-floating-pill--52-2536.svg",
+  "uses": 5,
+  "usage_nodes": [
+   "52:1002",
+   "52:1659",
+   "52:2536",
+   "52:2972",
+   "52:640"
+  ],
+  "contexts": [
+   "guides.md",
+   "landing-desktop.md",
+   "scholarships.md",
+   "universities__02-header-pill.md",
+   "university-detail.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 1200.0,
+  "h": 64.0,
+  "paths": 1,
+  "fills": [
+   "#0E1630"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [
+   "0.12"
+  ],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 32.0
+ },
+ {
+  "file": "assets/figma/guides--header-floating-pill--52-2537.svg",
+  "uses": 4,
+  "usage_nodes": [
+   "52:1003",
+   "52:1660",
+   "52:2537",
+   "52:2973"
+  ],
+  "contexts": [
+   "guides.md",
+   "scholarships.md",
+   "universities__02-header-pill.md",
+   "university-detail.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 1201.0,
+  "h": 65.0,
+  "paths": 1,
+  "fills": [
+   "white"
+  ],
+  "strokes": [
+   "#D9E0EB"
+  ],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 32.5
+ },
+ {
+  "file": "assets/figma/guides--header-floating-pill--52-2538.svg",
+  "uses": 5,
+  "usage_nodes": [
+   "52:1004",
+   "52:1661",
+   "52:2538",
+   "52:2974",
+   "52:642"
+  ],
+  "contexts": [
+   "guides.md",
+   "landing-desktop.md",
+   "scholarships.md",
+   "universities__02-header-pill.md",
+   "university-detail.md"
+  ],
+  "kind": "icon",
+  "w": 22.4,
+  "h": 22.4,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#17307A"
+  ],
+  "stroke_widths": [
+   "2.4"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--header-floating-pill--52-2539.svg",
+  "uses": 10,
+  "usage_nodes": [
+   "52:1005",
+   "52:1260",
+   "52:1662",
+   "52:1760",
+   "52:2539",
+   "52:2890",
+   "52:2975",
+   "52:3078",
+   "52:643",
+   "52:914"
+  ],
+  "contexts": [
+   "guides.md",
+   "landing-desktop.md",
+   "scholarships.md",
+   "universities__02-header-pill.md",
+   "universities__08-footer.md",
+   "university-detail.md"
+  ],
+  "kind": "icon",
+  "w": 22.4,
+  "h": 22.4,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#1BB0AA"
+  ],
+  "stroke_widths": [
+   "2.4"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--header-floating-pill--52-2546.svg",
+  "uses": 5,
+  "usage_nodes": [
+   "52:1012",
+   "52:1669",
+   "52:2546",
+   "52:2982",
+   "52:650"
+  ],
+  "contexts": [
+   "guides.md",
+   "landing-desktop.md",
+   "scholarships.md",
+   "universities__02-header-pill.md",
+   "university-detail.md"
+  ],
+  "kind": "icon",
+  "w": 24.0,
+  "h": 21.0,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#128C4A"
+  ],
+  "stroke_widths": [
+   "2"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 20.0
+ },
+ {
+  "file": "assets/figma/guides--header-floating-pill--52-2548.svg",
+  "uses": 5,
+  "usage_nodes": [
+   "52:1014",
+   "52:1671",
+   "52:2548",
+   "52:2984",
+   "52:652"
+  ],
+  "contexts": [
+   "guides.md",
+   "landing-desktop.md",
+   "scholarships.md",
+   "universities__02-header-pill.md",
+   "university-detail.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 226.0,
+  "h": 44.0,
+  "paths": 1,
+  "fills": [
+   "#D9342B"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 22.0
+ },
+ {
+  "file": "assets/figma/guides--guide-topic-tabs--52-2551.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:2551"
+  ],
+  "contexts": [
+   "guides.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 60.3,
+  "h": 40.0,
+  "paths": 1,
+  "fills": [
+   "#17307A"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 20.0
+ },
+ {
+  "file": "assets/figma/guides--guide-topic-tabs--52-2553.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:2553"
+  ],
+  "contexts": [
+   "guides.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 159.0,
+  "h": 41.5,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#B8C2D6"
+  ],
+  "stroke_widths": [
+   "1.5"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 138.25
+ },
+ {
+  "file": "assets/figma/guides--guide-topic-tabs--52-2555.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:2555"
+  ],
+  "contexts": [
+   "guides.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 102.3,
+  "h": 41.5,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#B8C2D6"
+  ],
+  "stroke_widths": [
+   "1.5"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 81.55
+ },
+ {
+  "file": "assets/figma/guides--guide-topic-tabs--52-2557.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:2557"
+  ],
+  "contexts": [
+   "guides.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 167.1,
+  "h": 41.5,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#B8C2D6"
+  ],
+  "stroke_widths": [
+   "1.5"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 146.35
+ },
+ {
+  "file": "assets/figma/guides--guide-topic-tabs--52-2559.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:2559"
+  ],
+  "contexts": [
+   "guides.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 78.0,
+  "h": 41.5,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#B8C2D6"
+  ],
+  "stroke_widths": [
+   "1.5"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 57.25
+ },
+ {
+  "file": "assets/figma/guides--guide-topic-tabs--52-2561.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:2561"
+  ],
+  "contexts": [
+   "guides.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 150.9,
+  "h": 41.5,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#B8C2D6"
+  ],
+  "stroke_widths": [
+   "1.5"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 130.15
+ },
+ {
+  "file": "assets/figma/guides--featured-guide--52-2564.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:2564"
+  ],
+  "contexts": [
+   "guides.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 1200.0,
+  "h": 340.0,
+  "paths": 1,
+  "fills": [
+   "#E7ECF8"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 20.0
+ },
+ {
+  "file": "assets/figma/guides--featured-guide--52-2565.svg",
+  "uses": 19,
+  "usage_nodes": [
+   "52:2565",
+   "52:2594",
+   "52:2615",
+   "52:2635",
+   "52:2654",
+   "52:2674",
+   "52:2693",
+   "52:2711",
+   "52:2732",
+   "52:2753",
+   "52:2772",
+   "52:2792",
+   "52:2812",
+   "52:2831",
+   "52:2850",
+   "52:2869",
+   "52:778",
+   "52:799",
+   "52:819"
+  ],
+  "contexts": [
+   "guides.md",
+   "landing-desktop.md"
+  ],
+  "kind": "icon",
+  "w": 32.0,
+  "h": 32.0,
+  "paths": 0,
+  "fills": [],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--featured-guide--52-2566.svg",
+  "uses": 2,
+  "usage_nodes": [
+   "52:2566",
+   "52:2567"
+  ],
+  "contexts": [
+   "guides.md"
+  ],
+  "kind": "shape",
+  "w": 226.0,
+  "h": 226.0,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "1.6"
+  ],
+  "opacities": [
+   "0.3"
+  ],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--featured-guide--52-2568.svg",
+  "uses": 2,
+  "usage_nodes": [
+   "52:2568",
+   "52:2569"
+  ],
+  "contexts": [
+   "guides.md"
+  ],
+  "kind": "shape",
+  "w": 144.0,
+  "h": 144.0,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "1.2"
+  ],
+  "opacities": [
+   "0.18"
+  ],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--featured-guide--52-2570.svg",
+  "uses": 8,
+  "usage_nodes": [
+   "52:2570",
+   "52:2640",
+   "52:2659",
+   "52:2679",
+   "52:2758",
+   "52:2817",
+   "52:2874",
+   "52:824"
+  ],
+  "contexts": [
+   "guides.md",
+   "landing-desktop.md"
+  ],
+  "kind": "shape",
+  "w": 54.4,
+  "h": 54.4,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "2.4"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--featured-guide--52-2571.svg",
+  "uses": 3,
+  "usage_nodes": [
+   "52:2571",
+   "52:2680",
+   "52:2759"
+  ],
+  "contexts": [
+   "guides.md"
+  ],
+  "kind": "icon",
+  "w": 18.2002,
+  "h": 25.2,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "2.2"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--featured-guide--52-2572.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:2572"
+  ],
+  "contexts": [
+   "guides.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 163.52,
+  "h": 24.0,
+  "paths": 1,
+  "fills": [
+   "black"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [
+   "0.38"
+  ],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 6.0
+ },
+ {
+  "file": "assets/figma/guides--featured-guide--52-2574.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:2574"
+  ],
+  "contexts": [
+   "guides.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 92.2,
+  "h": 26.0,
+  "paths": 1,
+  "fills": [
+   "#E7ECF8"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 13.0
+ },
+ {
+  "file": "assets/figma/guides--featured-guide--52-2579.svg",
+  "uses": 4,
+  "usage_nodes": [
+   "52:2579",
+   "52:2581",
+   "52:2583",
+   "52:2585"
+  ],
+  "contexts": [
+   "guides.md"
+  ],
+  "kind": "icon",
+  "w": 10.2,
+  "h": 8.20002,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#0F7B5F"
+  ],
+  "stroke_widths": [
+   "2.2"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--featured-guide--52-2587.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:2587"
+  ],
+  "contexts": [
+   "guides.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 260.0,
+  "h": 48.0,
+  "paths": 1,
+  "fills": [
+   "#17307A"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 10.0
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2593.svg",
+  "uses": 18,
+  "usage_nodes": [
+   "52:2593",
+   "52:2614",
+   "52:2634",
+   "52:2653",
+   "52:2673",
+   "52:2692",
+   "52:2710",
+   "52:2731",
+   "52:2752",
+   "52:2771",
+   "52:2791",
+   "52:2811",
+   "52:2830",
+   "52:2849",
+   "52:2868",
+   "52:777",
+   "52:798",
+   "52:818"
+  ],
+  "contexts": [
+   "guides.md",
+   "landing-desktop.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 385.2,
+  "h": 401.2,
+  "paths": 1,
+  "fills": [
+   "white"
+  ],
+  "strokes": [
+   "#D9E0EB"
+  ],
+  "stroke_widths": [
+   "1.2"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 16.6
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2595.svg",
+  "uses": 36,
+  "usage_nodes": [
+   "52:2595",
+   "52:2596",
+   "52:2616",
+   "52:2617",
+   "52:2636",
+   "52:2637",
+   "52:2655",
+   "52:2656",
+   "52:2675",
+   "52:2676",
+   "52:2694",
+   "52:2695",
+   "52:2712",
+   "52:2713",
+   "52:2733",
+   "52:2734",
+   "52:2754",
+   "52:2755",
+   "52:2773",
+   "52:2774",
+   "52:2793",
+   "52:2794",
+   "52:2813",
+   "52:2814",
+   "52:2832",
+   "52:2833",
+   "52:2851",
+   "52:2852",
+   "52:2870",
+   "52:2871",
+   "52:779",
+   "52:780",
+   "52:800",
+   "52:801",
+   "52:820",
+   "52:821"
+  ],
+  "contexts": [
+   "guides.md",
+   "landing-desktop.md"
+  ],
+  "kind": "shape",
+  "w": 107.2,
+  "h": 107.2,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "1.6"
+  ],
+  "opacities": [
+   "0.3"
+  ],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2597.svg",
+  "uses": 12,
+  "usage_nodes": [
+   "52:2597",
+   "52:2598",
+   "52:2618",
+   "52:2619",
+   "52:2657",
+   "52:2658",
+   "52:2677",
+   "52:2678",
+   "52:2714",
+   "52:2715",
+   "52:2735",
+   "52:2736"
+  ],
+  "contexts": [
+   "guides.md"
+  ],
+  "kind": "shape",
+  "w": 68.4,
+  "h": 68.3999,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "1.2"
+  ],
+  "opacities": [
+   "0.18"
+  ],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2599.svg",
+  "uses": 4,
+  "usage_nodes": [
+   "52:2599",
+   "52:2716",
+   "52:2737",
+   "52:783"
+  ],
+  "contexts": [
+   "guides.md",
+   "landing-desktop.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 42.4,
+  "h": 54.4,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "2.4"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 35.2
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2600.svg",
+  "uses": 8,
+  "usage_nodes": [
+   "52:2600",
+   "52:2601",
+   "52:2717",
+   "52:2718",
+   "52:2738",
+   "52:2739",
+   "52:784",
+   "52:785"
+  ],
+  "contexts": [
+   "guides.md",
+   "landing-desktop.md"
+  ],
+  "kind": "divider/line",
+  "w": 24.4,
+  "h": 2.4,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "2.4"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2602.svg",
+  "uses": 4,
+  "usage_nodes": [
+   "52:2602",
+   "52:2719",
+   "52:2740",
+   "52:786"
+  ],
+  "contexts": [
+   "guides.md",
+   "landing-desktop.md"
+  ],
+  "kind": "divider/line",
+  "w": 16.4,
+  "h": 2.4,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "2.4"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2603.svg",
+  "uses": 4,
+  "usage_nodes": [
+   "52:2603",
+   "52:2720",
+   "52:2741",
+   "52:787"
+  ],
+  "contexts": [
+   "guides.md",
+   "landing-desktop.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 78.16,
+  "h": 26.0,
+  "paths": 1,
+  "fills": [
+   "#E7ECF8"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 13.0
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2609.svg",
+  "uses": 29,
+  "usage_nodes": [
+   "52:1059",
+   "52:1084",
+   "52:1109",
+   "52:1134",
+   "52:1159",
+   "52:1184",
+   "52:1211",
+   "52:1238",
+   "52:2609",
+   "52:2629",
+   "52:2648",
+   "52:2668",
+   "52:2687",
+   "52:2705",
+   "52:2726",
+   "52:2747",
+   "52:2766",
+   "52:2786",
+   "52:2806",
+   "52:2825",
+   "52:2844",
+   "52:2863",
+   "52:2883",
+   "52:582",
+   "52:605",
+   "52:628",
+   "52:793",
+   "52:813",
+   "52:832"
+  ],
+  "contexts": [
+   "guides.md",
+   "landing-desktop.md",
+   "universities__05-card-1-itu.md",
+   "universities__05-card-2.md",
+   "universities__05-card-3.md",
+   "universities__05-card-4.md",
+   "universities__05-card-5.md",
+   "universities__05-card-6.md",
+   "universities__05-card-7.md",
+   "universities__05-card-8.md"
+  ],
+  "kind": "divider/line",
+  "w": 340.0,
+  "h": 1.0,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#D9E0EB"
+  ],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2611.svg",
+  "uses": 18,
+  "usage_nodes": [
+   "52:2611",
+   "52:2631",
+   "52:2650",
+   "52:2670",
+   "52:2689",
+   "52:2707",
+   "52:2728",
+   "52:2749",
+   "52:2768",
+   "52:2788",
+   "52:2808",
+   "52:2827",
+   "52:2846",
+   "52:2865",
+   "52:2885",
+   "52:795",
+   "52:815",
+   "52:834"
+  ],
+  "contexts": [
+   "guides.md",
+   "landing-desktop.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 109.5,
+  "h": 41.5,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#B8C2D6"
+  ],
+  "stroke_widths": [
+   "1.5"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 98.75
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2620.svg",
+  "uses": 4,
+  "usage_nodes": [
+   "52:2620",
+   "52:2777",
+   "52:2797",
+   "52:804"
+  ],
+  "contexts": [
+   "guides.md",
+   "landing-desktop.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 46.4,
+  "h": 54.4,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "2.4"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 39.2
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2621.svg",
+  "uses": 4,
+  "usage_nodes": [
+   "52:2621",
+   "52:2778",
+   "52:2798",
+   "52:805"
+  ],
+  "contexts": [
+   "guides.md",
+   "landing-desktop.md"
+  ],
+  "kind": "icon",
+  "w": 22.4,
+  "h": 22.4,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "2.4"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2622.svg",
+  "uses": 4,
+  "usage_nodes": [
+   "52:2622",
+   "52:2779",
+   "52:2799",
+   "52:806"
+  ],
+  "contexts": [
+   "guides.md",
+   "landing-desktop.md"
+  ],
+  "kind": "divider/line",
+  "w": 26.4,
+  "h": 2.4,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "2.4"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2623.svg",
+  "uses": 4,
+  "usage_nodes": [
+   "52:2623",
+   "52:2780",
+   "52:2800",
+   "52:807"
+  ],
+  "contexts": [
+   "guides.md",
+   "landing-desktop.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 134.32,
+  "h": 26.0,
+  "paths": 1,
+  "fills": [
+   "#E7ECF8"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 13.0
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2638.svg",
+  "uses": 6,
+  "usage_nodes": [
+   "52:2638",
+   "52:2639",
+   "52:2696",
+   "52:2697",
+   "52:2756",
+   "52:2757"
+  ],
+  "contexts": [
+   "guides.md"
+  ],
+  "kind": "shape",
+  "w": 68.4001,
+  "h": 68.3999,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "1.2"
+  ],
+  "opacities": [
+   "0.18"
+  ],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2642.svg",
+  "uses": 4,
+  "usage_nodes": [
+   "52:2642",
+   "52:2700",
+   "52:2819",
+   "52:826"
+  ],
+  "contexts": [
+   "guides.md",
+   "landing-desktop.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 57.1,
+  "h": 26.0,
+  "paths": 1,
+  "fills": [
+   "#E7ECF8"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 13.0
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2660.svg",
+  "uses": 2,
+  "usage_nodes": [
+   "52:2660",
+   "52:2875"
+  ],
+  "contexts": [
+   "guides.md"
+  ],
+  "kind": "shape",
+  "w": 54.2,
+  "h": 54.2,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "2.2"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2661.svg",
+  "uses": 2,
+  "usage_nodes": [
+   "52:2661",
+   "52:2876"
+  ],
+  "contexts": [
+   "guides.md"
+  ],
+  "kind": "illustration/graphic",
+  "w": 38.2,
+  "h": 50.2005,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "2.2"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2662.svg",
+  "uses": 3,
+  "usage_nodes": [
+   "52:2662",
+   "52:2681",
+   "52:2760"
+  ],
+  "contexts": [
+   "guides.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 127.3,
+  "h": 26.0,
+  "paths": 1,
+  "fills": [
+   "#E7ECF8"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 13.0
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2698.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:2698"
+  ],
+  "contexts": [
+   "guides.md"
+  ],
+  "kind": "icon",
+  "w": 36.4,
+  "h": 36.4,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "2.4"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2699.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:2699"
+  ],
+  "contexts": [
+   "guides.md"
+  ],
+  "kind": "icon",
+  "w": 32.4001,
+  "h": 20.4003,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "2.4"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2775.svg",
+  "uses": 12,
+  "usage_nodes": [
+   "52:2775",
+   "52:2776",
+   "52:2795",
+   "52:2796",
+   "52:2834",
+   "52:2835",
+   "52:2853",
+   "52:2854",
+   "52:781",
+   "52:782",
+   "52:802",
+   "52:803"
+  ],
+  "contexts": [
+   "guides.md",
+   "landing-desktop.md"
+  ],
+  "kind": "shape",
+  "w": 68.4,
+  "h": 68.4002,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "1.2"
+  ],
+  "opacities": [
+   "0.18"
+  ],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2815.svg",
+  "uses": 6,
+  "usage_nodes": [
+   "52:2815",
+   "52:2816",
+   "52:2872",
+   "52:2873",
+   "52:822",
+   "52:823"
+  ],
+  "contexts": [
+   "guides.md",
+   "landing-desktop.md"
+  ],
+  "kind": "shape",
+  "w": 68.4001,
+  "h": 68.4002,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "1.2"
+  ],
+  "opacities": [
+   "0.18"
+  ],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2836.svg",
+  "uses": 2,
+  "usage_nodes": [
+   "52:2836",
+   "52:2855"
+  ],
+  "contexts": [
+   "guides.md"
+  ],
+  "kind": "shape",
+  "w": 54.6,
+  "h": 28.6,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "2.6"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2837.svg",
+  "uses": 2,
+  "usage_nodes": [
+   "52:2837",
+   "52:2856"
+  ],
+  "contexts": [
+   "guides.md"
+  ],
+  "kind": "icon",
+  "w": 36.6,
+  "h": 26.6,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "2.6"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--guide-card--52-2838.svg",
+  "uses": 3,
+  "usage_nodes": [
+   "52:2838",
+   "52:2857",
+   "52:2877"
+  ],
+  "contexts": [
+   "guides.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 120.28,
+  "h": 26.0,
+  "paths": 1,
+  "fills": [
+   "#E7ECF8"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 13.0
+ },
+ {
+  "file": "assets/figma/guides--footer--52-2888.svg",
+  "uses": 5,
+  "usage_nodes": [
+   "52:1258",
+   "52:1758",
+   "52:2888",
+   "52:3076",
+   "52:912"
+  ],
+  "contexts": [
+   "guides.md",
+   "landing-desktop.md",
+   "scholarships.md",
+   "universities__08-footer.md",
+   "university-detail.md"
+  ],
+  "kind": "shape",
+  "w": 1440.0,
+  "h": 340.0,
+  "paths": 1,
+  "fills": [
+   "#0E1630"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--footer--52-2889.svg",
+  "uses": 5,
+  "usage_nodes": [
+   "52:1259",
+   "52:1759",
+   "52:2889",
+   "52:3077",
+   "52:913"
+  ],
+  "contexts": [
+   "guides.md",
+   "landing-desktop.md",
+   "scholarships.md",
+   "universities__08-footer.md",
+   "university-detail.md"
+  ],
+  "kind": "icon",
+  "w": 22.4,
+  "h": 22.4,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "2.4"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/guides--footer--52-2907.svg",
+  "uses": 5,
+  "usage_nodes": [
+   "52:1277",
+   "52:1777",
+   "52:2907",
+   "52:3095",
+   "52:931"
+  ],
+  "contexts": [
+   "guides.md",
+   "landing-desktop.md",
+   "scholarships.md",
+   "universities__08-footer.md",
+   "university-detail.md"
+  ],
+  "kind": "divider/line",
+  "w": 1200.0,
+  "h": 1.0,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [],
+  "opacities": [
+   "0.15"
+  ],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/landing--misc--kopru-landing-desktop--52-489.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:489"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "shape",
+  "w": 1440.0,
+  "h": 5966.0,
+  "paths": 1,
+  "fills": [
+   "#F4F6FA"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/landing--hero--hero-image-placeholder--52-497.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:497"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "illustration/graphic",
+  "w": 1536.0,
+  "h": 716.8,
+  "paths": 41,
+  "fills": [
+   "#0F1838",
+   "#141F45",
+   "#3A4A80",
+   "#FFD9A8",
+   "white"
+  ],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "2.56"
+  ],
+  "opacities": [
+   "0.18",
+   "0.55",
+   "0.7",
+   "0.85"
+  ],
+  "gradient": true,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/landing--hero--shared-hero-overlay--52-541.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:541"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "shape",
+  "w": 1440.0,
+  "h": 716.0,
+  "paths": 1,
+  "fills": [],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [
+   "0.06",
+   "0.55",
+   "0.88"
+  ],
+  "gradient": true,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/landing--hero--hero-overlay--52-542.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:542"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "icon",
+  "w": 32.0,
+  "h": 32.0,
+  "paths": 0,
+  "fills": [],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/landing--hero--52-551.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:551"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 212.0,
+  "h": 52.0,
+  "paths": 1,
+  "fills": [
+   "white"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 10.0
+ },
+ {
+  "file": "assets/figma/landing--hero--52-553.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:553"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 253.5,
+  "h": 53.5,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "1.5"
+  ],
+  "opacities": [
+   "0.7"
+  ],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 242.75
+ },
+ {
+  "file": "assets/figma/landing--hero--52-555.svg",
+  "uses": 3,
+  "usage_nodes": [
+   "52:555",
+   "52:557",
+   "52:559"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "icon",
+  "w": 12.2,
+  "h": 9.70002,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#7FE0D8"
+  ],
+  "stroke_widths": [
+   "2.2"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/landing--section-universities--52-562.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:562"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "shape",
+  "w": 1440.0,
+  "h": 922.0,
+  "paths": 1,
+  "fills": [
+   "#F4F6FA"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/landing--section-universities--university-card--52-567.svg",
+  "uses": 11,
+  "usage_nodes": [
+   "52:1044",
+   "52:1069",
+   "52:1094",
+   "52:1119",
+   "52:1144",
+   "52:1169",
+   "52:1196",
+   "52:1223",
+   "52:567",
+   "52:590",
+   "52:613"
+  ],
+  "contexts": [
+   "landing-desktop.md",
+   "universities__05-card-1-itu.md",
+   "universities__05-card-2.md",
+   "universities__05-card-3.md",
+   "universities__05-card-4.md",
+   "universities__05-card-5.md",
+   "universities__05-card-6.md",
+   "universities__05-card-7.md",
+   "universities__05-card-8.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 385.2,
+  "h": 461.2,
+  "paths": 1,
+  "fills": [
+   "white"
+  ],
+  "strokes": [
+   "#D9E0EB"
+  ],
+  "stroke_widths": [
+   "1.2"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 16.6
+ },
+ {
+  "file": "assets/figma/landing--section-universities--university-card--52-568.png",
+  "uses": 10,
+  "usage_nodes": [
+   "52:1045",
+   "52:1070",
+   "52:1095",
+   "52:1120",
+   "52:1145",
+   "52:1170",
+   "52:1197",
+   "52:1224",
+   "52:568",
+   "52:614"
+  ],
+  "contexts": [
+   "landing-desktop.md",
+   "universities__05-card-1-itu.md",
+   "universities__05-card-2.md",
+   "universities__05-card-3.md",
+   "universities__05-card-4.md",
+   "universities__05-card-5.md",
+   "universities__05-card-6.md",
+   "universities__05-card-7.md",
+   "universities__05-card-8.md"
+  ],
+  "kind": "raster image",
+  "w": 768,
+  "h": 380
+ },
+ {
+  "file": "assets/figma/landing--section-universities--university-card--52-569.svg",
+  "uses": 22,
+  "usage_nodes": [
+   "52:1046",
+   "52:1047",
+   "52:1071",
+   "52:1072",
+   "52:1096",
+   "52:1097",
+   "52:1121",
+   "52:1122",
+   "52:1146",
+   "52:1147",
+   "52:1171",
+   "52:1172",
+   "52:1198",
+   "52:1199",
+   "52:1225",
+   "52:1226",
+   "52:569",
+   "52:570",
+   "52:592",
+   "52:593",
+   "52:615",
+   "52:616"
+  ],
+  "contexts": [
+   "landing-desktop.md",
+   "universities__05-card-1-itu.md",
+   "universities__05-card-2.md",
+   "universities__05-card-3.md",
+   "universities__05-card-4.md",
+   "universities__05-card-5.md",
+   "universities__05-card-6.md",
+   "universities__05-card-7.md",
+   "universities__05-card-8.md"
+  ],
+  "kind": "shape",
+  "w": 127.0,
+  "h": 127.0,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "1.6"
+  ],
+  "opacities": [
+   "0.3"
+  ],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/landing--section-universities--university-card--52-571.svg",
+  "uses": 16,
+  "usage_nodes": [
+   "52:1048",
+   "52:1049",
+   "52:1073",
+   "52:1074",
+   "52:1123",
+   "52:1124",
+   "52:1148",
+   "52:1149",
+   "52:1200",
+   "52:1201",
+   "52:1227",
+   "52:1228",
+   "52:571",
+   "52:572",
+   "52:594",
+   "52:595"
+  ],
+  "contexts": [
+   "landing-desktop.md",
+   "universities__05-card-1-itu.md",
+   "universities__05-card-2.md",
+   "universities__05-card-4.md",
+   "universities__05-card-5.md",
+   "universities__05-card-7.md",
+   "universities__05-card-8.md"
+  ],
+  "kind": "shape",
+  "w": 81.0,
+  "h": 81.0,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "1.2"
+  ],
+  "opacities": [
+   "0.18"
+  ],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/landing--section-universities--university-card--52-573.svg",
+  "uses": 11,
+  "usage_nodes": [
+   "52:1050",
+   "52:1075",
+   "52:1100",
+   "52:1125",
+   "52:1150",
+   "52:1175",
+   "52:1202",
+   "52:1229",
+   "52:573",
+   "52:596",
+   "52:619"
+  ],
+  "contexts": [
+   "landing-desktop.md",
+   "universities__05-card-1-itu.md",
+   "universities__05-card-2.md",
+   "universities__05-card-3.md",
+   "universities__05-card-4.md",
+   "universities__05-card-5.md",
+   "universities__05-card-6.md",
+   "universities__05-card-7.md",
+   "universities__05-card-8.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 169.76,
+  "h": 24.0,
+  "paths": 1,
+  "fills": [
+   "black"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [
+   "0.38"
+  ],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 6.0
+ },
+ {
+  "file": "assets/figma/landing--section-universities--university-card--52-575.svg",
+  "uses": 9,
+  "usage_nodes": [
+   "52:1052",
+   "52:1077",
+   "52:1102",
+   "52:1127",
+   "52:1152",
+   "52:1704",
+   "52:575",
+   "52:598",
+   "52:621"
+  ],
+  "contexts": [
+   "landing-desktop.md",
+   "universities__05-card-1-itu.md",
+   "universities__05-card-2.md",
+   "universities__05-card-3.md",
+   "universities__05-card-4.md",
+   "universities__05-card-5.md",
+   "university-detail.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 64.12,
+  "h": 26.0,
+  "paths": 1,
+  "fills": [
+   "#DDF3F1"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 13.0
+ },
+ {
+  "file": "assets/figma/landing--section-universities--university-card--52-577.svg",
+  "uses": 7,
+  "usage_nodes": [
+   "52:1054",
+   "52:1104",
+   "52:1179",
+   "52:1233",
+   "52:1706",
+   "52:577",
+   "52:623"
+  ],
+  "contexts": [
+   "landing-desktop.md",
+   "universities__05-card-1-itu.md",
+   "universities__05-card-3.md",
+   "universities__05-card-6.md",
+   "universities__05-card-8.md",
+   "university-detail.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 79.36,
+  "h": 27.2,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#D9E0EB"
+  ],
+  "stroke_widths": [
+   "1.2"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 65.76
+ },
+ {
+  "file": "assets/figma/landing--section-universities--explore-button-opens-university-detail-page--52-587.svg",
+  "uses": 11,
+  "usage_nodes": [
+   "52:1064",
+   "52:1089",
+   "52:1114",
+   "52:1139",
+   "52:1164",
+   "52:1189",
+   "52:1216",
+   "52:1243",
+   "52:587",
+   "52:610",
+   "52:633"
+  ],
+  "contexts": [
+   "landing-desktop.md",
+   "universities__05-card-1-itu.md",
+   "universities__05-card-2.md",
+   "universities__05-card-3.md",
+   "universities__05-card-4.md",
+   "universities__05-card-5.md",
+   "universities__05-card-6.md",
+   "universities__05-card-7.md",
+   "universities__05-card-8.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 104.0,
+  "h": 44.0,
+  "paths": 1,
+  "fills": [
+   "#17307A"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 10.0
+ },
+ {
+  "file": "assets/figma/landing--section-universities--university-card--52-591.png",
+  "uses": 1,
+  "usage_nodes": [
+   "52:591"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "raster image",
+  "w": 768,
+  "h": 380
+ },
+ {
+  "file": "assets/figma/landing--section-universities--university-card--52-600.svg",
+  "uses": 4,
+  "usage_nodes": [
+   "52:1079",
+   "52:1129",
+   "52:1206",
+   "52:600"
+  ],
+  "contexts": [
+   "landing-desktop.md",
+   "universities__05-card-2.md",
+   "universities__05-card-4.md",
+   "universities__05-card-7.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 65.32,
+  "h": 27.2,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#D9E0EB"
+  ],
+  "stroke_widths": [
+   "1.2"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 51.72
+ },
+ {
+  "file": "assets/figma/landing--section-universities--university-card--52-617.svg",
+  "uses": 6,
+  "usage_nodes": [
+   "52:1098",
+   "52:1099",
+   "52:1173",
+   "52:1174",
+   "52:617",
+   "52:618"
+  ],
+  "contexts": [
+   "landing-desktop.md",
+   "universities__05-card-3.md",
+   "universities__05-card-6.md"
+  ],
+  "kind": "shape",
+  "w": 80.9999,
+  "h": 81.0,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "1.2"
+  ],
+  "opacities": [
+   "0.18"
+  ],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/landing--section-universities--52-636.svg",
+  "uses": 2,
+  "usage_nodes": [
+   "52:636",
+   "52:837"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 340.0,
+  "h": 54.0,
+  "paths": 1,
+  "fills": [
+   "#17307A"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 10.0
+ },
+ {
+  "file": "assets/figma/landing--header-floating-pill--52-641.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:641"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 1200.0,
+  "h": 64.0,
+  "paths": 1,
+  "fills": [
+   "white"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 32.0
+ },
+ {
+  "file": "assets/figma/landing--section-scholarships--52-655.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:655"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "shape",
+  "w": 1440.0,
+  "h": 512.0,
+  "paths": 1,
+  "fills": [
+   "#E7ECF8"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/landing--section-scholarships--scholarship-cta-panel--52-657.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:657"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 1201.2,
+  "h": 361.2,
+  "paths": 1,
+  "fills": [
+   "white"
+  ],
+  "strokes": [
+   "#D9E0EB"
+  ],
+  "stroke_widths": [
+   "1.2"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 22.6
+ },
+ {
+  "file": "assets/figma/landing--section-scholarships--scholarship-cta-panel--52-662.svg",
+  "uses": 2,
+  "usage_nodes": [
+   "52:662",
+   "52:664"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 71.14,
+  "h": 26.0,
+  "paths": 1,
+  "fills": [
+   "#DDF3F1"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 13.0
+ },
+ {
+  "file": "assets/figma/landing--section-scholarships--scholarship-cta-panel--52-666.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:666"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 141.34,
+  "h": 26.0,
+  "paths": 1,
+  "fills": [
+   "#DDF3F1"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 13.0
+ },
+ {
+  "file": "assets/figma/landing--section-scholarships--scholarship-cta-panel--52-668.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:668"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 134.32,
+  "h": 26.0,
+  "paths": 1,
+  "fills": [
+   "#DDF3F1"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 13.0
+ },
+ {
+  "file": "assets/figma/landing--section-scholarships--scholarship-cta-panel--52-670.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:670"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 320.0,
+  "h": 52.0,
+  "paths": 1,
+  "fills": [
+   "#D9342B"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 10.0
+ },
+ {
+  "file": "assets/figma/landing--section-scholarships--scholarship-cta-panel--52-672.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:672"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 480.0,
+  "h": 280.0,
+  "paths": 1,
+  "fills": [
+   "#E7ECF8"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 18.0
+ },
+ {
+  "file": "assets/figma/landing--section-admission-steps--52-677.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:677"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "shape",
+  "w": 1440.0,
+  "h": 496.0,
+  "paths": 1,
+  "fills": [
+   "white"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/landing--section-admission-steps--52-681.svg",
+  "uses": 5,
+  "usage_nodes": [
+   "52:681",
+   "52:689",
+   "52:697",
+   "52:705",
+   "52:713"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "shape",
+  "w": 44.0,
+  "h": 44.0,
+  "paths": 1,
+  "fills": [
+   "#17307A"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/landing--section-admission-steps--52-683.svg",
+  "uses": 4,
+  "usage_nodes": [
+   "52:683",
+   "52:691",
+   "52:699",
+   "52:707"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "divider/line",
+  "w": 186.0,
+  "h": 2.0,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#B8C2D6"
+  ],
+  "stroke_widths": [
+   "2"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/landing--section-admission-steps--52-687.svg",
+  "uses": 2,
+  "usage_nodes": [
+   "52:1154",
+   "52:687"
+  ],
+  "contexts": [
+   "landing-desktop.md",
+   "universities__05-card-5.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 58.3,
+  "h": 27.2,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#D9E0EB"
+  ],
+  "stroke_widths": [
+   "1.2"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 44.7
+ },
+ {
+  "file": "assets/figma/landing--section-admission-steps--52-695.svg",
+  "uses": 3,
+  "usage_nodes": [
+   "52:695",
+   "52:703",
+   "52:711"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 107.44,
+  "h": 27.2,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#D9E0EB"
+  ],
+  "stroke_widths": [
+   "1.2"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 93.84
+ },
+ {
+  "file": "assets/figma/landing--section-admission-steps--52-718.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:718"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 100.42,
+  "h": 27.2,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#D9E0EB"
+  ],
+  "stroke_widths": [
+   "1.2"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 86.82
+ },
+ {
+  "file": "assets/figma/landing--section-testimonials--52-721.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:721"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "shape",
+  "w": 1440.0,
+  "h": 770.0,
+  "paths": 1,
+  "fills": [
+   "#F4F6FA"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/landing--section-testimonials--testimonial-card--52-726.svg",
+  "uses": 3,
+  "usage_nodes": [
+   "52:726",
+   "52:739",
+   "52:752"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 385.2,
+  "h": 337.2,
+  "paths": 1,
+  "fills": [
+   "white"
+  ],
+  "strokes": [
+   "#D9E0EB"
+  ],
+  "stroke_widths": [
+   "1.2"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 16.6
+ },
+ {
+  "file": "assets/figma/landing--section-testimonials--testimonial-card--52-728.svg",
+  "uses": 3,
+  "usage_nodes": [
+   "52:728",
+   "52:741",
+   "52:754"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 99.22,
+  "h": 26.0,
+  "paths": 1,
+  "fills": [
+   "#FFF4DC"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 13.0
+ },
+ {
+  "file": "assets/figma/landing--section-testimonials--testimonial-card--52-733.svg",
+  "uses": 3,
+  "usage_nodes": [
+   "52:733",
+   "52:746",
+   "52:759"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "divider/line",
+  "w": 332.0,
+  "h": 1.0,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#D9E0EB"
+  ],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/landing--section-testimonials--testimonial-card--52-734.svg",
+  "uses": 3,
+  "usage_nodes": [
+   "52:734",
+   "52:747",
+   "52:760"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "shape",
+  "w": 48.0,
+  "h": 48.0,
+  "paths": 1,
+  "fills": [
+   "#E7ECF8"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/landing--section-testimonials--load-more-stories--52-766.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:766"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "illustration/graphic",
+  "w": 240.0,
+  "h": 4.0,
+  "paths": 1,
+  "fills": [
+   "#D9E0EB"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 2.0
+ },
+ {
+  "file": "assets/figma/landing--section-testimonials--load-more-stories--52-767.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:767"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "illustration/graphic",
+  "w": 80.0,
+  "h": 4.0,
+  "paths": 1,
+  "fills": [
+   "#17307A"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 2.0
+ },
+ {
+  "file": "assets/figma/landing--section-testimonials--load-more-stories--52-768.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:768"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 301.5,
+  "h": 53.5,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#17307A"
+  ],
+  "stroke_widths": [
+   "1.5"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 290.75
+ },
+ {
+  "file": "assets/figma/landing--section-testimonials--load-more-stories--52-770.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:770"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "divider/line",
+  "w": 14.2,
+  "h": 2.2,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#17307A"
+  ],
+  "stroke_widths": [
+   "2.2"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/landing--section-testimonials--load-more-stories--52-771.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:771"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "divider/line",
+  "w": 2.2,
+  "h": 14.2,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#17307A"
+  ],
+  "stroke_widths": [
+   "2.2"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/landing--section-guides--52-773.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:773"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "shape",
+  "w": 1440.0,
+  "h": 790.0,
+  "paths": 1,
+  "fills": [
+   "white"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/landing--section-book-consultation--52-840.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:840"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "shape",
+  "w": 1440.0,
+  "h": 700.0,
+  "paths": 1,
+  "fills": [
+   "#17307A"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/landing--section-book-consultation--52-844.svg",
+  "uses": 3,
+  "usage_nodes": [
+   "52:844",
+   "52:846",
+   "52:848"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "icon",
+  "w": 12.4,
+  "h": 9.90002,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#7FE0D8"
+  ],
+  "stroke_widths": [
+   "2.4"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/landing--section-book-consultation--52-850.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:850"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 301.5,
+  "h": 53.5,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "1.5"
+  ],
+  "opacities": [
+   "0.7"
+  ],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 290.75
+ },
+ {
+  "file": "assets/figma/landing--section-book-consultation--52-852.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:852"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 560.0,
+  "h": 560.0,
+  "paths": 1,
+  "fills": [
+   "#0E1630"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [
+   "0.1"
+  ],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 22.0
+ },
+ {
+  "file": "assets/figma/landing--section-book-consultation--52-853.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:853"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 560.0,
+  "h": 560.0,
+  "paths": 1,
+  "fills": [
+   "white"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 22.0
+ },
+ {
+  "file": "assets/figma/landing--section-book-consultation--52-856.svg",
+  "uses": 3,
+  "usage_nodes": [
+   "52:856",
+   "52:859",
+   "52:870"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 489.5,
+  "h": 47.5,
+  "paths": 1,
+  "fills": [
+   "white"
+  ],
+  "strokes": [
+   "#B8C2D6"
+  ],
+  "stroke_widths": [
+   "1.5"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 10.75
+ },
+ {
+  "file": "assets/figma/landing--section-book-consultation--52-862.svg",
+  "uses": 2,
+  "usage_nodes": [
+   "52:862",
+   "52:866"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 237.5,
+  "h": 47.5,
+  "paths": 1,
+  "fills": [
+   "white"
+  ],
+  "strokes": [
+   "#B8C2D6"
+  ],
+  "stroke_widths": [
+   "1.5"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 10.75
+ },
+ {
+  "file": "assets/figma/landing--section-book-consultation--52-864.svg",
+  "uses": 11,
+  "usage_nodes": [
+   "52:1021",
+   "52:1025",
+   "52:1029",
+   "52:1033",
+   "52:1039",
+   "52:3040",
+   "52:3044",
+   "52:3048",
+   "52:864",
+   "52:868",
+   "52:872"
+  ],
+  "contexts": [
+   "landing-desktop.md",
+   "scholarships.md",
+   "universities__03-filter-bar.md",
+   "universities__04d-sort-chevron.md"
+  ],
+  "kind": "icon",
+  "w": 12.0,
+  "h": 7.0,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#55607A"
+  ],
+  "stroke_widths": [
+   "2"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/landing--section-book-consultation--52-873.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:873"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 488.0,
+  "h": 52.0,
+  "paths": 1,
+  "fills": [
+   "#D9342B"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 10.0
+ },
+ {
+  "file": "assets/figma/landing--section-faq--52-876.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:876"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "shape",
+  "w": 1440.0,
+  "h": 720.0,
+  "paths": 1,
+  "fills": [
+   "#F4F6FA"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/landing--section-faq--52-882.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:882"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 220.0,
+  "h": 48.0,
+  "paths": 1,
+  "fills": [
+   "#128C4A"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 10.0
+ },
+ {
+  "file": "assets/figma/landing--section-faq--52-884.svg",
+  "uses": 7,
+  "usage_nodes": [
+   "52:884",
+   "52:890",
+   "52:894",
+   "52:898",
+   "52:902",
+   "52:906",
+   "52:910"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "divider/line",
+  "w": 800.0,
+  "h": 1.5,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#B8C2D6"
+  ],
+  "stroke_widths": [
+   "1.5"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/landing--section-faq--52-886.svg",
+  "uses": 6,
+  "usage_nodes": [
+   "52:886",
+   "52:892",
+   "52:896",
+   "52:900",
+   "52:904",
+   "52:908"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "divider/line",
+  "w": 14.2,
+  "h": 2.2,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#0E1630"
+  ],
+  "stroke_widths": [
+   "2.2"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/landing--section-faq--52-893.svg",
+  "uses": 5,
+  "usage_nodes": [
+   "52:893",
+   "52:897",
+   "52:901",
+   "52:905",
+   "52:909"
+  ],
+  "contexts": [
+   "landing-desktop.md"
+  ],
+  "kind": "divider/line",
+  "w": 2.2,
+  "h": 14.2,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#0E1630"
+  ],
+  "stroke_widths": [
+   "2.2"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/scholarships--misc--vector--52-2911.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:2911"
+  ],
+  "contexts": [
+   "scholarships.md"
+  ],
+  "kind": "shape",
+  "w": 1440.0,
+  "h": 1394.0,
+  "paths": 1,
+  "fills": [
+   "#F4F6FA"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/scholarships--page-intro-band--hero-image-placeholder--52-2918.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:2918"
+  ],
+  "contexts": [
+   "scholarships.md"
+  ],
+  "kind": "illustration/graphic",
+  "w": 1536.0,
+  "h": 716.8,
+  "paths": 41,
+  "fills": [
+   "#0F1838",
+   "#141F45",
+   "#3A4A80",
+   "#FFD9A8",
+   "white"
+  ],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "2.56"
+  ],
+  "opacities": [
+   "0.18",
+   "0.55",
+   "0.7",
+   "0.85"
+  ],
+  "gradient": true,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/scholarships--page-intro-band--shared-hero-overlay--52-2962.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:2962"
+  ],
+  "contexts": [
+   "scholarships.md"
+  ],
+  "kind": "shape",
+  "w": 1440.0,
+  "h": 244.0,
+  "paths": 1,
+  "fills": [],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [
+   "0.06",
+   "0.55",
+   "0.88"
+  ],
+  "gradient": true,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/scholarships--scholarship-covers-box--52-2987.svg",
+  "uses": 2,
+  "usage_nodes": [
+   "52:2987",
+   "52:3016"
+  ],
+  "contexts": [
+   "scholarships.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 589.2,
+  "h": 527.2,
+  "paths": 1,
+  "fills": [
+   "white"
+  ],
+  "strokes": [
+   "#D9E0EB"
+  ],
+  "stroke_widths": [
+   "1.2"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 18.6
+ },
+ {
+  "file": "assets/figma/scholarships--scholarship-covers-box--52-2989.svg",
+  "uses": 6,
+  "usage_nodes": [
+   "52:2989",
+   "52:2992",
+   "52:2995",
+   "52:2998",
+   "52:3001",
+   "52:3004"
+  ],
+  "contexts": [
+   "scholarships.md"
+  ],
+  "kind": "icon",
+  "w": 40.0,
+  "h": 40.0,
+  "paths": 1,
+  "fills": [
+   "#DDF3F1"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/scholarships--scholarship-covers-box--52-2990.svg",
+  "uses": 6,
+  "usage_nodes": [
+   "52:2990",
+   "52:2993",
+   "52:2996",
+   "52:2999",
+   "52:3002",
+   "52:3005"
+  ],
+  "contexts": [
+   "scholarships.md"
+  ],
+  "kind": "icon",
+  "w": 12.4,
+  "h": 9.90002,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#0F7B5F"
+  ],
+  "stroke_widths": [
+   "2.4"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/scholarships--scholarship-covers-box--52-3007.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:3007"
+  ],
+  "contexts": [
+   "scholarships.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 532.0,
+  "h": 100.0,
+  "paths": 1,
+  "fills": [
+   "#E7ECF8"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 12.0
+ },
+ {
+  "file": "assets/figma/scholarships--scholarship-covers-box--52-3011.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:3011"
+  ],
+  "contexts": [
+   "scholarships.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 151.5,
+  "h": 45.5,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#B8C2D6"
+  ],
+  "stroke_widths": [
+   "1.5"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 140.75
+ },
+ {
+  "file": "assets/figma/scholarships--scholarship-covers-box--52-3013.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:3013"
+  ],
+  "contexts": [
+   "scholarships.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 251.5,
+  "h": 45.5,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#B8C2D6"
+  ],
+  "stroke_widths": [
+   "1.5"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 240.75
+ },
+ {
+  "file": "assets/figma/scholarships--eligibility-box--52-3021.svg",
+  "uses": 4,
+  "usage_nodes": [
+   "52:3021",
+   "52:3025",
+   "52:3029",
+   "52:3033"
+  ],
+  "contexts": [
+   "scholarships.md"
+  ],
+  "kind": "divider/line",
+  "w": 532.0,
+  "h": 1.0,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#D9E0EB"
+  ],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/scholarships--eligibility-box--52-3035.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:3035"
+  ],
+  "contexts": [
+   "scholarships.md"
+  ],
+  "kind": "divider/line",
+  "w": 532.0,
+  "h": 1.5,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#B8C2D6"
+  ],
+  "stroke_widths": [
+   "1.5"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/scholarships--eligibility-box--52-3038.svg",
+  "uses": 3,
+  "usage_nodes": [
+   "52:3038",
+   "52:3042",
+   "52:3046"
+  ],
+  "contexts": [
+   "scholarships.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 169.5,
+  "h": 45.5,
+  "paths": 1,
+  "fills": [
+   "white"
+  ],
+  "strokes": [
+   "#B8C2D6"
+  ],
+  "stroke_widths": [
+   "1.5"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 10.75
+ },
+ {
+  "file": "assets/figma/scholarships--eligibility-box--52-3049.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:3049"
+  ],
+  "contexts": [
+   "scholarships.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 532.0,
+  "h": 60.0,
+  "paths": 1,
+  "fills": [
+   "#E7ECF8"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 10.0
+ },
+ {
+  "file": "assets/figma/university-detail--merit-table--52-3060.svg",
+  "uses": 6,
+  "usage_nodes": [
+   "52:3060",
+   "52:3065",
+   "52:3070"
+  ],
+  "contexts": [
+   "scholarships__merit-table-offcanvas.md",
+   "university-detail.md"
+  ],
+  "kind": "divider/line",
+  "w": 1200.0,
+  "h": 1.0,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#D9E0EB"
+  ],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/universities--universities-top-visual--hero-image-placeholder--54-7.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "54:7"
+  ],
+  "contexts": [
+   "universities__01-top-visual.md"
+  ],
+  "kind": "illustration/graphic",
+  "w": 1536.0,
+  "h": 716.8,
+  "paths": 41,
+  "fills": [
+   "#0F1838",
+   "#141F45",
+   "#3A4A80",
+   "#FFD9A8",
+   "white"
+  ],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "2.56"
+  ],
+  "opacities": [
+   "0.18",
+   "0.55",
+   "0.7",
+   "0.85"
+  ],
+  "gradient": true,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/universities--universities-top-visual--shared-hero-overlay--54-51.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "54:51"
+  ],
+  "contexts": [
+   "universities__01-top-visual.md"
+  ],
+  "kind": "shape",
+  "w": 1440.0,
+  "h": 246.0,
+  "paths": 1,
+  "fills": [],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [
+   "0.06",
+   "0.55",
+   "0.88"
+  ],
+  "gradient": true,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/universities--filter-bar-top--52-1017.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:1017"
+  ],
+  "contexts": [
+   "universities__03-filter-bar.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 1201.2,
+  "h": 97.2,
+  "paths": 1,
+  "fills": [
+   "white"
+  ],
+  "strokes": [
+   "#D9E0EB"
+  ],
+  "stroke_widths": [
+   "1.2"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 18.6
+ },
+ {
+  "file": "assets/figma/universities--filter-bar-top--52-1019.svg",
+  "uses": 4,
+  "usage_nodes": [
+   "52:1019",
+   "52:1023",
+   "52:1027",
+   "52:1031"
+  ],
+  "contexts": [
+   "universities__03-filter-bar.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 217.5,
+  "h": 45.5,
+  "paths": 1,
+  "fills": [
+   "white"
+  ],
+  "strokes": [
+   "#B8C2D6"
+  ],
+  "stroke_widths": [
+   "1.5"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 10.75
+ },
+ {
+  "file": "assets/figma/universities--filter-bar-top--52-1034.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:1034"
+  ],
+  "contexts": [
+   "universities__03-filter-bar.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 208.0,
+  "h": 44.0,
+  "paths": 1,
+  "fills": [
+   "#D9342B"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 10.0
+ },
+ {
+  "file": "assets/figma/universities--misc--vector--52-1037.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:1037"
+  ],
+  "contexts": [
+   "universities__04b-sort-box.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 265.5,
+  "h": 45.5,
+  "paths": 1,
+  "fills": [
+   "white"
+  ],
+  "strokes": [
+   "#B8C2D6"
+  ],
+  "stroke_widths": [
+   "1.5"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 10.75
+ },
+ {
+  "file": "assets/figma/universities--misc--vector--52-1040.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:1040"
+  ],
+  "contexts": [
+   "universities__04e-filter-chip-bg.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 113.26,
+  "h": 26.0,
+  "paths": 1,
+  "fills": [
+   "#E7ECF8"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 13.0
+ },
+ {
+  "file": "assets/figma/universities--university-card--52-1177.svg",
+  "uses": 3,
+  "usage_nodes": [
+   "52:1177",
+   "52:1204",
+   "52:1231"
+  ],
+  "contexts": [
+   "universities__05-card-6.md",
+   "universities__05-card-7.md",
+   "universities__05-card-8.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 71.14,
+  "h": 26.0,
+  "paths": 1,
+  "fills": [
+   "#E7ECF8"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 13.0
+ },
+ {
+  "file": "assets/figma/universities--misc--vector--52-1066.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:1066"
+  ],
+  "contexts": [
+   "universities__06a-bookmark-bg.md"
+  ],
+  "kind": "icon",
+  "w": 34.0,
+  "h": 34.0,
+  "paths": 1,
+  "fills": [
+   "white"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [
+   "0.92"
+  ],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/universities--misc--vector--52-1067.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:1067"
+  ],
+  "contexts": [
+   "universities__06b-bookmark-icon.md"
+  ],
+  "kind": "icon",
+  "w": 12.0,
+  "h": 16.0,
+  "paths": 1,
+  "fills": [
+   "#17307A"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/universities--misc--vector--52-1193.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:1193"
+  ],
+  "contexts": [
+   "universities__06c-merit-badge-bg.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 148.36,
+  "h": 26.0,
+  "paths": 1,
+  "fills": [
+   "#FFF4DC"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 13.0
+ },
+ {
+  "file": "assets/figma/universities--pagination--52-1251.svg",
+  "uses": 2,
+  "usage_nodes": [
+   "52:1251",
+   "52:1255"
+  ],
+  "contexts": [
+   "universities__07-pagination.md"
+  ],
+  "kind": "icon",
+  "w": 37.5,
+  "h": 37.5,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#D9E0EB"
+  ],
+  "stroke_widths": [
+   "1.5"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 28.75
+ },
+ {
+  "file": "assets/figma/universities--pagination--52-1252.svg",
+  "uses": 2,
+  "usage_nodes": [
+   "52:1252",
+   "52:1256"
+  ],
+  "contexts": [
+   "universities__07-pagination.md"
+  ],
+  "kind": "icon",
+  "w": 12.0,
+  "h": 7.0,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#B8C2D6"
+  ],
+  "stroke_widths": [
+   "2"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/universities--pagination--52-1253.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:1253"
+  ],
+  "contexts": [
+   "universities__07-pagination.md"
+  ],
+  "kind": "icon",
+  "w": 36.0,
+  "h": 36.0,
+  "paths": 1,
+  "fills": [
+   "#17307A"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 8.0
+ },
+ {
+  "file": "assets/figma/university-detail--misc--vector--52-1656.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:1656"
+  ],
+  "contexts": [
+   "university-detail.md"
+  ],
+  "kind": "shape",
+  "w": 1440.0,
+  "h": 1612.0,
+  "paths": 1,
+  "fills": [
+   "#F4F6FA"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/university-detail--misc--vector--52-1708.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:1708"
+  ],
+  "contexts": [
+   "university-detail.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 101.5,
+  "h": 45.5,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#B8C2D6"
+  ],
+  "stroke_widths": [
+   "1.5"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 90.75
+ },
+ {
+  "file": "assets/figma/university-detail--misc--vector--52-1710.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:1710"
+  ],
+  "contexts": [
+   "university-detail.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 109.5,
+  "h": 45.5,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#B8C2D6"
+  ],
+  "stroke_widths": [
+   "1.5"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 98.75
+ },
+ {
+  "file": "assets/figma/university-detail--key-facts-sidebar--52-1725.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:1725"
+  ],
+  "contexts": [
+   "university-detail.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 421.2,
+  "h": 447.2,
+  "paths": 1,
+  "fills": [
+   "white"
+  ],
+  "strokes": [
+   "#D9E0EB"
+  ],
+  "stroke_widths": [
+   "1.2"
+  ],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 18.6
+ },
+ {
+  "file": "assets/figma/university-detail--key-facts-sidebar--52-1727.svg",
+  "uses": 6,
+  "usage_nodes": [
+   "52:1727",
+   "52:1730",
+   "52:1733",
+   "52:1736",
+   "52:1739",
+   "52:1742"
+  ],
+  "contexts": [
+   "university-detail.md"
+  ],
+  "kind": "divider/line",
+  "w": 364.0,
+  "h": 1.0,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "#D9E0EB"
+  ],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/university-detail--misc--vector--52-1745.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:1745"
+  ],
+  "contexts": [
+   "university-detail.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 420.0,
+  "h": 50.0,
+  "paths": 1,
+  "fills": [
+   "#D9342B"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 10.0
+ },
+ {
+  "file": "assets/figma/university-detail--misc--vector--52-1747.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:1747"
+  ],
+  "contexts": [
+   "university-detail.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 420.0,
+  "h": 50.0,
+  "paths": 1,
+  "fills": [
+   "#128C4A"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 10.0
+ },
+ {
+  "file": "assets/figma/university-detail--section-ready-to-apply--52-1750.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:1750"
+  ],
+  "contexts": [
+   "university-detail.md"
+  ],
+  "kind": "shape",
+  "w": 1440.0,
+  "h": 220.0,
+  "paths": 1,
+  "fills": [
+   "#17307A"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/university-detail--section-ready-to-apply--52-1753.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:1753"
+  ],
+  "contexts": [
+   "university-detail.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 260.0,
+  "h": 48.0,
+  "paths": 1,
+  "fills": [
+   "white"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 10.0
+ },
+ {
+  "file": "assets/figma/university-detail--section-ready-to-apply--52-1755.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:1755"
+  ],
+  "contexts": [
+   "university-detail.md"
+  ],
+  "kind": "shape (rounded rect / pill bg)",
+  "w": 221.5,
+  "h": 49.5,
+  "paths": 1,
+  "fills": [],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "1.5"
+  ],
+  "opacities": [
+   "0.7"
+  ],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": 210.75
+ },
+ {
+  "file": "assets/figma/university-detail--shared-background-main-campus-image--hero-image-placeholder--52-1784.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:1784"
+  ],
+  "contexts": [
+   "university-detail.md"
+  ],
+  "kind": "shape",
+  "w": 965.363,
+  "h": 480.0,
+  "paths": 1,
+  "fills": [
+   "black"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/university-detail--shared-background-main-campus-image--hero-image-placeholder--52-1784-0172ef.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:1784"
+  ],
+  "contexts": [
+   "university-detail.md"
+  ],
+  "kind": "illustration/graphic",
+  "w": 1029.72,
+  "h": 480.536,
+  "paths": 41,
+  "fills": [
+   "#0F1838",
+   "#141F45",
+   "#3A4A80",
+   "#FFD9A8",
+   "white"
+  ],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "2.56"
+  ],
+  "opacities": [
+   "0.18",
+   "0.55",
+   "0.7",
+   "0.85"
+  ],
+  "gradient": true,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/university-detail--shared-background-main-campus-image--shared-hero-overlay--52-1828.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:1828"
+  ],
+  "contexts": [
+   "university-detail.md"
+  ],
+  "kind": "shape",
+  "w": 800.0,
+  "h": 480.0,
+  "paths": 1,
+  "fills": [],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [
+   "0.06",
+   "0.55",
+   "0.88"
+  ],
+  "gradient": true,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/university-detail--shared-background-campus-image-2--hero-image-placeholder--52-1834.svg",
+  "uses": 4,
+  "usage_nodes": [
+   "52:1834",
+   "52:1884",
+   "52:1934",
+   "52:1984"
+  ],
+  "contexts": [
+   "university-detail.md"
+  ],
+  "kind": "shape",
+  "w": 466.592,
+  "h": 232.0,
+  "paths": 1,
+  "fills": [
+   "black"
+  ],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [],
+  "gradient": false,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/university-detail--shared-background-campus-image-2--hero-image-placeholder--52-1834-d1b014.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:1834"
+  ],
+  "contexts": [
+   "university-detail.md"
+  ],
+  "kind": "illustration/graphic",
+  "w": 497.698,
+  "h": 232.259,
+  "paths": 41,
+  "fills": [
+   "#0F1838",
+   "#141F45",
+   "#3A4A80",
+   "#FFD9A8",
+   "white"
+  ],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "2.56"
+  ],
+  "opacities": [
+   "0.18",
+   "0.55",
+   "0.7",
+   "0.85"
+  ],
+  "gradient": true,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/university-detail--shared-background-campus-image-2--shared-hero-overlay--52-1878.svg",
+  "uses": 4,
+  "usage_nodes": [
+   "52:1878",
+   "52:1928",
+   "52:1978",
+   "52:2028"
+  ],
+  "contexts": [
+   "university-detail.md"
+  ],
+  "kind": "shape",
+  "w": 184.0,
+  "h": 232.0,
+  "paths": 1,
+  "fills": [],
+  "strokes": [],
+  "stroke_widths": [],
+  "opacities": [
+   "0.06",
+   "0.55",
+   "0.88"
+  ],
+  "gradient": true,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/university-detail--shared-background-campus-image-3--hero-image-placeholder--52-1884.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:1884"
+  ],
+  "contexts": [
+   "university-detail.md"
+  ],
+  "kind": "illustration/graphic",
+  "w": 497.698,
+  "h": 232.259,
+  "paths": 41,
+  "fills": [
+   "#0F1838",
+   "#141F45",
+   "#3A4A80",
+   "#FFD9A8",
+   "white"
+  ],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "2.56"
+  ],
+  "opacities": [
+   "0.18",
+   "0.55",
+   "0.7",
+   "0.85"
+  ],
+  "gradient": true,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/university-detail--shared-background-campus-image-4--hero-image-placeholder--52-1934.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:1934"
+  ],
+  "contexts": [
+   "university-detail.md"
+  ],
+  "kind": "illustration/graphic",
+  "w": 497.698,
+  "h": 232.259,
+  "paths": 41,
+  "fills": [
+   "#0F1838",
+   "#141F45",
+   "#3A4A80",
+   "#FFD9A8",
+   "white"
+  ],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "2.56"
+  ],
+  "opacities": [
+   "0.18",
+   "0.55",
+   "0.7",
+   "0.85"
+  ],
+  "gradient": true,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ },
+ {
+  "file": "assets/figma/university-detail--shared-background-campus-image-5--hero-image-placeholder--52-1984.svg",
+  "uses": 1,
+  "usage_nodes": [
+   "52:1984"
+  ],
+  "contexts": [
+   "university-detail.md"
+  ],
+  "kind": "illustration/graphic",
+  "w": 497.698,
+  "h": 232.259,
+  "paths": 41,
+  "fills": [
+   "#0F1838",
+   "#141F45",
+   "#3A4A80",
+   "#FFD9A8",
+   "white"
+  ],
+  "strokes": [
+   "white"
+  ],
+  "stroke_widths": [
+   "2.56"
+  ],
+  "opacities": [
+   "0.18",
+   "0.55",
+   "0.7",
+   "0.85"
+  ],
+  "gradient": true,
+  "filter": false,
+  "mask": false,
+  "corner_radius": null
+ }
+]

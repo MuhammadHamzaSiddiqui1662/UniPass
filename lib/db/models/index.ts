@@ -1,0 +1,10 @@
+export { User } from "./User";
+export { Lead } from "./Lead";
+export { University } from "./University";
+export { Program } from "./Program";
+export { Guide } from "./Guide";
+export { FAQ } from "./FAQ";
+export { Testimonial } from "./Testimonial";
+export { Scholarship } from "./Scholarship";
+export { SiteSettings } from "./SiteSettings";
+export { Taxonomy } from "./Taxonomy";
