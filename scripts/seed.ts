@@ -149,6 +149,9 @@ async function seed() {
     },
   ];
 
+  // MongoDB cannot keep a compound index on two array fields.
+  await University.syncIndexes();
+
   for (const uni of universities) {
     await University.findOneAndUpdate(
       { slug: uni.slug },

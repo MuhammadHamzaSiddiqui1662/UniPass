@@ -69,11 +69,12 @@ const universitySchema = new Schema<IUniversity>(
     metaDescription: String,
     ogImage: String,
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 universitySchema.index({ status: 1, city: 1, type: 1 });
-universitySchema.index({ fields: 1, levels: 1 });
+universitySchema.index({ fields: 1 });
+universitySchema.index({ levels: 1 });
 
 export const University: Model<IUniversity> =
   mongoose.models.University ||
