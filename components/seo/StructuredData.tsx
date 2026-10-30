@@ -6,9 +6,9 @@ export function OrganizationSchema() {
     "@type": "Organization",
     name: "UniPass",
     url: baseUrl,
-    logo: `${baseUrl}/logo.svg`,
+    logo: `${baseUrl}/assets/logo.jpeg`,
     description:
-      "UniPass helps Pakistani students navigate the application process for universities in Türkiye, from choosing the right program to settling into campus life.",
+      "UniPass helps Pakistani students compare universities in Türkiye, understand scholarships, and get support from application to arrival.",
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "Customer Service",

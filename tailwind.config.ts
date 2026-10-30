@@ -12,6 +12,9 @@ const config: Config = {
         ink: "#0E1630",
         body: "#55607A",
         navy: "#17307A",
+        // Figma color styles on the landing frame (skyline / hills).
+        bunting: "#0F1838",
+        "east-bay": "#3A4A80",
         "footer-bg": "#0E1630",
         "footer-text": "#C9D1E8",
         "on-dark-muted": "#DCE4FA",
