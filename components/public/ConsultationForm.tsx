@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, ReactNode, useEffect, useState } from "react";
+import Asset from "@/components/home/Asset";
 import { CITIES_IN_PAKISTAN, STUDY_LEVELS } from "@/lib/utils/constants";
 
 interface ConsultationFormProps {
@@ -309,10 +310,8 @@ function Select({
           </option>
         ))}
       </select>
-      <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-ink" aria-hidden>
-        <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
-          <path d="M1 1.5L6 6.5L11 1.5" stroke="#0E1630" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
+      <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2" aria-hidden>
+        <Asset src="/home/imgVector89.svg" width={12} height={7} />
       </span>
     </div>
   );

@@ -31,7 +31,7 @@ import type { Metadata } from "next";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Köprü | Your degree in Türkiye starts here",
+  title: "UniPass | Your degree in Türkiye starts here",
   description:
     "Compare universities, understand scholarships and get help with every step, from Pakistan to your first day on campus.",
   keywords: [
@@ -41,19 +41,19 @@ export const metadata: Metadata = {
     "scholarships",
     "study abroad",
     "turkiye burslari",
-    "köprü",
+    "unipass",
   ],
   openGraph: {
     type: "website",
     locale: "en_PK",
-    siteName: "Köprü",
-    title: "Köprü | Your degree in Türkiye starts here",
+    siteName: "UniPass",
+    title: "UniPass | Your degree in Türkiye starts here",
     description:
       "Compare universities, understand scholarships and get help with every step, from Pakistan to your first day on campus.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Köprü | Your degree in Türkiye starts here",
+    title: "UniPass | Your degree in Türkiye starts here",
     description:
       "Compare universities, understand scholarships and get help with every step, from Pakistan to your first day on campus.",
   },

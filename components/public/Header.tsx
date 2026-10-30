@@ -5,7 +5,7 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import LogoMark from "@/components/public/LogoMark";
 import Asset from "@/components/home/Asset";
-import { BRAND_NAME, whatsappHref } from "@/lib/site/contact";
+import { whatsappHref } from "@/lib/site/contact";
 
 interface HeaderProps {
   activeLink?: string;
@@ -35,11 +35,8 @@ export default function Header({ activeLink }: HeaderProps) {
       <div className="mx-auto max-w-[1200px]">
         <div className="rounded-pill bg-white shadow-header-pill">
           <div className="flex h-16 items-center justify-between gap-4 px-4 sm:px-6 lg:px-7">
-            <Link href="/" className="flex items-center gap-2.5 shrink-0">
+            <Link href="/" className="shrink-0">
               <LogoMark />
-              <span className="font-display text-[26px] leading-none text-ink">
-                {BRAND_NAME}
-              </span>
             </Link>
 
             <nav className="hidden min-[1180px]:flex items-center gap-8">

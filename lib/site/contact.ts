@@ -1,5 +1,4 @@
-/** Visible brand on the landing design (Figma frame “Köprü — Landing Desktop”). */
-export const BRAND_NAME = "Köprü";
+export const BRAND_NAME = "UniPass";
 
 /** Existing site placeholder until a real number is configured. */
 export const WHATSAPP_NUMBER =

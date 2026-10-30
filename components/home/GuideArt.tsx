@@ -49,6 +49,12 @@ export default function GuideArt({ art }: { art: HomeGuide["art"] }) {
             height={2.4}
             className="absolute left-1/2 top-[54%] -translate-x-1/2"
           />
+          <Asset
+            src="/home/imgVector66.svg"
+            width={16.4}
+            height={2.4}
+            className="absolute left-1/2 top-[62%] -translate-x-1/2"
+          />
         </>
       )}
       {art === "visa" && (

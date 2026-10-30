@@ -168,12 +168,24 @@ export function Scholarships() {
               Türkiye Bursları can cover tuition, housing and more. Many universities also reduce
               tuition for strong marks.
             </p>
-            <div className="mt-6 flex flex-wrap gap-2.5">
-              {scholarshipCovers.map((item) => (
-                <span key={item} className="chip-success">
-                  {item}
-                </span>
-              ))}
+            <div className="mt-6 flex flex-wrap items-center gap-2.5">
+              {scholarshipCovers.map((item) =>
+                item === "Monthly allowance" ? (
+                  <span key={item} className="relative inline-flex h-[26px] w-[141px] items-center justify-center">
+                    <Asset
+                      src="/home/imgVector36.svg"
+                      width={141.34}
+                      height={26}
+                      className="absolute left-0 top-0"
+                    />
+                    <span className="relative text-[13px] font-bold text-success-text">{item}</span>
+                  </span>
+                ) : (
+                  <span key={item} className="chip-success">
+                    {item}
+                  </span>
+                ),
+              )}
             </div>
             <Link href="/scholarships" className="btn-cta mt-6 h-[52px] px-8 text-[16px]">
               Check scholarship eligibility
@@ -238,8 +250,16 @@ export function AdmissionSteps() {
 
 export function Guides({ guides, total }: { guides: HomeGuide[]; total: number }) {
   return (
-    <section className="bg-white py-14 lg:pb-[88px] lg:pt-16">
-      <div className="container-1200">
+    <section className="relative overflow-hidden bg-white py-14 lg:pb-[88px] lg:pt-16">
+      <img
+        src="/home/imgVector57.svg"
+        alt=""
+        width={1440}
+        height={790}
+        className="pointer-events-none absolute left-1/2 top-0 max-w-none -translate-x-1/2"
+        style={{ width: 1440, height: 790 }}
+      />
+      <div className="container-1200 relative">
         <h2 className="text-h2">Guides for studying in Turkey</h2>
         <p className="mt-4 max-w-[640px] text-[18px] leading-[28px] text-body">
           Plain-language answers, written for students applying from Pakistan.
@@ -327,8 +347,16 @@ export function BookConsultation() {
 
 export function Questions({ faqs }: { faqs: HomeFaq[] }) {
   return (
-    <section id="faq" className="scroll-mt-28 bg-page-bg py-16 lg:py-[88px]">
-      <div className="container-1200 grid gap-10 lg:grid-cols-[340px_minmax(0,1fr)] lg:gap-16">
+    <section id="faq" className="relative scroll-mt-28 overflow-hidden bg-page-bg py-16 lg:py-[88px]">
+      <img
+        src="/home/imgVector91.svg"
+        alt=""
+        width={1440}
+        height={720}
+        className="pointer-events-none absolute left-1/2 top-0 max-w-none -translate-x-1/2"
+        style={{ width: 1440, height: 720 }}
+      />
+      <div className="container-1200 relative grid gap-10 lg:grid-cols-[340px_minmax(0,1fr)] lg:gap-16">
         <div>
           <h2 className="text-h2">
             Questions
@@ -344,9 +372,15 @@ export function Questions({ faqs }: { faqs: HomeFaq[] }) {
             href={whatsappHref()}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-whatsapp mt-6 h-12 px-6"
+            className="relative mt-6 inline-flex h-12 w-[220px] items-center justify-center"
           >
-            Ask on WhatsApp
+            <Asset
+              src="/home/imgVector92.svg"
+              width={220}
+              height={48}
+              className="absolute left-0 top-0"
+            />
+            <span className="relative text-[15px] font-bold text-white">Ask on WhatsApp</span>
           </a>
         </div>
         <FaqAccordion faqs={faqs} />

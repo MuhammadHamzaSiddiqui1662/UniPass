@@ -1,24 +1,30 @@
 import Link from "next/link";
+import Asset from "@/components/home/Asset";
 import LogoMark from "@/components/public/LogoMark";
-import { BRAND_NAME, CONTACT_EMAIL, OFFICE_ADDRESS, whatsappHref } from "@/lib/site/contact";
+import { CONTACT_EMAIL, OFFICE_ADDRESS, whatsappHref } from "@/lib/site/contact";
 
 const linkClass = "text-[15px] leading-6 text-footer-text transition-colors hover:text-white";
 
 export default function Footer() {
   return (
-    <footer className="bg-footer-bg text-footer-text">
-      <div className="container-1200 pb-10 pt-16 lg:pb-12 lg:pt-[72px]">
+    <footer className="relative overflow-hidden bg-footer-bg text-footer-text">
+      <img
+        src="/home/imgVector96.svg"
+        alt=""
+        width={1440}
+        height={340}
+        className="pointer-events-none absolute left-1/2 top-0 max-w-none -translate-x-1/2"
+        style={{ width: 1440, height: 340 }}
+      />
+      <div className="container-1200 relative pb-10 pt-16 lg:pb-12 lg:pt-[72px]">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-6">
           <div className="lg:col-span-5">
-            <Link href="/" className="mb-4 inline-flex items-center gap-2.5">
-              <LogoMark />
-              <span className="font-display text-[26px] leading-none text-white">
-                {BRAND_NAME}
-              </span>
+            <Link href="/" className="mb-4 inline-flex">
+              <LogoMark tone="light" />
             </Link>
             <p className="max-w-[280px] text-[15px] leading-[23px] text-footer-text">
-              Advisors for students applying to universities in Türkiye. {BRAND_NAME} is
-              Turkish for bridge.
+              Advisors for students applying to universities in Türkiye. UniPass is your
+              bridge to Turkish education.
             </p>
           </div>
 
@@ -89,7 +95,13 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-white/20 pt-6">
+        <div className="relative mt-12 overflow-hidden pt-6">
+          <Asset
+            src="/home/imgVector98.svg"
+            width={1200}
+            height={1}
+            className="absolute left-0 top-0"
+          />
           <p className="text-[14px] leading-6 text-footer-text">
             Universities make all admission decisions. We help you prepare a complete
             application and never promise a place.

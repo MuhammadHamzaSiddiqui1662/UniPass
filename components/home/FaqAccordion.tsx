@@ -12,7 +12,10 @@ export default function FaqAccordion({ faqs }: { faqs: HomeFaq[] }) {
       {faqs.map((faq, index) => {
         const open = openIndex === index;
         return (
-          <div key={faq.question} className="border-t-[1.5px] border-border-strong">
+          <div key={faq.question}>
+            <div className="overflow-hidden">
+              <Asset src="/home/imgVector93.svg" width={800} height={1.5} />
+            </div>
             <h3>
               <button
                 type="button"
@@ -25,14 +28,14 @@ export default function FaqAccordion({ faqs }: { faqs: HomeFaq[] }) {
                 </span>
                 <span className="relative mt-1.5 block h-[14px] w-[14px] shrink-0" aria-hidden>
                   <Asset
-                    src="/home/imgVector55.svg"
+                    src="/home/imgVector94.svg"
                     width={14.2}
                     height={2.2}
                     className="absolute left-0 top-[6px]"
                   />
                   {!open && (
                     <Asset
-                      src="/home/imgVector56.svg"
+                      src="/home/imgVector95.svg"
                       width={2.2}
                       height={14.2}
                       className="absolute left-[6px] top-0"
@@ -47,7 +50,9 @@ export default function FaqAccordion({ faqs }: { faqs: HomeFaq[] }) {
           </div>
         );
       })}
-      <div className="border-t-[1.5px] border-border-strong" />
+      <div className="overflow-hidden">
+        <Asset src="/home/imgVector93.svg" width={800} height={1.5} />
+      </div>
     </div>
   );
 }
