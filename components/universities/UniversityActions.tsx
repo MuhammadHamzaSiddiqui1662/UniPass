@@ -2,34 +2,30 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-
-const SAVED_KEY = "savedUniversities";
-const COMPARE_KEY = "compareList";
+import {
+  COMPARE_LIST_KEY,
+  readIdList,
+  SAVED_UNIVERSITIES_KEY,
+  toggleId,
+  writeIdList,
+} from "@/lib/universities/saved";
 
 export default function UniversityActions({ id, name }: { id: string; name: string }) {
   const router = useRouter();
   const [saved, setSaved] = useState(false);
 
   useEffect(() => {
-    try {
-      const stored = JSON.parse(localStorage.getItem(SAVED_KEY) || "[]") as string[];
-      setSaved(stored.includes(id));
-    } catch {
-      setSaved(false);
-    }
+    setSaved(readIdList(SAVED_UNIVERSITIES_KEY).includes(id));
   }, [id]);
 
   const toggleSave = () => {
-    const stored = JSON.parse(localStorage.getItem(SAVED_KEY) || "[]") as string[];
-    const next = saved ? stored.filter((item) => item !== id) : [...stored, id];
-    localStorage.setItem(SAVED_KEY, JSON.stringify(next));
-    setSaved(!saved);
+    setSaved(toggleId(SAVED_UNIVERSITIES_KEY, id));
   };
 
   const compare = () => {
-    const stored = JSON.parse(localStorage.getItem(COMPARE_KEY) || "[]") as string[];
+    const stored = readIdList(COMPARE_LIST_KEY);
     const next = stored.includes(id) ? stored : [...stored, id].slice(0, 3);
-    localStorage.setItem(COMPARE_KEY, JSON.stringify(next));
+    writeIdList(COMPARE_LIST_KEY, next);
     router.push("/compare");
   };
 
