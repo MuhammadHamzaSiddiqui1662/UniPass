@@ -4,11 +4,11 @@ export function OrganizationSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "UniPass",
+    name: "Köprü",
     url: baseUrl,
-    logo: `${baseUrl}/logo.svg`,
+    logo: `${baseUrl}/home/imgVector30.svg`,
     description:
-      "UniPass helps Pakistani students navigate the application process for universities in Türkiye, from choosing the right program to settling into campus life.",
+      "Köprü helps Pakistani students compare universities in Türkiye, understand scholarships, and get support from application to arrival.",
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "Customer Service",

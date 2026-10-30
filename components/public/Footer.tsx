@@ -1,102 +1,76 @@
 import Link from "next/link";
-import Image from "next/image";
+import LogoMark from "@/components/public/LogoMark";
+import { BRAND_NAME, CONTACT_EMAIL, OFFICE_ADDRESS, whatsappHref } from "@/lib/site/contact";
+
+const linkClass = "text-[15px] leading-6 text-footer-text transition-colors hover:text-white";
 
 export default function Footer() {
   return (
     <footer className="bg-footer-bg text-footer-text">
-      <div className="container-1200 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Brand Column */}
-          <div>
-            <Link href="/" className="flex items-center gap-3 mb-4">
-              <div className="relative w-7 h-7">
-                <Image
-                  src="/assets/logo.jpeg"
-                  alt="UniPass"
-                  fill
-                  className="object-contain invert"
-                />
-              </div>
-              <span className="font-display text-[26px] text-white">
-                UniPass
+      <div className="container-1200 pb-10 pt-16 lg:pb-12 lg:pt-[72px]">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-6">
+          <div className="lg:col-span-5">
+            <Link href="/" className="mb-4 inline-flex items-center gap-2.5">
+              <LogoMark />
+              <span className="font-display text-[26px] leading-none text-white">
+                {BRAND_NAME}
               </span>
             </Link>
-            <p className="text-[15px] leading-relaxed">
-              Advisors for students applying to universities in Türkiye. UniPass
-              is your bridge to Turkish education.
+            <p className="max-w-[280px] text-[15px] leading-[23px] text-footer-text">
+              Advisors for students applying to universities in Türkiye. {BRAND_NAME} is
+              Turkish for bridge.
             </p>
           </div>
 
-          {/* Explore Column */}
-          <div>
-            <h3 className="font-display text-white text-base mb-6">Explore</h3>
-            <ul className="space-y-3">
+          <div className="lg:col-span-2">
+            <h2 className="mb-4 font-display text-[16px] text-white">Explore</h2>
+            <ul className="space-y-2">
               <li>
-                <Link
-                  href="/universities"
-                  className="text-[15px] hover:text-white transition-colors"
-                >
+                <Link href="/universities" className={linkClass}>
                   Universities
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/scholarships"
-                  className="text-[15px] hover:text-white transition-colors"
-                >
+                <Link href="/scholarships" className={linkClass}>
                   Scholarships
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/#admission-steps"
-                  className="text-[15px] hover:text-white transition-colors"
-                >
+                <Link href="/#admission-steps" className={linkClass}>
                   Admission steps
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Help Column */}
-          <div>
-            <h3 className="font-display text-white text-base mb-6">Help</h3>
-            <ul className="space-y-3">
+          <div className="lg:col-span-3">
+            <h2 className="mb-4 font-display text-[16px] text-white">Help</h2>
+            <ul className="space-y-2">
               <li>
-                <Link
-                  href="/guides"
-                  className="text-[15px] hover:text-white transition-colors"
-                >
+                <Link href="/guides" className={linkClass}>
                   Guides
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/#faq"
-                  className="text-[15px] hover:text-white transition-colors"
-                >
+                <Link href="/#faq" className={linkClass}>
                   Questions
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/#book"
-                  className="text-[15px] hover:text-white transition-colors"
-                >
+                <Link href="/#book" className={linkClass}>
                   Book free consultation
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Contact Column */}
-          <div>
-            <h3 className="font-display text-white text-base mb-6">Contact</h3>
-            <ul className="space-y-3">
+          <div className="lg:col-span-2">
+            <h2 className="mb-4 font-display text-[16px] text-white">Contact</h2>
+            <ul className="space-y-2">
               <li>
                 <a
-                  href="https://wa.me/PLACEHOLDER"
-                  className="text-[15px] hover:text-white transition-colors"
+                  href={whatsappHref()}
+                  className={linkClass}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -104,57 +78,22 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a
-                  href="mailto:hello@unipass.example.com"
-                  className="text-[15px] hover:text-white transition-colors"
-                >
+                <a href={`mailto:${CONTACT_EMAIL}`} className={linkClass}>
                   Email
                 </a>
               </li>
               <li>
-                <span className="text-[15px]">
-                  Office address in Pakistan (PLACEHOLDER)
-                </span>
+                <span className="text-[15px] leading-6">{OFFICE_ADDRESS}</span>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-white/15 my-8" />
-
-        {/* Disclaimer */}
-        <div className="text-sm text-footer-text/80">
-          <p>
-            Universities make all admission decisions. We help you prepare a
-            complete application and never promise a place.
+        <div className="mt-12 border-t border-white/20 pt-6">
+          <p className="text-[14px] leading-6 text-footer-text">
+            Universities make all admission decisions. We help you prepare a complete
+            application and never promise a place.
           </p>
-          <div className="mt-4 flex flex-wrap gap-6 text-xs">
-            <Link
-              href="/privacy"
-              className="hover:text-white transition-colors"
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="/terms"
-              className="hover:text-white transition-colors"
-            >
-              Terms of Service
-            </Link>
-            <Link
-              href="/about"
-              className="hover:text-white transition-colors"
-            >
-              About Us
-            </Link>
-            <Link
-              href="/contact"
-              className="hover:text-white transition-colors"
-            >
-              Contact
-            </Link>
-          </div>
         </div>
       </div>
     </footer>

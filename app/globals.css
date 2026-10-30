@@ -1,3 +1,87 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .font-display {
+    font-variation-settings: "opsz" 14, "wdth" 100;
+  }
+}
+
+@layer components {
+  .container-1200 {
+    @apply mx-auto w-full max-w-[1200px] px-4 sm:px-6 xl:px-0;
+  }
+
+  .text-h1-hero {
+    @apply font-display text-[40px] font-bold leading-[1.08] text-white sm:text-[52px] lg:text-[64px] lg:leading-[72px];
+  }
+
+  .text-h1-detail {
+    @apply font-display text-[36px] font-bold leading-tight text-ink md:text-[48px];
+  }
+
+  .text-h2 {
+    @apply font-display text-[32px] font-bold leading-[38px] text-ink md:text-[40px] md:leading-[46px];
+  }
+
+  .text-h2-cta {
+    @apply font-display text-[36px] font-bold leading-[42px] text-white md:text-[48px] md:leading-[56px];
+  }
+
+  .text-h3 {
+    @apply font-display text-[22px] font-bold leading-snug text-ink md:text-[26px];
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-input bg-navy px-8 py-3 text-[17px] font-bold text-white transition-colors hover:bg-navy/90;
+  }
+
+  .btn-cta {
+    @apply inline-flex items-center justify-center rounded-input bg-cta-red font-bold text-white transition-colors hover:bg-cta-red/90;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-input border-[1.5px] border-border-strong bg-white font-bold text-ink transition-colors hover:border-navy;
+  }
+
+  .btn-outline-dark {
+    @apply inline-flex items-center justify-center rounded-input border-[1.5px] border-white/70 font-bold text-white transition-colors hover:bg-white/10;
+  }
+
+  .btn-whatsapp {
+    @apply inline-flex items-center justify-center rounded-input bg-whatsapp-green px-6 py-3 text-[15px] font-bold text-white transition-colors hover:bg-whatsapp-green/90;
+  }
+
+  .chip,
+  .chip-success,
+  .chip-tint,
+  .chip-outline,
+  .chip-warning {
+    @apply inline-flex h-[26px] items-center rounded-full px-3 text-[13px] leading-none;
+  }
+
+  .chip-success {
+    @apply bg-success-tint font-bold text-success-text;
+  }
+
+  .chip-tint {
+    @apply bg-surface-tint font-bold text-navy;
+  }
+
+  .chip-outline {
+    @apply border-[1.2px] border-border font-normal text-body;
+  }
+
+  .chip-warning {
+    @apply bg-warning-tint font-bold text-warning-text;
+  }
+
+  .input-field {
+    @apply h-12 w-full rounded-input border-[1.5px] border-border-strong bg-white px-4 text-[16px] text-ink outline-none transition-colors placeholder:text-body focus:border-navy disabled:cursor-not-allowed disabled:opacity-60;
+  }
+}

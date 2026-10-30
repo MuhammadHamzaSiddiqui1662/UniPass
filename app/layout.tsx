@@ -3,14 +3,14 @@ import { Bricolage_Grotesque, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   weight: ["700"],
   variable: "--font-bricolage",
   display: "swap",
 });
 
 const hanken = Hanken_Grotesk({
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   weight: ["400", "700"],
   variable: "--font-hanken",
   display: "swap",
