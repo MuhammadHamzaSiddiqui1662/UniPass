@@ -1,368 +1,304 @@
+import type { Metadata } from "next";
+import type { ReactNode } from "react";
+import Link from "next/link";
 import Header from "@/components/public/Header";
 import Footer from "@/components/public/Footer";
-import Link from "next/link";
+import Asset from "@/components/home/Asset";
+import ListingPagination from "@/components/universities/ListingPagination";
+import SortSelect from "@/components/universities/SortSelect";
+import UniversityCard from "@/components/universities/UniversityCard";
 import { connectDB, University } from "@/lib/db";
-import { formatCurrency } from "@/lib/utils/format";
-import { Metadata } from "next";
 import {
-  CITIES_IN_TURKIYE,
-  STUDY_FIELDS,
-  STUDY_LEVELS,
-  UNIVERSITY_TYPES,
-} from "@/lib/utils/constants";
+  FILTER_CITIES,
+  FILTER_FIELDS,
+  FILTER_LEVELS,
+  FILTER_TYPES,
+  fallbackUniversities,
+  filterCatalog,
+  hasActiveFilters,
+  sortCatalog,
+  type CatalogUniversity,
+  type ListingQuery,
+} from "@/lib/universities/catalog";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Universities in Türkiye | UniPass",
   description:
     "Browse and compare Turkish universities for Pakistani students. Filter by city, field of study, type and level to find your perfect match.",
+  openGraph: {
+    title: "Universities in Türkiye | UniPass",
+    description:
+      "Browse and compare Turkish universities for Pakistani students. Filter by city, field of study, type and level.",
+    type: "website",
+    locale: "en_PK",
+    siteName: "UniPass",
+  },
 };
 
-interface SearchParams {
-  city?: string;
-  field?: string;
-  type?: string;
-  level?: string;
-  sort?: string;
-  page?: string;
-}
+const PAGE_SIZE = 9;
 
-async function getUniversities(searchParams: SearchParams) {
+async function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
+  let timer: ReturnType<typeof setTimeout> | undefined;
   try {
-    await connectDB();
-
-    const query: any = { status: "published" };
-    const page = parseInt(searchParams.page || "1");
-    const limit = 9;
-    const skip = (page - 1) * limit;
-
-    if (searchParams.city && searchParams.city !== "all") {
-      query.city = searchParams.city;
-    }
-
-    if (searchParams.type && searchParams.type !== "all") {
-      query.type = searchParams.type.toLowerCase();
-    }
-
-    if (searchParams.field && searchParams.field !== "all") {
-      query.fields = searchParams.field;
-    }
-
-    if (searchParams.level && searchParams.level !== "all") {
-      query.levels = searchParams.level;
-    }
-
-    const sortOptions: any = {};
-    if (searchParams.sort === "tuition-low") {
-      sortOptions.tuitionFrom = 1;
-    } else if (searchParams.sort === "tuition-high") {
-      sortOptions.tuitionFrom = -1;
-    } else {
-      sortOptions.name = 1;
-    }
-
-    const [universities, total] = await Promise.all([
-      University.find(query).sort(sortOptions).skip(skip).limit(limit).lean(),
-      University.countDocuments(query),
+    return await Promise.race([
+      promise,
+      new Promise<T>((_, reject) => {
+        timer = setTimeout(() => reject(new Error("database timeout")), ms);
+      }),
     ]);
-
-    return {
-      universities: JSON.parse(JSON.stringify(universities)),
-      total,
-      currentPage: page,
-      totalPages: Math.ceil(total / limit),
-    };
-  } catch (error) {
-    console.error("Failed to fetch universities:", error);
-    return {
-      universities: [],
-      total: 0,
-      currentPage: 1,
-      totalPages: 0,
-    };
+  } finally {
+    if (timer) clearTimeout(timer);
   }
 }
 
-export default async function UniversitiesPage({
-  searchParams: rawSearchParams,
-}: {
-  searchParams: Promise<SearchParams>;
-}) {
-  const searchParams = await rawSearchParams;
-  const { universities, total, currentPage, totalPages } =
-    await getUniversities(searchParams);
+async function loadUniversities(): Promise<CatalogUniversity[]> {
+  try {
+    await withTimeout(connectDB(), 3000);
+    const docs = await withTimeout(
+      University.find({ status: "published" }).lean(),
+      3000,
+    );
+    if (!docs.length) return fallbackUniversities;
+    return docs.map((university) => ({
+      _id: String(university._id),
+      slug: university.slug,
+      name: university.name,
+      type: university.type,
+      city: university.city,
+      fields: university.fields ?? [],
+      levels: university.levels ?? [],
+      tuitionFrom: university.tuitionFrom,
+      hasMeritScholarship: Boolean(university.hasMeritScholarship),
+      featuredImage: university.featuredImage,
+    }));
+  } catch (error) {
+    console.error("Failed to fetch universities:", error);
+    return fallbackUniversities;
+  }
+}
 
-  const activeFilters = [];
-  if (searchParams.city && searchParams.city !== "all")
-    activeFilters.push({ key: "city", value: searchParams.city });
-  if (searchParams.field && searchParams.field !== "all")
-    activeFilters.push({ key: "field", value: searchParams.field });
-  if (searchParams.type && searchParams.type !== "all")
-    activeFilters.push({ key: "type", value: searchParams.type });
-  if (searchParams.level && searchParams.level !== "all")
-    activeFilters.push({ key: "level", value: searchParams.level });
+function queryWithout(
+  query: ListingQuery,
+  key?: keyof ListingQuery,
+): Record<string, string | undefined> {
+  const next: Record<string, string | undefined> = {
+    city: query.city,
+    field: query.field,
+    type: query.type,
+    level: query.level,
+    sort: query.sort,
+  };
+  if (key) delete next[key];
+  return next;
+}
+
+export default async function UniversitiesPage({
+  searchParams,
+}: {
+  searchParams: Promise<ListingQuery>;
+}) {
+  const query = await searchParams;
+  const all = await loadUniversities();
+  const filtered = sortCatalog(filterCatalog(all, query), query.sort);
+  const page = Math.max(1, parseInt(query.page || "1", 10) || 1);
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const currentPage = Math.min(page, totalPages);
+  const universities = filtered.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
+  const filtersOn = hasActiveFilters(query);
+  const showSpecimenChip = !filtersOn && query.cleared !== "1";
+
+  const chips = filtersOn
+    ? (
+        [
+          ["city", query.city],
+          ["field", query.field],
+          ["type", query.type],
+          ["level", query.level],
+        ] as const
+      ).flatMap(([key, value]) =>
+        value && value !== "all" ? [{ key, value: key === "type" ? labelForType(value) : value }] : [],
+      )
+    : showSpecimenChip
+      ? [{ key: "field" as const, value: "Engineering" }]
+      : [];
 
   return (
     <>
       <Header activeLink="/universities" />
-
-      <main className="pt-32">
-        {/* Intro Band */}
-        <section
-          className="relative h-[246px] bg-cover bg-center"
-          style={{
-            backgroundImage:
-              "url('/assets/rendered/intro-band-universities-1440x246.png')",
-          }}
-        />
-
-        {/* Filters */}
-        <section className="py-8 bg-page-bg">
-          <div className="container-1200">
-            <form className="bg-white rounded-panel p-6 border-[1.2px] border-border">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
-                <div>
-                  <label className="block text-[13px] font-bold text-body mb-2">
-                    City
-                  </label>
-                  <select
-                    name="city"
-                    defaultValue={searchParams.city || "all"}
-                    className="input-field h-11"
-                  >
-                    <option value="all">All cities</option>
-                    {CITIES_IN_TURKIYE.map((city) => (
-                      <option key={city} value={city}>
-                        {city}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-[13px] font-bold text-body mb-2">
-                    Field of study
-                  </label>
-                  <select
-                    name="field"
-                    defaultValue={searchParams.field || "all"}
-                    className="input-field h-11"
-                  >
-                    <option value="all">All fields</option>
-                    {STUDY_FIELDS.map((field) => (
-                      <option key={field} value={field}>
-                        {field}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-[13px] font-bold text-body mb-2">
-                    University type
-                  </label>
-                  <select
-                    name="type"
-                    defaultValue={searchParams.type || "all"}
-                    className="input-field h-11"
-                  >
-                    <option value="all">All types</option>
-                    {UNIVERSITY_TYPES.map((type) => (
-                      <option key={type.value} value={type.value}>
-                        {type.label}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-[13px] font-bold text-body mb-2">
-                    Level of study
-                  </label>
-                  <select
-                    name="level"
-                    defaultValue={searchParams.level || "all"}
-                    className="input-field h-11"
-                  >
-                    <option value="all">All levels</option>
-                    {STUDY_LEVELS.map((level) => (
-                      <option key={level} value={level}>
-                        {level}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              <button type="submit" className="btn-cta h-11 px-8">
-                Apply filters
-              </button>
-            </form>
-          </div>
+      <main>
+        <section className="relative h-[246px] overflow-hidden bg-bunting">
+          <img
+            src="/universities/top-visual__imgGroup1.svg"
+            alt=""
+            width={1536}
+            height={717}
+            className="pointer-events-none absolute max-w-none"
+            style={{ width: 1536, height: 717, left: -50, top: -235 }}
+          />
+          <img
+            src="/universities/top-visual__imgSharedHeroOverlay.svg"
+            alt=""
+            width={1440}
+            height={246}
+            className="pointer-events-none absolute left-1/2 top-0 max-w-none -translate-x-1/2"
+            style={{ width: 1440, height: 246 }}
+          />
         </section>
 
-        {/* Results */}
-        <section className="py-12 bg-page-bg">
+        <section className="bg-page-bg pb-16 pt-[46px]">
           <div className="container-1200">
-            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-              <h1 className="font-display text-[22px]">
-                {total} universities found
+            <form
+              action="/universities"
+              method="get"
+              className="rounded-panel border-[1.2px] border-border bg-white px-6 py-4 sm:px-8"
+            >
+              {query.sort ? <input type="hidden" name="sort" value={query.sort} /> : null}
+              <div className="grid grid-cols-1 items-end gap-4 md:grid-cols-2 xl:grid-cols-[216px_216px_216px_216px_208px] xl:gap-x-4">
+                <FilterSelect label="City" name="city" value={query.city || "all"}>
+                  <option value="all">All cities</option>
+                  {FILTER_CITIES.map((city) => (
+                    <option key={city} value={city}>
+                      {city}
+                    </option>
+                  ))}
+                </FilterSelect>
+                <FilterSelect label="Field of study" name="field" value={query.field || "all"}>
+                  <option value="all">All fields</option>
+                  {FILTER_FIELDS.map((field) => (
+                    <option key={field} value={field}>
+                      {field}
+                    </option>
+                  ))}
+                </FilterSelect>
+                <FilterSelect label="University type" name="type" value={query.type || "all"}>
+                  <option value="all">All types</option>
+                  {FILTER_TYPES.map((type) => (
+                    <option key={type.value} value={type.value}>
+                      {type.label}
+                    </option>
+                  ))}
+                </FilterSelect>
+                <FilterSelect label="Level of study" name="level" value={query.level || "all"}>
+                  <option value="all">All levels</option>
+                  {FILTER_LEVELS.map((level) => (
+                    <option key={level} value={level}>
+                      {level}
+                    </option>
+                  ))}
+                </FilterSelect>
+                <button
+                  type="submit"
+                  className="inline-flex h-11 w-full items-center justify-center rounded-input bg-cta-red text-[15px] font-bold text-white transition-colors hover:bg-cta-red/90 xl:w-[208px]"
+                >
+                  Apply filters
+                </button>
+              </div>
+            </form>
+
+            <div className="mt-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <h1 className="text-[20px] font-bold leading-[26px] text-ink">
+                {filtered.length} {filtered.length === 1 ? "university" : "universities"} found
               </h1>
-              <select
-                name="sort"
-                defaultValue={searchParams.sort || "name"}
-                className="input-field w-auto h-11"
-                onChange={(e) => {
-                  const form = e.target.closest("form");
-                  if (form) form.submit();
-                }}
-              >
-                <option value="name">Sort: Name A-Z</option>
-                <option value="tuition-low">Sort: Tuition, low to high</option>
-                <option value="tuition-high">
-                  Sort: Tuition, high to low
-                </option>
-              </select>
+              <SortSelect sort={query.sort} query={query} />
             </div>
 
-            {activeFilters.length > 0 && (
-              <div className="flex flex-wrap items-center gap-3 mb-6">
-                {activeFilters.map((filter) => (
+            {chips.length > 0 && (
+              <div className="mt-6 flex flex-wrap items-center gap-3">
+                {chips.map((chip) => (
                   <Link
-                    key={filter.key}
-                    href={{
-                      query: {
-                        ...searchParams,
-                        [filter.key]: undefined,
-                      },
-                    }}
-                    className="chip-tint flex items-center gap-2 hover:bg-navy/10"
+                    key={chip.key}
+                    href={chipHref(query, chip.key, filtersOn)}
+                    className="chip-tint gap-1.5 font-bold"
                   >
-                    {filter.value} ×
+                    {chip.value} ×
                   </Link>
                 ))}
                 <Link
-                  href="/universities"
-                  className="text-navy font-bold text-sm hover:underline"
+                  href="/universities?cleared=1"
+                  className="text-[15px] font-bold text-navy hover:underline"
                 >
                   Clear all
                 </Link>
               </div>
             )}
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-              {universities.map((uni: any) => (
-                <Link
-                  key={uni._id}
-                  href={`/universities/${uni.slug}`}
-                  className="group bg-white border-[1.2px] border-border rounded-card overflow-hidden hover:border-navy transition-colors"
-                >
-                  <div className="relative">
-                    <div
-                      className="h-[190px] bg-cover bg-center"
-                      style={{
-                        backgroundImage:
-                          "url('/assets/figma/landing--section-universities--university-card--52-568.png')",
-                      }}
-                    >
-                      <div className="absolute inset-x-0 bottom-0 bg-black/40 text-white text-xs px-4 py-1">
-                        Campus photo placeholder
-                      </div>
-                    </div>
-                    {uni.hasMeritScholarship && (
-                      <div className="absolute top-3 left-3 chip-warning">
-                        Merit scholarships
-                      </div>
-                    )}
-                  </div>
-                  <div className="p-5">
-                    <div className="flex gap-2 mb-3">
-                      <span
-                        className={
-                          uni.type === "public" ? "chip-success" : "chip-tint"
-                        }
-                      >
-                        {uni.type === "public" ? "Public" : "Private"}
-                      </span>
-                      <span className="chip-outline">{uni.city}</span>
-                    </div>
-                    <h2 className="font-display text-[20px] mb-4 text-ink group-hover:text-navy transition-colors">
-                      {uni.name}
-                    </h2>
-                    <div className="text-sm text-body space-y-1 mb-4">
-                      <p>Fields: {uni.fields.join(", ")}</p>
-                      <p>Levels: {uni.levels.join(", ")}</p>
-                    </div>
-                    <div className="border-t border-border pt-4">
-                      <p className="text-[13px] text-body mb-1">
-                        Tuition from
-                      </p>
-                      <p className="font-display text-[28px] text-ink">
-                        {formatCurrency(uni.tuitionFrom)}
-                      </p>
-                      <p className="text-[13px] text-body">a year (sample)</p>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-
-            {totalPages > 1 && (
-              <div className="flex justify-center gap-2">
-                {currentPage > 1 && (
-                  <Link
-                    href={{
-                      query: { ...searchParams, page: currentPage - 1 },
-                    }}
-                    className="w-9 h-9 border-[1.5px] border-border rounded-full flex items-center justify-center text-body hover:border-navy"
-                  >
-                    ←
-                  </Link>
-                )}
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                  (pageNum) => (
-                    <Link
-                      key={pageNum}
-                      href={{
-                        query: { ...searchParams, page: pageNum },
-                      }}
-                      className={`w-9 h-9 rounded-full flex items-center justify-center font-bold ${
-                        pageNum === currentPage
-                          ? "bg-navy text-white"
-                          : "border-[1.5px] border-border text-body hover:border-navy"
-                      }`}
-                    >
-                      {pageNum}
-                    </Link>
-                  )
-                )}
-                {currentPage < totalPages && (
-                  <Link
-                    href={{
-                      query: { ...searchParams, page: currentPage + 1 },
-                    }}
-                    className="w-9 h-9 border-[1.5px] border-border rounded-full flex items-center justify-center text-body hover:border-navy"
-                  >
-                    →
-                  </Link>
-                )}
-              </div>
-            )}
-
-            {universities.length === 0 && (
-              <div className="text-center py-16">
-                <p className="text-lg text-body">
-                  No universities found matching your criteria.
-                </p>
-                <Link href="/universities" className="btn-primary mt-6">
+            {universities.length === 0 ? (
+              <div className="mt-10 rounded-card border border-border bg-white px-6 py-16 text-center">
+                <p className="text-[18px] text-body">No universities found matching your criteria.</p>
+                <Link href="/universities?cleared=1" className="btn-primary mt-6">
                   Clear filters
                 </Link>
               </div>
+            ) : (
+              <div className="mt-4 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+                {universities.map((university) => (
+                  <UniversityCard key={university.slug} university={university} />
+                ))}
+              </div>
             )}
+
+            <ListingPagination
+              page={currentPage}
+              totalPages={totalPages}
+              query={{
+                city: query.city,
+                field: query.field,
+                type: query.type,
+                level: query.level,
+                sort: query.sort,
+                cleared: query.cleared,
+              }}
+            />
           </div>
         </section>
       </main>
-
       <Footer />
     </>
+  );
+}
+
+function labelForType(value: string) {
+  return FILTER_TYPES.find((type) => type.value === value)?.label || value;
+}
+
+function chipHref(query: ListingQuery, key: string, filtersOn: boolean) {
+  if (!filtersOn) return "/universities?cleared=1";
+  const params = new URLSearchParams();
+  Object.entries(queryWithout(query, key as keyof ListingQuery)).forEach(([name, value]) => {
+    if (value) params.set(name, value);
+  });
+  const search = params.toString();
+  return search ? `/universities?${search}` : "/universities?cleared=1";
+}
+
+function FilterSelect({
+  label,
+  name,
+  value,
+  children,
+}: {
+  label: string;
+  name: string;
+  value: string;
+  children: ReactNode;
+}) {
+  return (
+    <label className="block">
+      <span className="mb-1.5 block text-[13px] font-bold text-body">{label}</span>
+      <span className="relative block">
+        <select
+          name={name}
+          defaultValue={value}
+          className="h-11 w-full appearance-none rounded-input border-[1.5px] border-border-strong bg-white pl-4 pr-10 text-[16px] text-ink outline-none focus:border-navy"
+        >
+          {children}
+        </select>
+        <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2">
+          <Asset src="/universities/filter-bar__imgVector2.svg" width={12} height={7} />
+        </span>
+      </span>
+    </label>
   );
 }
