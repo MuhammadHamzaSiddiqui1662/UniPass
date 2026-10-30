@@ -15,7 +15,6 @@ import {
   FILTER_TYPES,
   fallbackUniversities,
   filterCatalog,
-  hasActiveFilters,
   sortCatalog,
   type CatalogUniversity,
   type ListingQuery,
@@ -101,28 +100,22 @@ export default async function UniversitiesPage({
 }) {
   const query = await searchParams;
   const all = await loadUniversities();
-  const filtered = sortCatalog(filterCatalog(all, query), query.sort);
+  const filtered = sortCatalog(filterCatalog(all, query), query.sort || "tuition-low");
   const page = Math.max(1, parseInt(query.page || "1", 10) || 1);
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const currentPage = Math.min(page, totalPages);
   const universities = filtered.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
-  const filtersOn = hasActiveFilters(query);
-  const showSpecimenChip = !filtersOn && query.cleared !== "1";
 
-  const chips = filtersOn
-    ? (
-        [
-          ["city", query.city],
-          ["field", query.field],
-          ["type", query.type],
-          ["level", query.level],
-        ] as const
-      ).flatMap(([key, value]) =>
-        value && value !== "all" ? [{ key, value: key === "type" ? labelForType(value) : value }] : [],
-      )
-    : showSpecimenChip
-      ? [{ key: "field" as const, value: "Engineering" }]
-      : [];
+  const chips = (
+    [
+      ["city", query.city],
+      ["field", query.field],
+      ["type", query.type],
+      ["level", query.level],
+    ] as const
+  ).flatMap(([key, value]) =>
+    value && value !== "all" ? [{ key, value: key === "type" ? labelForType(value) : value }] : [],
+  );
 
   return (
     <>
@@ -209,14 +202,14 @@ export default async function UniversitiesPage({
                 {chips.map((chip) => (
                   <Link
                     key={chip.key}
-                    href={chipHref(query, chip.key, filtersOn)}
+                    href={chipHref(query, chip.key)}
                     className="chip-tint gap-1.5 font-bold"
                   >
                     {chip.value} ×
                   </Link>
                 ))}
                 <Link
-                  href="/universities?cleared=1"
+                  href="/universities"
                   className="text-[15px] font-bold text-navy hover:underline"
                 >
                   Clear all
@@ -227,7 +220,7 @@ export default async function UniversitiesPage({
             {universities.length === 0 ? (
               <div className="mt-10 rounded-card border border-border bg-white px-6 py-16 text-center">
                 <p className="text-[18px] text-body">No universities found matching your criteria.</p>
-                <Link href="/universities?cleared=1" className="btn-primary mt-6">
+                <Link href="/universities" className="btn-primary mt-6">
                   Clear filters
                 </Link>
               </div>
@@ -263,14 +256,13 @@ function labelForType(value: string) {
   return FILTER_TYPES.find((type) => type.value === value)?.label || value;
 }
 
-function chipHref(query: ListingQuery, key: string, filtersOn: boolean) {
-  if (!filtersOn) return "/universities?cleared=1";
+function chipHref(query: ListingQuery, key: string) {
   const params = new URLSearchParams();
   Object.entries(queryWithout(query, key as keyof ListingQuery)).forEach(([name, value]) => {
-    if (value) params.set(name, value);
+    if (value && name !== "cleared") params.set(name, value);
   });
   const search = params.toString();
-  return search ? `/universities?${search}` : "/universities?cleared=1";
+  return search ? `/universities?${search}` : "/universities";
 }
 
 function FilterSelect({
