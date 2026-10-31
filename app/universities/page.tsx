@@ -121,7 +121,7 @@ export default async function UniversitiesPage({
     <>
       <Header activeLink="/universities" />
       <main>
-        <section className="relative h-[246px] overflow-hidden bg-bunting">
+        <section className="relative h-[246px] overflow-hidden bg-primary-900">
           <img
             src="/universities/top-visual__imgGroup1.svg"
             alt=""
@@ -140,12 +140,12 @@ export default async function UniversitiesPage({
           />
         </section>
 
-        <section className="bg-page-bg pb-16 pt-[46px]">
+        <section className="bg-slate-50 pb-16 pt-[46px]">
           <div className="container-1200">
             <form
               action="/universities"
               method="get"
-              className="rounded-panel border-[1.2px] border-border bg-white px-6 py-4 sm:px-8"
+              className="rounded-panel border-[1.2px] border-slate-200 bg-white px-6 py-4 sm:px-8"
             >
               {query.sort ? <input type="hidden" name="sort" value={query.sort} /> : null}
               <div className="grid grid-cols-1 items-end gap-4 md:grid-cols-2 xl:grid-cols-[216px_216px_216px_216px_208px] xl:gap-x-4">
@@ -183,7 +183,7 @@ export default async function UniversitiesPage({
                 </FilterSelect>
                 <button
                   type="submit"
-                  className="inline-flex h-11 w-full items-center justify-center rounded-input bg-cta-red text-[15px] font-bold text-white transition-colors hover:bg-cta-red/90 xl:w-[208px]"
+                  className="inline-flex h-11 w-full items-center justify-center rounded-input bg-secondary text-[15px] font-bold text-primary-900 transition-colors hover:bg-secondary-500 xl:w-[208px]"
                 >
                   Apply filters
                 </button>
@@ -191,7 +191,7 @@ export default async function UniversitiesPage({
             </form>
 
             <div className="mt-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <h1 className="text-[20px] font-bold leading-[26px] text-ink">
+              <h1 className="text-[20px] font-bold leading-[26px] text-primary-900">
                 {filtered.length} {filtered.length === 1 ? "university" : "universities"} found
               </h1>
               <SortSelect sort={query.sort} query={query} />
@@ -210,7 +210,7 @@ export default async function UniversitiesPage({
                 ))}
                 <Link
                   href="/universities"
-                  className="text-[15px] font-bold text-navy hover:underline"
+                  className="text-[15px] font-bold text-primary hover:underline"
                 >
                   Clear all
                 </Link>
@@ -218,8 +218,8 @@ export default async function UniversitiesPage({
             )}
 
             {universities.length === 0 ? (
-              <div className="mt-10 rounded-card border border-border bg-white px-6 py-16 text-center">
-                <p className="text-[18px] text-body">No universities found matching your criteria.</p>
+              <div className="mt-10 rounded-card border border-slate-200 bg-white px-6 py-16 text-center">
+                <p className="text-[18px] text-slate-600">No universities found matching your criteria.</p>
                 <Link href="/universities" className="btn-primary mt-6">
                   Clear filters
                 </Link>
@@ -278,12 +278,12 @@ function FilterSelect({
 }) {
   return (
     <label className="block">
-      <span className="mb-1.5 block text-[13px] font-bold text-body">{label}</span>
+      <span className="mb-1.5 block text-[13px] font-bold text-slate-600">{label}</span>
       <span className="relative block">
         <select
           name={name}
           defaultValue={value}
-          className="h-11 w-full appearance-none rounded-input border-[1.5px] border-border-strong bg-white pl-4 pr-10 text-[16px] text-ink outline-none focus:border-navy"
+          className="h-11 w-full appearance-none rounded-input border-[1.5px] border-primary-200 bg-white pl-4 pr-10 text-[16px] text-primary-900 outline-none focus:border-primary"
         >
           {children}
         </select>

@@ -71,11 +71,11 @@ export default function NewUniversityPage() {
   };
 
   return (
-    <div className="min-h-screen bg-page-bg">
-      <nav className="bg-white border-b border-border">
+    <div className="min-h-screen bg-slate-50">
+      <nav className="bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
-            <Link href="/admin/universities" className="text-navy hover:underline">
+            <Link href="/admin/universities" className="text-primary hover:underline">
               ← Back to Universities
             </Link>
           </div>
@@ -87,7 +87,7 @@ export default function NewUniversityPage() {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Basic Info */}
-          <div className="bg-white rounded-card border border-border p-6">
+          <div className="bg-white rounded-card border border-slate-200 p-6">
             <h2 className="font-display text-xl mb-4">Basic Information</h2>
             
             <div className="space-y-4">
@@ -116,7 +116,7 @@ export default function NewUniversityPage() {
                   required
                   className="input-field"
                 />
-                <p className="text-xs text-body mt-1">URL: /universities/{slug || "slug"}</p>
+                <p className="text-xs text-slate-600 mt-1">URL: /universities/{slug || "slug"}</p>
               </div>
 
               <div className="grid md:grid-cols-2 gap-4">
@@ -171,7 +171,7 @@ export default function NewUniversityPage() {
           </div>
 
           {/* Academic Info */}
-          <div className="bg-white rounded-card border border-border p-6">
+          <div className="bg-white rounded-card border border-slate-200 p-6">
             <h2 className="font-display text-xl mb-4">Academic Information</h2>
             
             <div className="space-y-4">
@@ -219,7 +219,7 @@ export default function NewUniversityPage() {
           </div>
 
           {/* Additional Details */}
-          <div className="bg-white rounded-card border border-border p-6">
+          <div className="bg-white rounded-card border border-slate-200 p-6">
             <h2 className="font-display text-xl mb-4">Additional Details</h2>
             
             <div className="space-y-4">
@@ -277,7 +277,7 @@ export default function NewUniversityPage() {
           </div>
 
           {/* SEO */}
-          <div className="bg-white rounded-card border border-border p-6">
+          <div className="bg-white rounded-card border border-slate-200 p-6">
             <h2 className="font-display text-xl mb-4">SEO & Publishing</h2>
             
             <div className="space-y-4">

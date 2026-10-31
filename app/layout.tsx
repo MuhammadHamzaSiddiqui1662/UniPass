@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
 
@@ -15,6 +15,10 @@ const hanken = Hanken_Grotesk({
   variable: "--font-hanken",
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  themeColor: "#453F78",
+};
 
 export const metadata: Metadata = {
   title: "UniPass | Study in Türkiye from Pakistan",
@@ -56,7 +60,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${bricolage.variable} ${hanken.variable}`}>
-      <body className="font-body antialiased bg-page-bg text-ink">
+      <body className="font-body antialiased bg-slate-50 text-primary-900">
         {children}
       </body>
     </html>

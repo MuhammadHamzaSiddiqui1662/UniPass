@@ -22,12 +22,12 @@ export default function BookmarkButton({ id, name }: { id: string; name: string 
       aria-label={saved ? `Remove ${name} bookmark` : `Save ${name}`}
       className="absolute right-[17px] top-[17px] z-10 grid h-[34px] w-[34px] place-items-center rounded-[8px] bg-white"
     >
-      <svg width="12" height="16" viewBox="0 0 12 16" fill="none" aria-hidden>
+      <svg width="12" height="16" viewBox="0 0 12 16" fill="none" aria-hidden className="text-primary">
         <path
           d="M1.2 1.2h9.6v13.1L6 11.1 1.2 14.3V1.2z"
-          stroke="#17307A"
+          stroke="currentColor"
           strokeWidth="1.4"
-          fill={saved ? "#17307A" : "none"}
+          fill={saved ? "currentColor" : "none"}
         />
       </svg>
     </button>

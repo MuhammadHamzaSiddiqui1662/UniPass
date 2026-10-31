@@ -161,7 +161,7 @@ export default function LeadDetailClient({
   return (
     <div className="space-y-6">
       {/* Status Pipeline */}
-      <div className="bg-white rounded-card border border-border p-6">
+      <div className="bg-white rounded-card border border-slate-200 p-6">
         <h2 className="font-display text-xl mb-4">Status Pipeline</h2>
         <div className="flex flex-wrap gap-2">
           {LEAD_STATUSES.map((status) => (
@@ -171,8 +171,8 @@ export default function LeadDetailClient({
               disabled={saving || lead.status === status.value}
               className={`px-4 py-2 rounded-input font-bold transition-colors ${
                 lead.status === status.value
-                  ? "bg-navy text-white"
-                  : "bg-surface-tint text-ink hover:bg-navy/10"
+                  ? "bg-primary text-white"
+                  : "bg-primary-50 text-primary-900 hover:bg-primary/10"
               } disabled:opacity-50`}
             >
               {status.label}
@@ -182,7 +182,7 @@ export default function LeadDetailClient({
       </div>
 
       {/* Assignment */}
-      <div className="bg-white rounded-card border border-border p-6">
+      <div className="bg-white rounded-card border border-slate-200 p-6">
         <h2 className="font-display text-xl mb-4">Assign To</h2>
         <select
           value={lead.assignedTo?._id || ""}
@@ -200,7 +200,7 @@ export default function LeadDetailClient({
       </div>
 
       {/* Notes */}
-      <div className="bg-white rounded-card border border-border p-6">
+      <div className="bg-white rounded-card border border-slate-200 p-6">
         <h2 className="font-display text-xl mb-4">Notes</h2>
         <textarea
           value={notes}
@@ -219,7 +219,7 @@ export default function LeadDetailClient({
       </div>
 
       {/* Activity Timeline */}
-      <div className="bg-white rounded-card border border-border p-6">
+      <div className="bg-white rounded-card border border-slate-200 p-6">
         <h2 className="font-display text-xl mb-4">Activity Timeline</h2>
         <form onSubmit={handleAddNote} className="mb-6">
           <div className="flex gap-2">
@@ -242,23 +242,23 @@ export default function LeadDetailClient({
 
         <div className="space-y-4">
           {lead.activity.length === 0 && (
-            <p className="text-body text-sm">No activity yet</p>
+            <p className="text-slate-600 text-sm">No activity yet</p>
           )}
           {lead.activity.map((item, i) => (
             <div
               key={i}
-              className="border-l-2 border-navy pl-4 py-2"
+              className="border-l-2 border-primary pl-4 py-2"
             >
               <div className="flex justify-between items-start mb-1">
                 <span className="font-bold text-sm">{item.action}</span>
-                <span className="text-xs text-body">
+                <span className="text-xs text-slate-600">
                   {new Date(item.timestamp).toLocaleString()}
                 </span>
               </div>
               {item.note && (
-                <p className="text-sm text-body">{item.note}</p>
+                <p className="text-sm text-slate-600">{item.note}</p>
               )}
-              <p className="text-xs text-body mt-1">by {item.user.name}</p>
+              <p className="text-xs text-slate-600 mt-1">by {item.user.name}</p>
             </div>
           ))}
         </div>
@@ -266,14 +266,14 @@ export default function LeadDetailClient({
 
       {/* Delete */}
       {canDelete && (
-        <div className="bg-white rounded-card border border-red-200 p-6">
-          <h2 className="font-display text-xl mb-4 text-red-600">
+        <div className="bg-white rounded-card border border-error/40 p-6">
+          <h2 className="font-display text-xl mb-4 text-error">
             Danger Zone
           </h2>
           <button
             onClick={handleDelete}
             disabled={saving}
-            className="px-4 py-2 bg-red-600 text-white rounded-input hover:bg-red-700 disabled:opacity-50"
+            className="px-4 py-2 bg-error text-white rounded-input hover:bg-error/90 disabled:opacity-50"
           >
             Delete Lead
           </button>

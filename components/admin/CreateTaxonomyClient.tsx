@@ -42,11 +42,11 @@ export default function CreateTaxonomyClient() {
   };
 
   return (
-    <div className="min-h-screen bg-page-bg">
-      <nav className="bg-white border-b border-border">
+    <div className="min-h-screen bg-slate-50">
+      <nav className="bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
-            <Link href="/admin/taxonomies" className="text-navy hover:underline">← Back to Taxonomies</Link>
+            <Link href="/admin/taxonomies" className="text-primary hover:underline">← Back to Taxonomies</Link>
           </div>
         </div>
       </nav>
@@ -55,7 +55,7 @@ export default function CreateTaxonomyClient() {
         <h1 className="text-2xl font-display mb-6">Create Taxonomy</h1>
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="bg-white rounded-card border border-border p-6">
+          <div className="bg-white rounded-card border border-slate-200 p-6">
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-bold mb-1">Type *</label>
@@ -82,7 +82,7 @@ export default function CreateTaxonomyClient() {
               <div>
                 <label className="block text-sm font-bold mb-1">Order</label>
                 <input type="number" name="order" className="input-field" defaultValue={0} />
-                <p className="text-xs text-body mt-1">Lower numbers appear first</p>
+                <p className="text-xs text-slate-600 mt-1">Lower numbers appear first</p>
               </div>
 
               <div>

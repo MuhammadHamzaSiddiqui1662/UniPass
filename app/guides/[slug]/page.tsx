@@ -58,12 +58,12 @@ export default async function GuideDetailPage({
     <>
       <Header />
       <main className="pt-32">
-        <article className="py-12 bg-page-bg">
+        <article className="py-12 bg-slate-50">
           <div className="container-1200 max-w-4xl">
             <div className="mb-6">
               <Link
                 href="/guides"
-                className="text-navy hover:underline text-sm"
+                className="text-primary hover:underline text-sm"
               >
                 ← Back to guides
               </Link>
@@ -73,8 +73,8 @@ export default async function GuideDetailPage({
               <div className="mb-8">
                 <span className="chip-tint mb-4">{guide.category}</span>
                 <h1 className="text-h1-detail mb-4">{guide.title}</h1>
-                <p className="text-lg text-body">{guide.description}</p>
-                <div className="flex items-center gap-4 mt-6 text-sm text-body">
+                <p className="text-lg text-slate-600">{guide.description}</p>
+                <div className="flex items-center gap-4 mt-6 text-sm text-slate-600">
                   <span>{guide.readTime} min read</span>
                   <span>•</span>
                   <span>
@@ -92,11 +92,11 @@ export default async function GuideDetailPage({
                 dangerouslySetInnerHTML={{ __html: guide.content }}
               />
 
-              <div className="mt-12 pt-8 border-t border-border">
+              <div className="mt-12 pt-8 border-t border-slate-200">
                 <h3 className="font-display text-xl mb-4">
                   Ready to start your journey?
                 </h3>
-                <p className="text-body mb-6">
+                <p className="text-slate-600 mb-6">
                   Book a free consultation to discuss your study abroad plans.
                 </p>
                 <Link href="/#book" className="btn-primary">

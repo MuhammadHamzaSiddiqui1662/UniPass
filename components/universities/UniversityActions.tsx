@@ -35,14 +35,14 @@ export default function UniversityActions({ id, name }: { id: string; name: stri
         type="button"
         onClick={toggleSave}
         aria-pressed={saved}
-        className="inline-flex h-11 min-w-[100px] items-center justify-center rounded-input border-[1.5px] border-border-strong bg-white px-4 text-[15px] font-bold text-ink transition-colors hover:border-navy"
+        className="inline-flex h-11 min-w-[100px] items-center justify-center rounded-input border-[1.5px] border-primary-200 bg-white px-4 text-[15px] font-bold text-primary-900 transition-colors hover:border-primary"
       >
         {saved ? "Saved" : "Save"}
       </button>
       <button
         type="button"
         onClick={compare}
-        className="inline-flex h-11 min-w-[108px] items-center justify-center rounded-input border-[1.5px] border-border-strong bg-white px-4 text-[15px] font-bold text-ink transition-colors hover:border-navy"
+        className="inline-flex h-11 min-w-[108px] items-center justify-center rounded-input border-[1.5px] border-primary-200 bg-white px-4 text-[15px] font-bold text-primary-900 transition-colors hover:border-primary"
       >
         Compare
       </button>

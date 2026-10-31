@@ -2,9 +2,9 @@
 <path id="Shared hero overlay" d="M184 0H0V232H184V0Z" fill="url(#paint0_linear_0_49)"/>
 <defs>
 <linearGradient id="paint0_linear_0_49" x1="0" y1="0" x2="184" y2="0" gradientUnits="userSpaceOnUse">
-<stop stop-color="#080E24" stop-opacity="0.88"/>
-<stop offset="0.5" stop-color="#080E24" stop-opacity="0.55"/>
-<stop offset="1" stop-color="#080E24" stop-opacity="0.06"/>
+<stop stop-color="#151324" stop-opacity="0.88"/>
+<stop offset="0.5" stop-color="#151324" stop-opacity="0.55"/>
+<stop offset="1" stop-color="#151324" stop-opacity="0.06"/>
 </linearGradient>
 </defs>
 </svg>

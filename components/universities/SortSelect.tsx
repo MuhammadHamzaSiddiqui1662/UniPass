@@ -31,7 +31,7 @@ export default function SortSelect({
         aria-label="Sort universities"
         value={sort || "tuition-low"}
         onChange={(event) => onChange(event.target.value)}
-        className="h-11 w-full appearance-none rounded-input border-[1.5px] border-border-strong bg-white pl-4 pr-10 text-[16px] text-ink outline-none focus:border-navy"
+        className="h-11 w-full appearance-none rounded-input border-[1.5px] border-primary-200 bg-white pl-4 pr-10 text-[16px] text-primary-900 outline-none focus:border-primary"
       >
         <option value="tuition-low">Sort: Tuition, low to high</option>
         <option value="tuition-high">Sort: Tuition, high to low</option>

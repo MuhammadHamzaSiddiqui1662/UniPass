@@ -27,49 +27,49 @@ export default function ContactPage() {
       />
       <Header />
       <main className="pt-32">
-        <section className="py-20 bg-page-bg">
+        <section className="py-20 bg-slate-50">
           <div className="container-1200">
             <div className="grid lg:grid-cols-2 gap-12">
               <div>
                 <h1 className="text-h1-detail mb-6">Get in Touch</h1>
-                <p className="text-lg text-body leading-relaxed mb-8">
+                <p className="text-lg text-slate-600 leading-relaxed mb-8">
                   Have questions about studying in Türkiye? Book a free 20-minute
                   consultation or reach out to us directly.
                 </p>
 
                 <div className="space-y-6">
                   <div>
-                    <h3 className="font-bold text-ink mb-2">WhatsApp</h3>
+                    <h3 className="font-bold text-primary-900 mb-2">WhatsApp</h3>
                     <a
                       href="https://wa.me/PLACEHOLDER"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-whatsapp-green hover:underline"
+                      className="text-whatsapp hover:underline"
                     >
                       +92-XXX-XXXXXXX (PLACEHOLDER)
                     </a>
                   </div>
 
                   <div>
-                    <h3 className="font-bold text-ink mb-2">Email</h3>
+                    <h3 className="font-bold text-primary-900 mb-2">Email</h3>
                     <a
                       href="mailto:hello@unipass.example.com"
-                      className="text-navy hover:underline"
+                      className="text-primary hover:underline"
                     >
                       hello@unipass.example.com (PLACEHOLDER)
                     </a>
                   </div>
 
                   <div>
-                    <h3 className="font-bold text-ink mb-2">Office</h3>
-                    <p className="text-body">
+                    <h3 className="font-bold text-primary-900 mb-2">Office</h3>
+                    <p className="text-slate-600">
                       [Office address in Pakistan - PLACEHOLDER]
                     </p>
                   </div>
 
                   <div>
-                    <h3 className="font-bold text-ink mb-2">Hours</h3>
-                    <p className="text-body">
+                    <h3 className="font-bold text-primary-900 mb-2">Hours</h3>
+                    <p className="text-slate-600">
                       Monday - Friday: 9:00 AM - 6:00 PM (PKT)
                       <br />
                       Saturday: 10:00 AM - 4:00 PM (PKT)

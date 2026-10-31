@@ -18,19 +18,19 @@ export default async function FAQsPage() {
   const faqs = await getFAQs();
 
   return (
-    <div className="min-h-screen bg-page-bg">
-      <nav className="bg-white border-b border-border">
+    <div className="min-h-screen bg-slate-50">
+      <nav className="bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
             <div className="flex items-center gap-8">
-              <Link href="/admin" className="font-display text-xl text-ink">
+              <Link href="/admin" className="font-display text-xl text-primary-900">
                 UniPass Admin
               </Link>
               <div className="hidden md:flex gap-6">
-                <Link href="/admin" className="text-body hover:text-ink">
+                <Link href="/admin" className="text-slate-600 hover:text-primary-900">
                   Dashboard
                 </Link>
-                <Link href="/admin/faqs" className="text-navy font-bold border-b-2 border-navy pb-1">
+                <Link href="/admin/faqs" className="text-primary font-bold border-b-2 border-primary pb-1">
                   FAQs
                 </Link>
               </div>
@@ -47,36 +47,36 @@ export default async function FAQsPage() {
           </Link>
         </div>
 
-        <div className="bg-white rounded-card border border-border overflow-hidden">
+        <div className="bg-white rounded-card border border-slate-200 overflow-hidden">
           <table className="min-w-full divide-y divide-border">
-            <thead className="bg-surface-tint">
+            <thead className="bg-primary-50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-bold text-body uppercase w-20">
+                <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase w-20">
                   Order
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-bold text-body uppercase">
+                <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">
                   Question
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-bold text-body uppercase">
+                <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">
                   Status
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-bold text-body uppercase">
+                <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">
                   Actions
                 </th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border">
               {faqs.map((faq: any) => (
-                <tr key={faq._id} className="hover:bg-surface-tint/50">
-                  <td className="px-6 py-4 text-sm text-body">{faq.order}</td>
-                  <td className="px-6 py-4 text-sm font-bold text-ink">{faq.question}</td>
+                <tr key={faq._id} className="hover:bg-primary-50/50">
+                  <td className="px-6 py-4 text-sm text-slate-600">{faq.order}</td>
+                  <td className="px-6 py-4 text-sm font-bold text-primary-900">{faq.question}</td>
                   <td className="px-6 py-4 text-sm">
-                    <span className={`chip ${faq.status === 'published' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-700'}`}>
+                    <span className={`chip ${faq.status === 'published' ? 'bg-success-tint text-primary-800' : 'bg-slate-100 text-slate-700'}`}>
                       {faq.status}
                     </span>
                   </td>
                   <td className="px-6 py-4 text-sm">
-                    <Link href={`/admin/faqs/${faq._id}/edit`} className="text-navy hover:underline">
+                    <Link href={`/admin/faqs/${faq._id}/edit`} className="text-primary hover:underline">
                       Edit
                     </Link>
                   </td>
@@ -87,7 +87,7 @@ export default async function FAQsPage() {
 
           {faqs.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-body">No FAQs yet</p>
+              <p className="text-slate-600">No FAQs yet</p>
             </div>
           )}
         </div>

@@ -38,7 +38,7 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-page-bg flex items-center justify-center p-4">
+    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-3 mb-2">
@@ -50,19 +50,19 @@ export default function AdminLoginPage() {
                 className="object-contain"
               />
             </div>
-            <h1 className="font-display text-3xl text-ink">UniPass</h1>
+            <h1 className="font-display text-3xl text-primary-900">UniPass</h1>
           </div>
-          <p className="text-body">Admin Panel</p>
+          <p className="text-slate-600">Admin Panel</p>
         </div>
 
-        <div className="bg-white rounded-card p-8 border border-border shadow-form-card">
+        <div className="bg-white rounded-card p-8 border border-slate-200 shadow-form-card">
           <h2 className="text-2xl font-display mb-6">Sign in</h2>
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-bold text-body mb-2"
+                className="block text-sm font-bold text-slate-600 mb-2"
               >
                 Email
               </label>
@@ -80,7 +80,7 @@ export default function AdminLoginPage() {
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-bold text-body mb-2"
+                className="block text-sm font-bold text-slate-600 mb-2"
               >
                 Password
               </label>
@@ -96,7 +96,7 @@ export default function AdminLoginPage() {
             </div>
 
             {error && (
-              <div className="p-3 bg-red-50 border border-red-200 rounded-input text-sm text-red-600">
+              <div className="p-3 bg-error-tint border border-error/40 rounded-input text-sm text-error">
                 {error}
               </div>
             )}
@@ -111,7 +111,7 @@ export default function AdminLoginPage() {
           </form>
         </div>
 
-        <p className="text-center text-sm text-body mt-6">
+        <p className="text-center text-sm text-slate-600 mt-6">
           Default credentials: admin@unipass.local / admin123456
         </p>
       </div>
