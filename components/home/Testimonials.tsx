@@ -18,10 +18,10 @@ export default function Testimonials({
   const fills = Math.max(1, Math.round(fraction * 3));
 
   return (
-    <section className="bg-page-bg py-16 lg:pb-[88px] lg:pt-[72px]">
+    <section className="bg-slate-50 py-16 lg:pb-[88px] lg:pt-[72px]">
       <div className="container-1200">
         <h2 className="text-h2 max-w-[720px]">Students who made the move</h2>
-        <p className="mt-4 max-w-[640px] text-[18px] leading-[28px] text-body">
+        <p className="mt-4 max-w-[640px] text-[18px] leading-[28px] text-slate-600">
           Sample stories for layout. Replace with real quotes from students who have
           agreed to share them.
         </p>
@@ -30,16 +30,16 @@ export default function Testimonials({
           {shown.map((story, index) => (
             <article
               key={`${story.university}-${index}`}
-              className="flex min-h-[300px] flex-col rounded-card border-[1.2px] border-border bg-white px-6 pb-6 pt-2"
+              className="flex min-h-[300px] flex-col rounded-card border-[1.2px] border-slate-200 bg-white px-6 pb-6 pt-2"
             >
               <div className="flex items-start justify-between gap-3">
-                <span className="font-display text-[84px] leading-[0.8] text-teal" aria-hidden>
+                <span className="font-display text-[84px] leading-[0.8] text-secondary-800" aria-hidden>
                   “
                 </span>
                 {story.sample && <span className="chip-warning mt-4">Sample text</span>}
               </div>
-              <p className="mt-3 text-[17px] leading-[26px] text-ink">{story.quote}</p>
-              <div className="mt-auto border-t border-border pt-4">
+              <p className="mt-3 text-[17px] leading-[26px] text-primary-900">{story.quote}</p>
+              <div className="mt-auto border-t border-slate-200 pt-4">
                 <div className="flex items-center gap-3">
                   <span className="relative grid h-12 w-12 shrink-0 place-items-center">
                     <Asset
@@ -48,11 +48,11 @@ export default function Testimonials({
                       height={48}
                       className="absolute inset-0"
                     />
-                    <span className="relative text-[15px] font-bold text-navy">{story.initials}</span>
+                    <span className="relative text-[15px] font-bold text-primary">{story.initials}</span>
                   </span>
                   <span>
-                    <span className="block text-[16px] font-bold leading-5 text-ink">{story.name}</span>
-                    <span className="mt-0.5 block text-[14px] leading-5 text-body">
+                    <span className="block text-[16px] font-bold leading-5 text-primary-900">{story.name}</span>
+                    <span className="mt-0.5 block text-[14px] leading-5 text-slate-600">
                       From {story.origin}, now at {story.university}
                     </span>
                   </span>
@@ -62,7 +62,7 @@ export default function Testimonials({
           ))}
         </div>
 
-        <p className="mt-8 text-center text-[15px] text-body">
+        <p className="mt-8 text-center text-[15px] text-slate-600">
           Showing {Math.min(shown.length, total)} of {total} student stories
         </p>
         <div className="relative mx-auto mt-3 h-1 w-[240px]">
@@ -79,7 +79,7 @@ export default function Testimonials({
             <button
               type="button"
               onClick={() => setVisible(testimonials.length)}
-              className="inline-flex h-[52px] min-w-[280px] items-center justify-center gap-2 rounded-input border-[1.5px] border-navy px-6 text-[16px] font-bold text-navy transition-colors hover:bg-navy/5"
+              className="inline-flex h-[52px] min-w-[280px] items-center justify-center gap-2 rounded-input border-[1.5px] border-primary px-6 text-[16px] font-bold text-primary transition-colors hover:bg-primary/5"
             >
               <span className="relative block h-[14px] w-[14px]" aria-hidden>
                 <Asset

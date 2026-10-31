@@ -46,8 +46,8 @@ export default function Header({ activeLink }: HeaderProps) {
                   href={link.href}
                   className={`text-[16px] transition-colors ${
                     isActive(link.href)
-                      ? "font-bold text-navy"
-                      : "font-normal text-ink hover:text-navy"
+                      ? "font-bold text-primary"
+                      : "font-normal text-primary-900 hover:text-primary"
                   }`}
                 >
                   {link.label}
@@ -57,7 +57,7 @@ export default function Header({ activeLink }: HeaderProps) {
                 href={wa}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-[16px] font-bold text-whatsapp-green hover:opacity-80"
+                className="inline-flex items-center gap-2 text-[16px] font-bold text-whatsapp hover:opacity-80"
               >
                 <Asset src="/home/imgVector31.svg" width={24} height={21} />
                 WhatsApp
@@ -66,7 +66,7 @@ export default function Header({ activeLink }: HeaderProps) {
 
             <Link
               href="/#book"
-              className="hidden min-[1180px]:inline-flex h-11 items-center justify-center rounded-pill bg-cta-red px-6 text-[15px] font-bold text-white transition-colors hover:bg-cta-red/90"
+              className="hidden min-[1180px]:inline-flex h-11 items-center justify-center rounded-pill bg-secondary px-6 text-[15px] font-bold text-primary-900 transition-colors hover:bg-secondary-500"
             >
               Book free consultation
             </Link>
@@ -74,7 +74,7 @@ export default function Header({ activeLink }: HeaderProps) {
             <button
               type="button"
               onClick={() => setMobileMenuOpen((open) => !open)}
-              className="inline-flex h-10 w-10 items-center justify-center text-ink min-[1180px]:hidden"
+              className="inline-flex h-10 w-10 items-center justify-center text-primary-900 min-[1180px]:hidden"
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileMenuOpen}
             >
@@ -99,14 +99,14 @@ export default function Header({ activeLink }: HeaderProps) {
           </div>
 
           {mobileMenuOpen && (
-            <nav className="flex flex-col gap-1 border-t border-border px-5 py-4 min-[1180px]:hidden">
+            <nav className="flex flex-col gap-1 border-t border-slate-200 px-5 py-4 min-[1180px]:hidden">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
                   className={`py-2 text-[16px] ${
-                    isActive(link.href) ? "font-bold text-navy" : "text-ink"
+                    isActive(link.href) ? "font-bold text-primary" : "text-primary-900"
                   }`}
                 >
                   {link.label}
@@ -117,7 +117,7 @@ export default function Header({ activeLink }: HeaderProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileMenuOpen(false)}
-                className="inline-flex items-center gap-2 py-2 text-[16px] font-bold text-whatsapp-green"
+                className="inline-flex items-center gap-2 py-2 text-[16px] font-bold text-whatsapp"
               >
                 <Asset src="/home/imgVector31.svg" width={24} height={21} />
                 WhatsApp

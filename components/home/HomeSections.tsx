@@ -24,7 +24,7 @@ const scholarshipCovers = ["Tuition", "Housing", "Monthly allowance", "Health in
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-bunting lg:h-[716px]">
+    <section className="relative overflow-hidden bg-primary-900 lg:h-[716px]">
       <div
         className="absolute inset-0 bg-cover bg-[center_bottom]"
         style={{ backgroundImage: "url(/home/imgGroup1.svg)" }}
@@ -42,14 +42,14 @@ export function Hero() {
           <span className="block lg:whitespace-nowrap">Your degree in Türkiye</span>
           starts here
         </h1>
-        <p className="mt-8 max-w-[490px] text-[18px] leading-[28px] text-on-dark-muted sm:text-[20px] sm:leading-[30px]">
+        <p className="mt-8 max-w-[490px] text-[18px] leading-[28px] text-primary-100 sm:text-[20px] sm:leading-[30px]">
           Compare universities, understand scholarships and get help with every step, from
           Pakistan to your first day on campus.
         </p>
         <div className="mt-8 flex flex-col gap-4 sm:flex-row">
           <Link
             href="/universities"
-            className="inline-flex h-[52px] items-center justify-center rounded-input bg-white px-6 text-[16px] font-bold text-ink transition-colors hover:bg-white/90 sm:min-w-[212px]"
+            className="inline-flex h-[52px] items-center justify-center rounded-input bg-white px-6 text-[16px] font-bold text-primary-900 transition-colors hover:bg-white/90 sm:min-w-[212px]"
           >
             Explore universities
           </Link>
@@ -62,7 +62,7 @@ export function Hero() {
         </div>
         <ul className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-x-10 sm:gap-y-3">
           {trustPoints.map((item) => (
-            <li key={item} className="flex items-center gap-2 text-[15px] text-on-dark-muted">
+            <li key={item} className="flex items-center gap-2 text-[15px] text-primary-100">
               <Asset src="/home/imgVector2.svg" width={12.2} height={9.7} />
               {item}
             </li>
@@ -81,10 +81,10 @@ export function Universities({
   total: number;
 }) {
   return (
-    <section className="bg-page-bg py-14 lg:pb-[88px] lg:pt-[100px]">
+    <section className="bg-slate-50 py-14 lg:pb-[88px] lg:pt-[100px]">
       <div className="container-1200">
         <h2 className="text-h2">Explore universities in Türkiye</h2>
-        <p className="mt-4 max-w-[548px] text-[18px] leading-[28px] text-body">
+        <p className="mt-4 max-w-[548px] text-[18px] leading-[28px] text-slate-600">
           A preview of the full list. Filter by city, field and university type on the dedicated
           page.
         </p>
@@ -93,7 +93,7 @@ export function Universities({
           {universities.map((university, index) => (
             <article
               key={university.slug}
-              className="flex flex-col overflow-hidden rounded-card border-[1.2px] border-border bg-white"
+              className="flex flex-col overflow-hidden rounded-card border-[1.2px] border-slate-200 bg-white"
             >
               <CampusPhoto
                 src={university.image}
@@ -107,31 +107,31 @@ export function Universities({
                   </span>
                   <span className="chip-outline">{university.city}</span>
                 </div>
-                <h3 className="mt-3 font-display text-[20px] leading-6 text-ink">
-                  <Link href={`/universities/${university.slug}`} className="hover:text-navy">
+                <h3 className="mt-3 font-display text-[20px] leading-6 text-primary-900">
+                  <Link href={`/universities/${university.slug}`} className="hover:text-primary">
                     {university.name}
                   </Link>
                 </h3>
-                <p className="mt-3 text-[14px] leading-5 text-body">
+                <p className="mt-3 text-[14px] leading-5 text-slate-600">
                   Fields: {university.fields.join(", ")}
                 </p>
-                <p className="text-[14px] leading-5 text-body">
+                <p className="text-[14px] leading-5 text-slate-600">
                   Levels: {university.levels.join(", ")}
                 </p>
-                <div className="mt-4 border-t border-border pt-4">
+                <div className="mt-4 border-t border-slate-200 pt-4">
                   <div className="flex items-end justify-between gap-3">
                     <div className="min-w-0">
-                      <p className="text-[13px] text-body">Tuition from</p>
+                      <p className="text-[13px] text-slate-600">Tuition from</p>
                       <p className="mt-0.5 flex flex-wrap items-baseline gap-x-2">
-                        <span className="font-display text-[28px] leading-none text-ink">
+                        <span className="font-display text-[28px] leading-none text-primary-900">
                           {formatCurrency(university.tuitionFrom)}
                         </span>
-                        <span className="whitespace-nowrap text-[13px] text-body">a year (sample)</span>
+                        <span className="whitespace-nowrap text-[13px] text-slate-600">a year (sample)</span>
                       </p>
                     </div>
                     <Link
                       href={`/universities/${university.slug}`}
-                      className="inline-flex h-11 min-w-[104px] items-center justify-center rounded-input bg-navy px-4 text-[15px] font-bold text-white transition-colors hover:bg-navy/90"
+                      className="inline-flex h-11 min-w-[104px] items-center justify-center rounded-input bg-primary px-4 text-[15px] font-bold text-white transition-colors hover:bg-primary-700"
                     >
                       Explore
                     </Link>
@@ -142,7 +142,7 @@ export function Universities({
           ))}
         </div>
 
-        <p className="mt-8 text-center text-[15px] text-body">
+        <p className="mt-8 text-center text-[15px] text-slate-600">
           Showing {universities.length} of {total} universities
         </p>
         <div className="mt-4 flex justify-center">
@@ -157,14 +157,14 @@ export function Universities({
 
 export function Scholarships() {
   return (
-    <section className="bg-surface-tint py-14 lg:py-[72px]">
+    <section className="bg-primary-50 py-14 lg:py-[72px]">
       <div className="container-1200">
-        <div className="grid items-center gap-8 rounded-form-card border-[1.2px] border-border bg-white p-6 sm:p-8 lg:grid-cols-[minmax(0,1fr)_480px] lg:gap-10 lg:p-10">
+        <div className="grid items-center gap-8 rounded-form-card border-[1.2px] border-slate-200 bg-white p-6 sm:p-8 lg:grid-cols-[minmax(0,1fr)_480px] lg:gap-10 lg:p-10">
           <div>
-            <h2 className="max-w-[520px] font-display text-[32px] leading-[38px] text-ink">
+            <h2 className="max-w-[520px] font-display text-[32px] leading-[38px] text-primary-900">
               Scholarships that can cover your studies
             </h2>
-            <p className="mt-4 max-w-[500px] text-[18px] leading-[28px] text-body">
+            <p className="mt-4 max-w-[500px] text-[18px] leading-[28px] text-slate-600">
               Türkiye Bursları can cover tuition, housing and more. Many universities also reduce
               tuition for strong marks.
             </p>
@@ -178,7 +178,7 @@ export function Scholarships() {
                       height={26}
                       className="absolute left-0 top-0"
                     />
-                    <span className="relative text-[13px] font-bold text-success-text">{item}</span>
+                    <span className="relative text-[13px] font-bold text-primary-800">{item}</span>
                   </span>
                 ) : (
                   <span key={item} className="chip-success">
@@ -191,10 +191,10 @@ export function Scholarships() {
               Check scholarship eligibility
             </Link>
           </div>
-          <div className="flex min-h-[220px] flex-col items-center justify-center rounded-panel bg-surface-tint px-6 py-10 text-center lg:min-h-[280px]">
-            <p className="font-display text-[17px] text-navy">Up to</p>
-            <p className="mt-1 font-display text-[58px] leading-none text-navy">100%</p>
-            <p className="mt-3 text-[15px] text-body">tuition covered by Türkiye Bursları</p>
+          <div className="flex min-h-[220px] flex-col items-center justify-center rounded-panel bg-primary-50 px-6 py-10 text-center lg:min-h-[280px]">
+            <p className="font-display text-[17px] text-secondary-800">Up to</p>
+            <p className="mt-1 font-display text-[58px] leading-none text-secondary-800">100%</p>
+            <p className="mt-3 text-[15px] text-slate-600">tuition covered by Türkiye Bursları</p>
           </div>
         </div>
       </div>
@@ -209,7 +209,7 @@ export function AdmissionSteps() {
         <h2 className="text-h2 max-w-[720px]">
           Five steps from Pakistan to your first class
         </h2>
-        <p className="mt-4 text-[18px] leading-[28px] text-body">
+        <p className="mt-4 text-[18px] leading-[28px] text-slate-600">
           You do not have to work out the order alone.
         </p>
 
@@ -233,8 +233,8 @@ export function AdmissionSteps() {
                   className="absolute left-11 top-[21px] hidden lg:block"
                 />
               )}
-              <h3 className="mt-4 font-display text-[20px] leading-6 text-ink">{step.title}</h3>
-              <p className="mt-2 text-[15px] leading-[22px] text-body">
+              <h3 className="mt-4 font-display text-[20px] leading-6 text-primary-900">{step.title}</h3>
+              <p className="mt-2 text-[15px] leading-[22px] text-slate-600">
                 {step.lines[0]}
                 <br />
                 {step.lines[1]}
@@ -261,7 +261,7 @@ export function Guides({ guides, total }: { guides: HomeGuide[]; total: number }
       />
       <div className="container-1200 relative">
         <h2 className="text-h2">Guides for studying in Turkey</h2>
-        <p className="mt-4 max-w-[640px] text-[18px] leading-[28px] text-body">
+        <p className="mt-4 max-w-[640px] text-[18px] leading-[28px] text-slate-600">
           Plain-language answers, written for students applying from Pakistan.
         </p>
 
@@ -269,17 +269,17 @@ export function Guides({ guides, total }: { guides: HomeGuide[]; total: number }
           {guides.map((guide) => (
             <article
               key={guide.slug}
-              className="flex flex-col overflow-hidden rounded-card border-[1.2px] border-border bg-white"
+              className="flex flex-col overflow-hidden rounded-card border-[1.2px] border-slate-200 bg-white"
             >
               <GuideArt art={guide.art} />
               <div className="flex flex-1 flex-col px-[22px] pb-5">
                 <span className="chip-tint w-fit">{guide.category}</span>
-                <h3 className="mt-3 font-display text-[20px] leading-[26px] text-ink">
+                <h3 className="mt-3 font-display text-[20px] leading-[26px] text-primary-900">
                   {guide.title}
                 </h3>
-                <p className="mt-3 text-[15px] leading-[22px] text-body">{guide.description}</p>
-                <div className="mt-4 flex items-center justify-between gap-3 border-t border-border pt-4">
-                  <span className="text-[14px] text-body">{guide.readTime} min read</span>
+                <p className="mt-3 text-[15px] leading-[22px] text-slate-600">{guide.description}</p>
+                <div className="mt-4 flex items-center justify-between gap-3 border-t border-slate-200 pt-4">
+                  <span className="text-[14px] text-slate-600">{guide.readTime} min read</span>
                   <Link
                     href={`/guides/${guide.slug}`}
                     className="btn-outline h-10 px-4 text-[15px]"
@@ -292,7 +292,7 @@ export function Guides({ guides, total }: { guides: HomeGuide[]; total: number }
           ))}
         </div>
 
-        <p className="mt-8 text-center text-[15px] text-body">
+        <p className="mt-8 text-center text-[15px] text-slate-600">
           Showing {guides.length} of {total} guides
         </p>
         <div className="mt-4 flex justify-center">
@@ -307,7 +307,7 @@ export function Guides({ guides, total }: { guides: HomeGuide[]; total: number }
 
 export function BookConsultation() {
   return (
-    <section id="book" className="scroll-mt-28 bg-navy py-16 lg:py-[100px]">
+    <section id="book" className="scroll-mt-28 bg-primary py-16 lg:py-[100px]">
       <div className="container-1200 grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_560px] lg:gap-10">
         <div>
           <h2 className="text-h2-cta max-w-[520px]">
@@ -347,7 +347,7 @@ export function BookConsultation() {
 
 export function Questions({ faqs }: { faqs: HomeFaq[] }) {
   return (
-    <section id="faq" className="relative scroll-mt-28 overflow-hidden bg-page-bg py-16 lg:py-[88px]">
+    <section id="faq" className="relative scroll-mt-28 overflow-hidden bg-slate-50 py-16 lg:py-[88px]">
       <img
         src="/home/imgVector91.svg"
         alt=""
@@ -365,7 +365,7 @@ export function Questions({ faqs }: { faqs: HomeFaq[] }) {
             <br />
             most
           </h2>
-          <p className="mt-5 max-w-[280px] text-[17px] leading-[26px] text-body">
+          <p className="mt-5 max-w-[280px] text-[17px] leading-[26px] text-slate-600">
             Cannot find your answer? Ask us on WhatsApp and we will reply.
           </p>
           <a

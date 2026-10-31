@@ -62,12 +62,12 @@ export default function LeadsListClient({ leads: initialLeads }: { leads: any[] 
   return (
     <>
       {selected.size > 0 && (
-        <div className="fixed bottom-0 left-0 right-0 bg-navy text-white p-4 shadow-lg z-50">
+        <div className="fixed bottom-0 left-0 right-0 bg-primary text-white p-4 shadow-lg z-50">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
             <p className="font-bold">{selected.size} lead(s) selected</p>
             <div className="flex gap-3">
               <select
-                className="px-4 py-2 bg-white text-ink rounded-input"
+                className="px-4 py-2 bg-white text-primary-900 rounded-input"
                 onChange={(e) => {
                   if (e.target.value) {
                     handleBulkStatusChange(e.target.value);
@@ -95,9 +95,9 @@ export default function LeadsListClient({ leads: initialLeads }: { leads: any[] 
         </div>
       )}
 
-      <div className="bg-white rounded-card border border-border overflow-hidden">
+      <div className="bg-white rounded-card border border-slate-200 overflow-hidden">
         <table className="min-w-full divide-y divide-border">
-          <thead className="bg-surface-tint">
+          <thead className="bg-primary-50">
             <tr>
               <th className="px-6 py-3 text-left">
                 <input
@@ -106,17 +106,17 @@ export default function LeadsListClient({ leads: initialLeads }: { leads: any[] 
                   onChange={handleSelectAll}
                 />
               </th>
-              <th className="px-6 py-3 text-left text-xs font-bold text-body uppercase">Name</th>
-              <th className="px-6 py-3 text-left text-xs font-bold text-body uppercase">WhatsApp</th>
-              <th className="px-6 py-3 text-left text-xs font-bold text-body uppercase">City</th>
-              <th className="px-6 py-3 text-left text-xs font-bold text-body uppercase">Level</th>
-              <th className="px-6 py-3 text-left text-xs font-bold text-body uppercase">Status</th>
-              <th className="px-6 py-3 text-left text-xs font-bold text-body uppercase">Date</th>
+              <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">Name</th>
+              <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">WhatsApp</th>
+              <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">City</th>
+              <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">Level</th>
+              <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">Status</th>
+              <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">Date</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-border">
             {initialLeads.map((lead: any) => (
-              <tr key={lead._id} className="hover:bg-surface-tint/50">
+              <tr key={lead._id} className="hover:bg-primary-50/50">
                 <td className="px-6 py-4">
                   <input
                     type="checkbox"
@@ -125,7 +125,7 @@ export default function LeadsListClient({ leads: initialLeads }: { leads: any[] 
                   />
                 </td>
                 <td className="px-6 py-4">
-                  <Link href={`/admin/leads/${lead._id}`} className="font-bold text-navy hover:underline">
+                  <Link href={`/admin/leads/${lead._id}`} className="font-bold text-primary hover:underline">
                     {lead.fullName}
                   </Link>
                 </td>
@@ -137,7 +137,7 @@ export default function LeadsListClient({ leads: initialLeads }: { leads: any[] 
                     {lead.status}
                   </span>
                 </td>
-                <td className="px-6 py-4 text-sm text-body">
+                <td className="px-6 py-4 text-sm text-slate-600">
                   {new Date(lead.createdAt).toLocaleDateString()}
                 </td>
               </tr>
@@ -147,7 +147,7 @@ export default function LeadsListClient({ leads: initialLeads }: { leads: any[] 
 
         {initialLeads.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-body">No leads found</p>
+            <p className="text-slate-600">No leads found</p>
           </div>
         )}
       </div>

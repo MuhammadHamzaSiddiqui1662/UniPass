@@ -69,35 +69,35 @@ export async function sendLeadNotification(lead: {
 
     const html = `
     <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
-      <h2 style="color: #17307A;">New Lead Submission</h2>
+      <h2 style="color: #453F78;">New Lead Submission</h2>
       <p>A new lead has been submitted through the UniPass website.</p>
       
       <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
         <tr>
-          <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Full Name</td>
-          <td style="padding: 8px; border: 1px solid #ddd;">${lead.fullName}</td>
+          <td style="padding: 8px; border: 1px solid #E2E8F0; font-weight: bold;">Full Name</td>
+          <td style="padding: 8px; border: 1px solid #E2E8F0;">${lead.fullName}</td>
         </tr>
         <tr>
-          <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">WhatsApp Number</td>
-          <td style="padding: 8px; border: 1px solid #ddd;">${lead.whatsappNumber}</td>
+          <td style="padding: 8px; border: 1px solid #E2E8F0; font-weight: bold;">WhatsApp Number</td>
+          <td style="padding: 8px; border: 1px solid #E2E8F0;">${lead.whatsappNumber}</td>
         </tr>
         <tr>
-          <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">City</td>
-          <td style="padding: 8px; border: 1px solid #ddd;">${lead.city}</td>
+          <td style="padding: 8px; border: 1px solid #E2E8F0; font-weight: bold;">City</td>
+          <td style="padding: 8px; border: 1px solid #E2E8F0;">${lead.city}</td>
         </tr>
         <tr>
-          <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Level of Study</td>
-          <td style="padding: 8px; border: 1px solid #ddd;">${lead.levelOfStudy}</td>
+          <td style="padding: 8px; border: 1px solid #E2E8F0; font-weight: bold;">Level of Study</td>
+          <td style="padding: 8px; border: 1px solid #E2E8F0;">${lead.levelOfStudy}</td>
         </tr>
         <tr>
-          <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Source</td>
-          <td style="padding: 8px; border: 1px solid #ddd;">${lead.source} (${lead.sourcePage})</td>
+          <td style="padding: 8px; border: 1px solid #E2E8F0; font-weight: bold;">Source</td>
+          <td style="padding: 8px; border: 1px solid #E2E8F0;">${lead.source} (${lead.sourcePage})</td>
         </tr>
         ${
           lead.university
             ? `<tr>
-          <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">University Interest</td>
-          <td style="padding: 8px; border: 1px solid #ddd;">${lead.university}</td>
+          <td style="padding: 8px; border: 1px solid #E2E8F0; font-weight: bold;">University Interest</td>
+          <td style="padding: 8px; border: 1px solid #E2E8F0;">${lead.university}</td>
         </tr>`
             : ""
         }
@@ -105,7 +105,7 @@ export async function sendLeadNotification(lead: {
       
       <p>
         <a href="${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:43123"}/admin/leads" 
-           style="display: inline-block; background: #17307A; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px;">
+           style="display: inline-block; background: #453F78; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px;">
           View in Admin Panel
         </a>
       </p>

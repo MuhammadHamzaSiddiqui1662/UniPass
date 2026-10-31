@@ -33,24 +33,24 @@ export default function ComparePage() {
     <>
       <Header />
       <main className="pt-32">
-        <section className="py-20 bg-page-bg">
+        <section className="py-20 bg-slate-50">
           <div className="container-1200">
             <h1 className="text-h1-detail mb-6">Compare Universities</h1>
-            <p className="text-lg text-body mb-8">
+            <p className="text-lg text-slate-600 mb-8">
               Side-by-side comparison of up to 3 universities.
             </p>
 
             {universities.length === 0 ? (
-              <div className="bg-white rounded-card border border-border p-12 text-center">
-                <p className="text-body mb-4">No universities selected for comparison.</p>
+              <div className="bg-white rounded-card border border-slate-200 p-12 text-center">
+                <p className="text-slate-600 mb-4">No universities selected for comparison.</p>
                 <Link href="/universities" className="btn-primary">
                   Browse Universities
                 </Link>
               </div>
             ) : (
-              <div className="bg-white rounded-card border border-border overflow-x-auto">
+              <div className="bg-white rounded-card border border-slate-200 overflow-x-auto">
                 <table className="min-w-full">
-                  <thead className="bg-surface-tint">
+                  <thead className="bg-primary-50">
                     <tr>
                       <th className="px-6 py-4 text-left text-sm font-bold">Feature</th>
                       {universities.map(uni => (
@@ -58,7 +58,7 @@ export default function ComparePage() {
                           <div className="font-bold">{uni.name}</div>
                           <button
                             onClick={() => removeFromCompare(uni._id)}
-                            className="text-xs text-red-600 hover:underline mt-1"
+                            className="text-xs text-error hover:underline mt-1"
                           >
                             Remove
                           </button>

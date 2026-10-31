@@ -25,38 +25,38 @@ export default async function AdminUniversitiesPage() {
   const universities = await getUniversities();
 
   return (
-    <div className="min-h-screen bg-page-bg">
-      <nav className="bg-white border-b border-border">
+    <div className="min-h-screen bg-slate-50">
+      <nav className="bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
             <div className="flex items-center gap-8">
-              <Link href="/admin" className="font-display text-xl text-ink">
+              <Link href="/admin" className="font-display text-xl text-primary-900">
                 UniPass Admin
               </Link>
               <div className="hidden md:flex gap-6">
-                <Link href="/admin" className="text-body hover:text-ink">
+                <Link href="/admin" className="text-slate-600 hover:text-primary-900">
                   Dashboard
                 </Link>
-                <Link href="/admin/leads" className="text-body hover:text-ink">
+                <Link href="/admin/leads" className="text-slate-600 hover:text-primary-900">
                   Leads
                 </Link>
                 <Link
                   href="/admin/universities"
-                  className="text-navy font-bold border-b-2 border-navy pb-1"
+                  className="text-primary font-bold border-b-2 border-primary pb-1"
                 >
                   Universities
                 </Link>
-                <Link href="/admin/guides" className="text-body hover:text-ink">
+                <Link href="/admin/guides" className="text-slate-600 hover:text-primary-900">
                   Guides
                 </Link>
               </div>
             </div>
             <div className="flex items-center gap-4">
-              <span className="text-sm text-body">{session.name}</span>
+              <span className="text-sm text-slate-600">{session.name}</span>
               <form action="/api/auth/logout" method="POST">
                 <button
                   type="submit"
-                  className="text-sm text-body hover:text-ink"
+                  className="text-sm text-slate-600 hover:text-primary-900"
                 >
                   Logout
                 </button>
@@ -76,43 +76,43 @@ export default async function AdminUniversitiesPage() {
           </Link>
         </div>
 
-        <div className="bg-white rounded-card border border-border overflow-hidden">
+        <div className="bg-white rounded-card border border-slate-200 overflow-hidden">
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-border">
-              <thead className="bg-surface-tint">
+              <thead className="bg-primary-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-bold text-body uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">
                     Name
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-bold text-body uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">
                     City
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-bold text-body uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">
                     Type
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-bold text-body uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-bold text-body uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">
                     Actions
                   </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border">
                 {universities.map((uni: any) => (
-                  <tr key={uni._id} className="hover:bg-surface-tint/50">
+                  <tr key={uni._id} className="hover:bg-primary-50/50">
                     <td className="px-6 py-4">
-                      <div className="text-sm font-bold text-ink">{uni.name}</div>
-                      <div className="text-xs text-body">{uni.slug}</div>
+                      <div className="text-sm font-bold text-primary-900">{uni.name}</div>
+                      <div className="text-xs text-slate-600">{uni.slug}</div>
                     </td>
-                    <td className="px-6 py-4 text-sm text-ink">{uni.city}</td>
-                    <td className="px-6 py-4 text-sm text-ink">{uni.type}</td>
+                    <td className="px-6 py-4 text-sm text-primary-900">{uni.city}</td>
+                    <td className="px-6 py-4 text-sm text-primary-900">{uni.type}</td>
                     <td className="px-6 py-4">
                       <span
                         className={`chip ${
                           uni.status === "published"
-                            ? "bg-green-100 text-green-700"
-                            : "bg-gray-100 text-gray-700"
+                            ? "bg-success-tint text-primary-800"
+                            : "bg-slate-100 text-slate-700"
                         }`}
                       >
                         {uni.status}
@@ -121,14 +121,14 @@ export default async function AdminUniversitiesPage() {
                     <td className="px-6 py-4 text-sm">
                       <Link
                         href={`/admin/universities/${uni._id}/edit`}
-                        className="text-navy hover:underline mr-4"
+                        className="text-primary hover:underline mr-4"
                       >
                         Edit
                       </Link>
                       <Link
                         href={`/universities/${uni.slug}`}
                         target="_blank"
-                        className="text-body hover:underline"
+                        className="text-slate-600 hover:underline"
                       >
                         View
                       </Link>
@@ -141,7 +141,7 @@ export default async function AdminUniversitiesPage() {
 
           {universities.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-body">No universities yet</p>
+              <p className="text-slate-600">No universities yet</p>
             </div>
           )}
         </div>

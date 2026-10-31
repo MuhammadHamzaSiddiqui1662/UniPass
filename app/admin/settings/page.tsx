@@ -69,34 +69,34 @@ export default function SettingsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-page-bg flex items-center justify-center">
-        <p className="text-body">Loading...</p>
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+        <p className="text-slate-600">Loading...</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-page-bg">
-      <nav className="bg-white border-b border-border">
+    <div className="min-h-screen bg-slate-50">
+      <nav className="bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
             <div className="flex items-center gap-8">
-              <Link href="/admin" className="font-display text-xl text-ink">
+              <Link href="/admin" className="font-display text-xl text-primary-900">
                 UniPass Admin
               </Link>
               <div className="hidden md:flex gap-6">
-                <Link href="/admin" className="text-body hover:text-ink">
+                <Link href="/admin" className="text-slate-600 hover:text-primary-900">
                   Dashboard
                 </Link>
-                <Link href="/admin/leads" className="text-body hover:text-ink">
+                <Link href="/admin/leads" className="text-slate-600 hover:text-primary-900">
                   Leads
                 </Link>
-                <Link href="/admin/universities" className="text-body hover:text-ink">
+                <Link href="/admin/universities" className="text-slate-600 hover:text-primary-900">
                   Universities
                 </Link>
                 <Link
                   href="/admin/settings"
-                  className="text-navy font-bold border-b-2 border-navy pb-1"
+                  className="text-primary font-bold border-b-2 border-primary pb-1"
                 >
                   Settings
                 </Link>
@@ -111,7 +111,7 @@ export default function SettingsPage() {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Brand */}
-          <div className="bg-white rounded-card border border-border p-6">
+          <div className="bg-white rounded-card border border-slate-200 p-6">
             <h2 className="font-display text-xl mb-4">Brand</h2>
             
             <div className="space-y-4">
@@ -138,7 +138,7 @@ export default function SettingsPage() {
           </div>
 
           {/* Contact Info */}
-          <div className="bg-white rounded-card border border-border p-6">
+          <div className="bg-white rounded-card border border-slate-200 p-6">
             <h2 className="font-display text-xl mb-4">Contact Information</h2>
             
             <div className="space-y-4">
@@ -197,7 +197,7 @@ export default function SettingsPage() {
           </div>
 
           {/* Social Media */}
-          <div className="bg-white rounded-card border border-border p-6">
+          <div className="bg-white rounded-card border border-slate-200 p-6">
             <h2 className="font-display text-xl mb-4">Social Media</h2>
             
             <div className="space-y-4">
@@ -254,7 +254,7 @@ export default function SettingsPage() {
           </div>
 
           {/* Notifications */}
-          <div className="bg-white rounded-card border border-border p-6">
+          <div className="bg-white rounded-card border border-slate-200 p-6">
             <h2 className="font-display text-xl mb-4">Lead Notifications</h2>
             
             <div className="space-y-4">
@@ -269,7 +269,7 @@ export default function SettingsPage() {
                   placeholder="admin@example.com, sales@example.com"
                   defaultValue={settings?.notificationRecipients?.join(", ")}
                 />
-                <p className="text-xs text-body mt-1">
+                <p className="text-xs text-slate-600 mt-1">
                   These addresses will receive notifications when new leads are submitted
                 </p>
               </div>
@@ -277,7 +277,7 @@ export default function SettingsPage() {
           </div>
 
           {/* Default SEO */}
-          <div className="bg-white rounded-card border border-border p-6">
+          <div className="bg-white rounded-card border border-slate-200 p-6">
             <h2 className="font-display text-xl mb-4">Default SEO</h2>
             
             <div className="space-y-4">

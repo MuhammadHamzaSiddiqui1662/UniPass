@@ -69,11 +69,11 @@ export default function CreateProgramClient() {
   };
 
   return (
-    <div className="min-h-screen bg-page-bg">
-      <nav className="bg-white border-b border-border">
+    <div className="min-h-screen bg-slate-50">
+      <nav className="bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
-            <Link href="/admin/programs" className="text-navy hover:underline">← Back to Programs</Link>
+            <Link href="/admin/programs" className="text-primary hover:underline">← Back to Programs</Link>
           </div>
         </div>
       </nav>
@@ -82,7 +82,7 @@ export default function CreateProgramClient() {
         <h1 className="text-2xl font-display mb-6">Create Program</h1>
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="bg-white rounded-card border border-border p-6">
+          <div className="bg-white rounded-card border border-slate-200 p-6">
             <h2 className="font-display text-xl mb-4">Basic Information</h2>
             <div className="space-y-4">
               <div>
@@ -111,7 +111,7 @@ export default function CreateProgramClient() {
                   required
                   className="input-field"
                 />
-                <p className="text-xs text-body mt-1">URL: /programs/{slug || "slug"}</p>
+                <p className="text-xs text-slate-600 mt-1">URL: /programs/{slug || "slug"}</p>
               </div>
 
               <div>
@@ -173,7 +173,7 @@ export default function CreateProgramClient() {
             </div>
           </div>
 
-          <div className="bg-white rounded-card border border-border p-6">
+          <div className="bg-white rounded-card border border-slate-200 p-6">
             <h2 className="font-display text-xl mb-4">SEO & Publishing</h2>
             <div className="space-y-4">
               <div>

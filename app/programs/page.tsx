@@ -28,27 +28,27 @@ export default async function ProgramsPage() {
     <>
       <Header />
       <main className="pt-32">
-        <section className="py-20 bg-page-bg">
+        <section className="py-20 bg-slate-50">
           <div className="container-1200">
             <h1 className="text-h1-detail mb-6">Degree Programs in Türkiye</h1>
-            <p className="text-lg text-body mb-12 max-w-3xl">
+            <p className="text-lg text-slate-600 mb-12 max-w-3xl">
               Explore undergraduate and graduate programs at Turkish universities.
               Find programs taught in English or Turkish across all fields of study.
             </p>
 
             {programs.length === 0 ? (
-              <p className="text-body">No programs available yet. Check back soon!</p>
+              <p className="text-slate-600">No programs available yet. Check back soon!</p>
             ) : (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {programs.map((program: any) => (
                   <Link
                     key={program._id}
                     href={`/programs/${program.slug}`}
-                    className="bg-white rounded-card border border-border p-6 hover:shadow-lg transition-shadow"
+                    className="bg-white rounded-card border border-slate-200 p-6 hover:shadow-lg transition-shadow"
                   >
                     <h3 className="font-display text-xl mb-2">{program.name}</h3>
                     {program.university && (
-                      <p className="text-sm text-body mb-3">
+                      <p className="text-sm text-slate-600 mb-3">
                         {program.university.name} · {program.university.city}
                       </p>
                     )}
@@ -57,7 +57,7 @@ export default async function ProgramsPage() {
                       <span className="chip-tint text-xs">{program.language}</span>
                     </div>
                     {program.duration && (
-                      <p className="text-sm text-body">{program.duration}</p>
+                      <p className="text-sm text-slate-600">{program.duration}</p>
                     )}
                   </Link>
                 ))}

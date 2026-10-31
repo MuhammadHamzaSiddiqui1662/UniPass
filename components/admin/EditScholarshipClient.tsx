@@ -98,18 +98,18 @@ export default function EditScholarshipClient({ scholarshipId }: { scholarshipId
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-page-bg flex items-center justify-center">
-        <p className="text-body">Loading...</p>
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+        <p className="text-slate-600">Loading...</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-page-bg">
-      <nav className="bg-white border-b border-border">
+    <div className="min-h-screen bg-slate-50">
+      <nav className="bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
-            <Link href="/admin/scholarships" className="text-navy hover:underline">← Back to Scholarships</Link>
+            <Link href="/admin/scholarships" className="text-primary hover:underline">← Back to Scholarships</Link>
           </div>
         </div>
       </nav>
@@ -118,7 +118,7 @@ export default function EditScholarshipClient({ scholarshipId }: { scholarshipId
         <h1 className="text-2xl font-display mb-6">Edit Scholarship</h1>
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="bg-white rounded-card border border-border p-6">
+          <div className="bg-white rounded-card border border-slate-200 p-6">
             <h2 className="font-display text-xl mb-4">Basic Information</h2>
             <div className="space-y-4">
               <div>
@@ -175,7 +175,7 @@ export default function EditScholarshipClient({ scholarshipId }: { scholarshipId
           </div>
 
           {type === "university-merit" && (
-            <div className="bg-white rounded-card border border-border p-6">
+            <div className="bg-white rounded-card border border-slate-200 p-6">
               <h2 className="font-display text-xl mb-4">Merit Table</h2>
               <div className="space-y-3">
                 {meritTable.map((row, index) => (
@@ -205,7 +205,7 @@ export default function EditScholarshipClient({ scholarshipId }: { scholarshipId
                     <button
                       type="button"
                       onClick={() => removeMeritRow(index)}
-                      className="px-3 py-2 border border-border rounded-input hover:bg-red-50 text-red-600"
+                      className="px-3 py-2 border border-slate-200 rounded-input hover:bg-error-tint text-error"
                     >
                       Remove
                     </button>
@@ -215,14 +215,14 @@ export default function EditScholarshipClient({ scholarshipId }: { scholarshipId
               <button
                 type="button"
                 onClick={addMeritRow}
-                className="mt-3 text-sm text-navy hover:underline"
+                className="mt-3 text-sm text-primary hover:underline"
               >
                 + Add Row
               </button>
             </div>
           )}
 
-          <div className="bg-white rounded-card border border-border p-6">
+          <div className="bg-white rounded-card border border-slate-200 p-6">
             <h2 className="font-display text-xl mb-4">Publishing</h2>
             <div>
               <label className="block text-sm font-bold mb-1">Status *</label>
@@ -242,7 +242,7 @@ export default function EditScholarshipClient({ scholarshipId }: { scholarshipId
               type="button"
               onClick={handleDelete}
               disabled={deleting}
-              className="ml-auto px-4 py-2 bg-red-600 text-white rounded-input hover:bg-red-700 disabled:opacity-50"
+              className="ml-auto px-4 py-2 bg-error text-white rounded-input hover:bg-error/90 disabled:opacity-50"
             >
               {deleting ? "Deleting..." : "Delete"}
             </button>

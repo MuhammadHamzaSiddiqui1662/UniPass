@@ -32,16 +32,16 @@ export default function SavedPage() {
     <>
       <Header />
       <main className="pt-32">
-        <section className="py-20 bg-page-bg">
+        <section className="py-20 bg-slate-50">
           <div className="container-1200">
             <h1 className="text-h1-detail mb-6">Saved Universities</h1>
-            <p className="text-lg text-body mb-8">
+            <p className="text-lg text-slate-600 mb-8">
               Your shortlist of universities to explore.
             </p>
 
             {saved.length === 0 ? (
-              <div className="bg-white rounded-card border border-border p-12 text-center">
-                <p className="text-body mb-4">No universities saved yet.</p>
+              <div className="bg-white rounded-card border border-slate-200 p-12 text-center">
+                <p className="text-slate-600 mb-4">No universities saved yet.</p>
                 <Link href="/universities" className="btn-primary">
                   Browse Universities
                 </Link>
@@ -49,18 +49,18 @@ export default function SavedPage() {
             ) : (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {saved.map(uni => (
-                  <div key={uni._id} className="bg-white rounded-card border border-border overflow-hidden">
+                  <div key={uni._id} className="bg-white rounded-card border border-slate-200 overflow-hidden">
                     <div className="p-6">
                       <h3 className="font-display text-xl mb-2">{uni.name}</h3>
-                      <p className="text-sm text-body mb-4">{uni.city} · {uni.type}</p>
-                      <p className="text-sm text-body line-clamp-3 mb-4">{uni.description}</p>
+                      <p className="text-sm text-slate-600 mb-4">{uni.city} · {uni.type}</p>
+                      <p className="text-sm text-slate-600 line-clamp-3 mb-4">{uni.description}</p>
                       <div className="flex gap-2 mb-4">
                         <Link href={`/universities/${uni.slug}`} className="btn-primary flex-1 text-center text-sm">
                           View Details
                         </Link>
                         <button
                           onClick={() => removeFromSaved(uni._id)}
-                          className="px-3 py-2 border border-border rounded-input hover:bg-red-50 text-red-600 text-sm"
+                          className="px-3 py-2 border border-slate-200 rounded-input hover:bg-error-tint text-error text-sm"
                         >
                           Remove
                         </button>

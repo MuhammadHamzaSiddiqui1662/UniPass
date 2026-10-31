@@ -32,11 +32,11 @@ export default async function TaxonomiesAdminPage() {
   };
 
   return (
-    <div className="min-h-screen bg-page-bg">
-      <nav className="bg-white border-b border-border">
+    <div className="min-h-screen bg-slate-50">
+      <nav className="bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
-            <Link href="/admin" className="font-display text-xl text-ink">UniPass Admin</Link>
+            <Link href="/admin" className="font-display text-xl text-primary-900">UniPass Admin</Link>
           </div>
         </div>
       </nav>
@@ -49,25 +49,25 @@ export default async function TaxonomiesAdminPage() {
 
         <div className="space-y-6">
           {Object.keys(typeLabels).map(type => (
-            <div key={type} className="bg-white rounded-card border border-border p-6">
+            <div key={type} className="bg-white rounded-card border border-slate-200 p-6">
               <h2 className="font-display text-xl mb-4">{typeLabels[type]}</h2>
               {grouped[type] && grouped[type].length > 0 ? (
                 <div className="space-y-2">
                   {grouped[type].map((tax: any) => (
-                    <div key={tax._id} className="flex items-center justify-between py-2 border-b border-border">
+                    <div key={tax._id} className="flex items-center justify-between py-2 border-b border-slate-200">
                       <div>
                         <span className="font-bold">{tax.label}</span>
-                        <span className="text-sm text-body ml-2">({tax.value})</span>
-                        {!tax.active && <span className="ml-2 text-xs text-red-600">Inactive</span>}
+                        <span className="text-sm text-slate-600 ml-2">({tax.value})</span>
+                        {!tax.active && <span className="ml-2 text-xs text-error">Inactive</span>}
                       </div>
-                      <Link href={`/admin/taxonomies/${tax._id}/edit`} className="text-navy hover:underline text-sm">
+                      <Link href={`/admin/taxonomies/${tax._id}/edit`} className="text-primary hover:underline text-sm">
                         Edit
                       </Link>
                     </div>
                   ))}
                 </div>
               ) : (
-                <p className="text-sm text-body">No items yet</p>
+                <p className="text-sm text-slate-600">No items yet</p>
               )}
             </div>
           ))}

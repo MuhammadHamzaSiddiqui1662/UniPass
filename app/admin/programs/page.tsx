@@ -18,11 +18,11 @@ export default async function ProgramsAdminPage() {
   const programs = await getPrograms();
 
   return (
-    <div className="min-h-screen bg-page-bg">
-      <nav className="bg-white border-b border-border">
+    <div className="min-h-screen bg-slate-50">
+      <nav className="bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
-            <Link href="/admin" className="font-display text-xl text-ink">UniPass Admin</Link>
+            <Link href="/admin" className="font-display text-xl text-primary-900">UniPass Admin</Link>
           </div>
         </div>
       </nav>
@@ -33,30 +33,30 @@ export default async function ProgramsAdminPage() {
           <Link href="/admin/programs/new" className="btn-primary">Add Program</Link>
         </div>
 
-        <div className="bg-white rounded-card border border-border overflow-hidden">
+        <div className="bg-white rounded-card border border-slate-200 overflow-hidden">
           <table className="min-w-full divide-y divide-border">
-            <thead className="bg-surface-tint">
+            <thead className="bg-primary-50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-bold text-body uppercase">Name</th>
-                <th className="px-6 py-3 text-left text-xs font-bold text-body uppercase">University</th>
-                <th className="px-6 py-3 text-left text-xs font-bold text-body uppercase">Level</th>
-                <th className="px-6 py-3 text-left text-xs font-bold text-body uppercase">Status</th>
-                <th className="px-6 py-3 text-left text-xs font-bold text-body uppercase">Actions</th>
+                <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">Name</th>
+                <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">University</th>
+                <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">Level</th>
+                <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">Status</th>
+                <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border">
               {programs.map((program: any) => (
-                <tr key={program._id} className="hover:bg-surface-tint/50">
-                  <td className="px-6 py-4 text-sm font-bold text-ink">{program.name}</td>
+                <tr key={program._id} className="hover:bg-primary-50/50">
+                  <td className="px-6 py-4 text-sm font-bold text-primary-900">{program.name}</td>
                   <td className="px-6 py-4 text-sm">{program.university?.name || "N/A"}</td>
                   <td className="px-6 py-4 text-sm">{program.level}</td>
                   <td className="px-6 py-4">
-                    <span className={`chip ${program.status === 'published' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-700'}`}>
+                    <span className={`chip ${program.status === 'published' ? 'bg-success-tint text-primary-800' : 'bg-slate-100 text-slate-700'}`}>
                       {program.status}
                     </span>
                   </td>
                   <td className="px-6 py-4 text-sm">
-                    <Link href={`/admin/programs/${program._id}/edit`} className="text-navy hover:underline">Edit</Link>
+                    <Link href={`/admin/programs/${program._id}/edit`} className="text-primary hover:underline">Edit</Link>
                   </td>
                 </tr>
               ))}
@@ -64,7 +64,7 @@ export default async function ProgramsAdminPage() {
           </table>
 
           {programs.length === 0 && (
-            <div className="text-center py-12"><p className="text-body">No programs yet</p></div>
+            <div className="text-center py-12"><p className="text-slate-600">No programs yet</p></div>
           )}
         </div>
       </main>

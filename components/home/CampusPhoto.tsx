@@ -33,7 +33,7 @@ export default function CampusPhoto({
   const art = overlays[index % overlays.length];
 
   return (
-    <div className="relative h-[190px] overflow-hidden bg-east-bay/30">
+    <div className="relative h-[190px] overflow-hidden bg-primary-400/30">
       <img src={src} alt={alt} className="h-full w-full object-cover" />
       <div className="pointer-events-none absolute left-[69%] top-1/2 h-[180px] w-[180px] -translate-x-1/2 -translate-y-1/2">
         <Asset
