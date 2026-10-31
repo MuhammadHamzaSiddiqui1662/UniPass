@@ -25,7 +25,7 @@ export default function ListingPagination({
 
   return (
     <div className="mt-10 text-center">
-      <p className="text-[14px] leading-[18px] text-body">
+      <p className="text-[14px] leading-[18px] text-slate-600">
         That is every verified university we currently support. More are added regularly.
       </p>
       <div className="mt-5 flex items-center justify-center gap-10">
@@ -49,7 +49,7 @@ export default function ListingPagination({
             <Link
               key={number}
               href={hrefFor(query, number)}
-              className="grid h-9 w-9 place-items-center rounded-[8px] border-[1.5px] border-border text-[15px] font-bold text-ink"
+              className="grid h-9 w-9 place-items-center rounded-[8px] border-[1.5px] border-slate-200 text-[15px] font-bold text-primary-900"
             >
               {number}
             </Link>

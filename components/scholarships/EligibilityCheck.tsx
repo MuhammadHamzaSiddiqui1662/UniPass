@@ -32,11 +32,11 @@ export default function EligibilityCheck({ criteria }: { criteria: BursCriteria[
     <div>
       <div className="grid gap-3 sm:grid-cols-3">
         <label className="block">
-          <span className="mb-1.5 block text-[13px] font-bold text-body">Level</span>
+          <span className="mb-1.5 block text-[13px] font-bold text-slate-600">Level</span>
           <select
             value={level}
             onChange={(event) => update(() => setLevel(event.target.value))}
-            className="h-11 w-full rounded-[10px] border border-border bg-white px-3 text-[16px] text-ink outline-none"
+            className="h-11 w-full rounded-[10px] border border-slate-200 bg-white px-3 text-[16px] text-primary-900 outline-none"
           >
             {criteria.map((item) => (
               <option key={item.level} value={item.level}>
@@ -46,11 +46,11 @@ export default function EligibilityCheck({ criteria }: { criteria: BursCriteria[
           </select>
         </label>
         <label className="block">
-          <span className="mb-1.5 block text-[13px] font-bold text-body">Your age</span>
+          <span className="mb-1.5 block text-[13px] font-bold text-slate-600">Your age</span>
           <select
             value={age}
             onChange={(event) => update(() => setAge(event.target.value))}
-            className="h-11 w-full rounded-[10px] border border-border bg-white px-3 text-[16px] text-body outline-none"
+            className="h-11 w-full rounded-[10px] border border-slate-200 bg-white px-3 text-[16px] text-slate-600 outline-none"
           >
             {AGES.map((item) => (
               <option key={item} value={item}>
@@ -60,11 +60,11 @@ export default function EligibilityCheck({ criteria }: { criteria: BursCriteria[
           </select>
         </label>
         <label className="block">
-          <span className="mb-1.5 block text-[13px] font-bold text-body">Marks (%)</span>
+          <span className="mb-1.5 block text-[13px] font-bold text-slate-600">Marks (%)</span>
           <select
             value={marks}
             onChange={(event) => update(() => setMarks(event.target.value))}
-            className="h-11 w-full rounded-[10px] border border-border bg-white px-3 text-[16px] text-body outline-none"
+            className="h-11 w-full rounded-[10px] border border-slate-200 bg-white px-3 text-[16px] text-slate-600 outline-none"
           >
             {MARKS.map((item) => (
               <option key={item} value={item}>
@@ -74,12 +74,12 @@ export default function EligibilityCheck({ criteria }: { criteria: BursCriteria[
           </select>
         </label>
       </div>
-      <div className="mt-4 rounded-[12px] bg-[#F3F5FA] px-4 py-4 text-[15px] leading-relaxed text-body">
+      <div className="mt-4 rounded-[12px] bg-slate-100 px-4 py-4 text-[15px] leading-relaxed text-slate-600">
         {touched && rule ? (
           inside ? (
             <p>
               At {age} with {marks}% you are inside the published guide for {level}: {rule.ageLimit} or under, and at least {rule.minMarks}%. Türkiye Bursları still reviews each application.{" "}
-              <Link href="/#book" className="font-bold text-navy">
+              <Link href="/#book" className="font-bold text-primary">
                 Book a free consultation
               </Link>{" "}
               if you want help with the window.
@@ -87,11 +87,11 @@ export default function EligibilityCheck({ criteria }: { criteria: BursCriteria[
           ) : (
             <p>
               At {age} with {marks}% you are outside the published guide for {level} ({rule.ageLimit} or under, {rule.minMarks}% or above). Many private universities still reduce tuition for strong marks.{" "}
-              <Link href="/#book" className="font-bold text-navy">
+              <Link href="/#book" className="font-bold text-primary">
                 Book a free consultation
               </Link>{" "}
               or{" "}
-              <a href={whatsappHref()} className="font-bold text-whatsapp-green" target="_blank" rel="noreferrer">
+              <a href={whatsappHref()} className="font-bold text-whatsapp" target="_blank" rel="noreferrer">
                 message on WhatsApp
               </a>
               .

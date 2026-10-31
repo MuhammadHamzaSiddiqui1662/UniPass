@@ -70,10 +70,10 @@ export default async function ProgramDetailPage({
       />
       <Header />
       <main className="pt-32">
-        <section className="py-12 bg-page-bg">
+        <section className="py-12 bg-slate-50">
           <div className="container-1200">
             <div className="mb-6">
-              <Link href="/programs" className="text-navy hover:underline text-sm">
+              <Link href="/programs" className="text-primary hover:underline text-sm">
                 ← Back to programs
               </Link>
             </div>
@@ -82,8 +82,8 @@ export default async function ProgramDetailPage({
               <div className="lg:col-span-2">
                 <h1 className="text-h1-detail mb-4">{program.name}</h1>
                 {program.university && (
-                  <p className="text-lg text-body mb-6">
-                    <Link href={`/universities/${program.university.slug}`} className="text-navy hover:underline">
+                  <p className="text-lg text-slate-600 mb-6">
+                    <Link href={`/universities/${program.university.slug}`} className="text-primary hover:underline">
                       {program.university.name}
                     </Link>
                     {" · "}
@@ -99,50 +99,50 @@ export default async function ProgramDetailPage({
 
                 <div className="prose max-w-none">
                   <h2 className="text-h3 mb-4">About this Program</h2>
-                  <p className="text-body leading-relaxed mb-6">{program.description}</p>
+                  <p className="text-slate-600 leading-relaxed mb-6">{program.description}</p>
 
                   {program.requirements && (
                     <>
                       <h3 className="text-h3 mb-4 mt-8">Requirements</h3>
-                      <p className="text-body leading-relaxed whitespace-pre-line">{program.requirements}</p>
+                      <p className="text-slate-600 leading-relaxed whitespace-pre-line">{program.requirements}</p>
                     </>
                   )}
                 </div>
               </div>
 
               <div className="lg:col-span-1">
-                <div className="bg-white rounded-card border border-border p-6 sticky top-24">
+                <div className="bg-white rounded-card border border-slate-200 p-6 sticky top-24">
                   <h3 className="font-display text-xl mb-4">Program Details</h3>
                   <dl className="space-y-3 text-sm">
                     <div>
-                      <dt className="font-bold text-body">Level</dt>
-                      <dd className="text-ink">{program.level}</dd>
+                      <dt className="font-bold text-slate-600">Level</dt>
+                      <dd className="text-primary-900">{program.level}</dd>
                     </div>
                     {program.field && (
                       <div>
-                        <dt className="font-bold text-body">Field</dt>
-                        <dd className="text-ink">{program.field}</dd>
+                        <dt className="font-bold text-slate-600">Field</dt>
+                        <dd className="text-primary-900">{program.field}</dd>
                       </div>
                     )}
                     <div>
-                      <dt className="font-bold text-body">Language</dt>
-                      <dd className="text-ink">{program.language}</dd>
+                      <dt className="font-bold text-slate-600">Language</dt>
+                      <dd className="text-primary-900">{program.language}</dd>
                     </div>
                     {program.duration && (
                       <div>
-                        <dt className="font-bold text-body">Duration</dt>
-                        <dd className="text-ink">{program.duration}</dd>
+                        <dt className="font-bold text-slate-600">Duration</dt>
+                        <dd className="text-primary-900">{program.duration}</dd>
                       </div>
                     )}
                     {program.tuition && (
                       <div>
-                        <dt className="font-bold text-body">Tuition</dt>
-                        <dd className="text-ink">{program.tuition}</dd>
+                        <dt className="font-bold text-slate-600">Tuition</dt>
+                        <dd className="text-primary-900">{program.tuition}</dd>
                       </div>
                     )}
                   </dl>
 
-                  <div className="mt-6 pt-6 border-t border-border">
+                  <div className="mt-6 pt-6 border-t border-slate-200">
                     <h4 className="font-bold mb-3">Interested in this program?</h4>
                     <Link href={`/#book?program=${program._id}`} className="btn-primary w-full text-center block">
                       Book Free Consultation

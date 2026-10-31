@@ -14,10 +14,10 @@ export default function Error({
   return (
     <>
       <Header />
-      <main className="pt-32 min-h-screen bg-page-bg">
+      <main className="pt-32 min-h-screen bg-slate-50">
         <div className="container-1200 py-20 text-center">
           <h1 className="text-h1-hero mb-6">Something went wrong</h1>
-          <p className="text-lg text-body mb-12 max-w-2xl mx-auto">
+          <p className="text-lg text-slate-600 mb-12 max-w-2xl mx-auto">
             We're sorry, but something unexpected happened. Please try again.
           </p>
           <div className="flex gap-4 justify-center">

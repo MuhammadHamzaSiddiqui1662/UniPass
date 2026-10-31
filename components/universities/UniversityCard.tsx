@@ -11,8 +11,8 @@ export default function UniversityCard({ university }: { university: CatalogUniv
   const image = university.featuredImage || PHOTO;
 
   return (
-    <article className="relative flex min-h-[460px] flex-col overflow-hidden rounded-card border-[1.2px] border-border bg-white">
-      <div className="relative h-[190px] overflow-hidden bg-east-bay/20">
+    <article className="relative flex min-h-[460px] flex-col overflow-hidden rounded-card border-[1.2px] border-slate-200 bg-white">
+      <div className="relative h-[190px] overflow-hidden bg-primary-400/20">
         <img src={image} alt="" className="h-full w-full object-cover" />
         <div className="pointer-events-none absolute left-[69%] top-1/2 h-[180px] w-[180px] -translate-x-1/2 -translate-y-1/2">
           <Asset
@@ -59,27 +59,27 @@ export default function UniversityCard({ university }: { university: CatalogUniv
           </span>
           <span className="chip-outline">{university.city}</span>
         </div>
-        <h2 className="mt-3 font-display text-[20px] leading-6 text-ink">
-          <Link href={`/universities/${university.slug}`} className="hover:text-navy">
+        <h2 className="mt-3 font-display text-[20px] leading-6 text-primary-900">
+          <Link href={`/universities/${university.slug}`} className="hover:text-primary">
             {university.name}
           </Link>
         </h2>
-        <p className="mt-3 text-[14px] leading-5 text-body">Fields: {university.fields.join(", ")}</p>
-        <p className="text-[14px] leading-5 text-body">Levels: {university.levels.join(", ")}</p>
-        <div className="mt-auto border-t border-border pt-4">
+        <p className="mt-3 text-[14px] leading-5 text-slate-600">Fields: {university.fields.join(", ")}</p>
+        <p className="text-[14px] leading-5 text-slate-600">Levels: {university.levels.join(", ")}</p>
+        <div className="mt-auto border-t border-slate-200 pt-4">
           <div className="flex items-end justify-between gap-3">
             <div>
-              <p className="text-[13px] text-body">Tuition from</p>
+              <p className="text-[13px] text-slate-600">Tuition from</p>
               <p className="mt-0.5 flex flex-wrap items-baseline gap-x-2">
-                <span className="font-display text-[28px] leading-none text-ink">
+                <span className="font-display text-[28px] leading-none text-primary-900">
                   {formatCurrency(university.tuitionFrom)}
                 </span>
-                <span className="whitespace-nowrap text-[13px] text-body">a year (sample)</span>
+                <span className="whitespace-nowrap text-[13px] text-slate-600">a year (sample)</span>
               </p>
             </div>
             <Link
               href={`/universities/${university.slug}`}
-              className="inline-flex h-11 min-w-[104px] items-center justify-center rounded-input bg-navy px-4 text-[15px] font-bold text-white transition-colors hover:bg-navy/90"
+              className="inline-flex h-11 min-w-[104px] items-center justify-center rounded-input bg-primary px-4 text-[15px] font-bold text-white transition-colors hover:bg-primary-700"
             >
               Explore
             </Link>

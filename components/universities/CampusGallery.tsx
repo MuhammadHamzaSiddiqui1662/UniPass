@@ -57,7 +57,7 @@ export default function CampusGallery({ name }: { name: string }) {
 
   return (
     <div className="grid grid-cols-2 gap-4 lg:grid-cols-[minmax(0,800px)_184px_184px] lg:grid-rows-2">
-      <div className="relative col-span-2 h-[240px] overflow-hidden rounded-card bg-bunting sm:h-[360px] lg:col-span-1 lg:row-span-2 lg:h-[480px]">
+      <div className="relative col-span-2 h-[240px] overflow-hidden rounded-card bg-primary-900 sm:h-[360px] lg:col-span-1 lg:row-span-2 lg:h-[480px]">
         <img
           src={current.art}
           alt={`${name} campus`}
@@ -80,7 +80,7 @@ export default function CampusGallery({ name }: { name: string }) {
             key={shot.id}
             type="button"
             onClick={() => setActive(index)}
-            className="relative h-[120px] overflow-hidden rounded-[12px] bg-bunting sm:h-[160px] lg:h-[232px]"
+            className="relative h-[120px] overflow-hidden rounded-[12px] bg-primary-900 sm:h-[160px] lg:h-[232px]"
             aria-label={`Show campus photo ${index + 1}`}
           >
             <img

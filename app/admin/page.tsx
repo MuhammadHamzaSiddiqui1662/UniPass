@@ -66,42 +66,42 @@ export default async function AdminDashboard() {
   const data = await getDashboardData();
 
   return (
-    <div className="min-h-screen bg-page-bg">
-      <nav className="bg-white border-b border-border">
+    <div className="min-h-screen bg-slate-50">
+      <nav className="bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
             <div className="flex items-center gap-8">
-              <h1 className="font-display text-xl text-ink">
+              <h1 className="font-display text-xl text-primary-900">
                 UniPass Admin
               </h1>
               <div className="hidden md:flex gap-6">
                 <a
                   href="/admin"
-                  className="text-navy font-bold border-b-2 border-navy pb-1"
+                  className="text-primary font-bold border-b-2 border-primary pb-1"
                 >
                   Dashboard
                 </a>
                 <a
                   href="/admin/leads"
-                  className="text-body hover:text-ink"
+                  className="text-slate-600 hover:text-primary-900"
                 >
                   Leads
                 </a>
                 <a
                   href="/admin/universities"
-                  className="text-body hover:text-ink"
+                  className="text-slate-600 hover:text-primary-900"
                 >
                   Universities
                 </a>
-                <a href="/admin/guides" className="text-body hover:text-ink">
+                <a href="/admin/guides" className="text-slate-600 hover:text-primary-900">
                   Guides
                 </a>
               </div>
             </div>
             <div className="flex items-center gap-4">
-              <span className="text-sm text-body">{session.name}</span>
+              <span className="text-sm text-slate-600">{session.name}</span>
               <form action="/api/auth/logout" method="POST">
-                <button type="submit" className="text-sm text-body hover:text-ink">
+                <button type="submit" className="text-sm text-slate-600 hover:text-primary-900">
                   Logout
                 </button>
               </form>
@@ -118,47 +118,47 @@ export default async function AdminDashboard() {
             { label: "Today", value: data.todayCount, color: "blue" },
             { label: "This Week", value: data.weekCount, color: "green" },
             { label: "This Month", value: data.monthCount, color: "purple" },
-            { label: "Total Leads", value: data.totalCount, color: "navy" },
+            { label: "Total Leads", value: data.totalCount, color: "primary" },
           ].map((stat) => (
             <div
               key={stat.label}
-              className="bg-white p-6 rounded-card border border-border"
+              className="bg-white p-6 rounded-card border border-slate-200"
             >
-              <p className="text-sm text-body mb-2">{stat.label}</p>
-              <p className="text-3xl font-display text-ink">{stat.value}</p>
+              <p className="text-sm text-slate-600 mb-2">{stat.label}</p>
+              <p className="text-3xl font-display text-primary-900">{stat.value}</p>
             </div>
           ))}
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
-          <div className="bg-white p-6 rounded-card border border-border">
+          <div className="bg-white p-6 rounded-card border border-slate-200">
             <h3 className="font-display text-xl mb-4">Recent Leads</h3>
             <div className="space-y-4">
               {data.recentLeads.map((lead: any) => (
                 <div
                   key={lead._id}
-                  className="border-b border-border pb-4 last:border-0"
+                  className="border-b border-slate-200 pb-4 last:border-0"
                 >
                   <div className="flex justify-between items-start mb-2">
                     <div>
-                      <p className="font-bold text-ink">{lead.fullName}</p>
-                      <p className="text-sm text-body">
+                      <p className="font-bold text-primary-900">{lead.fullName}</p>
+                      <p className="text-sm text-slate-600">
                         {lead.whatsappNumber} • {lead.city}
                       </p>
                     </div>
                     <span
                       className={`chip ${
                         lead.status === "new"
-                          ? "bg-blue-100 text-blue-700"
+                          ? "bg-info-tint text-primary-800"
                           : lead.status === "contacted"
-                          ? "bg-yellow-100 text-yellow-700"
-                          : "bg-green-100 text-green-700"
+                          ? "bg-warning-tint text-secondary-800"
+                          : "bg-success-tint text-primary-800"
                       }`}
                     >
                       {lead.status}
                     </span>
                   </div>
-                  <p className="text-sm text-body">{lead.levelOfStudy}</p>
+                  <p className="text-sm text-slate-600">{lead.levelOfStudy}</p>
                 </div>
               ))}
             </div>
@@ -170,7 +170,7 @@ export default async function AdminDashboard() {
             </a>
           </div>
 
-          <div className="bg-white p-6 rounded-card border border-border">
+          <div className="bg-white p-6 rounded-card border border-slate-200">
             <h3 className="font-display text-xl mb-4">Leads by Status</h3>
             <div className="space-y-3">
               {[
@@ -185,8 +185,8 @@ export default async function AdminDashboard() {
                   key={item.status}
                   className="flex justify-between items-center"
                 >
-                  <span className="text-body">{item.label}</span>
-                  <span className="font-bold text-ink">
+                  <span className="text-slate-600">{item.label}</span>
+                  <span className="font-bold text-primary-900">
                     {data.statusCounts[item.status] || 0}
                   </span>
                 </div>

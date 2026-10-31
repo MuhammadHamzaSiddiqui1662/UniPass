@@ -118,24 +118,24 @@ export default async function UniversityDetailPage({
         ]}
       />
       <Header activeLink="/universities" />
-      <main className="bg-page-bg">
+      <main className="bg-slate-50">
         <div className="container-1200 pb-16 pt-[104px]">
-          <nav aria-label="Breadcrumb" className="mb-6 text-[14px] text-body">
-            <Link href="/" className="hover:text-ink">
+          <nav aria-label="Breadcrumb" className="mb-6 text-[14px] text-slate-600">
+            <Link href="/" className="hover:text-primary-900">
               Home
             </Link>
             <span className="px-2">/</span>
-            <Link href="/universities" className="hover:text-ink">
+            <Link href="/universities" className="hover:text-primary-900">
               Universities
             </Link>
             <span className="px-2">/</span>
-            <span className="font-bold text-ink">{university.name}</span>
+            <span className="font-bold text-primary-900">{university.name}</span>
           </nav>
 
           <CampusGallery name={university.name} />
 
           <div className="mt-8 flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-            <h1 className="font-display text-[32px] leading-tight text-ink sm:text-[36px]">
+            <h1 className="font-display text-[32px] leading-tight text-primary-900 sm:text-[36px]">
               {university.name}
             </h1>
             <UniversityActions id={bookmarkId} name={university.name} />
@@ -151,25 +151,25 @@ export default async function UniversityDetailPage({
           <div className="mt-8 grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_420px]">
             <div className="max-w-[680px] space-y-8">
               <section>
-                <h2 className="font-display text-[24px] text-ink">About {university.name}</h2>
-                <p className="mt-4 text-[16px] leading-[25px] text-body">{university.description}</p>
+                <h2 className="font-display text-[24px] text-primary-900">About {university.name}</h2>
+                <p className="mt-4 text-[16px] leading-[25px] text-slate-600">{university.description}</p>
               </section>
               <section>
-                <h2 className="font-display text-[24px] text-ink">Why students choose it</h2>
-                <p className="mt-4 text-[16px] leading-[25px] text-body">{university.whyChoose}</p>
+                <h2 className="font-display text-[24px] text-primary-900">Why students choose it</h2>
+                <p className="mt-4 text-[16px] leading-[25px] text-slate-600">{university.whyChoose}</p>
               </section>
               <section>
-                <h2 className="font-display text-[24px] text-ink">Programs and fields</h2>
-                <p className="mt-4 text-[16px] leading-[25px] text-body">{university.programsInfo}</p>
+                <h2 className="font-display text-[24px] text-primary-900">Programs and fields</h2>
+                <p className="mt-4 text-[16px] leading-[25px] text-slate-600">{university.programsInfo}</p>
               </section>
               <section>
-                <h2 className="font-display text-[24px] text-ink">Campus and student life</h2>
-                <p className="mt-4 text-[16px] leading-[25px] text-body">{university.campusLife}</p>
+                <h2 className="font-display text-[24px] text-primary-900">Campus and student life</h2>
+                <p className="mt-4 text-[16px] leading-[25px] text-slate-600">{university.campusLife}</p>
               </section>
             </div>
 
-            <aside className="rounded-card border-[1.2px] border-border bg-white px-7 py-6">
-              <h2 className="font-display text-[20px] text-ink">Key facts</h2>
+            <aside className="rounded-card border-[1.2px] border-slate-200 bg-white px-7 py-6">
+              <h2 className="font-display text-[20px] text-primary-900">Key facts</h2>
               <dl className="mt-4">
                 <Fact label="Type" value={university.type === "public" ? "Public" : "Private"} />
                 <Fact label="City" value={university.city} />
@@ -181,7 +181,7 @@ export default async function UniversityDetailPage({
               <div className="mt-5 space-y-3">
                 <Link
                   href="/#book"
-                  className="inline-flex h-[50px] w-full items-center justify-center rounded-input bg-cta-red text-[16px] font-bold text-white hover:bg-cta-red/90"
+                  className="inline-flex h-[50px] w-full items-center justify-center rounded-input bg-secondary text-[16px] font-bold text-primary-900 hover:bg-secondary-500"
                 >
                   Book free consultation
                 </Link>
@@ -189,7 +189,7 @@ export default async function UniversityDetailPage({
                   href={whatsapp}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex h-[50px] w-full items-center justify-center rounded-input bg-whatsapp-green text-[16px] font-bold text-white hover:bg-whatsapp-green/90"
+                  className="inline-flex h-[50px] w-full items-center justify-center rounded-input bg-whatsapp text-[16px] font-bold text-white hover:bg-whatsapp/90"
                 >
                   Message on WhatsApp
                 </a>
@@ -198,18 +198,18 @@ export default async function UniversityDetailPage({
           </div>
         </div>
 
-        <section className="bg-navy">
+        <section className="bg-primary">
           <div className="container-1200 py-14 lg:py-16">
             <h2 className="font-display text-[26px] leading-snug text-white sm:text-[30px]">
               Ready to apply to {university.name}?
             </h2>
-            <p className="mt-3 text-[16px] text-on-dark-muted">
+            <p className="mt-3 text-[16px] text-primary-100">
               Talk to an advisor for 20 minutes. It is free.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <Link
                 href="/#book"
-                className="inline-flex h-12 items-center justify-center rounded-input bg-white px-6 text-[16px] font-bold text-ink hover:bg-white/90"
+                className="inline-flex h-12 items-center justify-center rounded-input bg-white px-6 text-[16px] font-bold text-primary-900 hover:bg-white/90"
               >
                 Book free consultation
               </Link>
@@ -232,9 +232,9 @@ export default async function UniversityDetailPage({
 
 function Fact({ label, value, last = false }: { label: string; value: string; last?: boolean }) {
   return (
-    <div className={last ? "pt-4" : "border-b border-border py-4 first:pt-2"}>
-      <dt className="text-[13px] font-bold text-body">{label}</dt>
-      <dd className="mt-1 text-[15px] text-ink">{value}</dd>
+    <div className={last ? "pt-4" : "border-b border-slate-200 py-4 first:pt-2"}>
+      <dt className="text-[13px] font-bold text-slate-600">{label}</dt>
+      <dd className="mt-1 text-[15px] text-primary-900">{value}</dd>
     </div>
   );
 }

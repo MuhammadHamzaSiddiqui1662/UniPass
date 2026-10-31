@@ -3,11 +3,11 @@ import Asset from "@/components/home/Asset";
 import LogoMark from "@/components/public/LogoMark";
 import { CONTACT_EMAIL, OFFICE_ADDRESS, whatsappHref } from "@/lib/site/contact";
 
-const linkClass = "text-[15px] leading-6 text-footer-text transition-colors hover:text-white";
+const linkClass = "text-[15px] leading-6 text-primary-100 transition-colors hover:text-white";
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-footer-bg text-footer-text">
+    <footer className="relative overflow-hidden bg-primary-950 text-primary-100">
       <img
         src="/home/imgVector96.svg"
         alt=""
@@ -22,7 +22,7 @@ export default function Footer() {
             <Link href="/" className="mb-4 inline-flex">
               <LogoMark tone="light" />
             </Link>
-            <p className="max-w-[280px] text-[15px] leading-[23px] text-footer-text">
+            <p className="max-w-[280px] text-[15px] leading-[23px] text-primary-100">
               Advisors for students applying to universities in Türkiye. UniPass is your
               bridge to Turkish education.
             </p>
@@ -102,7 +102,7 @@ export default function Footer() {
             height={1}
             className="absolute left-0 top-0"
           />
-          <p className="text-[14px] leading-6 text-footer-text">
+          <p className="text-[14px] leading-6 text-primary-100">
             Universities make all admission decisions. We help you prepare a complete
             application and never promise a place.
           </p>

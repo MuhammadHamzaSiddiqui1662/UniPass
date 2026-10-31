@@ -22,7 +22,7 @@ export default function EditGuideClient({ guideId }: { guideId: string }) {
     content: "",
     editorProps: {
       attributes: {
-        class: "prose max-w-none focus:outline-none min-h-[300px] p-4 border border-border rounded-input",
+        class: "prose max-w-none focus:outline-none min-h-[300px] p-4 border border-slate-200 rounded-input",
       },
     },
   });
@@ -112,18 +112,18 @@ export default function EditGuideClient({ guideId }: { guideId: string }) {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-page-bg flex items-center justify-center">
-        <p className="text-body">Loading...</p>
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+        <p className="text-slate-600">Loading...</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-page-bg">
-      <nav className="bg-white border-b border-border">
+    <div className="min-h-screen bg-slate-50">
+      <nav className="bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
-            <Link href="/admin/guides" className="text-navy hover:underline">← Back to Guides</Link>
+            <Link href="/admin/guides" className="text-primary hover:underline">← Back to Guides</Link>
           </div>
         </div>
       </nav>
@@ -132,7 +132,7 @@ export default function EditGuideClient({ guideId }: { guideId: string }) {
         <h1 className="text-2xl font-display mb-6">Edit Guide</h1>
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="bg-white rounded-card border border-border p-6">
+          <div className="bg-white rounded-card border border-slate-200 p-6">
             <h2 className="font-display text-xl mb-4">Basic Information</h2>
             <div className="space-y-4">
               <div>
@@ -153,7 +153,7 @@ export default function EditGuideClient({ guideId }: { guideId: string }) {
                   required
                   className="input-field"
                 />
-                <p className="text-xs text-body mt-1">URL: /guides/{slug || "slug"}</p>
+                <p className="text-xs text-slate-600 mt-1">URL: /guides/{slug || "slug"}</p>
               </div>
 
               <div className="grid md:grid-cols-2 gap-4">
@@ -174,7 +174,7 @@ export default function EditGuideClient({ guideId }: { guideId: string }) {
             </div>
           </div>
 
-          <div className="bg-white rounded-card border border-border p-6">
+          <div className="bg-white rounded-card border border-slate-200 p-6">
             <h2 className="font-display text-xl mb-4">Content</h2>
             <div className="space-y-4">
               <div>
@@ -183,42 +183,42 @@ export default function EditGuideClient({ guideId }: { guideId: string }) {
                   <button
                     type="button"
                     onClick={() => editor?.chain().focus().toggleBold().run()}
-                    className={`px-3 py-1 text-sm border rounded ${editor?.isActive("bold") ? "bg-navy text-white" : "bg-white"}`}
+                    className={`px-3 py-1 text-sm border rounded ${editor?.isActive("bold") ? "bg-primary text-white" : "bg-white"}`}
                   >
                     Bold
                   </button>
                   <button
                     type="button"
                     onClick={() => editor?.chain().focus().toggleItalic().run()}
-                    className={`px-3 py-1 text-sm border rounded ${editor?.isActive("italic") ? "bg-navy text-white" : "bg-white"}`}
+                    className={`px-3 py-1 text-sm border rounded ${editor?.isActive("italic") ? "bg-primary text-white" : "bg-white"}`}
                   >
                     Italic
                   </button>
                   <button
                     type="button"
                     onClick={() => editor?.chain().focus().toggleHeading({ level: 2 }).run()}
-                    className={`px-3 py-1 text-sm border rounded ${editor?.isActive("heading", { level: 2 }) ? "bg-navy text-white" : "bg-white"}`}
+                    className={`px-3 py-1 text-sm border rounded ${editor?.isActive("heading", { level: 2 }) ? "bg-primary text-white" : "bg-white"}`}
                   >
                     H2
                   </button>
                   <button
                     type="button"
                     onClick={() => editor?.chain().focus().toggleHeading({ level: 3 }).run()}
-                    className={`px-3 py-1 text-sm border rounded ${editor?.isActive("heading", { level: 3 }) ? "bg-navy text-white" : "bg-white"}`}
+                    className={`px-3 py-1 text-sm border rounded ${editor?.isActive("heading", { level: 3 }) ? "bg-primary text-white" : "bg-white"}`}
                   >
                     H3
                   </button>
                   <button
                     type="button"
                     onClick={() => editor?.chain().focus().toggleBulletList().run()}
-                    className={`px-3 py-1 text-sm border rounded ${editor?.isActive("bulletList") ? "bg-navy text-white" : "bg-white"}`}
+                    className={`px-3 py-1 text-sm border rounded ${editor?.isActive("bulletList") ? "bg-primary text-white" : "bg-white"}`}
                   >
                     Bullet List
                   </button>
                   <button
                     type="button"
                     onClick={() => editor?.chain().focus().toggleOrderedList().run()}
-                    className={`px-3 py-1 text-sm border rounded ${editor?.isActive("orderedList") ? "bg-navy text-white" : "bg-white"}`}
+                    className={`px-3 py-1 text-sm border rounded ${editor?.isActive("orderedList") ? "bg-primary text-white" : "bg-white"}`}
                   >
                     Numbered List
                   </button>
@@ -228,7 +228,7 @@ export default function EditGuideClient({ guideId }: { guideId: string }) {
             </div>
           </div>
 
-          <div className="bg-white rounded-card border border-border p-6">
+          <div className="bg-white rounded-card border border-slate-200 p-6">
             <h2 className="font-display text-xl mb-4">Publishing</h2>
             <div className="space-y-4">
               <div className="flex gap-4">
@@ -273,7 +273,7 @@ export default function EditGuideClient({ guideId }: { guideId: string }) {
               type="button"
               onClick={handleDelete}
               disabled={deleting}
-              className="ml-auto px-4 py-2 bg-red-600 text-white rounded-input hover:bg-red-700 disabled:opacity-50"
+              className="ml-auto px-4 py-2 bg-error text-white rounded-input hover:bg-error/90 disabled:opacity-50"
             >
               {deleting ? "Deleting..." : "Delete"}
             </button>

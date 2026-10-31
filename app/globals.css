@@ -2,6 +2,71 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * UniPass colour tokens. Channels are space-separated RGB so Tailwind
+ * opacity modifiers (bg-primary/10) work. Hex comments are the source values.
+ *
+ * Primary purple, Figma frame 5:84. Step → Tailwind key:
+ *   0→50, 0.5→100, 1→150, 1.5→200, 2→300, 3→400, 4→500,
+ *   5→600 (#453F78, brand primary), 6→700, 7→800, 8→900,
+ *   8.5→950, 9→975, 9.5→990.
+ * Secondary golden, Figma frame 5:160, same step mapping.
+ *   Step 5 / key 600 is #D4A72C, the brand secondary.
+ * Slate neutrals are frame 2:4 (50, 100, 200, 400, 600, 700, 800, 900).
+ * The brighter violet ramp and the Aura name on that sheet are not used.
+ */
+:root {
+  --primary-50: 236 235 244; /* #ECEBF4 step 0 */
+  --primary-100: 219 218 232; /* #DBDAE8 step 0.5 */
+  --primary-150: 203 201 219; /* #CBC9DB step 1 */
+  --primary-200: 186 183 207; /* #BAB7CF step 1.5 */
+  --primary-300: 169 166 194; /* #A9A6C2 step 2 */
+  --primary-400: 136 132 170; /* #8884AA step 3 */
+  --primary-500: 102 97 145; /* #666191 step 4 */
+  --primary-600: 69 63 120; /* #453F78 step 5 */
+  --primary-700: 55 50 96; /* #373260 step 6 */
+  --primary-800: 41 38 72; /* #292648 step 7 */
+  --primary-900: 28 25 48; /* #1C1930 step 8 */
+  --primary-950: 21 19 36; /* #151324 step 8.5 */
+  --primary-975: 14 13 24; /* #0E0D18 step 9 */
+  --primary-990: 7 6 12; /* #07060C step 9.5 */
+
+  --secondary-50: 255 255 255; /* #FFFFFF step 0 */
+  --secondary-100: 251 246 234; /* #FBF6EA step 0.5 */
+  --secondary-150: 246 237 213; /* #F6EDD5 step 1 */
+  --secondary-200: 242 229 192; /* #F2E5C0 step 1.5 */
+  --secondary-300: 238 220 171; /* #EEDCAB step 2 */
+  --secondary-400: 229 202 128; /* #E5CA80 step 3 */
+  --secondary-500: 221 185 86; /* #DDB956 step 4 */
+  --secondary-600: 212 167 44; /* #D4A72C step 5 */
+  --secondary-700: 170 134 35; /* #AA8623 step 6 */
+  --secondary-800: 127 100 26; /* #7F641A step 7 */
+  --secondary-900: 85 67 18; /* #554312 step 8 */
+  --secondary-950: 64 50 13; /* #40320D step 8.5 */
+  --secondary-975: 42 33 9; /* #2A2109 step 9 */
+  --secondary-990: 21 17 4; /* #151104 step 9.5 */
+
+  --slate-50: 248 250 252; /* #F8FAFC */
+  --slate-100: 241 245 249; /* #F1F5F9 */
+  --slate-200: 226 232 240; /* #E2E8F0 */
+  --slate-400: 148 163 184; /* #94A3B8 */
+  --slate-600: 71 85 105; /* #475569 */
+  --slate-700: 51 65 85; /* #334155 */
+  --slate-800: 30 41 59; /* #1E293B */
+  --slate-900: 15 23 42; /* #0F172A */
+
+  --success: 34 197 94; /* #22C55E */
+  --success-tint: 220 252 231; /* #DCFCE7 */
+  --warning: 234 179 8; /* #EAB308 */
+  --warning-tint: 254 249 195; /* #FEF9C3 */
+  --error: 239 68 68; /* #EF4444 */
+  --error-tint: 254 226 226; /* #FEE2E2 */
+  --info: 59 130 246; /* #3B82F6 */
+  --info-tint: 219 234 254; /* #DBEAFE */
+
+  --whatsapp: 18 140 74; /* #128C4A */
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -22,11 +87,11 @@
   }
 
   .text-h1-detail {
-    @apply font-display text-[36px] font-bold leading-tight text-ink md:text-[48px];
+    @apply font-display text-[36px] font-bold leading-tight text-primary-900 md:text-[48px];
   }
 
   .text-h2 {
-    @apply font-display text-[32px] font-bold leading-[38px] text-ink md:text-[40px] md:leading-[46px];
+    @apply font-display text-[32px] font-bold leading-[38px] text-primary-900 md:text-[40px] md:leading-[46px];
   }
 
   .text-h2-cta {
@@ -34,27 +99,27 @@
   }
 
   .text-h3 {
-    @apply font-display text-[22px] font-bold leading-snug text-ink md:text-[26px];
+    @apply font-display text-[22px] font-bold leading-snug text-primary-900 md:text-[26px];
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-input bg-navy px-8 py-3 text-[17px] font-bold text-white transition-colors hover:bg-navy/90;
+    @apply inline-flex items-center justify-center rounded-input bg-primary px-8 py-3 text-[17px] font-bold text-white transition-colors hover:bg-primary-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
   }
 
   .btn-cta {
-    @apply inline-flex items-center justify-center rounded-input bg-cta-red font-bold text-white transition-colors hover:bg-cta-red/90;
+    @apply inline-flex items-center justify-center rounded-input bg-secondary font-bold text-primary-900 transition-colors hover:bg-secondary-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2;
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center rounded-input border-[1.5px] border-border-strong bg-white font-bold text-ink transition-colors hover:border-navy;
+    @apply inline-flex items-center justify-center rounded-input border-[1.5px] border-primary-200 bg-white font-bold text-primary-900 transition-colors hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
   }
 
   .btn-outline-dark {
-    @apply inline-flex items-center justify-center rounded-input border-[1.5px] border-white/70 font-bold text-white transition-colors hover:bg-white/10;
+    @apply inline-flex items-center justify-center rounded-input border-[1.5px] border-white/70 font-bold text-white transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-primary-900;
   }
 
   .btn-whatsapp {
-    @apply inline-flex items-center justify-center rounded-input bg-whatsapp-green px-6 py-3 text-[15px] font-bold text-white transition-colors hover:bg-whatsapp-green/90;
+    @apply inline-flex items-center justify-center rounded-input bg-whatsapp px-6 py-3 text-[15px] font-bold text-white transition-colors hover:bg-whatsapp/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-whatsapp focus-visible:ring-offset-2;
   }
 
   .chip,
@@ -66,22 +131,22 @@
   }
 
   .chip-success {
-    @apply bg-success-tint font-bold text-success-text;
+    @apply bg-success-tint font-bold text-primary-800;
   }
 
   .chip-tint {
-    @apply bg-surface-tint font-bold text-navy;
+    @apply bg-primary-50 font-bold text-primary;
   }
 
   .chip-outline {
-    @apply border-[1.2px] border-border font-normal text-body;
+    @apply border-[1.2px] border-slate-200 font-normal text-slate-600;
   }
 
   .chip-warning {
-    @apply bg-warning-tint font-bold text-warning-text;
+    @apply bg-warning-tint font-bold text-secondary-800;
   }
 
   .input-field {
-    @apply h-12 w-full rounded-input border-[1.5px] border-border-strong bg-white px-4 text-[16px] text-ink outline-none transition-colors placeholder:text-body focus:border-navy disabled:cursor-not-allowed disabled:opacity-60;
+    @apply h-12 w-full rounded-input border-[1.5px] border-primary-200 bg-white px-4 text-[16px] text-primary-900 outline-none transition-colors placeholder:text-slate-600 focus:border-primary focus-visible:ring-2 focus-visible:ring-primary/30 disabled:cursor-not-allowed disabled:opacity-60;
   }
 }

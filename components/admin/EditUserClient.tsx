@@ -85,18 +85,18 @@ export default function EditUserClient({ userId }: { userId: string }) {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-page-bg flex items-center justify-center">
-        <p className="text-body">Loading...</p>
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+        <p className="text-slate-600">Loading...</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-page-bg">
-      <nav className="bg-white border-b border-border">
+    <div className="min-h-screen bg-slate-50">
+      <nav className="bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
-            <Link href="/admin/users" className="text-navy hover:underline">
+            <Link href="/admin/users" className="text-primary hover:underline">
               ← Back to Users
             </Link>
           </div>
@@ -107,7 +107,7 @@ export default function EditUserClient({ userId }: { userId: string }) {
         <h1 className="text-2xl font-display mb-6">Edit User</h1>
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="bg-white rounded-card border border-border p-6">
+          <div className="bg-white rounded-card border border-slate-200 p-6">
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-bold mb-1">Name *</label>
@@ -150,7 +150,7 @@ export default function EditUserClient({ userId }: { userId: string }) {
                   <option value="staff">Staff</option>
                   <option value="admin">Admin</option>
                 </select>
-                <p className="text-xs text-body mt-1">
+                <p className="text-xs text-slate-600 mt-1">
                   Staff can only manage leads. Admin has full access.
                 </p>
               </div>
@@ -175,7 +175,7 @@ export default function EditUserClient({ userId }: { userId: string }) {
               type="button"
               onClick={handleDelete}
               disabled={deleting}
-              className="ml-auto px-4 py-2 bg-red-600 text-white rounded-input hover:bg-red-700 disabled:opacity-50"
+              className="ml-auto px-4 py-2 bg-error text-white rounded-input hover:bg-error/90 disabled:opacity-50"
             >
               {deleting ? "Deleting..." : "Delete"}
             </button>

@@ -1,5 +1,5 @@
 type LogoMarkProps = {
-  /** Dark word on the white header, light word on the navy footer. */
+  /** Dark word on the white header, light word on the purple footer. */
   tone?: "dark" | "light";
 };
 
@@ -16,7 +16,7 @@ export default function LogoMark({ tone = "dark" }: LogoMarkProps) {
       />
       <span
         className={`font-display text-[26px] leading-none ${
-          tone === "light" ? "text-white" : "text-ink"
+          tone === "light" ? "text-white" : "text-primary-900"
         }`}
       >
         UniPass

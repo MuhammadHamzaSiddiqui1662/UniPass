@@ -83,47 +83,47 @@ export default async function LeadsPage({
     await getLeads(searchParams);
 
   return (
-    <div className="min-h-screen bg-page-bg">
-      <nav className="bg-white border-b border-border">
+    <div className="min-h-screen bg-slate-50">
+      <nav className="bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
             <div className="flex items-center gap-8">
-              <Link href="/admin" className="font-display text-xl text-ink">
+              <Link href="/admin" className="font-display text-xl text-primary-900">
                 UniPass Admin
               </Link>
               <div className="hidden md:flex gap-6">
-                <Link href="/admin" className="text-body hover:text-ink">
+                <Link href="/admin" className="text-slate-600 hover:text-primary-900">
                   Dashboard
                 </Link>
                 <Link
                   href="/admin/leads"
-                  className="text-navy font-bold border-b-2 border-navy pb-1"
+                  className="text-primary font-bold border-b-2 border-primary pb-1"
                 >
                   Leads
                 </Link>
                 <Link
                   href="/admin/universities"
-                  className="text-body hover:text-ink"
+                  className="text-slate-600 hover:text-primary-900"
                 >
                   Universities
                 </Link>
-                <Link href="/admin/guides" className="text-body hover:text-ink">
+                <Link href="/admin/guides" className="text-slate-600 hover:text-primary-900">
                   Guides
                 </Link>
                 <Link
                   href="/admin/settings"
-                  className="text-body hover:text-ink"
+                  className="text-slate-600 hover:text-primary-900"
                 >
                   Settings
                 </Link>
               </div>
             </div>
             <div className="flex items-center gap-4">
-              <span className="text-sm text-body">{session.name}</span>
+              <span className="text-sm text-slate-600">{session.name}</span>
               <form action="/api/auth/logout" method="POST">
                 <button
                   type="submit"
-                  className="text-sm text-body hover:text-ink"
+                  className="text-sm text-slate-600 hover:text-primary-900"
                 >
                   Logout
                 </button>
@@ -144,7 +144,7 @@ export default async function LeadsPage({
           </Link>
         </div>
 
-        <div className="bg-white rounded-card border border-border p-6 mb-6">
+        <div className="bg-white rounded-card border border-slate-200 p-6 mb-6">
           <form className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <input
               type="text"
@@ -179,85 +179,85 @@ export default async function LeadsPage({
           </form>
         </div>
 
-        <div className="bg-white rounded-card border border-border overflow-hidden">
+        <div className="bg-white rounded-card border border-slate-200 overflow-hidden">
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-border">
-              <thead className="bg-surface-tint">
+              <thead className="bg-primary-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-bold text-body uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">
                     Name
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-bold text-body uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">
                     Contact
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-bold text-body uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">
                     Location
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-bold text-body uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">
                     Level
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-bold text-body uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-bold text-body uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">
                     Date
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-bold text-body uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">
                     Actions
                   </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border">
                 {leads.map((lead: any) => (
-                  <tr key={lead._id} className="hover:bg-surface-tint/50">
+                  <tr key={lead._id} className="hover:bg-primary-50/50">
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm font-bold text-ink">
+                      <div className="text-sm font-bold text-primary-900">
                         {lead.fullName}
                       </div>
                       {lead.university && (
-                        <div className="text-xs text-body">
+                        <div className="text-xs text-slate-600">
                           Interest: {lead.university.name}
                         </div>
                       )}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-ink">
+                      <div className="text-sm text-primary-900">
                         {formatPhoneNumber(lead.whatsappNumber)}
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-ink">{lead.city}</div>
+                      <div className="text-sm text-primary-900">{lead.city}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-ink">{lead.levelOfStudy}</div>
+                      <div className="text-sm text-primary-900">{lead.levelOfStudy}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span
                         className={`chip ${
                           lead.status === "new"
-                            ? "bg-blue-100 text-blue-700"
+                            ? "bg-info-tint text-primary-800"
                             : lead.status === "contacted"
-                            ? "bg-yellow-100 text-yellow-700"
+                            ? "bg-warning-tint text-secondary-800"
                             : lead.status === "qualified"
-                            ? "bg-green-100 text-green-700"
+                            ? "bg-success-tint text-primary-800"
                             : lead.status === "applied"
-                            ? "bg-purple-100 text-purple-700"
+                            ? "bg-primary-100 text-primary-800"
                             : lead.status === "enrolled"
-                            ? "bg-green-100 text-green-700"
-                            : "bg-red-100 text-red-700"
+                            ? "bg-success-tint text-primary-800"
+                            : "bg-error-tint text-primary-900"
                         }`}
                       >
                         {LEAD_STATUSES.find((s) => s.value === lead.status)
                           ?.label || lead.status}
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-body">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-600">
                       {formatDate(lead.createdAt)}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm">
                       <Link
                         href={`/admin/leads/${lead._id}`}
-                        className="text-navy hover:underline"
+                        className="text-primary hover:underline"
                       >
                         View
                       </Link>
@@ -269,18 +269,18 @@ export default async function LeadsPage({
           </div>
 
           {totalPages > 1 && (
-            <div className="border-t border-border px-6 py-4 flex justify-center gap-2">
+            <div className="border-t border-slate-200 px-6 py-4 flex justify-center gap-2">
               {currentPage > 1 && (
                 <Link
                   href={{
                     query: { ...searchParams, page: currentPage - 1 },
                   }}
-                  className="px-4 py-2 border border-border rounded-input text-sm hover:bg-surface-tint"
+                  className="px-4 py-2 border border-slate-200 rounded-input text-sm hover:bg-primary-50"
                 >
                   Previous
                 </Link>
               )}
-              <span className="px-4 py-2 text-sm text-body">
+              <span className="px-4 py-2 text-sm text-slate-600">
                 Page {currentPage} of {totalPages}
               </span>
               {currentPage < totalPages && (
@@ -288,7 +288,7 @@ export default async function LeadsPage({
                   href={{
                     query: { ...searchParams, page: currentPage + 1 },
                   }}
-                  className="px-4 py-2 border border-border rounded-input text-sm hover:bg-surface-tint"
+                  className="px-4 py-2 border border-slate-200 rounded-input text-sm hover:bg-primary-50"
                 >
                   Next
                 </Link>
@@ -298,7 +298,7 @@ export default async function LeadsPage({
 
           {leads.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-body">No leads found</p>
+              <p className="text-slate-600">No leads found</p>
             </div>
           )}
         </div>

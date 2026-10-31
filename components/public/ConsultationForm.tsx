@@ -130,12 +130,12 @@ export default function ConsultationForm({ context }: ConsultationFormProps) {
     return (
       <div className="rounded-form-card bg-white px-8 py-10 text-center shadow-form-card sm:px-10">
         <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-success-tint">
-          <svg className="h-8 w-8 text-success-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="h-8 w-8 text-primary-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
         </div>
         <h3 className="text-h3 mb-3">Thank you!</h3>
-        <p className="mb-6 text-[16px] leading-6 text-body">
+        <p className="mb-6 text-[16px] leading-6 text-slate-600">
           We&apos;ve received your consultation request. Our team will reach out on WhatsApp
           within 24 hours.
         </p>
@@ -152,7 +152,7 @@ export default function ConsultationForm({ context }: ConsultationFormProps) {
       noValidate
       className="relative rounded-form-card bg-white px-6 py-8 shadow-form-card sm:px-9 sm:py-8"
     >
-      <h3 className="mb-7 font-display text-[26px] leading-none text-ink">
+      <h3 className="mb-7 font-display text-[26px] leading-none text-primary-900">
         Book your free consultation
       </h3>
 
@@ -236,7 +236,7 @@ export default function ConsultationForm({ context }: ConsultationFormProps) {
         </div>
 
         {errorMessage && (
-          <p className="rounded-input border border-cta-red/30 bg-red-50 px-4 py-3 text-sm text-cta-red" role="alert">
+          <p className="rounded-input border border-error/30 bg-error-tint px-4 py-3 text-sm text-error" role="alert">
             {errorMessage}
           </p>
         )}
@@ -266,12 +266,12 @@ function Field({
 }) {
   return (
     <div>
-      <label htmlFor={htmlFor} className="mb-2 block text-[13px] font-bold text-body">
+      <label htmlFor={htmlFor} className="mb-2 block text-[13px] font-bold text-slate-600">
         {label}
       </label>
       {children}
       {error && (
-        <p className="mt-1.5 text-[13px] text-cta-red" role="alert">
+        <p className="mt-1.5 text-[13px] text-error" role="alert">
           {error}
         </p>
       )}

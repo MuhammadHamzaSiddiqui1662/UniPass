@@ -23,7 +23,7 @@ export default function FaqAccordion({ faqs }: { faqs: HomeFaq[] }) {
                 aria-expanded={open}
                 onClick={() => setOpenIndex(open ? -1 : index)}
               >
-                <span className="font-display text-[18px] leading-snug text-ink sm:text-[20px]">
+                <span className="font-display text-[18px] leading-snug text-primary-900 sm:text-[20px]">
                   {faq.question}
                 </span>
                 <span className="relative mt-1.5 block h-[14px] w-[14px] shrink-0" aria-hidden>
@@ -45,7 +45,7 @@ export default function FaqAccordion({ faqs }: { faqs: HomeFaq[] }) {
               </button>
             </h3>
             {open && (
-              <p className="max-w-[760px] pb-5 text-[16px] leading-[26px] text-body">{faq.answer}</p>
+              <p className="max-w-[760px] pb-5 text-[16px] leading-[26px] text-slate-600">{faq.answer}</p>
             )}
           </div>
         );
