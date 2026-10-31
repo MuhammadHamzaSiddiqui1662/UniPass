@@ -132,8 +132,15 @@ export default async function ScholarshipsPage() {
           <img
             src="/universities/top-visual__imgGroup1.svg"
             alt=""
+            width={1536}
+            height={717}
             className="pointer-events-none absolute max-w-none"
-            style={{ width: 1536, height: 717, left: -50, top: -235 }}
+            style={{
+              width: "max(1536px, 106.6667vw)",
+              height: "max(717px, 49.7917vw)",
+              left: "min(-50px, -3.4722vw)",
+              top: "min(-235px, -16.3194vw)",
+            }}
           />
           <img
             src="/universities/top-visual__imgSharedHeroOverlay.svg"

@@ -35,7 +35,7 @@ export function Hero() {
         alt=""
         width={1440}
         height={716}
-        className="pointer-events-none absolute left-1/2 top-0 h-[716px] w-[1440px] max-w-none -translate-x-1/2"
+        className="pointer-events-none absolute left-1/2 top-0 h-[716px] w-[1440px] max-w-none -translate-x-1/2 min-[1440px]:left-0 min-[1440px]:h-full min-[1440px]:w-full min-[1440px]:translate-x-0"
       />
       <div className="relative z-10 mx-auto flex max-w-[1200px] flex-col px-4 pb-16 pt-36 sm:px-6 sm:pt-40 lg:h-[716px] lg:px-0 lg:pb-0 lg:pt-[176px]">
         <h1 className="text-h1-hero">
@@ -256,8 +256,7 @@ export function Guides({ guides, total }: { guides: HomeGuide[]; total: number }
         alt=""
         width={1440}
         height={790}
-        className="pointer-events-none absolute left-1/2 top-0 max-w-none -translate-x-1/2"
-        style={{ width: 1440, height: 790 }}
+        className="pointer-events-none absolute left-1/2 top-0 h-[790px] w-[1440px] max-w-none -translate-x-1/2 min-[1440px]:left-0 min-[1440px]:w-full min-[1440px]:translate-x-0"
       />
       <div className="container-1200 relative">
         <h2 className="text-h2">Guides for studying in Turkey</h2>
@@ -353,8 +352,7 @@ export function Questions({ faqs }: { faqs: HomeFaq[] }) {
         alt=""
         width={1440}
         height={720}
-        className="pointer-events-none absolute left-1/2 top-0 max-w-none -translate-x-1/2"
-        style={{ width: 1440, height: 720 }}
+        className="pointer-events-none absolute left-1/2 top-0 h-[720px] w-[1440px] max-w-none -translate-x-1/2 min-[1440px]:left-0 min-[1440px]:w-full min-[1440px]:translate-x-0"
       />
       <div className="container-1200 relative grid gap-10 lg:grid-cols-[340px_minmax(0,1fr)] lg:gap-16">
         <div>

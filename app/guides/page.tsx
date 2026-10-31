@@ -108,7 +108,14 @@ export default async function GuidesPage({
           <img
             src="/guides/skyline.svg"
             alt=""
-            className="pointer-events-none absolute left-1/2 top-[-180px] h-[717px] w-[1536px] max-w-none -translate-x-1/2 opacity-90"
+            width={1536}
+            height={717}
+            className="pointer-events-none absolute left-1/2 max-w-none -translate-x-1/2 opacity-90"
+            style={{
+              width: "max(1536px, 106.6667vw)",
+              height: "max(717px, 49.7917vw)",
+              top: "min(-180px, -12.5vw)",
+            }}
           />
           <img src="/guides/overlay.svg" alt="" className="pointer-events-none absolute inset-0 h-full w-full object-cover" />
           <div className="container-1200 relative pt-[88px]">
