@@ -1,26 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-const STORAGE_KEY = "savedUniversities";
+import { readIdList, SAVED_UNIVERSITIES_KEY, toggleId } from "@/lib/universities/saved";
 
 export default function BookmarkButton({ id, name }: { id: string; name: string }) {
   const [saved, setSaved] = useState(false);
 
   useEffect(() => {
-    try {
-      const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]") as string[];
-      setSaved(stored.includes(id));
-    } catch {
-      setSaved(false);
-    }
+    setSaved(readIdList(SAVED_UNIVERSITIES_KEY).includes(id));
   }, [id]);
 
   const toggle = () => {
-    const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]") as string[];
-    const next = saved ? stored.filter((item) => item !== id) : [...stored, id];
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
-    setSaved(!saved);
+    setSaved(toggleId(SAVED_UNIVERSITIES_KEY, id));
   };
 
   return (

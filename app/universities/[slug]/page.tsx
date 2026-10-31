@@ -1,61 +1,111 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 import Header from "@/components/public/Header";
 import Footer from "@/components/public/Footer";
+import CampusGallery from "@/components/universities/CampusGallery";
+import UniversityActions from "@/components/universities/UniversityActions";
+import { BreadcrumbSchema, UniversitySchema } from "@/components/seo/StructuredData";
 import { connectDB, University } from "@/lib/db";
-import { notFound } from "next/navigation";
-import { Metadata } from "next";
-import Link from "next/link";
-import { UniversitySchema, BreadcrumbSchema } from "@/components/seo/StructuredData";
+import { whatsappHref } from "@/lib/site/contact";
+import {
+  fallbackDetail,
+  scholarshipLabel,
+  type DetailUniversity,
+} from "@/lib/universities/details";
 import { formatCurrency } from "@/lib/utils/format";
 
-async function getUniversity(slug: string) {
+export const dynamic = "force-dynamic";
+
+async function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
+  let timer: ReturnType<typeof setTimeout> | undefined;
   try {
-    await connectDB();
-    const university = await University.findOne({ slug, status: "published" }).lean();
-    return university ? JSON.parse(JSON.stringify(university)) : null;
+    return await Promise.race([
+      promise,
+      new Promise<T>((_, reject) => {
+        timer = setTimeout(() => reject(new Error("database timeout")), ms);
+      }),
+    ]);
+  } finally {
+    if (timer) clearTimeout(timer);
+  }
+}
+
+async function getUniversity(slug: string): Promise<DetailUniversity | null> {
+  const sample = fallbackDetail(slug);
+  try {
+    await withTimeout(connectDB(), 3000);
+    const university = await withTimeout(
+      University.findOne({ slug, status: "published" }).lean(),
+      3000,
+    );
+    if (!university) return sample;
+    return {
+      _id: String(university._id),
+      slug: university.slug,
+      name: university.name,
+      type: university.type,
+      city: university.city,
+      tuitionFrom: university.tuitionFrom,
+      fields: university.fields ?? [],
+      levels: university.levels ?? [],
+      description: university.description || sample?.description || "",
+      whyChoose: university.whyChoose || sample?.whyChoose || "",
+      programsInfo: university.programsInfo || sample?.programsInfo || "",
+      campusLife: university.campusLife || sample?.campusLife || "",
+      turkiyeBurslariEligible: university.turkiyeBurslariEligible,
+      hasMeritScholarship: university.hasMeritScholarship,
+      metaTitle: university.metaTitle,
+      metaDescription: university.metaDescription,
+    };
   } catch (error) {
-    return null;
+    console.error("Failed to fetch university:", error);
+    return sample;
   }
 }
 
 export async function generateMetadata({
-  params: rawParams,
+  params,
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const params = await rawParams;
-  const university = await getUniversity(params.slug);
-
-  if (!university) {
-    return { title: "University Not Found" };
-  }
+  const { slug } = await params;
+  const university = await getUniversity(slug);
+  if (!university) return { title: "University not found | UniPass" };
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:43123";
+  const title = university.metaTitle || `${university.name} | Study in Türkiye | UniPass`;
+  const description =
+    university.metaDescription ||
+    university.description ||
+    `Explore ${university.name} in ${university.city} with UniPass.`;
 
   return {
-    title: university.metaTitle || `${university.name} | Study in Türkiye | UniPass`,
-    description: university.metaDescription || university.description,
+    title,
+    description,
     openGraph: {
-      title: university.metaTitle || university.name,
-      description: university.metaDescription || university.description,
+      title,
+      description,
       url: `${baseUrl}/universities/${university.slug}`,
       type: "website",
+      locale: "en_PK",
+      siteName: "UniPass",
     },
   };
 }
 
 export default async function UniversityDetailPage({
-  params: rawParams,
+  params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const params = await rawParams;
-  const university = await getUniversity(params.slug);
-
-  if (!university) {
-    notFound();
-  }
+  const { slug } = await params;
+  const university = await getUniversity(slug);
+  if (!university) notFound();
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:43123";
+  const bookmarkId = university._id || university.slug;
+  const whatsapp = whatsappHref();
 
   return (
     <>
@@ -67,129 +117,124 @@ export default async function UniversityDetailPage({
           { name: university.name, url: `${baseUrl}/universities/${university.slug}` },
         ]}
       />
-      <Header />
-      <main className="pt-32">
-        <section className="py-12 bg-page-bg">
-          <div className="container-1200">
-            <div className="mb-6">
-              <Link href="/universities" className="text-navy hover:underline text-sm">
-                ← Back to universities
-              </Link>
+      <Header activeLink="/universities" />
+      <main className="bg-page-bg">
+        <div className="container-1200 pb-16 pt-[104px]">
+          <nav aria-label="Breadcrumb" className="mb-6 text-[14px] text-body">
+            <Link href="/" className="hover:text-ink">
+              Home
+            </Link>
+            <span className="px-2">/</span>
+            <Link href="/universities" className="hover:text-ink">
+              Universities
+            </Link>
+            <span className="px-2">/</span>
+            <span className="font-bold text-ink">{university.name}</span>
+          </nav>
+
+          <CampusGallery name={university.name} />
+
+          <div className="mt-8 flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+            <h1 className="font-display text-[32px] leading-tight text-ink sm:text-[36px]">
+              {university.name}
+            </h1>
+            <UniversityActions id={bookmarkId} name={university.name} />
+          </div>
+
+          <div className="mt-4 flex flex-wrap gap-2">
+            <span className={university.type === "public" ? "chip-success" : "chip-tint"}>
+              {university.type === "public" ? "Public" : "Private"}
+            </span>
+            <span className="chip-outline">{university.city}</span>
+          </div>
+
+          <div className="mt-8 grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_420px]">
+            <div className="max-w-[680px] space-y-8">
+              <section>
+                <h2 className="font-display text-[24px] text-ink">About {university.name}</h2>
+                <p className="mt-4 text-[16px] leading-[25px] text-body">{university.description}</p>
+              </section>
+              <section>
+                <h2 className="font-display text-[24px] text-ink">Why students choose it</h2>
+                <p className="mt-4 text-[16px] leading-[25px] text-body">{university.whyChoose}</p>
+              </section>
+              <section>
+                <h2 className="font-display text-[24px] text-ink">Programs and fields</h2>
+                <p className="mt-4 text-[16px] leading-[25px] text-body">{university.programsInfo}</p>
+              </section>
+              <section>
+                <h2 className="font-display text-[24px] text-ink">Campus and student life</h2>
+                <p className="mt-4 text-[16px] leading-[25px] text-body">{university.campusLife}</p>
+              </section>
             </div>
 
-            <div className="grid lg:grid-cols-3 gap-8">
-              <div className="lg:col-span-2">
-                <h1 className="text-h1-detail mb-4">{university.name}</h1>
-                <p className="text-lg text-body mb-6">{university.city} · {university.type}</p>
-
-                <div className="flex gap-3 mb-8">
-                  {university.fields?.slice(0, 3).map((field: string) => (
-                    <span key={field} className="chip-tint">{field}</span>
-                  ))}
-                </div>
-
-                <div className="prose max-w-none">
-                  <h2 className="text-h3 mb-4">About</h2>
-                  <p className="text-body leading-relaxed mb-6">{university.description}</p>
-
-                  {university.fields && university.fields.length > 0 && (
-                    <>
-                      <h3 className="text-h3 mb-4 mt-8">Fields of Study</h3>
-                      <div className="flex flex-wrap gap-2">
-                        {university.fields.map((field: string) => (
-                          <span key={field} className="chip">{field}</span>
-                        ))}
-                      </div>
-                    </>
-                  )}
-
-                  {university.levels && university.levels.length > 0 && (
-                    <>
-                      <h3 className="text-h3 mb-4 mt-8">Levels Offered</h3>
-                      <div className="flex gap-2">
-                        {university.levels.map((level: string) => (
-                          <span key={level} className="chip">{level}</span>
-                        ))}
-                      </div>
-                    </>
-                  )}
-
-                  {university.facts && university.facts.length > 0 && (
-                    <>
-                      <h3 className="text-h3 mb-4 mt-8">Key Facts</h3>
-                      <ul className="space-y-2">
-                        {university.facts.map((fact: string, i: number) => (
-                          <li key={i} className="flex gap-2">
-                            <span className="text-teal">✓</span>
-                            <span>{fact}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </>
-                  )}
-                </div>
+            <aside className="rounded-card border-[1.2px] border-border bg-white px-7 py-6">
+              <h2 className="font-display text-[20px] text-ink">Key facts</h2>
+              <dl className="mt-4">
+                <Fact label="Type" value={university.type === "public" ? "Public" : "Private"} />
+                <Fact label="City" value={university.city} />
+                <Fact label="Tuition from" value={`${formatCurrency(university.tuitionFrom)} a year (sample)`} />
+                <Fact label="Levels" value={university.levels.join(", ")} />
+                <Fact label="Fields" value={university.fields.join(", ")} />
+                <Fact label="Scholarships" value={scholarshipLabel(university)} last />
+              </dl>
+              <div className="mt-5 space-y-3">
+                <Link
+                  href="/#book"
+                  className="inline-flex h-[50px] w-full items-center justify-center rounded-input bg-cta-red text-[16px] font-bold text-white hover:bg-cta-red/90"
+                >
+                  Book free consultation
+                </Link>
+                <a
+                  href={whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-[50px] w-full items-center justify-center rounded-input bg-whatsapp-green text-[16px] font-bold text-white hover:bg-whatsapp-green/90"
+                >
+                  Message on WhatsApp
+                </a>
               </div>
+            </aside>
+          </div>
+        </div>
 
-              <div className="lg:col-span-1">
-                <div className="bg-white rounded-card border border-border p-6 sticky top-24">
-                  <h3 className="font-display text-xl mb-4">Quick Info</h3>
-                  <dl className="space-y-3 text-sm">
-                    <div>
-                      <dt className="font-bold text-body">Type</dt>
-                      <dd className="text-ink">{university.type}</dd>
-                    </div>
-                    <div>
-                      <dt className="font-bold text-body">City</dt>
-                      <dd className="text-ink">{university.city}</dd>
-                    </div>
-                    <div>
-                      <dt className="font-bold text-body">Tuition (USD/year)</dt>
-                      <dd className="text-ink">
-                        {formatCurrency(university.tuitionFrom)}
-                        {university.tuitionTo && ` - ${formatCurrency(university.tuitionTo)}`}
-                      </dd>
-                    </div>
-                    {university.hasMeritScholarship && (
-                      <div>
-                        <dt className="font-bold text-body">Merit Scholarship</dt>
-                        <dd className="text-teal">Available</dd>
-                      </div>
-                    )}
-                    {university.website && (
-                      <div>
-                        <dt className="font-bold text-body">Website</dt>
-                        <dd>
-                          <a href={university.website} target="_blank" rel="noopener noreferrer" className="text-navy hover:underline text-sm">
-                            Visit Website →
-                          </a>
-                        </dd>
-                      </div>
-                    )}
-                  </dl>
-
-                  <div className="mt-6 pt-6 border-t border-border">
-                    <Link href={`/#book?university=${university._id}`} className="btn-primary w-full text-center block">
-                      Book Consultation
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Contextual CTA */}
-            <div className="mt-12 bg-navy/5 rounded-card p-8 text-center">
-              <h3 className="font-display text-2xl mb-4">Interested in {university.name}?</h3>
-              <p className="text-body mb-6 max-w-2xl mx-auto">
-                Book a free consultation to learn more about applying to this university and explore scholarship opportunities.
-              </p>
-              <Link href={`/#book?university=${university._id}`} className="btn-primary px-8 py-3">
-                Book Free Consultation
+        <section className="bg-navy">
+          <div className="container-1200 py-14 lg:py-16">
+            <h2 className="font-display text-[26px] leading-snug text-white sm:text-[30px]">
+              Ready to apply to {university.name}?
+            </h2>
+            <p className="mt-3 text-[16px] text-on-dark-muted">
+              Talk to an advisor for 20 minutes. It is free.
+            </p>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="/#book"
+                className="inline-flex h-12 items-center justify-center rounded-input bg-white px-6 text-[16px] font-bold text-ink hover:bg-white/90"
+              >
+                Book free consultation
               </Link>
+              <a
+                href={whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-12 items-center justify-center rounded-input border-[1.5px] border-white/70 px-5 text-[15px] font-bold text-white hover:bg-white/10"
+              >
+                Message on WhatsApp instead
+              </a>
             </div>
           </div>
         </section>
       </main>
       <Footer />
     </>
+  );
+}
+
+function Fact({ label, value, last = false }: { label: string; value: string; last?: boolean }) {
+  return (
+    <div className={last ? "pt-4" : "border-b border-border py-4 first:pt-2"}>
+      <dt className="text-[13px] font-bold text-body">{label}</dt>
+      <dd className="mt-1 text-[15px] text-ink">{value}</dd>
+    </div>
   );
 }
