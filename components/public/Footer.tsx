@@ -13,8 +13,7 @@ export default function Footer() {
         alt=""
         width={1440}
         height={340}
-        className="pointer-events-none absolute left-1/2 top-0 max-w-none -translate-x-1/2"
-        style={{ width: 1440, height: 340 }}
+        className="pointer-events-none absolute left-1/2 top-0 h-[340px] w-[1440px] max-w-none -translate-x-1/2 min-[1440px]:left-0 min-[1440px]:w-full min-[1440px]:translate-x-0"
       />
       <div className="container-1200 relative pb-10 pt-16 lg:pb-12 lg:pt-[72px]">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-6">
