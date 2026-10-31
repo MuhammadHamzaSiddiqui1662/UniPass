@@ -15,11 +15,12 @@ export default function SortSelect({
 
   const onChange = (value: string) => {
     const params = new URLSearchParams();
-    if (query.city) params.set("city", query.city);
-    if (query.field) params.set("field", query.field);
-    if (query.type) params.set("type", query.type);
-    if (query.level) params.set("level", query.level);
-    if (query.cleared) params.set("cleared", query.cleared);
+    const keep = ["q", "city", "field", "type", "level", "country", "scholarship", "cleared"] as const;
+    keep.forEach((key) => {
+      const value = query[key];
+      if (!value) return;
+      params.set(key, Array.isArray(value) ? value.join(",") : value);
+    });
     if (value) params.set("sort", value);
     const search = params.toString();
     router.push(search ? `/universities?${search}` : "/universities");

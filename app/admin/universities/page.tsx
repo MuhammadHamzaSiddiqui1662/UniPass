@@ -2,6 +2,7 @@ import { getSession } from "@/lib/auth/session";
 import { redirect } from "next/navigation";
 import { connectDB, University } from "@/lib/db";
 import Link from "next/link";
+import HomeSliderManager from "@/components/admin/HomeSliderManager";
 
 async function getUniversities() {
   try {
@@ -67,6 +68,15 @@ export default async function AdminUniversitiesPage() {
       </nav>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <HomeSliderManager
+          universities={universities.filter((university: { status?: string }) => university.status === "published").map((university: { _id: string; name: string; city: string; featuredOnHome?: boolean; homeOrder?: number }) => ({
+            id: String(university._id),
+            name: university.name,
+            city: university.city,
+            featuredOnHome: Boolean(university.featuredOnHome),
+            homeOrder: university.homeOrder ?? 0,
+          }))}
+        />
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-2xl font-display">
             Universities ({universities.length})

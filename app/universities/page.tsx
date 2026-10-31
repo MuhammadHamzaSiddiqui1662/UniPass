@@ -13,12 +13,17 @@ import {
   FILTER_FIELDS,
   FILTER_LEVELS,
   FILTER_TYPES,
+  SCHOLARSHIP_FILTERS,
+  asList,
+  cityLabel,
   fallbackUniversities,
   filterCatalog,
+  scholarshipLabel,
   sortCatalog,
   type CatalogUniversity,
   type ListingQuery,
 } from "@/lib/universities/catalog";
+import { searchUniversities } from "@/lib/universities/search";
 
 export const dynamic = "force-dynamic";
 
@@ -66,6 +71,12 @@ async function loadUniversities(): Promise<CatalogUniversity[]> {
       name: university.name,
       type: university.type,
       city: university.city,
+      country: university.country || "Türkiye",
+      countryCode: university.countryCode || "TR",
+      scholarshipType: university.scholarshipType || (university.hasMeritScholarship ? "partially_funded" : "none"),
+      aliases: university.aliases ?? [],
+      featuredOnHome: Boolean(university.featuredOnHome),
+      homeOrder: university.homeOrder ?? 0,
       fields: university.fields ?? [],
       levels: university.levels ?? [],
       tuitionFrom: university.tuitionFrom,
@@ -83,10 +94,13 @@ function queryWithout(
   key?: keyof ListingQuery,
 ): Record<string, string | undefined> {
   const next: Record<string, string | undefined> = {
+    q: query.q,
     city: query.city,
     field: query.field,
     type: query.type,
     level: query.level,
+    country: asList(query.country).join(",") || undefined,
+    scholarship: asList(query.scholarship).join(",") || undefined,
     sort: query.sort,
   };
   if (key) delete next[key];
@@ -100,22 +114,34 @@ export default async function UniversitiesPage({
 }) {
   const query = await searchParams;
   const all = await loadUniversities();
-  const filtered = sortCatalog(filterCatalog(all, query), query.sort || "tuition-low");
+  const narrowed = filterCatalog(all, query);
+  const searched = query.q?.trim() ? searchUniversities(narrowed, query.q) : null;
+  const filtered = searched ? searched.items : sortCatalog(narrowed, query.sort || "tuition-low");
+  const countries = Array.from(new Map(all.map((item) => [item.countryCode, item.country])).entries());
+  const selectedCountries = asList(query.country);
+  const selectedScholarships = asList(query.scholarship);
   const page = Math.max(1, parseInt(query.page || "1", 10) || 1);
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const currentPage = Math.min(page, totalPages);
   const universities = filtered.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
 
-  const chips = (
-    [
-      ["city", query.city],
-      ["field", query.field],
-      ["type", query.type],
-      ["level", query.level],
-    ] as const
-  ).flatMap(([key, value]) =>
-    value && value !== "all" ? [{ key, value: key === "type" ? labelForType(value) : value }] : [],
-  );
+  const chips = [
+    ...(query.q?.trim() ? [{ key: "q" as const, value: `“${query.q.trim()}”` }] : []),
+    ...(["city", "field", "type", "level"] as const).flatMap((key) => {
+      const value = query[key];
+      return value && value !== "all"
+        ? [{ key, value: key === "type" ? labelForType(value) : key === "city" ? cityLabel(value) : value }]
+        : [];
+    }),
+    ...selectedCountries.map((code) => ({
+      key: `country:${code}`,
+      value: countries.find(([item]) => item === code)?.[1] || code,
+    })),
+    ...selectedScholarships.map((value) => ({
+      key: `scholarship:${value}`,
+      value: scholarshipLabel(value),
+    })),
+  ];
 
   return (
     <>
@@ -152,12 +178,21 @@ export default async function UniversitiesPage({
               className="rounded-panel border-[1.2px] border-slate-200 bg-white px-6 py-4 sm:px-8"
             >
               {query.sort ? <input type="hidden" name="sort" value={query.sort} /> : null}
+              <label className="mb-4 block">
+                <span className="mb-1.5 block text-[13px] font-bold text-slate-600">Search</span>
+                <input
+                  name="q"
+                  defaultValue={query.q || ""}
+                  placeholder="University, city, or abbreviation"
+                  className="h-11 w-full rounded-input border-[1.5px] border-primary-200 bg-white px-4 text-[16px] text-primary-900 outline-none focus:border-primary"
+                />
+              </label>
               <div className="grid grid-cols-1 items-end gap-4 md:grid-cols-2 xl:grid-cols-[216px_216px_216px_216px_208px] xl:gap-x-4">
                 <FilterSelect label="City" name="city" value={query.city || "all"}>
                   <option value="all">All cities</option>
                   {FILTER_CITIES.map((city) => (
                     <option key={city} value={city}>
-                      {city}
+                      {cityLabel(city)}
                     </option>
                   ))}
                 </FilterSelect>
@@ -192,12 +227,49 @@ export default async function UniversitiesPage({
                   Apply filters
                 </button>
               </div>
+              <fieldset className="mt-4">
+                <legend className="mb-2 text-[13px] font-bold text-slate-600">Country</legend>
+                <div className="flex flex-wrap gap-3">
+                  {countries.map(([code, name]) => (
+                    <label key={code} className="inline-flex items-center gap-2 text-[15px] text-primary-900">
+                      <input
+                        type="checkbox"
+                        name="country"
+                        value={code}
+                        defaultChecked={selectedCountries.includes(code)}
+                      />
+                      {name}
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+              <fieldset className="mt-4">
+                <legend className="mb-2 text-[13px] font-bold text-slate-600">Scholarship</legend>
+                <div className="flex flex-wrap gap-3">
+                  {SCHOLARSHIP_FILTERS.map((item) => (
+                    <label key={item.value} className="inline-flex items-center gap-2 text-[15px] text-primary-900">
+                      <input
+                        type="checkbox"
+                        name="scholarship"
+                        value={item.value}
+                        defaultChecked={selectedScholarships.includes(item.value)}
+                      />
+                      {item.label}
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
             </form>
 
             <div className="mt-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <h1 className="text-[20px] font-bold leading-[26px] text-primary-900">
-                {filtered.length} {filtered.length === 1 ? "university" : "universities"} found
-              </h1>
+              <div>
+                <h1 className="text-[20px] font-bold leading-[26px] text-primary-900">
+                  {filtered.length} {filtered.length === 1 ? "university" : "universities"} found
+                </h1>
+                {searched?.hint ? (
+                  <p className="mt-1 text-[14px] text-slate-600">{searched.hint}</p>
+                ) : null}
+              </div>
               <SortSelect sort={query.sort} query={query} />
             </div>
 
@@ -240,10 +312,13 @@ export default async function UniversitiesPage({
               page={currentPage}
               totalPages={totalPages}
               query={{
+                q: query.q,
                 city: query.city,
                 field: query.field,
                 type: query.type,
                 level: query.level,
+                country: asList(query.country).join(",") || undefined,
+                scholarship: asList(query.scholarship).join(",") || undefined,
                 sort: query.sort,
                 cleared: query.cleared,
               }}
@@ -262,7 +337,19 @@ function labelForType(value: string) {
 
 function chipHref(query: ListingQuery, key: string) {
   const params = new URLSearchParams();
-  Object.entries(queryWithout(query, key as keyof ListingQuery)).forEach(([name, value]) => {
+  const base = queryWithout(query);
+  if (key.startsWith("country:")) {
+    const code = key.slice("country:".length);
+    const next = asList(query.country).filter((item) => item !== code);
+    base.country = next.join(",") || undefined;
+  } else if (key.startsWith("scholarship:")) {
+    const value = key.slice("scholarship:".length);
+    const next = asList(query.scholarship).filter((item) => item !== value);
+    base.scholarship = next.join(",") || undefined;
+  } else {
+    delete base[key];
+  }
+  Object.entries(base).forEach(([name, value]) => {
     if (value && name !== "cleared") params.set(name, value);
   });
   const search = params.toString();

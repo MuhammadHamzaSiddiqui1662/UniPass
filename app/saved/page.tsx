@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Header from "@/components/public/Header";
 import Footer from "@/components/public/Footer";
+import CountryFlag from "@/components/universities/CountryFlag";
 import Link from "next/link";
 
 export default function SavedPage() {
@@ -52,7 +53,10 @@ export default function SavedPage() {
                   <div key={uni._id} className="bg-white rounded-card border border-slate-200 overflow-hidden">
                     <div className="p-6">
                       <h3 className="font-display text-xl mb-2">{uni.name}</h3>
-                      <p className="text-sm text-slate-600 mb-4">{uni.city} · {uni.type}</p>
+                      <p className="mb-4 flex items-center gap-2 text-sm text-slate-600">
+                        <CountryFlag code={uni.countryCode || "TR"} name={uni.country || "Türkiye"} />
+                        {uni.city} · {uni.type}
+                      </p>
                       <p className="text-sm text-slate-600 line-clamp-3 mb-4">{uni.description}</p>
                       <div className="flex gap-2 mb-4">
                         <Link href={`/universities/${uni.slug}`} className="btn-primary flex-1 text-center text-sm">

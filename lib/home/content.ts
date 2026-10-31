@@ -3,6 +3,8 @@ export type HomeUniversity = {
   name: string;
   type: "public" | "private";
   city: string;
+  country: string;
+  countryCode: string;
   fields: string[];
   levels: string[];
   tuitionFrom: number;
@@ -46,6 +48,8 @@ export const fallbackUniversities: HomeUniversity[] = [
     name: "Istanbul Technical University",
     type: "public",
     city: "Istanbul",
+    country: "Türkiye",
+    countryCode: "TR",
     fields: ["Engineering", "Architecture", "Sciences"],
     levels: ["Bachelor's", "Master's", "PhD"],
     tuitionFrom: 1200,
@@ -56,6 +60,8 @@ export const fallbackUniversities: HomeUniversity[] = [
     name: "Middle East Technical University",
     type: "public",
     city: "Ankara",
+    country: "Türkiye",
+    countryCode: "TR",
     fields: ["Engineering", "Sciences", "Architecture"],
     levels: ["Bachelor's", "Master's", "PhD"],
     tuitionFrom: 1500,
@@ -66,6 +72,8 @@ export const fallbackUniversities: HomeUniversity[] = [
     name: "Boğaziçi University",
     type: "public",
     city: "Istanbul",
+    country: "Türkiye",
+    countryCode: "TR",
     fields: ["Engineering", "Sciences", "Business"],
     levels: ["Bachelor's", "Master's", "PhD"],
     tuitionFrom: 1800,
