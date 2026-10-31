@@ -1,6 +1,7 @@
 import Header from "@/components/public/Header";
 import Footer from "@/components/public/Footer";
 import { connectDB, Guide } from "@/lib/db";
+import { fallbackGuides } from "@/lib/guides/catalog";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -9,10 +10,11 @@ async function getGuide(slug: string) {
   try {
     await connectDB();
     const guide = await Guide.findOne({ slug, status: "published" }).lean();
-    return guide ? JSON.parse(JSON.stringify(guide)) : null;
+    if (guide) return JSON.parse(JSON.stringify(guide));
   } catch (error) {
-    return null;
+    console.error("Failed to fetch guide:", error);
   }
+  return fallbackGuides.find((guide) => guide.slug === slug) ?? null;
 }
 
 export async function generateMetadata({
