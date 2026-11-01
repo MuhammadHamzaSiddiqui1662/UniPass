@@ -95,7 +95,7 @@ export function Universities({
           {universities.map((university, index) => (
             <article
               key={university.slug}
-              className="flex h-full min-h-[520px] flex-col overflow-hidden rounded-card border-[1.2px] border-slate-200 bg-white"
+              className="flex h-full w-full flex-col overflow-hidden rounded-card border-[1.2px] border-slate-200 bg-white"
             >
               <CampusPhoto
                 src={university.image}
@@ -121,7 +121,7 @@ export function Universities({
                 <p className="text-[14px] leading-5 text-slate-600">
                   Levels: {university.levels.join(", ")}
                 </p>
-                <div className="mt-4 border-t border-slate-200 pt-4">
+                <div className="mt-auto border-t border-slate-200 pt-4">
                   <div className="flex items-end justify-between gap-3">
                     <div className="min-w-0">
                       <p className="text-[13px] text-slate-600">Tuition from</p>
