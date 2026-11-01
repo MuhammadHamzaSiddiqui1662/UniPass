@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { slugify } from "@/lib/utils/format";
 import { TURKISH_CITIES, FIELDS_OF_STUDY, STUDY_LEVELS, UNIVERSITY_TYPES } from "@/lib/utils/constants";
+import { withUniversityDefaults } from "@/lib/universities/defaults";
+import CountrySelect from "@/components/admin/CountrySelect";
 
 export default function EditUniversityClient({ universityId }: { universityId: string }) {
   const router = useRouter();
@@ -20,9 +22,15 @@ export default function EditUniversityClient({ universityId }: { universityId: s
     fetch(`/api/admin/universities/${universityId}`)
       .then(res => res.json())
       .then(data => {
-        setUniversity(data.university);
-        setName(data.university.name);
-        setSlug(data.university.slug);
+        if (!data.university) {
+          setUniversity(null);
+          setLoading(false);
+          return;
+        }
+        const university = withUniversityDefaults(data.university);
+        setUniversity(university);
+        setName(university.name || "");
+        setSlug(university.slug || "");
         setLoading(false);
       })
       .catch(() => {
@@ -121,6 +129,19 @@ export default function EditUniversityClient({ universityId }: { universityId: s
     return (
       <div className="min-h-screen bg-slate-50 flex items-center justify-center">
         <p className="text-slate-600">Loading...</p>
+      </div>
+    );
+  }
+
+  if (!university) {
+    return (
+      <div className="min-h-screen bg-slate-50">
+        <main className="mx-auto max-w-3xl px-4 py-20 text-center">
+          <h1 className="font-display text-3xl text-primary-900">University not found</h1>
+          <Link href="/admin/universities" className="btn-primary mt-6 inline-flex">
+            Back to universities
+          </Link>
+        </main>
       </div>
     );
   }
@@ -275,16 +296,7 @@ export default function EditUniversityClient({ universityId }: { universityId: s
                 />
               </div>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-bold mb-1">Country</label>
-                  <input name="country" className="input-field" defaultValue={university.country || "Türkiye"} />
-                </div>
-                <div>
-                  <label className="block text-sm font-bold mb-1">Country code</label>
-                  <input name="countryCode" className="input-field" maxLength={2} defaultValue={university.countryCode || "TR"} />
-                </div>
-              </div>
+              <CountrySelect code={university.countryCode} name={university.country} />
               <div>
                 <label className="block text-sm font-bold mb-1">Scholarship</label>
                 <select name="scholarshipType" className="input-field" defaultValue={university.scholarshipType || "none"}>

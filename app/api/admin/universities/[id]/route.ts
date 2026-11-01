@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
+import mongoose from "mongoose";
 import { connectDB, University } from "@/lib/db";
 import { requireAuth } from "@/lib/auth/session";
 import { revalidatePath } from "next/cache";
+import { universityFieldsSchema, validationError } from "@/lib/validations/university";
+import { withUniversityDefaults } from "@/lib/universities/defaults";
 
 export async function GET(
   request: NextRequest,
@@ -12,6 +15,9 @@ export async function GET(
     await connectDB();
 
     const { id } = await params;
+    if (!mongoose.isValidObjectId(id)) {
+      return NextResponse.json({ error: "University not found" }, { status: 404 });
+    }
     const university = await University.findById(id).lean();
 
     if (!university) {
@@ -21,7 +27,9 @@ export async function GET(
       );
     }
 
-    return NextResponse.json({ university });
+    return NextResponse.json({
+      university: withUniversityDefaults(JSON.parse(JSON.stringify(university))),
+    });
   } catch (error) {
     console.error("Get university error:", error);
     return NextResponse.json(
@@ -40,12 +48,42 @@ export async function PATCH(
     await connectDB();
 
     const { id } = await params;
+    if (!mongoose.isValidObjectId(id)) {
+      return NextResponse.json({ error: "University not found" }, { status: 404 });
+    }
     const body = await request.json();
+    const current = await University.findById(id).lean();
+    if (!current) {
+      return NextResponse.json({ error: "University not found" }, { status: 404 });
+    }
+    const parsed = universityFieldsSchema.safeParse({
+      name: body.name ?? current.name,
+      slug: body.slug ?? current.slug,
+      type: body.type ?? current.type,
+      city: body.city ?? current.city,
+      country: body.country || current.country || "Türkiye",
+      countryCode: body.countryCode || current.countryCode || "TR",
+      scholarshipType:
+        body.scholarshipType || current.scholarshipType || (current.hasMeritScholarship ? "partially_funded" : "none"),
+      aliases: Array.isArray(body.aliases) ? body.aliases : current.aliases || [],
+      featuredOnHome: body.featuredOnHome ?? current.featuredOnHome ?? false,
+      homeOrder: body.homeOrder ?? current.homeOrder ?? 0,
+      tuitionFrom: body.tuitionFrom ?? current.tuitionFrom,
+      description: body.description ?? current.description,
+      fields: body.fields ?? current.fields ?? [],
+      levels: body.levels ?? current.levels ?? [],
+      languages: Array.isArray(body.languagesOffered) ? body.languagesOffered : current.languages || [],
+      hasMeritScholarship: body.hasMeritScholarship ?? current.hasMeritScholarship ?? false,
+      status: body.status ?? current.status,
+    });
+    if (!parsed.success) {
+      return NextResponse.json({ error: validationError(parsed.error) }, { status: 400 });
+    }
 
     // If slug is being changed, check for duplicates
-    if (body.slug) {
+    if (parsed.data.slug) {
       const existing = await University.findOne({
-        slug: body.slug,
+        slug: parsed.data.slug,
         _id: { $ne: id },
       });
       if (existing) {
@@ -56,8 +94,12 @@ export async function PATCH(
       }
     }
 
-    const oldUniversity = await University.findById(id);
-    const university = await University.findByIdAndUpdate(id, body, {
+    const oldUniversity = current;
+    const university = await University.findByIdAndUpdate(id, {
+      ...parsed.data,
+      metaTitle: typeof body.metaTitle === "string" ? body.metaTitle : current.metaTitle,
+      metaDescription: typeof body.metaDescription === "string" ? body.metaDescription : current.metaDescription,
+    }, {
       new: true,
       runValidators: true,
     }).lean();

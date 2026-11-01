@@ -53,8 +53,8 @@ export const TURKISH_CITIES = [
 export const CITIES_IN_TURKIYE = TURKISH_CITIES;
 
 export const UNIVERSITY_TYPES = [
-  { value: "state", label: "State University" },
-  { value: "foundation", label: "Foundation (Private)" },
+  { value: "public", label: "Public" },
+  { value: "private", label: "Private" },
 ] as const;
 
 export const FIELDS_OF_STUDY = [

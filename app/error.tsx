@@ -16,7 +16,9 @@ export default function Error({
       <Header />
       <main className="pt-32 min-h-screen bg-slate-50">
         <div className="container-1200 py-20 text-center">
-          <h1 className="text-h1-hero mb-6">Something went wrong</h1>
+          <h1 className="mb-6 font-display text-4xl font-bold text-primary-900 sm:text-5xl">
+            Something went wrong
+          </h1>
           <p className="text-lg text-slate-600 mb-12 max-w-2xl mx-auto">
             We're sorry, but something unexpected happened. Please try again.
           </p>
