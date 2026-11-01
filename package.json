@@ -22,9 +22,11 @@
     "mongoose": "^8.9.3",
     "next": "15.5.28",
     "nodemailer": "^6.10.0",
+    "papaparse": "^5.7.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "resend": "^4.0.4",
+    "yauzl": "^3.4.0",
     "zod": "^3.24.1"
   },
   "devDependencies": {
@@ -35,8 +37,10 @@
     "@types/jest": "^29.5.13",
     "@types/node": "^22",
     "@types/nodemailer": "^6.4.17",
+    "@types/papaparse": "^5.5.2",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/yauzl": "^3.4.0",
     "@vitest/ui": "^5.0.5",
     "eslint": "^8",
     "eslint-config-next": "15.5.28",

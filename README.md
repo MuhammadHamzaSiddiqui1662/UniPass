@@ -294,6 +294,37 @@ See `.env.example` for a complete list of environment variables.
 ### Optional
 - **Cloudinary**: `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`
 
+## Images / Cloudinary setup
+
+University logos, featured campus photos, galleries, and testimonial photos upload through `/api/admin/upload`. The storage provider is chosen from the environment:
+
+- **Local** when `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, and `CLOUDINARY_API_SECRET` are not all set. Files are written to `public/uploads` with unique names. This works for local development.
+- **Cloudinary** as soon as those three variables are set. New uploads go to folders such as `unipass/universities/<slug>/`, are limited to about 2000 pixels wide, and are delivered with automatic format and quality. No code change is required to switch.
+
+Local files are not persistent on Vercel and similar hosts, because the filesystem is ephemeral and is not shared across instances. Set the Cloudinary variables before go-live.
+
+Accepted files are JPEG, PNG, and WebP, checked from the file bytes (not only the browser MIME type), up to 10 MB. SVG is allowed only for a university logo, and only after unsafe markup is stripped. GIF and other types are rejected.
+
+Replacing or removing an image, or deleting the university, deletes the previous hosted file. Cleanup is best-effort and does not block the save. Pasting an image URL stores that address as-is on the local provider, and re-hosts it on Cloudinary when Cloudinary is configured.
+
+After credentials are in place, rewrite existing `/uploads/` addresses with:
+
+```bash
+npx tsx scripts/migrate-local-uploads-to-cloudinary.ts
+```
+
+The script reads `.env.local` (or the variables already in the environment), re-uploads each local file, and updates the university document. It leaves the files in `public/uploads` in place.
+
+## Bulk university import
+
+Admins can open **Universities → Bulk import** to download a sample CSV and a column guide, export the current list in that same format, then preview and import a CSV. An optional ZIP supplies images named in `logo`, `featured_image`, and `gallery`.
+
+- 1,000 data rows, a 5 MB CSV, and a 100 MB ZIP. Each image stays within the 10 MB upload limit, and the archive is rejected if it tries to escape its folder or expand unreasonably.
+- Cells may use `|` for several values. Excel CSVs with a comma or semicolon, a UTF-8 BOM, and Turkish characters are accepted.
+- An image cell is either a file name in the ZIP (folders allowed, case ignored) or an http(s) URL. URLs are downloaded with a timeout and a block on private addresses, then stored with the same local-or-Cloudinary provider as the uploader.
+- Preview shows New, Update, Error, or Warning before anything is written. Re-import matches the slug, or the name once Turkish letters and the word “university” are folded.
+- Some hosts, including Vercel, limit request bodies (often about 4.5 MB) before this app sees the file. Split the ZIP or use image URLs if an upload is refused.
+
 ## Design Tokens
 
 UniPass uses a custom color palette inspired by Pakistani and Turkish flag colors:

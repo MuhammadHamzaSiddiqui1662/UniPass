@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import mongoose from "mongoose";
+import { ZodError } from "zod";
 import { connectDB, University } from "@/lib/db";
 import { requireAuth } from "@/lib/auth/session";
 import { revalidatePath } from "next/cache";
-import { universityFieldsSchema, validationError } from "@/lib/validations/university";
+import { parseUniversityImages, universityFieldsSchema, validationError } from "@/lib/validations/university";
 import { withUniversityDefaults } from "@/lib/universities/defaults";
+import { collectImageUrls, releaseUnusedImages } from "@/lib/upload/cleanup";
 
 export async function GET(
   request: NextRequest,
@@ -79,6 +81,15 @@ export async function PATCH(
     if (!parsed.success) {
       return NextResponse.json({ error: validationError(parsed.error) }, { status: 400 });
     }
+    let images;
+    try {
+      images = parseUniversityImages(body, current);
+    } catch (error) {
+      if (error instanceof ZodError) {
+        return NextResponse.json({ error: validationError(error) }, { status: 400 });
+      }
+      throw error;
+    }
 
     // If slug is being changed, check for duplicates
     if (parsed.data.slug) {
@@ -97,6 +108,7 @@ export async function PATCH(
     const oldUniversity = current;
     const university = await University.findByIdAndUpdate(id, {
       ...parsed.data,
+      ...images,
       metaTitle: typeof body.metaTitle === "string" ? body.metaTitle : current.metaTitle,
       metaDescription: typeof body.metaDescription === "string" ? body.metaDescription : current.metaDescription,
     }, {
@@ -118,6 +130,8 @@ export async function PATCH(
     if (oldUniversity && oldUniversity.slug !== university.slug) {
       revalidatePath(`/universities/${oldUniversity.slug}`);
     }
+
+    await releaseUnusedImages(collectImageUrls(oldUniversity), collectImageUrls(university));
 
     return NextResponse.json({ university });
   } catch (error) {
@@ -150,6 +164,8 @@ export async function DELETE(
         { status: 404 }
       );
     }
+
+    await releaseUnusedImages(collectImageUrls(university), []);
 
     // Revalidate
     revalidatePath("/universities");

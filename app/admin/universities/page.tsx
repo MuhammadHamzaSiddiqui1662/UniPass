@@ -81,9 +81,14 @@ export default async function AdminUniversitiesPage() {
           <h1 className="text-2xl font-display">
             Universities ({universities.length})
           </h1>
-          <Link href="/admin/universities/new" className="btn-primary">
-            Add University
-          </Link>
+          <div className="flex gap-3">
+            <Link href="/admin/universities/import" className="btn-outline px-4">
+              Bulk import
+            </Link>
+            <Link href="/admin/universities/new" className="btn-primary">
+              Add University
+            </Link>
+          </div>
         </div>
 
         <div className="bg-white rounded-card border border-slate-200 overflow-hidden">

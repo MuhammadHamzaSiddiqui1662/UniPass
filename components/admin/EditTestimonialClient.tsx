@@ -3,6 +3,7 @@
 import { useState, FormEvent, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import ImageUploader from "@/components/admin/ImageUploader";
 
 export default function EditTestimonialClient({ testimonialId }: { testimonialId: string }) {
   const router = useRouter();
@@ -10,7 +11,6 @@ export default function EditTestimonialClient({ testimonialId }: { testimonialId
   const [deleting, setDeleting] = useState(false);
   const [loading, setLoading] = useState(true);
   const [testimonial, setTestimonial] = useState<any>(null);
-  const [uploading, setUploading] = useState(false);
   const [photoUrl, setPhotoUrl] = useState("");
 
   useEffect(() => {
@@ -26,31 +26,6 @@ export default function EditTestimonialClient({ testimonialId }: { testimonialId
         router.push("/admin/testimonials");
       });
   }, [testimonialId, router]);
-
-  const handlePhotoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    setUploading(true);
-    const formData = new FormData();
-    formData.append("file", file);
-
-    try {
-      const response = await fetch("/api/admin/upload", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (!response.ok) throw new Error("Upload failed");
-
-      const data = await response.json();
-      setPhotoUrl(data.url);
-    } catch (error) {
-      alert("Failed to upload photo");
-    } finally {
-      setUploading(false);
-    }
-  };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -158,22 +133,13 @@ export default function EditTestimonialClient({ testimonialId }: { testimonialId
                 <textarea name="testimonial" required rows={5} className="input-field" defaultValue={testimonial.testimonial} />
               </div>
 
-              <div>
-                <label className="block text-sm font-bold mb-1">Photo</label>
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handlePhotoUpload}
-                  disabled={uploading}
-                  className="input-field"
-                />
-                {uploading && <p className="text-sm text-slate-600 mt-1">Uploading...</p>}
-                {photoUrl && (
-                  <div className="mt-2">
-                    <img src={photoUrl} alt="Preview" className="w-24 h-24 rounded-full object-cover" />
-                  </div>
-                )}
-              </div>
+              <ImageUploader
+                label="Photo"
+                kind="photo"
+                showAlt={false}
+                images={photoUrl ? [{ url: photoUrl, alt: "" }] : []}
+                onChange={(images) => setPhotoUrl(images[0]?.url || "")}
+              />
             </div>
           </div>
 

@@ -7,6 +7,12 @@ import { slugify } from "@/lib/utils/format";
 import { TURKISH_CITIES, FIELDS_OF_STUDY, STUDY_LEVELS, UNIVERSITY_TYPES } from "@/lib/utils/constants";
 import { withUniversityDefaults } from "@/lib/universities/defaults";
 import CountrySelect from "@/components/admin/CountrySelect";
+import UniversityImageFields, {
+  emptyUniversityImages,
+  universityImagesFromRecord,
+  universityImagesPayload,
+  type UniversityImages,
+} from "@/components/admin/UniversityImageFields";
 
 export default function EditUniversityClient({ universityId }: { universityId: string }) {
   const router = useRouter();
@@ -17,6 +23,7 @@ export default function EditUniversityClient({ universityId }: { universityId: s
   const [name, setName] = useState("");
   const [slug, setSlug] = useState("");
   const [autoSlug, setAutoSlug] = useState(false);
+  const [images, setImages] = useState<UniversityImages>(emptyUniversityImages);
 
   useEffect(() => {
     fetch(`/api/admin/universities/${universityId}`)
@@ -31,6 +38,7 @@ export default function EditUniversityClient({ universityId }: { universityId: s
         setUniversity(university);
         setName(university.name || "");
         setSlug(university.slug || "");
+        setImages(universityImagesFromRecord(university));
         setLoading(false);
       })
       .catch(() => {
@@ -77,6 +85,7 @@ export default function EditUniversityClient({ universityId }: { universityId: s
         : [],
       featuredOnHome: formData.get("featuredOnHome") === "on",
       homeOrder: parseInt(String(formData.get("homeOrder") || "0"), 10) || 0,
+      ...universityImagesPayload(images),
       facilityHighlights: formData.get("facilityHighlights") ? (formData.get("facilityHighlights") as string).split("\n").filter(Boolean) : [],
       facts: formData.get("facts") ? (formData.get("facts") as string).split("\n").filter(Boolean) : [],
       status: formData.get("status"),
@@ -245,6 +254,8 @@ export default function EditUniversityClient({ universityId }: { universityId: s
               </div>
             </div>
           </div>
+
+          <UniversityImageFields slug={slug} images={images} onChange={setImages} />
 
           {/* Academic Info */}
           <div className="bg-white rounded-card border border-slate-200 p-6">

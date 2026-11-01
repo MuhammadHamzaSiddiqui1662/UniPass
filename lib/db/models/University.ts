@@ -14,7 +14,9 @@ export interface IUniversity {
   homeOrder: number;
   ranking?: number;
   tuitionFrom: number;
+  tuitionTo?: number;
   tuitionCurrency: string;
+  website?: string;
   intake?: string;
   languages: string[];
   description: string;
@@ -22,8 +24,11 @@ export interface IUniversity {
   programsInfo?: string;
   campusLife?: string;
   logo?: string;
+  logoAlt?: string;
   featuredImage?: string;
+  featuredImageAlt?: string;
   gallery: string[];
+  galleryAlts: string[];
   fields: string[];
   levels: string[];
   hasMeritScholarship: boolean;
@@ -62,7 +67,9 @@ const universitySchema = new Schema<IUniversity>(
     homeOrder: { type: Number, default: 0 },
     ranking: Number,
     tuitionFrom: { type: Number, required: true },
+    tuitionTo: Number,
     tuitionCurrency: { type: String, default: "USD" },
+    website: String,
     intake: String,
     languages: [String],
     description: { type: String, required: true },
@@ -70,8 +77,11 @@ const universitySchema = new Schema<IUniversity>(
     programsInfo: String,
     campusLife: String,
     logo: String,
+    logoAlt: String,
     featuredImage: String,
+    featuredImageAlt: String,
     gallery: [String],
+    galleryAlts: { type: [String], default: [] },
     fields: [String],
     levels: [String],
     hasMeritScholarship: { type: Boolean, default: false },
