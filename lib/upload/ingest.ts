@@ -27,6 +27,16 @@ export async function storeImageFile(input: {
   });
 }
 
+/** Download a public image and store it with the active provider, including the local one. */
+export async function rehostRemoteImage(input: {
+  url: string;
+  kind: ImageKind;
+  slug?: string;
+}): Promise<StoredImage> {
+  const buffer = await downloadPublicImage(input.url.trim());
+  return storeImageFile({ buffer, kind: input.kind, slug: input.slug });
+}
+
 export async function ingestImageUrl(input: {
   url: string;
   kind: ImageKind;

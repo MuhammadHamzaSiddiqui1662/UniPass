@@ -315,6 +315,16 @@ npx tsx scripts/migrate-local-uploads-to-cloudinary.ts
 
 The script reads `.env.local` (or the variables already in the environment), re-uploads each local file, and updates the university document. It leaves the files in `public/uploads` in place.
 
+## Bulk university import
+
+Admins can open **Universities → Bulk import** to download a sample CSV and a column guide, export the current list in that same format, then preview and import a CSV. An optional ZIP supplies images named in `logo`, `featured_image`, and `gallery`.
+
+- 1,000 data rows, a 5 MB CSV, and a 100 MB ZIP. Each image stays within the 10 MB upload limit, and the archive is rejected if it tries to escape its folder or expand unreasonably.
+- Cells may use `|` for several values. Excel CSVs with a comma or semicolon, a UTF-8 BOM, and Turkish characters are accepted.
+- An image cell is either a file name in the ZIP (folders allowed, case ignored) or an http(s) URL. URLs are downloaded with a timeout and a block on private addresses, then stored with the same local-or-Cloudinary provider as the uploader.
+- Preview shows New, Update, Error, or Warning before anything is written. Re-import matches the slug, or the name once Turkish letters and the word “university” are folded.
+- Some hosts, including Vercel, limit request bodies (often about 4.5 MB) before this app sees the file. Split the ZIP or use image URLs if an upload is refused.
+
 ## Design Tokens
 
 UniPass uses a custom color palette inspired by Pakistani and Turkish flag colors:
