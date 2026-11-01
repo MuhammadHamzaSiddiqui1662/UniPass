@@ -82,6 +82,7 @@ async function loadUniversities(): Promise<CatalogUniversity[]> {
       tuitionFrom: university.tuitionFrom,
       hasMeritScholarship: Boolean(university.hasMeritScholarship),
       featuredImage: university.featuredImage,
+      featuredImageAlt: university.featuredImageAlt,
     }));
   } catch (error) {
     console.error("Failed to fetch universities:", error);

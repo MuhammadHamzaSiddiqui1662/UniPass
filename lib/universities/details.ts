@@ -17,6 +17,13 @@ export type DetailUniversity = {
   hasMeritScholarship: boolean;
   metaTitle?: string;
   metaDescription?: string;
+  logo?: string;
+  logoAlt?: string;
+  featuredImage?: string;
+  featuredImageAlt?: string;
+  gallery: string[];
+  galleryAlts: string[];
+  ogImage?: string;
 };
 
 const about =
@@ -36,6 +43,8 @@ export const detailFallbacks: DetailUniversity[] = fallbackUniversities.map((uni
   programsInfo: programs,
   campusLife: campus,
   turkiyeBurslariEligible: university.type === "public",
+  gallery: [],
+  galleryAlts: [],
 }));
 
 export function fallbackDetail(slug: string) {

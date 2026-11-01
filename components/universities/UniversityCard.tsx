@@ -1,8 +1,10 @@
 import Link from "next/link";
 import Asset from "@/components/home/Asset";
+import SmartImage from "@/components/media/SmartImage";
 import BookmarkButton from "@/components/universities/BookmarkButton";
 import CountryFlag from "@/components/universities/CountryFlag";
 import type { CatalogUniversity } from "@/lib/universities/catalog";
+import { isDesignPhoto } from "@/lib/universities/photos";
 import { formatCurrency } from "@/lib/utils/format";
 
 const PHOTO = "/universities/university-card__imgVector1.png";
@@ -10,12 +12,18 @@ const PHOTO = "/universities/university-card__imgVector1.png";
 export default function UniversityCard({ university }: { university: CatalogUniversity }) {
   const bookmarkId = university._id || university.slug;
   const image = university.featuredImage || PHOTO;
+  const placeholder = isDesignPhoto(image);
 
   return (
     <article className="relative flex min-h-[460px] flex-col overflow-hidden rounded-card border-[1.2px] border-slate-200 bg-white">
       <div className="relative h-[190px] overflow-hidden bg-primary-400/20">
-        <img src={image} alt="" className="h-full w-full object-cover" />
-        <div className="pointer-events-none absolute left-[69%] top-1/2 h-[180px] w-[180px] -translate-x-1/2 -translate-y-1/2">
+        <SmartImage
+          src={image}
+          alt={placeholder ? "" : university.featuredImageAlt || `${university.name} campus`}
+          sizes="384px"
+          className="object-cover"
+        />
+        {placeholder && <div className="pointer-events-none absolute left-[69%] top-1/2 h-[180px] w-[180px] -translate-x-1/2 -translate-y-1/2">
           <Asset
             src="/universities/university-card__imgVector3.svg"
             width={127}
@@ -40,13 +48,15 @@ export default function UniversityCard({ university }: { university: CatalogUniv
             height={81}
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
           />
-        </div>
-        <div className="absolute bottom-3.5 left-3.5">
-          <Asset src="/universities/university-card__imgVector6.svg" width={169.76} height={24} />
-          <span className="absolute inset-0 flex items-center justify-center text-[12px] leading-none text-white">
-            Campus photo placeholder
-          </span>
-        </div>
+        </div>}
+        {placeholder && (
+          <div className="absolute bottom-3.5 left-3.5">
+            <Asset src="/universities/university-card__imgVector6.svg" width={169.76} height={24} />
+            <span className="absolute inset-0 flex items-center justify-center text-[12px] leading-none text-white">
+              Campus photo placeholder
+            </span>
+          </div>
+        )}
         {university.hasMeritScholarship && (
           <span className="chip-warning absolute left-[22px] top-5">Merit scholarships</span>
         )}

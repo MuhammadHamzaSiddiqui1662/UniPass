@@ -17,6 +17,7 @@ export type CatalogUniversity = {
   tuitionFrom: number;
   hasMeritScholarship: boolean;
   featuredImage?: string;
+  featuredImageAlt?: string;
 };
 
 /** Design order for the eight universities on the listing frame. */
