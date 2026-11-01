@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { slugify } from "@/lib/utils/format";
 import { TURKISH_CITIES, FIELDS_OF_STUDY, STUDY_LEVELS, UNIVERSITY_TYPES } from "@/lib/utils/constants";
+import CountrySelect from "@/components/admin/CountrySelect";
 
 export default function NewUniversityPage() {
   const router = useRouter();
@@ -46,6 +47,11 @@ export default function NewUniversityPage() {
       country: formData.get("country") || "Türkiye",
       countryCode: String(formData.get("countryCode") || "TR").toUpperCase(),
       scholarshipType: formData.get("scholarshipType") || "none",
+      aliases: formData.get("aliases")
+        ? String(formData.get("aliases")).split(",").map((item) => item.trim()).filter(Boolean)
+        : [],
+      featuredOnHome: formData.get("featuredOnHome") === "on",
+      homeOrder: parseInt(String(formData.get("homeOrder") || "0"), 10) || 0,
       facilityHighlights: formData.get("facilityHighlights") ? (formData.get("facilityHighlights") as string).split("\n").filter(Boolean) : [],
       facts: formData.get("facts") ? (formData.get("facts") as string).split("\n").filter(Boolean) : [],
       status: formData.get("status"),
@@ -212,6 +218,29 @@ export default function NewUniversityPage() {
                 />
               </div>
 
+              <CountrySelect />
+              <div>
+                <label className="block text-sm font-bold mb-1">Scholarship</label>
+                <select name="scholarshipType" className="input-field" defaultValue="none">
+                  <option value="none">None</option>
+                  <option value="partially_funded">Partially funded</option>
+                  <option value="fully_funded">Fully funded</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-bold mb-1">Search aliases</label>
+                <input name="aliases" className="input-field" placeholder="ITU, Istanbul Teknik" />
+              </div>
+              <div className="grid md:grid-cols-2 gap-4">
+                <label className="flex items-center gap-2">
+                  <input type="checkbox" name="featuredOnHome" />
+                  <span className="text-sm font-bold">Show on home slider</span>
+                </label>
+                <div>
+                  <label className="block text-sm font-bold mb-1">Home order</label>
+                  <input type="number" name="homeOrder" className="input-field" defaultValue={0} />
+                </div>
+              </div>
               <div>
                 <label className="flex items-center gap-2">
                   <input type="checkbox" name="hasMeritScholarship" />
