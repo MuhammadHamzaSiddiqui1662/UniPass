@@ -152,10 +152,35 @@ async function seed() {
   // MongoDB cannot keep a compound index on two array fields.
   await University.syncIndexes();
 
-  for (const uni of universities) {
+  const homeSlider = [
+    "istanbul-technical-university",
+    "middle-east-technical-university",
+    "bogazici-university",
+  ];
+  const aliases: Record<string, string[]> = {
+    "istanbul-technical-university": ["ITU", "Istanbul Teknik"],
+    "middle-east-technical-university": ["METU", "ODTÜ", "ODTU"],
+    "bogazici-university": ["BOUN", "Bogazici"],
+    "bahcesehir-university": ["BAU", "Bahcesehir"],
+    "koc-university": ["Koc"],
+  };
+  for (const [index, uni] of universities.entries()) {
     await University.findOneAndUpdate(
       { slug: uni.slug },
-      uni,
+      {
+        ...uni,
+        country: "Türkiye",
+        countryCode: "TR",
+        scholarshipType:
+          uni.slug === "bilkent-university"
+            ? "fully_funded"
+            : uni.hasMeritScholarship
+              ? "partially_funded"
+              : "none",
+        aliases: aliases[uni.slug] ?? [],
+        featuredOnHome: homeSlider.includes(uni.slug),
+        homeOrder: index + 1,
+      },
       { upsert: true, new: true }
     );
   }

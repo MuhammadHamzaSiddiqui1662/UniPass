@@ -61,6 +61,14 @@ export default function EditUniversityClient({ universityId }: { universityId: s
       levels: Array.from(formData.getAll("levels")),
       languagesOffered: formData.get("languagesOffered") ? (formData.get("languagesOffered") as string).split(",").map(s => s.trim()) : [],
       hasMeritScholarship: formData.get("hasMeritScholarship") === "on",
+      country: formData.get("country") || "Türkiye",
+      countryCode: String(formData.get("countryCode") || "TR").toUpperCase(),
+      scholarshipType: formData.get("scholarshipType") || "none",
+      aliases: formData.get("aliases")
+        ? String(formData.get("aliases")).split(",").map((item) => item.trim()).filter(Boolean)
+        : [],
+      featuredOnHome: formData.get("featuredOnHome") === "on",
+      homeOrder: parseInt(String(formData.get("homeOrder") || "0"), 10) || 0,
       facilityHighlights: formData.get("facilityHighlights") ? (formData.get("facilityHighlights") as string).split("\n").filter(Boolean) : [],
       facts: formData.get("facts") ? (formData.get("facts") as string).split("\n").filter(Boolean) : [],
       status: formData.get("status"),
@@ -267,6 +275,43 @@ export default function EditUniversityClient({ universityId }: { universityId: s
                 />
               </div>
 
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-bold mb-1">Country</label>
+                  <input name="country" className="input-field" defaultValue={university.country || "Türkiye"} />
+                </div>
+                <div>
+                  <label className="block text-sm font-bold mb-1">Country code</label>
+                  <input name="countryCode" className="input-field" maxLength={2} defaultValue={university.countryCode || "TR"} />
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm font-bold mb-1">Scholarship</label>
+                <select name="scholarshipType" className="input-field" defaultValue={university.scholarshipType || "none"}>
+                  <option value="none">None</option>
+                  <option value="partially_funded">Partially funded</option>
+                  <option value="fully_funded">Fully funded</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-bold mb-1">Search aliases</label>
+                <input
+                  name="aliases"
+                  className="input-field"
+                  defaultValue={university.aliases?.join(", ") || ""}
+                  placeholder="ITU, Istanbul Teknik"
+                />
+              </div>
+              <div className="grid md:grid-cols-2 gap-4">
+                <label className="flex items-center gap-2">
+                  <input type="checkbox" name="featuredOnHome" defaultChecked={university.featuredOnHome} />
+                  <span className="text-sm font-bold">Show on home slider</span>
+                </label>
+                <div>
+                  <label className="block text-sm font-bold mb-1">Home order</label>
+                  <input type="number" name="homeOrder" className="input-field" defaultValue={university.homeOrder || 0} />
+                </div>
+              </div>
               <div>
                 <label className="flex items-center gap-2">
                   <input

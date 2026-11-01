@@ -85,10 +85,11 @@ async function getHomePageData() {
   try {
     await withTimeout(connectDB(), 3000);
 
-    const [universities, universityCount, guides, guideCount, faqs, testimonials, testimonialCount] =
+    const [featured, published, universityCount, guides, guideCount, faqs, testimonials, testimonialCount] =
       await withTimeout(
         Promise.all([
-          University.find({ status: "published" }).sort({ createdAt: 1 }).limit(3).lean(),
+          University.find({ status: "published", featuredOnHome: true }).sort({ homeOrder: 1, name: 1 }).lean(),
+          University.find({ status: "published" }).sort({ homeOrder: 1, name: 1 }).limit(3).lean(),
           University.countDocuments({ status: "published" }),
           Guide.find({ status: "published" }).sort({ order: 1 }).limit(3).lean(),
           Guide.countDocuments({ status: "published" }),
@@ -99,6 +100,7 @@ async function getHomePageData() {
         3000,
       );
 
+    const universities = featured.length > 0 ? featured : published;
     const universityCards: HomeUniversity[] =
       universities.length > 0
         ? universities.map((university, index) => ({
@@ -106,6 +108,8 @@ async function getHomePageData() {
             name: university.name,
             type: university.type,
             city: university.city,
+            country: university.country || "Türkiye",
+            countryCode: university.countryCode || "TR",
             fields: university.fields ?? [],
             levels: university.levels ?? [],
             tuitionFrom: university.tuitionFrom,

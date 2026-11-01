@@ -6,6 +6,12 @@ export interface IUniversity {
   slug: string;
   type: "public" | "private";
   city: string;
+  country: string;
+  countryCode: string;
+  scholarshipType: "fully_funded" | "partially_funded" | "none";
+  aliases: string[];
+  featuredOnHome: boolean;
+  homeOrder: number;
   ranking?: number;
   tuitionFrom: number;
   tuitionCurrency: string;
@@ -44,6 +50,16 @@ const universitySchema = new Schema<IUniversity>(
     slug: { type: String, required: true, unique: true, index: true },
     type: { type: String, enum: ["public", "private"], required: true },
     city: { type: String, required: true },
+    country: { type: String, default: "Türkiye" },
+    countryCode: { type: String, default: "TR", uppercase: true },
+    scholarshipType: {
+      type: String,
+      enum: ["fully_funded", "partially_funded", "none"],
+      default: "none",
+    },
+    aliases: { type: [String], default: [] },
+    featuredOnHome: { type: Boolean, default: false },
+    homeOrder: { type: Number, default: 0 },
     ranking: Number,
     tuitionFrom: { type: Number, required: true },
     tuitionCurrency: { type: String, default: "USD" },
@@ -73,6 +89,8 @@ const universitySchema = new Schema<IUniversity>(
 );
 
 universitySchema.index({ status: 1, city: 1, type: 1 });
+universitySchema.index({ status: 1, featuredOnHome: 1, homeOrder: 1 });
+universitySchema.index({ countryCode: 1, scholarshipType: 1 });
 universitySchema.index({ fields: 1 });
 universitySchema.index({ levels: 1 });
 

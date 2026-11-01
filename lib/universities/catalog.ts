@@ -1,9 +1,17 @@
+export type ScholarshipType = "fully_funded" | "partially_funded" | "none";
+
 export type CatalogUniversity = {
   _id?: string;
   slug: string;
   name: string;
   type: "public" | "private";
   city: string;
+  country: string;
+  countryCode: string;
+  scholarshipType: ScholarshipType;
+  aliases: string[];
+  featuredOnHome: boolean;
+  homeOrder: number;
   fields: string[];
   levels: string[];
   tuitionFrom: number;
@@ -23,7 +31,10 @@ export const DESIGN_ORDER = [
   "koc-university",
 ];
 
-export const fallbackUniversities: CatalogUniversity[] = [
+const universitySeeds: Omit<
+  CatalogUniversity,
+  "country" | "countryCode" | "scholarshipType" | "aliases" | "featuredOnHome" | "homeOrder"
+>[] = [
   {
     slug: "istanbul-technical-university",
     name: "Istanbul Technical University",
@@ -106,7 +117,50 @@ export const fallbackUniversities: CatalogUniversity[] = [
   },
 ];
 
+const HOME_SLUGS = [
+  "istanbul-technical-university",
+  "middle-east-technical-university",
+  "bogazici-university",
+];
+
+const ALIASES: Record<string, string[]> = {
+  "istanbul-technical-university": ["ITU", "Istanbul Teknik", "İstanbul Teknik Üniversitesi"],
+  "middle-east-technical-university": ["METU", "ODTÜ", "ODTU", "Orta Doğu Teknik"],
+  "bogazici-university": ["BOUN", "Boğaziçi", "Bogazici Universitesi"],
+  "hacettepe-university": ["Hacettepe Universitesi"],
+  "ege-university": ["Ege Universitesi"],
+  "bahcesehir-university": ["BAU", "Bahcesehir", "Bahçeşehir Universitesi"],
+  "bilkent-university": ["Bilkent Universitesi"],
+  "koc-university": ["Koc", "Koç Universitesi"],
+};
+
+export const fallbackUniversities: CatalogUniversity[] = universitySeeds.map((university, index) => ({
+  ...university,
+  country: "Türkiye",
+  countryCode: "TR",
+  scholarshipType:
+    university.slug === "bilkent-university"
+      ? "fully_funded"
+      : university.hasMeritScholarship
+        ? "partially_funded"
+        : "none",
+  aliases: ALIASES[university.slug] ?? [],
+  featuredOnHome: HOME_SLUGS.includes(university.slug),
+  homeOrder: index + 1,
+}));
+
 export const FILTER_CITIES = ["Istanbul", "Ankara", "Izmir", "Bursa", "Antalya", "Other"];
+export const CITY_LABELS: Record<string, string> = { Izmir: "İzmir" };
+export function cityLabel(city: string) {
+  return CITY_LABELS[city] ?? city;
+}
+export const SCHOLARSHIP_FILTERS: { value: ScholarshipType; label: string }[] = [
+  { value: "fully_funded", label: "Fully funded" },
+  { value: "partially_funded", label: "Partially funded" },
+];
+export function scholarshipLabel(value: string) {
+  return SCHOLARSHIP_FILTERS.find((item) => item.value === value)?.label ?? value;
+}
 export const FILTER_FIELDS = [
   "Engineering",
   "Architecture",
@@ -121,25 +175,41 @@ export const FILTER_TYPES = [
 export const FILTER_LEVELS = ["Bachelor's", "Master's", "PhD"];
 
 export type ListingQuery = {
+  q?: string;
   city?: string;
   field?: string;
   type?: string;
   level?: string;
+  country?: string | string[];
+  scholarship?: string | string[];
   sort?: string;
   page?: string;
   cleared?: string;
 };
 
+export function asList(value?: string | string[]) {
+  if (!value) return [];
+  return (Array.isArray(value) ? value : value.split(","))
+    .flatMap((item) => item.split(","))
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
 export function hasActiveFilters(query: ListingQuery) {
   return Boolean(
-    (query.city && query.city !== "all") ||
+    query.q?.trim() ||
+      (query.city && query.city !== "all") ||
       (query.field && query.field !== "all") ||
       (query.type && query.type !== "all") ||
-      (query.level && query.level !== "all"),
+      (query.level && query.level !== "all") ||
+      asList(query.country).length ||
+      asList(query.scholarship).length,
   );
 }
 
 export function filterCatalog(list: CatalogUniversity[], query: ListingQuery) {
+  const countries = asList(query.country);
+  const scholarships = asList(query.scholarship);
   return list.filter((university) => {
     if (query.city && query.city !== "all" && university.city !== query.city) return false;
     if (query.type && query.type !== "all" && university.type !== query.type) return false;
@@ -149,6 +219,14 @@ export function filterCatalog(list: CatalogUniversity[], query: ListingQuery) {
     if (query.level && query.level !== "all" && !university.levels.includes(query.level)) {
       return false;
     }
+    if (
+      countries.length &&
+      !countries.includes(university.countryCode) &&
+      !countries.includes(university.country)
+    ) {
+      return false;
+    }
+    if (scholarships.length && !scholarships.includes(university.scholarshipType)) return false;
     return true;
   });
 }

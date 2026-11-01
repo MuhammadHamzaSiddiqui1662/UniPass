@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Asset from "@/components/home/Asset";
 import BookmarkButton from "@/components/universities/BookmarkButton";
+import CountryFlag from "@/components/universities/CountryFlag";
 import type { CatalogUniversity } from "@/lib/universities/catalog";
 import { formatCurrency } from "@/lib/utils/format";
 
@@ -58,6 +59,7 @@ export default function UniversityCard({ university }: { university: CatalogUniv
             {university.type === "public" ? "Public" : "Private"}
           </span>
           <span className="chip-outline">{university.city}</span>
+          <CountryFlag code={university.countryCode} name={university.country || "Türkiye"} />
         </div>
         <h2 className="mt-3 font-display text-[20px] leading-6 text-primary-900">
           <Link href={`/universities/${university.slug}`} className="hover:text-primary">

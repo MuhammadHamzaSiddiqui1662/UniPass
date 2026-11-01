@@ -2,6 +2,8 @@ import Link from "next/link";
 import Asset from "@/components/home/Asset";
 import CampusPhoto from "@/components/home/CampusPhoto";
 import GuideArt from "@/components/home/GuideArt";
+import UniversitySlider from "@/components/home/UniversitySlider";
+import CountryFlag from "@/components/universities/CountryFlag";
 import ConsultationForm from "@/components/public/ConsultationForm";
 import FaqAccordion from "@/components/home/FaqAccordion";
 import { admissionSteps, type HomeFaq, type HomeGuide, type HomeUniversity } from "@/lib/home/content";
@@ -89,11 +91,11 @@ export function Universities({
           page.
         </p>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <UniversitySlider>
           {universities.map((university, index) => (
             <article
               key={university.slug}
-              className="flex flex-col overflow-hidden rounded-card border-[1.2px] border-slate-200 bg-white"
+              className="flex h-full w-full flex-col overflow-hidden rounded-card border-[1.2px] border-slate-200 bg-white"
             >
               <CampusPhoto
                 src={university.image}
@@ -106,6 +108,7 @@ export function Universities({
                     {university.type === "public" ? "Public" : "Private"}
                   </span>
                   <span className="chip-outline">{university.city}</span>
+                  <CountryFlag code={university.countryCode} name={university.country} />
                 </div>
                 <h3 className="mt-3 font-display text-[20px] leading-6 text-primary-900">
                   <Link href={`/universities/${university.slug}`} className="hover:text-primary">
@@ -118,7 +121,7 @@ export function Universities({
                 <p className="text-[14px] leading-5 text-slate-600">
                   Levels: {university.levels.join(", ")}
                 </p>
-                <div className="mt-4 border-t border-slate-200 pt-4">
+                <div className="mt-auto border-t border-slate-200 pt-4">
                   <div className="flex items-end justify-between gap-3">
                     <div className="min-w-0">
                       <p className="text-[13px] text-slate-600">Tuition from</p>
@@ -140,7 +143,7 @@ export function Universities({
               </div>
             </article>
           ))}
-        </div>
+        </UniversitySlider>
 
         <p className="mt-8 text-center text-[15px] text-slate-600">
           Showing {universities.length} of {total} universities
