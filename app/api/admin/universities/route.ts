@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
+import { ZodError } from "zod";
 import { connectDB, University } from "@/lib/db";
 import { requireAuth } from "@/lib/auth/session";
 import { revalidatePath } from "next/cache";
-import { universityFieldsSchema, validationError } from "@/lib/validations/university";
+import { parseUniversityImages, universityFieldsSchema, validationError } from "@/lib/validations/university";
 
 export async function GET(request: NextRequest) {
   try {
@@ -39,12 +40,22 @@ export async function POST(request: NextRequest) {
     if (!parsed.success) {
       return NextResponse.json({ error: validationError(parsed.error) }, { status: 400 });
     }
+    let images;
+    try {
+      images = parseUniversityImages(body);
+    } catch (error) {
+      if (error instanceof ZodError) {
+        return NextResponse.json({ error: validationError(error) }, { status: 400 });
+      }
+      throw error;
+    }
     const existing = await University.findOne({ slug: parsed.data.slug });
     if (existing) {
       return NextResponse.json({ error: "A university with this slug already exists" }, { status: 400 });
     }
     const university = await University.create({
       ...parsed.data,
+      ...images,
       metaTitle: typeof body.metaTitle === "string" ? body.metaTitle : undefined,
       metaDescription: typeof body.metaDescription === "string" ? body.metaDescription : undefined,
     });

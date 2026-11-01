@@ -294,6 +294,27 @@ See `.env.example` for a complete list of environment variables.
 ### Optional
 - **Cloudinary**: `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`
 
+## Images / Cloudinary setup
+
+University logos, featured campus photos, galleries, and testimonial photos upload through `/api/admin/upload`. The storage provider is chosen from the environment:
+
+- **Local** when `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, and `CLOUDINARY_API_SECRET` are not all set. Files are written to `public/uploads` with unique names. This works for local development.
+- **Cloudinary** as soon as those three variables are set. New uploads go to folders such as `unipass/universities/<slug>/`, are limited to about 2000 pixels wide, and are delivered with automatic format and quality. No code change is required to switch.
+
+Local files are not persistent on Vercel and similar hosts, because the filesystem is ephemeral and is not shared across instances. Set the Cloudinary variables before go-live.
+
+Accepted files are JPEG, PNG, and WebP, checked from the file bytes (not only the browser MIME type), up to 10 MB. SVG is allowed only for a university logo, and only after unsafe markup is stripped. GIF and other types are rejected.
+
+Replacing or removing an image, or deleting the university, deletes the previous hosted file. Cleanup is best-effort and does not block the save. Pasting an image URL stores that address as-is on the local provider, and re-hosts it on Cloudinary when Cloudinary is configured.
+
+After credentials are in place, rewrite existing `/uploads/` addresses with:
+
+```bash
+npx tsx scripts/migrate-local-uploads-to-cloudinary.ts
+```
+
+The script reads `.env.local` (or the variables already in the environment), re-uploads each local file, and updates the university document. It leaves the files in `public/uploads` in place.
+
 ## Design Tokens
 
 UniPass uses a custom color palette inspired by Pakistani and Turkish flag colors:

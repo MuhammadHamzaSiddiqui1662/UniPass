@@ -99,7 +99,7 @@ export function Universities({
             >
               <CampusPhoto
                 src={university.image}
-                alt=""
+                alt={university.imageAlt || `${university.name} campus`}
                 index={index}
               />
               <div className="flex flex-1 flex-col px-[22px] pb-5 pt-[18px]">
