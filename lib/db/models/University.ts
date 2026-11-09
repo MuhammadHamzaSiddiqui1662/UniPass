@@ -14,7 +14,9 @@ export interface IUniversity {
   homeOrder: number;
   ranking?: number;
   tuitionFrom: number;
+  tuitionTo?: number;
   tuitionCurrency: string;
+  website?: string;
   intake?: string;
   languages: string[];
   description: string;
@@ -65,7 +67,9 @@ const universitySchema = new Schema<IUniversity>(
     homeOrder: { type: Number, default: 0 },
     ranking: Number,
     tuitionFrom: { type: Number, required: true },
+    tuitionTo: Number,
     tuitionCurrency: { type: String, default: "USD" },
+    website: String,
     intake: String,
     languages: [String],
     description: { type: String, required: true },
