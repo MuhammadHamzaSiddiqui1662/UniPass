@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Header from "@/components/public/Header";
 import Footer from "@/components/public/Footer";
 import CampusGallery from "@/components/universities/CampusGallery";
+import SmartImage from "@/components/media/SmartImage";
 import UniversityActions from "@/components/universities/UniversityActions";
 import { BreadcrumbSchema, UniversitySchema } from "@/components/seo/StructuredData";
 import { connectDB, University } from "@/lib/db";
@@ -57,6 +58,13 @@ async function getUniversity(slug: string): Promise<DetailUniversity | null> {
       hasMeritScholarship: university.hasMeritScholarship,
       metaTitle: university.metaTitle,
       metaDescription: university.metaDescription,
+      logo: university.logo || undefined,
+      logoAlt: university.logoAlt || undefined,
+      featuredImage: university.featuredImage || undefined,
+      featuredImageAlt: university.featuredImageAlt || undefined,
+      gallery: (university.gallery || []).filter(Boolean),
+      galleryAlts: university.galleryAlts || [],
+      ogImage: university.ogImage || undefined,
     };
   } catch (error) {
     console.error("Failed to fetch university:", error);
@@ -80,6 +88,8 @@ export async function generateMetadata({
     university.description ||
     `Explore ${university.name} in ${university.city} with UniPass.`;
 
+  const image = absoluteImage(baseUrl, university.ogImage || university.featuredImage);
+
   return {
     title,
     description,
@@ -90,6 +100,7 @@ export async function generateMetadata({
       type: "website",
       locale: "en_PK",
       siteName: "UniPass",
+      images: image ? [{ url: image, alt: university.featuredImageAlt || university.name }] : undefined,
     },
   };
 }
@@ -106,6 +117,7 @@ export default async function UniversityDetailPage({
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:43123";
   const bookmarkId = university._id || university.slug;
   const whatsapp = whatsappHref();
+  const campusImages = campusShots(university);
 
   return (
     <>
@@ -132,12 +144,25 @@ export default async function UniversityDetailPage({
             <span className="font-bold text-primary-900">{university.name}</span>
           </nav>
 
-          <CampusGallery name={university.name} />
+          <CampusGallery name={university.name} images={campusImages} />
 
           <div className="mt-8 flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-            <h1 className="font-display text-[32px] leading-tight text-primary-900 sm:text-[36px]">
-              {university.name}
-            </h1>
+            <div className="flex items-center gap-4">
+              {university.logo && (
+                <SmartImage
+                  src={university.logo}
+                  alt={university.logoAlt || `${university.name} logo`}
+                  fill={false}
+                  width={72}
+                  height={72}
+                  sizes="72px"
+                  className="h-[72px] w-[72px] rounded-xl border border-slate-200 bg-white object-contain"
+                />
+              )}
+              <h1 className="font-display text-[32px] leading-tight text-primary-900 sm:text-[36px]">
+                {university.name}
+              </h1>
+            </div>
             <UniversityActions id={bookmarkId} name={university.name} />
           </div>
 
@@ -228,6 +253,26 @@ export default async function UniversityDetailPage({
       <Footer />
     </>
   );
+}
+
+function campusShots(university: DetailUniversity) {
+  const shots: { src: string; alt: string }[] = [];
+  const seen = new Set<string>();
+  const add = (src?: string, alt?: string) => {
+    if (!src || seen.has(src)) return;
+    seen.add(src);
+    shots.push({ src, alt: alt || `${university.name} campus` });
+  };
+  add(university.featuredImage, university.featuredImageAlt);
+  university.gallery.forEach((src, index) => add(src, university.galleryAlts[index]));
+  return shots;
+}
+
+function absoluteImage(baseUrl: string, src?: string) {
+  if (!src) return undefined;
+  if (src.startsWith("http://") || src.startsWith("https://")) return src;
+  if (src.startsWith("/")) return `${baseUrl}${src}`;
+  return undefined;
 }
 
 function Fact({ label, value, last = false }: { label: string; value: string; last?: boolean }) {

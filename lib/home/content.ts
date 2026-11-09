@@ -9,6 +9,7 @@ export type HomeUniversity = {
   levels: string[];
   tuitionFrom: number;
   image: string;
+  imageAlt?: string;
 };
 
 export type HomeGuide = {

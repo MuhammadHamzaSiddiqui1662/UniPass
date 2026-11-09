@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { isStoredImageReference } from "@/lib/upload/urls";
 
 const countryCode = z
   .string()
@@ -29,6 +30,58 @@ export const universityFieldsSchema = z.object({
   hasMeritScholarship: z.boolean().default(false),
   status: z.enum(["draft", "published"]),
 });
+
+const imageReference = z
+  .string()
+  .trim()
+  .max(2000)
+  .refine((value) => value === "" || isStoredImageReference(value), {
+    message: "Image address must be an http(s) URL or a site path",
+  });
+
+export const universityImageSchema = z.object({
+  logo: imageReference.optional().default(""),
+  logoAlt: z.string().trim().max(300).optional().default(""),
+  featuredImage: imageReference.optional().default(""),
+  featuredImageAlt: z.string().trim().max(300).optional().default(""),
+  gallery: z.array(imageReference).max(24).optional().default([]),
+  galleryAlts: z.array(z.string().trim().max(300)).max(24).optional().default([]),
+});
+
+export type UniversityImageFields = {
+  logo?: string;
+  logoAlt?: string;
+  featuredImage?: string;
+  featuredImageAlt?: string;
+  gallery?: string[];
+  galleryAlts?: string[];
+};
+
+export function parseUniversityImages(body: Record<string, unknown>, current?: UniversityImageFields) {
+  const parsed = universityImageSchema.parse({
+    logo: pick(body, "logo", current?.logo || ""),
+    logoAlt: pick(body, "logoAlt", current?.logoAlt || ""),
+    featuredImage: pick(body, "featuredImage", current?.featuredImage || ""),
+    featuredImageAlt: pick(body, "featuredImageAlt", current?.featuredImageAlt || ""),
+    gallery: pick(body, "gallery", current?.gallery || []),
+    galleryAlts: pick(body, "galleryAlts", current?.galleryAlts || []),
+  });
+  const gallery = parsed.gallery
+    .map((url, index) => ({ url, alt: parsed.galleryAlts[index] || "" }))
+    .filter((item) => item.url);
+  return {
+    logo: parsed.logo,
+    logoAlt: parsed.logoAlt,
+    featuredImage: parsed.featuredImage,
+    featuredImageAlt: parsed.featuredImageAlt,
+    gallery: gallery.map((item) => item.url),
+    galleryAlts: gallery.map((item) => item.alt),
+  };
+}
+
+function pick(body: Record<string, unknown>, key: string, fallback: unknown) {
+  return Object.prototype.hasOwnProperty.call(body, key) ? body[key] : fallback;
+}
 
 export function validationError(error: z.ZodError) {
   const issue = error.issues[0];

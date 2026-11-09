@@ -114,6 +114,7 @@ async function getHomePageData() {
             levels: university.levels ?? [],
             tuitionFrom: university.tuitionFrom,
             image: university.featuredImage || CAMPUS_PHOTOS[index % CAMPUS_PHOTOS.length],
+            imageAlt: university.featuredImageAlt || "",
           }))
         : fallbackUniversities;
 

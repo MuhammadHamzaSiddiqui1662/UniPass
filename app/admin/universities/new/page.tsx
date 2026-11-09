@@ -6,6 +6,11 @@ import Link from "next/link";
 import { slugify } from "@/lib/utils/format";
 import { TURKISH_CITIES, FIELDS_OF_STUDY, STUDY_LEVELS, UNIVERSITY_TYPES } from "@/lib/utils/constants";
 import CountrySelect from "@/components/admin/CountrySelect";
+import UniversityImageFields, {
+  emptyUniversityImages,
+  universityImagesPayload,
+  type UniversityImages,
+} from "@/components/admin/UniversityImageFields";
 
 export default function NewUniversityPage() {
   const router = useRouter();
@@ -13,6 +18,7 @@ export default function NewUniversityPage() {
   const [name, setName] = useState("");
   const [slug, setSlug] = useState("");
   const [autoSlug, setAutoSlug] = useState(true);
+  const [images, setImages] = useState<UniversityImages>(emptyUniversityImages);
 
   const handleNameChange = (value: string) => {
     setName(value);
@@ -52,6 +58,7 @@ export default function NewUniversityPage() {
         : [],
       featuredOnHome: formData.get("featuredOnHome") === "on",
       homeOrder: parseInt(String(formData.get("homeOrder") || "0"), 10) || 0,
+      ...universityImagesPayload(images),
       facilityHighlights: formData.get("facilityHighlights") ? (formData.get("facilityHighlights") as string).split("\n").filter(Boolean) : [],
       facts: formData.get("facts") ? (formData.get("facts") as string).split("\n").filter(Boolean) : [],
       status: formData.get("status"),
@@ -178,6 +185,8 @@ export default function NewUniversityPage() {
               </div>
             </div>
           </div>
+
+          <UniversityImageFields slug={slug} images={images} onChange={setImages} />
 
           {/* Academic Info */}
           <div className="bg-white rounded-card border border-slate-200 p-6">
