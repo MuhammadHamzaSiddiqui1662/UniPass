@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import LogoMark from "@/components/public/LogoMark";
 import Asset from "@/components/home/Asset";
+import GlobalSearch, { SearchIconButton } from "@/components/public/GlobalSearch";
 import { whatsappHref } from "@/lib/site/contact";
 
 interface HeaderProps {
@@ -21,8 +22,30 @@ const navLinks = [
 
 export default function Header({ activeLink }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const pathname = usePathname();
   const wa = whatsappHref();
+
+  function openSearch() {
+    setMobileMenuOpen(false);
+    setSearchOpen(true);
+  }
+
+  useEffect(() => {
+    setSearchOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    function onKey(event: KeyboardEvent) {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        setMobileMenuOpen(false);
+        setSearchOpen(true);
+      }
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   const isActive = (href: string) => {
     if (activeLink) return activeLink === href;
@@ -64,20 +87,25 @@ export default function Header({ activeLink }: HeaderProps) {
               </a>
             </nav>
 
-            <Link
-              href="/#book"
-              className="hidden min-[1180px]:inline-flex h-11 items-center justify-center rounded-pill bg-secondary px-6 text-[15px] font-bold text-primary-900 transition-colors hover:bg-secondary-500"
-            >
-              Book free consultation
-            </Link>
+            <div className="hidden items-center gap-3 min-[1180px]:flex">
+              <SearchIconButton onClick={openSearch} />
+              <Link
+                href="/#book"
+                className="inline-flex h-11 items-center justify-center rounded-pill bg-secondary px-6 text-[15px] font-bold text-primary-900 transition-colors hover:bg-secondary-500"
+              >
+                Book free consultation
+              </Link>
+            </div>
 
-            <button
-              type="button"
-              onClick={() => setMobileMenuOpen((open) => !open)}
-              className="inline-flex h-10 w-10 items-center justify-center text-primary-900 min-[1180px]:hidden"
-              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-              aria-expanded={mobileMenuOpen}
-            >
+            <div className="flex items-center min-[1180px]:hidden">
+              <SearchIconButton onClick={openSearch} />
+              <button
+                type="button"
+                onClick={() => setMobileMenuOpen((open) => !open)}
+                className="inline-flex h-10 w-10 items-center justify-center text-primary-900"
+                aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={mobileMenuOpen}
+              >
               <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {mobileMenuOpen ? (
                   <path
@@ -95,7 +123,8 @@ export default function Header({ activeLink }: HeaderProps) {
                   />
                 )}
               </svg>
-            </button>
+              </button>
+            </div>
           </div>
 
           {mobileMenuOpen && (
@@ -133,6 +162,7 @@ export default function Header({ activeLink }: HeaderProps) {
           )}
         </div>
       </div>
+      {searchOpen ? <GlobalSearch open onClose={() => setSearchOpen(false)} /> : null}
     </header>
   );
 }
