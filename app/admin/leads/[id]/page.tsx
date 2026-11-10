@@ -1,30 +1,49 @@
-import { getSession, requireAuth } from "@/lib/auth/session";
-import { redirect } from "next/navigation";
+import { getSession } from "@/lib/auth/session";
+import { notFound, redirect } from "next/navigation";
 import { connectDB, Lead, User } from "@/lib/db";
 import Link from "next/link";
 import { formatDate, formatPhoneNumber, generateWhatsAppLink } from "@/lib/utils/format";
 import LeadDetailClient from "@/components/admin/LeadDetailClient";
+import AdminNav from "@/components/admin/AdminNav";
+import {
+  canAccessLead,
+  canAssignLeads,
+  canDeleteLead,
+  canExportLead,
+} from "@/lib/auth/permissions";
 
-async function getLeadDetail(id: string, userId: string, isAdmin: boolean) {
+async function getLeadDetail(id: string, userId: string, role: "super_admin" | "admin" | "supervisor" | "staff") {
   try {
     await connectDB();
 
     const lead = await Lead.findById(id)
-      .populate("assignedTo", "name")
+      .populate("assignedTo", "name email role")
       .populate("university", "name")
       .populate("activity.user", "name")
       .lean();
 
-    if (!lead) {
+    if (!lead || !canAccessLead(role, userId, lead.assignedTo)) {
       return null;
     }
 
-    const users = await User.find({ active: true }).select("_id name").lean();
+    const users: { _id: string; name: string }[] = canAssignLeads(role)
+      ? (await User.find({ role: "staff", active: true }).select("_id name").lean()).map((user) => ({
+          _id: String(user._id),
+          name: user.name,
+        }))
+      : [];
+
+    const assigned = lead.assignedTo as { _id?: unknown; name?: string } | null | undefined;
+    if (assigned?._id && !users.some((user) => user._id === String(assigned._id))) {
+      users.unshift({ _id: String(assigned._id), name: assigned.name || "Assigned user" });
+    }
 
     return {
       lead: JSON.parse(JSON.stringify(lead)),
       users: JSON.parse(JSON.stringify(users)),
-      canDelete: isAdmin,
+      canDelete: canDeleteLead(role),
+      canAssign: canAssignLeads(role),
+      canExport: canExportLead(role),
     };
   } catch (error) {
     console.error("Failed to fetch lead:", error);
@@ -37,65 +56,18 @@ export default async function LeadDetailPage({
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const session = await requireAuth();
+  const session = await getSession();
+  if (!session) redirect("/admin/login");
+
   const params = await rawParams;
+  const data = await getLeadDetail(params.id, session.userId, session.role);
+  if (!data) notFound();
 
-  const data = await getLeadDetail(
-    params.id,
-    session.userId,
-    session.role === "admin"
-  );
-
-  if (!data) {
-    redirect("/admin/leads");
-  }
-
-  const { lead, users, canDelete } = data;
+  const { lead, users, canDelete, canAssign, canExport } = data;
 
   return (
     <div className="min-h-screen bg-slate-50">
-      <nav className="bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16 items-center">
-            <div className="flex items-center gap-8">
-              <Link href="/admin" className="font-display text-xl text-primary-900">
-                UniPass Admin
-              </Link>
-              <div className="hidden md:flex gap-6">
-                <Link href="/admin" className="text-slate-600 hover:text-primary-900">
-                  Dashboard
-                </Link>
-                <Link
-                  href="/admin/leads"
-                  className="text-primary font-bold border-b-2 border-primary pb-1"
-                >
-                  Leads
-                </Link>
-                <Link
-                  href="/admin/universities"
-                  className="text-slate-600 hover:text-primary-900"
-                >
-                  Universities
-                </Link>
-                <Link href="/admin/guides" className="text-slate-600 hover:text-primary-900">
-                  Guides
-                </Link>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <span className="text-sm text-slate-600">{session.name}</span>
-              <form action="/api/auth/logout" method="POST">
-                <button
-                  type="submit"
-                  className="text-sm text-slate-600 hover:text-primary-900"
-                >
-                  Logout
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <AdminNav role={session.role} name={session.name} current="leads" />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-6">
@@ -185,6 +157,8 @@ export default async function LeadDetailPage({
               lead={lead}
               users={users}
               canDelete={canDelete}
+              canAssign={canAssign}
+              canExport={canExport}
             />
           </div>
         </div>

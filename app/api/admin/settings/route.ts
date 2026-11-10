@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { connectDB, SiteSettings } from "@/lib/db";
-import { requireAuth } from "@/lib/auth/session";
+import { requireAdmin } from "@/lib/auth/session";
 import { revalidatePath } from "next/cache";
 
 export async function GET(request: NextRequest) {
   try {
-    await requireAuth();
+    await requireAdmin();
     await connectDB();
 
     let settings = await SiteSettings.findOne().lean();
@@ -31,11 +31,7 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const session = await requireAuth();
-    if (session.role !== "admin") {
-      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
-    }
-
+    await requireAdmin();
     await connectDB();
 
     const body = await request.json();

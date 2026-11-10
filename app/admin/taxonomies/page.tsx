@@ -1,5 +1,4 @@
-import { requireAuth } from "@/lib/auth/session";
-import { redirect } from "next/navigation";
+import { requireAdminPage } from "@/lib/auth/guards";
 import { connectDB, Taxonomy } from "@/lib/db";
 import Link from "next/link";
 
@@ -14,7 +13,7 @@ async function getTaxonomies() {
 }
 
 export default async function TaxonomiesAdminPage() {
-  const session = await requireAuth().catch(() => redirect("/admin/login"));
+  await requireAdminPage();
   const taxonomies = await getTaxonomies();
 
   const grouped: any = {};

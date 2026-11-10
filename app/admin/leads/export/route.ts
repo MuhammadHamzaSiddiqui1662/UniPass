@@ -1,52 +1,16 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { connectDB, Lead } from "@/lib/db";
-import { requireAuth } from "@/lib/auth/session";
+import { requireAdmin } from "@/lib/auth/session";
+import { authFailure } from "@/lib/auth/http";
+import { leadsToCsv } from "@/lib/leads/csv";
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
-    await requireAuth();
+    await requireAdmin();
     await connectDB();
 
-    const leads = await Lead.find()
-      .sort({ createdAt: -1 })
-      .populate("university", "name")
-      .lean();
-
-    // Generate CSV
-    const headers = [
-      "ID",
-      "Full Name",
-      "WhatsApp Number",
-      "City",
-      "Level of Study",
-      "Best Time",
-      "Status",
-      "Source",
-      "Source Page",
-      "University Interest",
-      "Created At",
-    ];
-
-    const rows = leads.map((lead: any) => [
-      lead._id.toString(),
-      lead.fullName,
-      lead.whatsappNumber,
-      lead.city,
-      lead.levelOfStudy,
-      lead.bestTimeToReach || "",
-      lead.status,
-      lead.source,
-      lead.sourcePage,
-      lead.university?.name || "",
-      new Date(lead.createdAt).toISOString(),
-    ]);
-
-    const csv = [
-      headers.join(","),
-      ...rows.map((row) =>
-        row.map((cell) => `"${String(cell).replace(/"/g, '""')}"`).join(",")
-      ),
-    ].join("\n");
+    const leads = await Lead.find().sort({ createdAt: -1 }).populate("university", "name").lean();
+    const csv = leadsToCsv(leads);
 
     return new NextResponse(csv, {
       status: 200,
@@ -56,10 +20,9 @@ export async function GET(request: NextRequest) {
       },
     });
   } catch (error) {
+    const auth = authFailure(error);
+    if (auth) return auth;
     console.error("Export leads error:", error);
-    return NextResponse.json(
-      { error: "Failed to export leads" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to export leads" }, { status: 500 });
   }
 }

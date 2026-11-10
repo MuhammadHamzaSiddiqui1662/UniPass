@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
 import { connectDB, University } from "@/lib/db";
-import { requireAuth } from "@/lib/auth/session";
+import { requireAdmin } from "@/lib/auth/session";
 
 export async function PUT(request: NextRequest) {
   try {
-    await requireAuth();
+    await requireAdmin();
     await connectDB();
     const body = await request.json();
     const items = Array.isArray(body.items) ? body.items : [];

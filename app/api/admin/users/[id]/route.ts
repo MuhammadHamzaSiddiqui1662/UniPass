@@ -1,6 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
 import { connectDB, User } from "@/lib/db";
 import { requireAdmin, hashPassword } from "@/lib/auth/session";
+import {
+  canChangeUserRole,
+  canDeleteUser,
+  canEditUser,
+  canSetActive,
+  type UserRole,
+} from "@/lib/auth/permissions";
+import { authFailure } from "@/lib/auth/http";
+import { updateUserSchema } from "@/lib/validations/schemas";
+
+function actorFrom(session: { userId: string; role: UserRole }) {
+  return { id: session.userId, role: session.role };
+}
 
 export async function GET(
   request: NextRequest,
@@ -12,18 +25,16 @@ export async function GET(
 
     const { id } = await params;
     const user = await User.findById(id).select("-password").lean();
-
     if (!user) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
     return NextResponse.json({ user });
   } catch (error) {
+    const auth = authFailure(error);
+    if (auth) return auth;
     console.error("Get user error:", error);
-    return NextResponse.json(
-      { error: "Failed to fetch user" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to fetch user" }, { status: 500 });
   }
 }
 
@@ -32,50 +43,57 @@ export async function PATCH(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    await requireAdmin();
+    const session = await requireAdmin();
     await connectDB();
 
     const { id } = await params;
-    const body = await request.json();
+    const parsed = updateUserSchema.parse(await request.json());
+    const target = await User.findById(id);
+    if (!target) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
 
-    // If email is being changed, check for duplicates
-    if (body.email) {
-      const existing = await User.findOne({
-        email: body.email,
-        _id: { $ne: id },
-      });
+    const actor = actorFrom(session);
+    const targetActor = { id: target._id.toString(), role: target.role };
+    if (!canEditUser(actor, targetActor)) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
+
+    if (parsed.role && !canChangeUserRole(actor, targetActor, parsed.role)) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
+
+    if (parsed.active !== undefined && !canSetActive(actor, targetActor, parsed.active)) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
+
+    if (parsed.email) {
+      const email = parsed.email.toLowerCase();
+      const existing = await User.findOne({ email, _id: { $ne: target._id } });
       if (existing) {
         return NextResponse.json(
           { error: "A user with this email already exists" },
           { status: 400 }
         );
       }
+      target.email = email;
     }
 
-    // If password is provided, hash it
-    if (body.password) {
-      body.password = await hashPassword(body.password);
-    } else {
-      const { password: _, ...rest } = body;
-      Object.assign(body, rest);
-    }
+    if (parsed.name) target.name = parsed.name;
+    if (parsed.role) target.role = parsed.role;
+    if (parsed.active !== undefined) target.active = parsed.active;
+    if (parsed.password) target.password = await hashPassword(parsed.password);
 
-    const user = await User.findByIdAndUpdate(id, body, {
-      new: true,
-      runValidators: true,
-    }).select("-password").lean();
-
-    if (!user) {
-      return NextResponse.json({ error: "User not found" }, { status: 404 });
-    }
+    await target.save();
+    const user = target.toObject();
+    delete (user as { password?: string }).password;
 
     return NextResponse.json({ user });
   } catch (error) {
+    const auth = authFailure(error);
+    if (auth) return auth;
     console.error("Update user error:", error);
-    return NextResponse.json(
-      { error: "Failed to update user" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to update user" }, { status: 500 });
   }
 }
 
@@ -84,22 +102,25 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    await requireAdmin();
+    const session = await requireAdmin();
     await connectDB();
 
     const { id } = await params;
-    const user = await User.findByIdAndDelete(id);
-
-    if (!user) {
+    const target = await User.findById(id);
+    if (!target) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
+    if (!canDeleteUser(actorFrom(session), { id: target._id.toString(), role: target.role })) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
+
+    await target.deleteOne();
     return NextResponse.json({ success: true });
   } catch (error) {
+    const auth = authFailure(error);
+    if (auth) return auth;
     console.error("Delete user error:", error);
-    return NextResponse.json(
-      { error: "Failed to delete user" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to delete user" }, { status: 500 });
   }
 }

@@ -1,49 +1,53 @@
 "use client";
 
-import { useState, FormEvent, useEffect } from "react";
+import { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { ROLE_LABELS, type UserRole } from "@/lib/auth/permissions";
 
-export default function EditUserClient({ userId }: { userId: string }) {
+interface EditableUser {
+  _id: string;
+  name: string;
+  email: string;
+  role: UserRole;
+  active: boolean;
+}
+
+export default function EditUserClient({
+  user,
+  roles,
+  lockRole,
+  lockActive,
+  canDelete,
+}: {
+  user: EditableUser;
+  roles: UserRole[];
+  lockRole: boolean;
+  lockActive: boolean;
+  canDelete: boolean;
+}) {
   const router = useRouter();
   const [saving, setSaving] = useState(false);
   const [deleting, setDeleting] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState<any>(null);
-
-  useEffect(() => {
-    fetch(`/api/admin/users/${userId}`)
-      .then(res => res.json())
-      .then(data => {
-        setUser(data.user);
-        setLoading(false);
-      })
-      .catch(() => {
-        alert("Failed to load user");
-        router.push("/admin/users");
-      });
-  }, [userId, router]);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSaving(true);
 
     const formData = new FormData(e.currentTarget);
-    const data: any = {
+    const data: Record<string, unknown> = {
       name: formData.get("name"),
       email: formData.get("email"),
-      role: formData.get("role"),
-      active: formData.get("active") === "on",
     };
 
-    // Only include password if it was provided
+    if (!lockRole) data.role = formData.get("role");
+    if (!lockActive) data.active = formData.get("active") === "on";
+
     const password = formData.get("password") as string;
-    if (password) {
-      data.password = password;
-    }
+    if (password) data.password = password;
 
     try {
-      const response = await fetch(`/api/admin/users/${userId}`, {
+      const response = await fetch(`/api/admin/users/${user._id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -69,27 +73,19 @@ export default function EditUserClient({ userId }: { userId: string }) {
 
     setDeleting(true);
     try {
-      const response = await fetch(`/api/admin/users/${userId}`, {
-        method: "DELETE",
-      });
-
-      if (!response.ok) throw new Error("Failed to delete");
+      const response = await fetch(`/api/admin/users/${user._id}`, { method: "DELETE" });
+      if (!response.ok) {
+        const error = await response.json().catch(() => ({}));
+        throw new Error(error.error || "Failed to delete");
+      }
 
       router.push("/admin/users");
       router.refresh();
     } catch (error) {
-      alert("Failed to delete user");
+      alert(error instanceof Error ? error.message : "Failed to delete user");
       setDeleting(false);
     }
   };
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
-        <p className="text-slate-600">Loading...</p>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -111,30 +107,16 @@ export default function EditUserClient({ userId }: { userId: string }) {
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-bold mb-1">Name *</label>
-                <input
-                  type="text"
-                  name="name"
-                  required
-                  className="input-field"
-                  defaultValue={user.name}
-                />
+                <input type="text" name="name" required className="input-field" defaultValue={user.name} />
               </div>
 
               <div>
                 <label className="block text-sm font-bold mb-1">Email *</label>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  className="input-field"
-                  defaultValue={user.email}
-                />
+                <input type="email" name="email" required className="input-field" defaultValue={user.email} />
               </div>
 
               <div>
-                <label className="block text-sm font-bold mb-1">
-                  Password (leave blank to keep current)
-                </label>
+                <label className="block text-sm font-bold mb-1">Password (leave blank to keep current)</label>
                 <input
                   type="password"
                   name="password"
@@ -145,21 +127,31 @@ export default function EditUserClient({ userId }: { userId: string }) {
               </div>
 
               <div>
-                <label className="block text-sm font-bold mb-1">Role *</label>
-                <select name="role" required className="input-field" defaultValue={user.role}>
-                  <option value="staff">Staff</option>
-                  <option value="admin">Admin</option>
-                </select>
-                <p className="text-xs text-slate-600 mt-1">
-                  Staff can only manage leads. Admin has full access.
-                </p>
+                <label className="block text-sm font-bold mb-1">Role</label>
+                {lockRole ? (
+                  <p className="text-sm text-primary-900">{ROLE_LABELS[user.role]}</p>
+                ) : (
+                  <select name="role" required className="input-field" defaultValue={user.role}>
+                    {roles.map((role) => (
+                      <option key={role} value={role}>
+                        {ROLE_LABELS[role]}
+                      </option>
+                    ))}
+                  </select>
+                )}
+                {lockRole && (
+                  <p className="text-xs text-slate-600 mt-1">The Super Admin role cannot be changed.</p>
+                )}
               </div>
 
               <div>
                 <label className="flex items-center gap-2">
-                  <input type="checkbox" name="active" defaultChecked={user.active} />
+                  <input type="checkbox" name="active" defaultChecked={user.active} disabled={lockActive} />
                   <span className="text-sm font-bold">Active</span>
                 </label>
+                {lockActive && (
+                  <p className="text-xs text-slate-600 mt-1">This account stays active.</p>
+                )}
               </div>
             </div>
           </div>
@@ -171,14 +163,16 @@ export default function EditUserClient({ userId }: { userId: string }) {
             <Link href="/admin/users" className="btn-outline">
               Cancel
             </Link>
-            <button
-              type="button"
-              onClick={handleDelete}
-              disabled={deleting}
-              className="ml-auto px-4 py-2 bg-error text-white rounded-input hover:bg-error/90 disabled:opacity-50"
-            >
-              {deleting ? "Deleting..." : "Delete"}
-            </button>
+            {canDelete && (
+              <button
+                type="button"
+                onClick={handleDelete}
+                disabled={deleting}
+                className="ml-auto px-4 py-2 bg-error text-white rounded-input hover:bg-error/90 disabled:opacity-50"
+              >
+                {deleting ? "Deleting..." : "Delete"}
+              </button>
+            )}
           </div>
         </form>
       </main>

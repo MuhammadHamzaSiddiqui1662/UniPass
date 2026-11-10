@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { requireAuth } from "@/lib/auth/session";
+import { requireAdmin } from "@/lib/auth/session";
 import { ImageValidationError, MAX_IMAGE_BYTES } from "@/lib/upload/detect";
 import { ingestImageUrl, normalizeKind, storeImageFile } from "@/lib/upload/ingest";
 import { getImageStorage } from "@/lib/upload/storage";
@@ -9,7 +9,7 @@ export const runtime = "nodejs";
 
 export async function POST(request: NextRequest) {
   try {
-    await requireAuth();
+    await requireAdmin();
     const contentType = request.headers.get("content-type") || "";
 
     if (contentType.includes("application/json")) {
@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
 
 export async function DELETE(request: NextRequest) {
   try {
-    await requireAuth();
+    await requireAdmin();
     const body = await request.json().catch(() => ({}));
     const url = typeof body.url === "string" ? body.url : undefined;
     const publicId = safePublicId(typeof body.publicId === "string" ? body.publicId : undefined) || undefined;

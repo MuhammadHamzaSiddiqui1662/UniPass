@@ -2,7 +2,6 @@
 
 import { useState, FormEvent, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 
 export default function SettingsPage() {
   const router = useRouter();
@@ -69,43 +68,14 @@ export default function SettingsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <p className="text-slate-600">Loading...</p>
-      </div>
+      </main>
     );
   }
 
   return (
     <div className="min-h-screen bg-slate-50">
-      <nav className="bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16 items-center">
-            <div className="flex items-center gap-8">
-              <Link href="/admin" className="font-display text-xl text-primary-900">
-                UniPass Admin
-              </Link>
-              <div className="hidden md:flex gap-6">
-                <Link href="/admin" className="text-slate-600 hover:text-primary-900">
-                  Dashboard
-                </Link>
-                <Link href="/admin/leads" className="text-slate-600 hover:text-primary-900">
-                  Leads
-                </Link>
-                <Link href="/admin/universities" className="text-slate-600 hover:text-primary-900">
-                  Universities
-                </Link>
-                <Link
-                  href="/admin/settings"
-                  className="text-primary font-bold border-b-2 border-primary pb-1"
-                >
-                  Settings
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
-
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <h1 className="text-2xl font-display mb-6">Site Settings</h1>
 

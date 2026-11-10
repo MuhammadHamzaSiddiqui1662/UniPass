@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { connectDB, FAQ } from "@/lib/db";
-import { requireAuth, requireAdmin } from "@/lib/auth/session";
+import { requireAdmin } from "@/lib/auth/session";
 import { revalidatePath } from "next/cache";
 
 export async function GET(
@@ -8,7 +8,7 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    await requireAuth();
+    await requireAdmin();
     await connectDB();
 
     const { id } = await params;
@@ -30,7 +30,7 @@ export async function PATCH(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    await requireAuth();
+    await requireAdmin();
     await connectDB();
 
     const { id } = await params;

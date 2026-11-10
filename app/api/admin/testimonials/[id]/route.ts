@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { connectDB, Testimonial } from "@/lib/db";
-import { requireAuth, requireAdmin } from "@/lib/auth/session";
+import { requireAdmin } from "@/lib/auth/session";
 import { revalidatePath } from "next/cache";
 
 export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
-    await requireAuth();
+    await requireAdmin();
     await connectDB();
     const { id } = await params;
     const testimonial = await Testimonial.findById(id).lean();
@@ -18,7 +18,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
 
 export async function PATCH(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
-    await requireAuth();
+    await requireAdmin();
     await connectDB();
     const { id } = await params;
     const body = await request.json();

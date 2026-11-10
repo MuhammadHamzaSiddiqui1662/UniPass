@@ -1,9 +1,11 @@
-import { getSession } from "@/lib/auth/session";
+import { getSession, type SessionData } from "@/lib/auth/session";
 import { redirect } from "next/navigation";
 import { connectDB, Lead, User } from "@/lib/db";
 import Link from "next/link";
 import { formatDate, formatPhoneNumber } from "@/lib/utils/format";
 import { LEAD_STATUSES } from "@/lib/utils/constants";
+import AdminNav from "@/components/admin/AdminNav";
+import { canBulkExport, canViewAllLeads, leadListFilter } from "@/lib/auth/permissions";
 
 interface SearchParams {
   search?: string;
@@ -12,11 +14,13 @@ interface SearchParams {
   page?: string;
 }
 
-async function getLeads(searchParams: SearchParams) {
+async function getLeads(searchParams: SearchParams, session: SessionData) {
   try {
     await connectDB();
 
-    const query: any = {};
+    const query: any = {
+      ...leadListFilter(session.role, session.userId, searchParams.assignedTo),
+    };
     const page = parseInt(searchParams.page || "1");
     const limit = 20;
     const skip = (page - 1) * limit;
@@ -33,10 +37,6 @@ async function getLeads(searchParams: SearchParams) {
       query.status = searchParams.status;
     }
 
-    if (searchParams.assignedTo) {
-      query.assignedTo = searchParams.assignedTo;
-    }
-
     const [leads, total, users] = await Promise.all([
       Lead.find(query)
         .sort({ createdAt: -1 })
@@ -46,7 +46,9 @@ async function getLeads(searchParams: SearchParams) {
         .populate("university", "name")
         .lean(),
       Lead.countDocuments(query),
-      User.find({ active: true }).select("_id name").lean(),
+      canViewAllLeads(session.role)
+        ? User.find({ role: "staff", active: true }).select("_id name").lean()
+        : Promise.resolve([]),
     ]);
 
     return {
@@ -79,73 +81,26 @@ export default async function LeadsPage({
   }
 
   const searchParams = await rawSearchParams;
-  const { leads, total, currentPage, totalPages, users } =
-    await getLeads(searchParams);
+  const { leads, total, currentPage, totalPages, users } = await getLeads(searchParams, session);
+  const showAllLeads = canViewAllLeads(session.role);
+  const showBulkExport = canBulkExport(session.role);
 
   return (
     <div className="min-h-screen bg-slate-50">
-      <nav className="bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16 items-center">
-            <div className="flex items-center gap-8">
-              <Link href="/admin" className="font-display text-xl text-primary-900">
-                UniPass Admin
-              </Link>
-              <div className="hidden md:flex gap-6">
-                <Link href="/admin" className="text-slate-600 hover:text-primary-900">
-                  Dashboard
-                </Link>
-                <Link
-                  href="/admin/leads"
-                  className="text-primary font-bold border-b-2 border-primary pb-1"
-                >
-                  Leads
-                </Link>
-                <Link
-                  href="/admin/universities"
-                  className="text-slate-600 hover:text-primary-900"
-                >
-                  Universities
-                </Link>
-                <Link href="/admin/guides" className="text-slate-600 hover:text-primary-900">
-                  Guides
-                </Link>
-                <Link
-                  href="/admin/settings"
-                  className="text-slate-600 hover:text-primary-900"
-                >
-                  Settings
-                </Link>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <span className="text-sm text-slate-600">{session.name}</span>
-              <form action="/api/auth/logout" method="POST">
-                <button
-                  type="submit"
-                  className="text-sm text-slate-600 hover:text-primary-900"
-                >
-                  Logout
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <AdminNav role={session.role} name={session.name} current="leads" />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-2xl font-display">Leads ({total})</h1>
-          <Link
-            href="/admin/leads/export"
-            className="btn-outline text-sm px-4 py-2"
-          >
-            Export CSV
-          </Link>
+          {showBulkExport && (
+            <Link href="/admin/leads/export" className="btn-outline text-sm px-4 py-2">
+              Export CSV
+            </Link>
+          )}
         </div>
 
         <div className="bg-white rounded-card border border-slate-200 p-6 mb-6">
-          <form className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <form className={`grid grid-cols-1 ${showAllLeads ? "md:grid-cols-4" : "md:grid-cols-3"} gap-4`}>
             <input
               type="text"
               name="search"
@@ -161,18 +116,20 @@ export default async function LeadsPage({
                 </option>
               ))}
             </select>
-            <select
-              name="assignedTo"
-              defaultValue={searchParams.assignedTo || ""}
-              className="input-field"
-            >
-              <option value="">All staff</option>
-              {users.map((user: any) => (
-                <option key={user._id} value={user._id}>
-                  {user.name}
-                </option>
-              ))}
-            </select>
+            {showAllLeads && (
+              <select
+                name="assignedTo"
+                defaultValue={searchParams.assignedTo || ""}
+                className="input-field"
+              >
+                <option value="">All staff</option>
+                {users.map((user: any) => (
+                  <option key={user._id} value={user._id}>
+                    {user.name}
+                  </option>
+                ))}
+              </select>
+            )}
             <button type="submit" className="btn-primary">
               Filter
             </button>

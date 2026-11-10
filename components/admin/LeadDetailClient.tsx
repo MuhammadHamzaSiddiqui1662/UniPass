@@ -30,10 +30,14 @@ export default function LeadDetailClient({
   lead: initialLead,
   users,
   canDelete,
+  canAssign,
+  canExport,
 }: {
   lead: Lead;
   users: User[];
   canDelete: boolean;
+  canAssign: boolean;
+  canExport: boolean;
 }) {
   const router = useRouter();
   const [lead, setLead] = useState(initialLead);
@@ -160,6 +164,12 @@ export default function LeadDetailClient({
 
   return (
     <div className="space-y-6">
+      {canExport && (
+        <a href={`/admin/leads/${lead._id}/export`} className="btn-outline inline-block text-sm px-4 py-2">
+          Export this lead
+        </a>
+      )}
+
       {/* Status Pipeline */}
       <div className="bg-white rounded-card border border-slate-200 p-6">
         <h2 className="font-display text-xl mb-4">Status Pipeline</h2>
@@ -181,23 +191,25 @@ export default function LeadDetailClient({
         </div>
       </div>
 
-      {/* Assignment */}
-      <div className="bg-white rounded-card border border-slate-200 p-6">
-        <h2 className="font-display text-xl mb-4">Assign To</h2>
-        <select
-          value={lead.assignedTo?._id || ""}
-          onChange={(e) => handleAssign(e.target.value)}
-          disabled={saving}
-          className="input-field max-w-xs"
-        >
-          <option value="">Unassigned</option>
-          {users.map((user) => (
-            <option key={user._id} value={user._id}>
-              {user.name}
-            </option>
-          ))}
-        </select>
-      </div>
+      {canAssign && (
+        <div className="bg-white rounded-card border border-slate-200 p-6">
+          <h2 className="font-display text-xl mb-4">Assign To</h2>
+          <select
+            value={lead.assignedTo?._id || ""}
+            onChange={(e) => handleAssign(e.target.value)}
+            disabled={saving}
+            className="input-field max-w-xs"
+          >
+            <option value="">Unassigned</option>
+            {users.map((user) => (
+              <option key={user._id} value={user._id}>
+                {user.name}
+              </option>
+            ))}
+          </select>
+          <p className="text-xs text-slate-600 mt-2">Leads can be assigned to active staff.</p>
+        </div>
+      )}
 
       {/* Notes */}
       <div className="bg-white rounded-card border border-slate-200 p-6">

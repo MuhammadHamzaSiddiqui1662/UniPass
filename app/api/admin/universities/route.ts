@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ZodError } from "zod";
 import { connectDB, University } from "@/lib/db";
-import { requireAuth } from "@/lib/auth/session";
+import { requireAdmin } from "@/lib/auth/session";
+import { authFailure } from "@/lib/auth/http";
 import { revalidatePath } from "next/cache";
 import {
   parseUniversityDetails,
@@ -12,7 +13,7 @@ import {
 
 export async function GET(request: NextRequest) {
   try {
-    await requireAuth();
+    await requireAdmin();
     await connectDB();
 
     const universities = await University.find({ status: "published" })
@@ -22,6 +23,8 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({ universities: JSON.parse(JSON.stringify(universities)) });
   } catch (error) {
+    const auth = authFailure(error);
+    if (auth) return auth;
     console.error("Get universities error:", error);
     return NextResponse.json({ universities: [] });
   }
@@ -29,7 +32,7 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    await requireAuth();
+    await requireAdmin();
     await connectDB();
     const body = await request.json();
     const parsed = universityFieldsSchema.safeParse({
@@ -71,6 +74,8 @@ export async function POST(request: NextRequest) {
     revalidatePath("/");
     return NextResponse.json({ university: JSON.parse(JSON.stringify(university)) }, { status: 201 });
   } catch (error) {
+    const auth = authFailure(error);
+    if (auth) return auth;
     console.error("Create university error:", error);
     return NextResponse.json({ error: "Failed to create university" }, { status: 500 });
   }

@@ -1,8 +1,11 @@
+import mongoose from "mongoose";
 import { getSession } from "@/lib/auth/session";
 import { redirect } from "next/navigation";
 import { connectDB, Lead } from "@/lib/db";
+import AdminNav from "@/components/admin/AdminNav";
+import { leadListFilter } from "@/lib/auth/permissions";
 
-async function getDashboardData() {
+async function getDashboardData(scope: { assignedTo?: string }) {
   try {
     await connectDB();
 
@@ -10,6 +13,8 @@ async function getDashboardData() {
     const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     const weekAgo = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
     const monthAgo = new Date(today.getTime() - 30 * 24 * 60 * 60 * 1000);
+    const assignedTo = scope.assignedTo ? new mongoose.Types.ObjectId(scope.assignedTo) : undefined;
+    const match = assignedTo ? { assignedTo } : {};
 
     const [
       todayCount,
@@ -19,16 +24,19 @@ async function getDashboardData() {
       recentLeads,
       statusCounts,
     ] = await Promise.all([
-      Lead.countDocuments({ createdAt: { $gte: today } }),
-      Lead.countDocuments({ createdAt: { $gte: weekAgo } }),
-      Lead.countDocuments({ createdAt: { $gte: monthAgo } }),
-      Lead.countDocuments(),
-      Lead.find()
+      Lead.countDocuments({ ...match, createdAt: { $gte: today } }),
+      Lead.countDocuments({ ...match, createdAt: { $gte: weekAgo } }),
+      Lead.countDocuments({ ...match, createdAt: { $gte: monthAgo } }),
+      Lead.countDocuments(match),
+      Lead.find(match)
         .sort({ createdAt: -1 })
         .limit(10)
         .select("fullName whatsappNumber city levelOfStudy status createdAt")
         .lean(),
-      Lead.aggregate([{ $group: { _id: "$status", count: { $sum: 1 } } }]),
+      Lead.aggregate([
+        ...(assignedTo ? [{ $match: { assignedTo } }] : []),
+        { $group: { _id: "$status", count: { $sum: 1 } } },
+      ]),
     ]);
 
     const statusMap = Object.fromEntries(
@@ -63,52 +71,11 @@ export default async function AdminDashboard() {
     redirect("/admin/login");
   }
 
-  const data = await getDashboardData();
+  const data = await getDashboardData(leadListFilter(session.role, session.userId));
 
   return (
     <div className="min-h-screen bg-slate-50">
-      <nav className="bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16 items-center">
-            <div className="flex items-center gap-8">
-              <h1 className="font-display text-xl text-primary-900">
-                UniPass Admin
-              </h1>
-              <div className="hidden md:flex gap-6">
-                <a
-                  href="/admin"
-                  className="text-primary font-bold border-b-2 border-primary pb-1"
-                >
-                  Dashboard
-                </a>
-                <a
-                  href="/admin/leads"
-                  className="text-slate-600 hover:text-primary-900"
-                >
-                  Leads
-                </a>
-                <a
-                  href="/admin/universities"
-                  className="text-slate-600 hover:text-primary-900"
-                >
-                  Universities
-                </a>
-                <a href="/admin/guides" className="text-slate-600 hover:text-primary-900">
-                  Guides
-                </a>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <span className="text-sm text-slate-600">{session.name}</span>
-              <form action="/api/auth/logout" method="POST">
-                <button type="submit" className="text-sm text-slate-600 hover:text-primary-900">
-                  Logout
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <AdminNav role={session.role} name={session.name} current="dashboard" />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <h2 className="text-2xl font-display mb-6">Dashboard</h2>

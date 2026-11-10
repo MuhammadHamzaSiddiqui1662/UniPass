@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { ROLES } from "@/lib/auth/permissions";
 
 export const leadSchema = z.object({
   fullName: z.string().min(2, "Full name must be at least 2 characters"),
@@ -26,11 +27,28 @@ export const loginSchema = z.object({
   password: z.string().min(6, "Password must be at least 6 characters"),
 });
 
+const optionalPassword = z
+  .string()
+  .optional()
+  .transform((value) => (value ? value : undefined))
+  .refine((value) => !value || value.length >= 8, {
+    message: "Password must be at least 8 characters",
+  });
+
 export const createUserSchema = z.object({
   email: z.string().email("Please enter a valid email"),
   password: z.string().min(8, "Password must be at least 8 characters"),
   name: z.string().min(2, "Name must be at least 2 characters"),
-  role: z.enum(["admin", "staff"]).default("staff"),
+  role: z.enum(ROLES).default("staff"),
+  active: z.boolean().optional().default(true),
+});
+
+export const updateUserSchema = z.object({
+  email: z.string().email("Please enter a valid email").optional(),
+  password: optionalPassword,
+  name: z.string().min(2, "Name must be at least 2 characters").optional(),
+  role: z.enum(ROLES).optional(),
+  active: z.boolean().optional(),
 });
 
 export const updateLeadSchema = z.object({

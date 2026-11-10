@@ -1,5 +1,4 @@
-import { requireAuth } from "@/lib/auth/session";
-import { redirect } from "next/navigation";
+import { requireAdminPage } from "@/lib/auth/guards";
 import { connectDB, Testimonial } from "@/lib/db";
 import Link from "next/link";
 
@@ -14,7 +13,7 @@ async function getTestimonials() {
 }
 
 export default async function TestimonialsAdminPage() {
-  const session = await requireAuth().catch(() => redirect("/admin/login"));
+  await requireAdminPage();
   const testimonials = await getTestimonials();
 
   return (

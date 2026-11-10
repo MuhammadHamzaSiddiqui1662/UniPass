@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { connectDB, Testimonial } from "@/lib/db";
-import { requireAuth, requireAdmin } from "@/lib/auth/session";
+import { requireAdmin } from "@/lib/auth/session";
 import { revalidatePath } from "next/cache";
 
 export async function POST(request: NextRequest) {
   try {
-    await requireAuth();
+    await requireAdmin();
     await connectDB();
     const body = await request.json();
     const testimonial = await Testimonial.create(body);

@@ -1,28 +1,49 @@
 import { connectDB, University, Guide, FAQ, Testimonial, User, SiteSettings, Scholarship } from "../lib/db";
 import { hashPassword } from "../lib/auth/session";
 
+async function ensureSuperAdmin(email: string, password: string) {
+  const existingSuper = await User.findOne({ role: "super_admin" });
+  if (existingSuper) {
+    console.log(`ℹ️ Super Admin already exists (${existingSuper.email})`);
+    return;
+  }
+
+  const seeded = await User.findOne({ email });
+  if (seeded) {
+    seeded.role = "super_admin";
+    seeded.active = true;
+    await seeded.save();
+    console.log(`✅ Promoted ${email} to Super Admin`);
+    return;
+  }
+
+  const oldestAdmin = await User.findOne({ role: "admin" }).sort({ createdAt: 1 });
+  if (oldestAdmin) {
+    oldestAdmin.role = "super_admin";
+    await oldestAdmin.save();
+    console.log(`✅ Promoted oldest admin (${oldestAdmin.email}) to Super Admin`);
+    return;
+  }
+
+  await User.create({
+    email,
+    password: await hashPassword(password),
+    name: "Super Admin",
+    role: "super_admin",
+    active: true,
+  });
+  console.log(`✅ Super Admin created (${email})`);
+}
+
 async function seed() {
   console.log("🌱 Seeding database...");
 
   await connectDB();
 
-  // Create admin user from environment variables
-  const adminEmail = process.env.ADMIN_EMAIL || "admin@unipass.local";
+  // One Super Admin. Promote the seeded account, otherwise the oldest admin.
+  const adminEmail = (process.env.ADMIN_EMAIL || "admin@unipass.local").toLowerCase();
   const adminPassword = process.env.ADMIN_PASSWORD || "admin123456";
-
-  const existingUser = await User.findOne({ email: adminEmail });
-  if (!existingUser) {
-    await User.create({
-      email: adminEmail,
-      password: await hashPassword(adminPassword),
-      name: "Admin User",
-      role: "admin",
-      active: true,
-    });
-    console.log(`✅ Admin user created (${adminEmail})`);
-  } else {
-    console.log(`ℹ️ Admin user already exists (${adminEmail})`);
-  }
+  await ensureSuperAdmin(adminEmail, adminPassword);
 
   // Create site settings
   const existingSettings = await SiteSettings.findOne();
@@ -353,7 +374,7 @@ async function seed() {
   console.log(`✅ Seeded ${scholarships.length} scholarships`);
 
   console.log("\n🎉 Seeding completed!");
-  console.log("\n📝 Admin credentials:");
+  console.log("\n📝 Super Admin credentials:");
   console.log(`   Email: ${process.env.ADMIN_EMAIL || "admin@unipass.local"}`);
   console.log(`   Password: ${process.env.ADMIN_PASSWORD || "admin123456"}`);
   console.log("\n🌐 Visit http://localhost:43123/admin/login to access the admin panel\n");

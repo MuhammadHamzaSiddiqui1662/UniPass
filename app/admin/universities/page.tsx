@@ -1,8 +1,8 @@
-import { getSession } from "@/lib/auth/session";
-import { redirect } from "next/navigation";
+import { requireAdminPage } from "@/lib/auth/guards";
 import { connectDB, University } from "@/lib/db";
 import Link from "next/link";
 import HomeSliderManager from "@/components/admin/HomeSliderManager";
+import AdminNav from "@/components/admin/AdminNav";
 
 async function getUniversities() {
   try {
@@ -18,54 +18,13 @@ async function getUniversities() {
 }
 
 export default async function AdminUniversitiesPage() {
-  const session = await getSession();
-  if (!session) {
-    redirect("/admin/login");
-  }
+  const session = await requireAdminPage();
 
   const universities = await getUniversities();
 
   return (
     <div className="min-h-screen bg-slate-50">
-      <nav className="bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16 items-center">
-            <div className="flex items-center gap-8">
-              <Link href="/admin" className="font-display text-xl text-primary-900">
-                UniPass Admin
-              </Link>
-              <div className="hidden md:flex gap-6">
-                <Link href="/admin" className="text-slate-600 hover:text-primary-900">
-                  Dashboard
-                </Link>
-                <Link href="/admin/leads" className="text-slate-600 hover:text-primary-900">
-                  Leads
-                </Link>
-                <Link
-                  href="/admin/universities"
-                  className="text-primary font-bold border-b-2 border-primary pb-1"
-                >
-                  Universities
-                </Link>
-                <Link href="/admin/guides" className="text-slate-600 hover:text-primary-900">
-                  Guides
-                </Link>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <span className="text-sm text-slate-600">{session.name}</span>
-              <form action="/api/auth/logout" method="POST">
-                <button
-                  type="submit"
-                  className="text-sm text-slate-600 hover:text-primary-900"
-                >
-                  Logout
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <AdminNav role={session.role} name={session.name} current="universities" />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <HomeSliderManager

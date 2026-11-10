@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import mongoose from "mongoose";
 import { ZodError } from "zod";
 import { connectDB, University } from "@/lib/db";
-import { requireAuth } from "@/lib/auth/session";
+import { requireAdmin } from "@/lib/auth/session";
 import { revalidatePath } from "next/cache";
 import {
   parseUniversityDetails,
@@ -18,7 +18,7 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    await requireAuth();
+    await requireAdmin();
     await connectDB();
 
     const { id } = await params;
@@ -51,7 +51,7 @@ export async function PATCH(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    await requireAuth();
+    await requireAdmin();
     await connectDB();
 
     const { id } = await params;
@@ -161,11 +161,7 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const session = await requireAuth();
-    if (session.role !== "admin") {
-      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
-    }
-
+    await requireAdmin();
     await connectDB();
 
     const { id } = await params;
