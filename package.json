@@ -10,7 +10,8 @@
     "seed": "tsx scripts/seed.ts",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@tiptap/pm": "^2.10.5",
