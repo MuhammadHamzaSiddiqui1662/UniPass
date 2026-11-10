@@ -27,6 +27,7 @@ async function getLeads(searchParams: SearchParams, session: SessionData) {
 
     if (searchParams.search) {
       query.$or = [
+        { trackingId: { $regex: searchParams.search, $options: "i" } },
         { fullName: { $regex: searchParams.search, $options: "i" } },
         { whatsappNumber: { $regex: searchParams.search, $options: "i" } },
         { city: { $regex: searchParams.search, $options: "i" } },
@@ -104,7 +105,7 @@ export default async function LeadsPage({
             <input
               type="text"
               name="search"
-              placeholder="Search name, phone, city..."
+              placeholder="Search ID, name, phone, city..."
               defaultValue={searchParams.search}
               className="input-field"
             />
@@ -142,6 +143,9 @@ export default async function LeadsPage({
               <thead className="bg-primary-50">
                 <tr>
                   <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">
+                    Lead ID
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">
                     Name
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">
@@ -167,6 +171,14 @@ export default async function LeadsPage({
               <tbody className="divide-y divide-border">
                 {leads.map((lead: any) => (
                   <tr key={lead._id} className="hover:bg-primary-50/50">
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <Link
+                        href={`/admin/leads/${lead._id}`}
+                        className="font-mono text-sm font-bold text-primary-900 hover:underline"
+                      >
+                        {lead.trackingId}
+                      </Link>
+                    </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="text-sm font-bold text-primary-900">
                         {lead.fullName}

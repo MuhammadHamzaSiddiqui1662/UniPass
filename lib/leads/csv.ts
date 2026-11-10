@@ -1,5 +1,6 @@
 interface ExportLead {
   _id: { toString(): string };
+  trackingId?: string;
   fullName?: string;
   whatsappNumber?: string;
   city?: string;
@@ -21,6 +22,7 @@ function universityName(university: unknown): string {
 }
 
 const HEADERS = [
+  "Tracking ID",
   "ID",
   "Full Name",
   "WhatsApp Number",
@@ -36,6 +38,7 @@ const HEADERS = [
 
 export function leadsToCsv(leads: ExportLead[]): string {
   const rows = leads.map((lead) => [
+    lead.trackingId || "",
     lead._id.toString(),
     lead.fullName || "",
     lead.whatsappNumber || "",

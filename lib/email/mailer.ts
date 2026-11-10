@@ -49,6 +49,7 @@ export async function sendEmail(options: EmailOptions): Promise<boolean> {
 }
 
 export async function sendLeadNotification(lead: {
+  trackingId?: string;
   fullName: string;
   whatsappNumber: string;
   city: string;
@@ -73,6 +74,14 @@ export async function sendLeadNotification(lead: {
       <p>A new lead has been submitted through the UniPass website.</p>
       
       <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+        ${
+          lead.trackingId
+            ? `<tr>
+          <td style="padding: 8px; border: 1px solid #E2E8F0; font-weight: bold;">Lead ID</td>
+          <td style="padding: 8px; border: 1px solid #E2E8F0;">${lead.trackingId}</td>
+        </tr>`
+            : ""
+        }
         <tr>
           <td style="padding: 8px; border: 1px solid #E2E8F0; font-weight: bold;">Full Name</td>
           <td style="padding: 8px; border: 1px solid #E2E8F0;">${lead.fullName}</td>
@@ -114,9 +123,9 @@ export async function sendLeadNotification(lead: {
 
     await sendEmail({
       to: recipients,
-      subject: `New Lead: ${lead.fullName} - ${lead.levelOfStudy}`,
+      subject: `New Lead${lead.trackingId ? ` ${lead.trackingId}` : ""}: ${lead.fullName} - ${lead.levelOfStudy}`,
       html,
-      text: `New lead from ${lead.fullName} (${lead.whatsappNumber}), interested in ${lead.levelOfStudy} programs.`,
+      text: `New lead${lead.trackingId ? ` ${lead.trackingId}` : ""} from ${lead.fullName} (${lead.whatsappNumber}), interested in ${lead.levelOfStudy} programs.`,
     });
   } catch (error) {
     console.error("Failed to send lead notification:", error);

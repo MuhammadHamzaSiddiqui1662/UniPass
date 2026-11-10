@@ -81,6 +81,7 @@ export async function POST(request: NextRequest) {
 
     // Send notification email (non-blocking)
     sendLeadNotification({
+      trackingId: lead.trackingId,
       fullName: lead.fullName,
       whatsappNumber: lead.whatsappNumber,
       city: lead.city,
@@ -98,6 +99,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         success: true,
+        trackingId: lead.trackingId,
         message:
           "Thank you! We will contact you on WhatsApp within 24 hours.",
       },

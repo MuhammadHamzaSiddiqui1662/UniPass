@@ -40,6 +40,7 @@ export default function ConsultationForm({ context }: ConsultationFormProps) {
     TIME_OPTIONS.map((time) => ({ value: time, label: time })),
   );
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [trackingId, setTrackingId] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
@@ -111,6 +112,7 @@ export default function ConsultationForm({ context }: ConsultationFormProps) {
       if (!response.ok) {
         throw new Error(result.error || "Failed to submit form. Please try again.");
       }
+      setTrackingId(typeof result.trackingId === "string" ? result.trackingId : "");
       setStatus("success");
       setFormData({
         fullName: "",
@@ -139,6 +141,12 @@ export default function ConsultationForm({ context }: ConsultationFormProps) {
           We&apos;ve received your consultation request. Our team will reach out on WhatsApp
           within 24 hours.
         </p>
+        {trackingId && (
+          <p className="mb-6 text-[15px] leading-6 text-slate-600">
+            Your reference number is{" "}
+            <span className="font-mono font-bold text-primary-900">{trackingId}</span>
+          </p>
+        )}
         <button type="button" onClick={() => setStatus("idle")} className="btn-outline h-11 px-6 text-[15px]">
           Submit another request
         </button>

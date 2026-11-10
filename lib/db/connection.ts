@@ -26,26 +26,27 @@ if (!global.mongoose) {
 }
 
 export async function connectDB() {
-  if (cached.conn) {
-    return cached.conn;
+  if (!cached.conn) {
+    if (!cached.promise) {
+      const opts = {
+        bufferCommands: false,
+        serverSelectionTimeoutMS: 2500,
+        connectTimeoutMS: 2500,
+      };
+
+      cached.promise = mongoose.connect(MONGODB_URI, opts);
+    }
+
+    try {
+      cached.conn = await cached.promise;
+    } catch (e) {
+      cached.promise = null;
+      throw e;
+    }
   }
 
-  if (!cached.promise) {
-    const opts = {
-      bufferCommands: false,
-      serverSelectionTimeoutMS: 2500,
-      connectTimeoutMS: 2500,
-    };
-
-    cached.promise = mongoose.connect(MONGODB_URI, opts);
-  }
-
-  try {
-    cached.conn = await cached.promise;
-  } catch (e) {
-    cached.promise = null;
-    throw e;
-  }
+  const { ensureLeadTrackingIds } = await import("@/lib/leads/backfill-tracking-ids");
+  await ensureLeadTrackingIds();
 
   return cached.conn;
 }

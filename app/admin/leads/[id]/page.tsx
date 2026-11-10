@@ -83,6 +83,10 @@ export default async function LeadDetailPage({
           {/* Left Column - Lead Info */}
           <div className="lg:col-span-1 space-y-6">
             <div className="bg-white rounded-card border border-slate-200 p-6">
+              <p className="text-xs font-bold uppercase tracking-wide text-slate-500 mb-1">
+                Lead ID
+              </p>
+              <p className="font-mono text-lg text-primary-900 mb-4">{lead.trackingId}</p>
               <h1 className="font-display text-2xl mb-6">{lead.fullName}</h1>
 
               <dl className="space-y-4">

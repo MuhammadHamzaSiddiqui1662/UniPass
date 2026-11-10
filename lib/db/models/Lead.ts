@@ -1,7 +1,12 @@
 import mongoose, { Schema, Model } from "mongoose";
+import { formatLeadTrackingId, reserveLeadSequence } from "@/lib/leads/tracking-id";
 
 export interface ILead {
   _id: mongoose.Types.ObjectId;
+  /** Public id: yy-mm-dd-sequence, for example 26-11-11-1. */
+  trackingId: string;
+  /** Daily sequence. Restarts at 1 on each Pakistan calendar day. */
+  leadNumber: number;
   fullName: string;
   whatsappNumber: string;
   city: string;
@@ -37,6 +42,8 @@ export interface ILead {
 
 const leadSchema = new Schema<ILead>(
   {
+    trackingId: { type: String, unique: true, sparse: true },
+    leadNumber: { type: Number },
     fullName: { type: String, required: true },
     whatsappNumber: { type: String, required: true, index: true },
     city: { type: String, required: true },
@@ -73,6 +80,30 @@ const leadSchema = new Schema<ILead>(
 
 leadSchema.index({ createdAt: -1 });
 leadSchema.index({ status: 1, createdAt: -1 });
+
+leadSchema.pre("save", async function () {
+  if (!this.isNew && this.trackingId) return;
+
+  const { ensureLeadTrackingIds } = await import("@/lib/leads/backfill-tracking-ids");
+  await ensureLeadTrackingIds();
+
+  if (!this.isNew) {
+    const existing = await this.collection.findOne(
+      { _id: this._id },
+      { projection: { trackingId: 1, leadNumber: 1 } }
+    );
+    if (existing?.trackingId) {
+      this.trackingId = String(existing.trackingId);
+      this.leadNumber = Number(existing.leadNumber);
+      return;
+    }
+  }
+
+  const createdAt = this.createdAt instanceof Date ? this.createdAt : new Date();
+  const sequence = await reserveLeadSequence(createdAt);
+  this.leadNumber = sequence;
+  this.trackingId = formatLeadTrackingId(createdAt, sequence);
+});
 
 export const Lead: Model<ILead> =
   mongoose.models.Lead || mongoose.model<ILead>("Lead", leadSchema);

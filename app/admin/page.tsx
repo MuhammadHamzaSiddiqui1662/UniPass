@@ -31,7 +31,7 @@ async function getDashboardData(scope: { assignedTo?: string }) {
       Lead.find(match)
         .sort({ createdAt: -1 })
         .limit(10)
-        .select("fullName whatsappNumber city levelOfStudy status createdAt")
+        .select("trackingId fullName whatsappNumber city levelOfStudy status createdAt")
         .lean(),
       Lead.aggregate([
         ...(assignedTo ? [{ $match: { assignedTo } }] : []),
@@ -109,6 +109,9 @@ export default async function AdminDashboard() {
                   <div className="flex justify-between items-start mb-2">
                     <div>
                       <p className="font-bold text-primary-900">{lead.fullName}</p>
+                      {lead.trackingId && (
+                        <p className="font-mono text-xs text-slate-500">{lead.trackingId}</p>
+                      )}
                       <p className="text-sm text-slate-600">
                         {lead.whatsappNumber} • {lead.city}
                       </p>
