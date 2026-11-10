@@ -20,10 +20,9 @@ import {
   filterCatalog,
   scholarshipLabel,
   sortCatalog,
-  type CatalogUniversity,
   type ListingQuery,
 } from "@/lib/universities/catalog";
-import { searchUniversities } from "@/lib/universities/search";
+import { searchUniversities, type UniversitySearchRecord } from "@/lib/universities/search";
 
 export const dynamic = "force-dynamic";
 
@@ -57,7 +56,7 @@ async function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
   }
 }
 
-async function loadUniversities(): Promise<CatalogUniversity[]> {
+async function loadUniversities(): Promise<UniversitySearchRecord[]> {
   try {
     await withTimeout(connectDB(), 3000);
     const docs = await withTimeout(
@@ -80,7 +79,26 @@ async function loadUniversities(): Promise<CatalogUniversity[]> {
       fields: university.fields ?? [],
       levels: university.levels ?? [],
       tuitionFrom: university.tuitionFrom,
+      tuitionTo: university.tuitionTo,
+      tuitionCurrency: university.tuitionCurrency,
+      ranking: university.ranking,
+      intake: university.intake,
+      languages: university.languages ?? [],
+      description: university.description,
+      whyChoose: university.whyChoose,
+      programsInfo: university.programsInfo,
+      campusLife: university.campusLife,
       hasMeritScholarship: Boolean(university.hasMeritScholarship),
+      turkiyeBurslariEligible: Boolean(university.turkiyeBurslariEligible),
+      foundedYear: university.foundedYear,
+      studentsCount: university.studentsCount,
+      internationalStudents: university.internationalStudents,
+      accreditations: university.accreditations ?? [],
+      facilityHighlights: university.facilityHighlights ?? [],
+      keyFacts: university.keyFacts ?? [],
+      facts: university.facts,
+      metaTitle: university.metaTitle,
+      metaDescription: university.metaDescription,
       featuredImage: university.featuredImage,
       featuredImageAlt: university.featuredImageAlt,
     }));
@@ -184,7 +202,7 @@ export default async function UniversitiesPage({
                 <input
                   name="q"
                   defaultValue={query.q || ""}
-                  placeholder="University, city, or abbreviation"
+                  placeholder="Name, city, field, scholarship, or keyword"
                   className="h-11 w-full rounded-input border-[1.5px] border-primary-200 bg-white px-4 text-[16px] text-primary-900 outline-none focus:border-primary"
                 />
               </label>
