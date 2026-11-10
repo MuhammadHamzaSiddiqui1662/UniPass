@@ -77,6 +77,7 @@ async function loadUniversities(): Promise<UniversitySearchRecord[]> {
       featuredOnHome: Boolean(university.featuredOnHome),
       homeOrder: university.homeOrder ?? 0,
       fields: university.fields ?? [],
+      knownFor: university.knownFor ?? [],
       levels: university.levels ?? [],
       tuitionFrom: university.tuitionFrom,
       tuitionTo: university.tuitionTo,

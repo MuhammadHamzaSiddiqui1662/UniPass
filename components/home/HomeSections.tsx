@@ -7,6 +7,7 @@ import CountryFlag from "@/components/universities/CountryFlag";
 import ConsultationForm from "@/components/public/ConsultationForm";
 import FaqAccordion from "@/components/home/FaqAccordion";
 import { admissionSteps, type HomeFaq, type HomeGuide, type HomeUniversity } from "@/lib/home/content";
+import { cardKnownFor } from "@/lib/universities/known-for";
 import { formatCurrency } from "@/lib/utils/format";
 import { whatsappHref } from "@/lib/site/contact";
 
@@ -116,7 +117,7 @@ export function Universities({
                   </Link>
                 </h3>
                 <p className="mt-3 text-[14px] leading-5 text-slate-600">
-                  Fields: {university.fields.join(", ")}
+                  Best known for: {cardKnownFor(university.fields, university.knownFor).join(", ")}
                 </p>
                 <p className="text-[14px] leading-5 text-slate-600">
                   Levels: {university.levels.join(", ")}

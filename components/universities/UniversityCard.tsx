@@ -4,6 +4,7 @@ import SmartImage from "@/components/media/SmartImage";
 import BookmarkButton from "@/components/universities/BookmarkButton";
 import CountryFlag from "@/components/universities/CountryFlag";
 import type { CatalogUniversity } from "@/lib/universities/catalog";
+import { cardKnownFor } from "@/lib/universities/known-for";
 import { isDesignPhoto } from "@/lib/universities/photos";
 import { formatCurrency } from "@/lib/utils/format";
 
@@ -76,7 +77,9 @@ export default function UniversityCard({ university }: { university: CatalogUniv
             {university.name}
           </Link>
         </h2>
-        <p className="mt-3 text-[14px] leading-5 text-slate-600">Fields: {university.fields.join(", ")}</p>
+        <p className="mt-3 text-[14px] leading-5 text-slate-600">
+          Best known for: {cardKnownFor(university.fields, university.knownFor).join(", ")}
+        </p>
         <p className="text-[14px] leading-5 text-slate-600">Levels: {university.levels.join(", ")}</p>
         <div className="mt-auto border-t border-slate-200 pt-4">
           <div className="flex items-end justify-between gap-3">

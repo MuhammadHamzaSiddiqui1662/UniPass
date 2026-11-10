@@ -111,6 +111,7 @@ async function getHomePageData() {
             country: university.country || "Türkiye",
             countryCode: university.countryCode || "TR",
             fields: university.fields ?? [],
+            knownFor: university.knownFor ?? [],
             levels: university.levels ?? [],
             tuitionFrom: university.tuitionFrom,
             image: university.featuredImage || CAMPUS_PHOTOS[index % CAMPUS_PHOTOS.length],

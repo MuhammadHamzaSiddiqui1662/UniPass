@@ -1,3 +1,5 @@
+import { sanitizeKnownFor } from "@/lib/universities/known-for";
+
 export function stringList(value: unknown): string[] {
   if (Array.isArray(value)) return value.filter((item) => item != null && item !== "").map(String);
   if (typeof value === "string" && value.trim()) {
@@ -35,6 +37,7 @@ export function withUniversityDefaults<T extends Record<string, unknown>>(univer
     featuredOnHome: Boolean(university.featuredOnHome),
     homeOrder: Number(university.homeOrder) || 0,
     fields: stringList(university.fields),
+    knownFor: sanitizeKnownFor(stringList(university.fields), university.knownFor),
     levels: stringList(university.levels),
     languages: languages.length ? languages : stringList(university.languages),
     languagesOffered: languages.length ? languages : stringList(university.languages),

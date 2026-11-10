@@ -13,6 +13,7 @@ export type CatalogUniversity = {
   featuredOnHome: boolean;
   homeOrder: number;
   fields: string[];
+  knownFor?: string[];
   levels: string[];
   tuitionFrom: number;
   hasMeritScholarship: boolean;

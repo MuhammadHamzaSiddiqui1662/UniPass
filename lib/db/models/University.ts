@@ -30,6 +30,7 @@ export interface IUniversity {
   gallery: string[];
   galleryAlts: string[];
   fields: string[];
+  knownFor: string[];
   levels: string[];
   hasMeritScholarship: boolean;
   turkiyeBurslariEligible: boolean;
@@ -89,6 +90,7 @@ const universitySchema = new Schema<IUniversity>(
     gallery: [String],
     galleryAlts: { type: [String], default: [] },
     fields: [String],
+    knownFor: { type: [String], default: [] },
     levels: [String],
     hasMeritScholarship: { type: Boolean, default: false },
     turkiyeBurslariEligible: { type: Boolean, default: false },

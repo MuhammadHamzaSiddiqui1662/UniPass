@@ -78,6 +78,7 @@ export async function PATCH(
       tuitionFrom: body.tuitionFrom ?? current.tuitionFrom,
       description: body.description ?? current.description,
       fields: body.fields ?? current.fields ?? [],
+      knownFor: Array.isArray(body.knownFor) ? body.knownFor : current.knownFor ?? [],
       levels: body.levels ?? current.levels ?? [],
       languages: Array.isArray(body.languagesOffered) ? body.languagesOffered : current.languages || [],
       hasMeritScholarship: body.hasMeritScholarship ?? current.hasMeritScholarship ?? false,

@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { sanitizeKnownFor } from "@/lib/universities/known-for";
 import { isStoredImageReference } from "@/lib/upload/urls";
 
 const countryCode = z
@@ -25,11 +26,15 @@ export const universityFieldsSchema = z.object({
   tuitionFrom: z.number().nonnegative(),
   description: z.string().trim().min(1, "Description is required"),
   fields: z.array(z.string()).default([]),
+  knownFor: z.preprocess((value) => (Array.isArray(value) ? value : []), z.array(z.string())),
   levels: z.array(z.string()).default([]),
   languages: z.array(z.string()).default([]),
   hasMeritScholarship: z.boolean().default(false),
   status: z.enum(["draft", "published"]),
-});
+}).transform((university) => ({
+  ...university,
+  knownFor: sanitizeKnownFor(university.fields, university.knownFor),
+}));
 
 const imageReference = z
   .string()

@@ -6,6 +6,7 @@ export type HomeUniversity = {
   country: string;
   countryCode: string;
   fields: string[];
+  knownFor?: string[];
   levels: string[];
   tuitionFrom: number;
   image: string;

@@ -4,7 +4,8 @@ import { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { slugify } from "@/lib/utils/format";
-import { TURKISH_CITIES, FIELDS_OF_STUDY, STUDY_LEVELS, UNIVERSITY_TYPES } from "@/lib/utils/constants";
+import { TURKISH_CITIES, STUDY_LEVELS, UNIVERSITY_TYPES } from "@/lib/utils/constants";
+import StudyFieldFields from "@/components/admin/StudyFieldFields";
 import CountrySelect from "@/components/admin/CountrySelect";
 import UniversityImageFields, {
   emptyUniversityImages,
@@ -47,6 +48,7 @@ export default function NewUniversityPage() {
       rankingNational: parseInt(formData.get("rankingNational") as string) || null,
       accreditations: formData.get("accreditations") ? (formData.get("accreditations") as string).split(",").map(s => s.trim()) : [],
       fields: Array.from(formData.getAll("fields")),
+      knownFor: Array.from(formData.getAll("knownFor")),
       levels: Array.from(formData.getAll("levels")),
       languagesOffered: formData.get("languagesOffered") ? (formData.get("languagesOffered") as string).split(",").map(s => s.trim()) : [],
       hasMeritScholarship: formData.get("hasMeritScholarship") === "on",
@@ -193,17 +195,7 @@ export default function NewUniversityPage() {
             <h2 className="font-display text-xl mb-4">Academic Information</h2>
             
             <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-bold mb-2">Fields of Study *</label>
-                <div className="grid grid-cols-2 gap-2">
-                  {FIELDS_OF_STUDY.map(field => (
-                    <label key={field} className="flex items-center gap-2">
-                      <input type="checkbox" name="fields" value={field} />
-                      <span className="text-sm">{field}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
+              <StudyFieldFields />
 
               <div>
                 <label className="block text-sm font-bold mb-2">Levels Offered *</label>

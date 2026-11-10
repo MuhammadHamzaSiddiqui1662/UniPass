@@ -37,6 +37,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const parsed = universityFieldsSchema.safeParse({
       ...body,
+      knownFor: Array.isArray(body.knownFor) ? body.knownFor : [],
       languages: Array.isArray(body.languagesOffered) ? body.languagesOffered : body.languages,
       country: body.country || "Türkiye",
       countryCode: body.countryCode || "TR",
