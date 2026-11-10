@@ -11,8 +11,13 @@ export function stringList(value: unknown): string[] {
   return [];
 }
 
+function positiveInt(value: unknown) {
+  return typeof value === "number" && Number.isFinite(value) && value > 0 ? Math.trunc(value) : undefined;
+}
+
 export function withUniversityDefaults<T extends Record<string, unknown>>(university: T) {
   const languages = stringList(university.languagesOffered);
+  const ranking = positiveInt(university.ranking) ?? positiveInt(university.rankingNational);
   return {
     ...university,
     country: typeof university.country === "string" && university.country ? university.country : "Türkiye",
@@ -33,8 +38,10 @@ export function withUniversityDefaults<T extends Record<string, unknown>>(univer
     levels: stringList(university.levels),
     languages: languages.length ? languages : stringList(university.languages),
     languagesOffered: languages.length ? languages : stringList(university.languages),
+    ranking,
+    rankingNational: ranking,
     accreditations: stringList(university.accreditations),
     facilityHighlights: stringList(university.facilityHighlights),
-    facts: stringList(university.facts),
+    keyFacts: stringList(university.keyFacts),
   };
 }

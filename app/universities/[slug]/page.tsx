@@ -4,17 +4,18 @@ import { notFound } from "next/navigation";
 import Header from "@/components/public/Header";
 import Footer from "@/components/public/Footer";
 import CampusGallery from "@/components/universities/CampusGallery";
+import KeyFacts from "@/components/universities/KeyFacts";
 import SmartImage from "@/components/media/SmartImage";
 import UniversityActions from "@/components/universities/UniversityActions";
 import { BreadcrumbSchema, UniversitySchema } from "@/components/seo/StructuredData";
 import { connectDB, University } from "@/lib/db";
 import { whatsappHref } from "@/lib/site/contact";
 import {
+  detailFacts,
   fallbackDetail,
-  scholarshipLabel,
+  publicUniversity,
   type DetailUniversity,
 } from "@/lib/universities/details";
-import { formatCurrency } from "@/lib/utils/format";
 
 export const dynamic = "force-dynamic";
 
@@ -41,31 +42,7 @@ async function getUniversity(slug: string): Promise<DetailUniversity | null> {
       3000,
     );
     if (!university) return sample;
-    return {
-      _id: String(university._id),
-      slug: university.slug,
-      name: university.name,
-      type: university.type,
-      city: university.city,
-      tuitionFrom: university.tuitionFrom,
-      fields: university.fields ?? [],
-      levels: university.levels ?? [],
-      description: university.description || sample?.description || "",
-      whyChoose: university.whyChoose || sample?.whyChoose || "",
-      programsInfo: university.programsInfo || sample?.programsInfo || "",
-      campusLife: university.campusLife || sample?.campusLife || "",
-      turkiyeBurslariEligible: university.turkiyeBurslariEligible,
-      hasMeritScholarship: university.hasMeritScholarship,
-      metaTitle: university.metaTitle,
-      metaDescription: university.metaDescription,
-      logo: university.logo || undefined,
-      logoAlt: university.logoAlt || undefined,
-      featuredImage: university.featuredImage || undefined,
-      featuredImageAlt: university.featuredImageAlt || undefined,
-      gallery: (university.gallery || []).filter(Boolean),
-      galleryAlts: university.galleryAlts || [],
-      ogImage: university.ogImage || undefined,
-    };
+    return publicUniversity(university, sample);
   } catch (error) {
     console.error("Failed to fetch university:", error);
     return sample;
@@ -118,6 +95,7 @@ export default async function UniversityDetailPage({
   const bookmarkId = university._id || university.slug;
   const whatsapp = whatsappHref();
   const campusImages = campusShots(university);
+  const facts = detailFacts(university);
 
   return (
     <>
@@ -175,34 +153,55 @@ export default async function UniversityDetailPage({
 
           <div className="mt-8 grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_420px]">
             <div className="max-w-[680px] space-y-8">
-              <section>
-                <h2 className="font-display text-[24px] text-primary-900">About {university.name}</h2>
-                <p className="mt-4 text-[16px] leading-[25px] text-slate-600">{university.description}</p>
-              </section>
-              <section>
-                <h2 className="font-display text-[24px] text-primary-900">Why students choose it</h2>
-                <p className="mt-4 text-[16px] leading-[25px] text-slate-600">{university.whyChoose}</p>
-              </section>
-              <section>
-                <h2 className="font-display text-[24px] text-primary-900">Programs and fields</h2>
-                <p className="mt-4 text-[16px] leading-[25px] text-slate-600">{university.programsInfo}</p>
-              </section>
-              <section>
-                <h2 className="font-display text-[24px] text-primary-900">Campus and student life</h2>
-                <p className="mt-4 text-[16px] leading-[25px] text-slate-600">{university.campusLife}</p>
-              </section>
+              {university.description.trim() && (
+                <section>
+                  <h2 className="font-display text-[24px] text-primary-900">About {university.name}</h2>
+                  <p className="mt-4 text-[16px] leading-[25px] text-slate-600">{university.description}</p>
+                </section>
+              )}
+              {university.whyChoose.trim() && (
+                <section>
+                  <h2 className="font-display text-[24px] text-primary-900">Why students choose it</h2>
+                  <p className="mt-4 text-[16px] leading-[25px] text-slate-600">{university.whyChoose}</p>
+                </section>
+              )}
+              {university.programsInfo.trim() && (
+                <section>
+                  <h2 className="font-display text-[24px] text-primary-900">Programs and fields</h2>
+                  <p className="mt-4 text-[16px] leading-[25px] text-slate-600">{university.programsInfo}</p>
+                </section>
+              )}
+              {university.campusLife.trim() && (
+                <section>
+                  <h2 className="font-display text-[24px] text-primary-900">Campus and student life</h2>
+                  <p className="mt-4 text-[16px] leading-[25px] text-slate-600">{university.campusLife}</p>
+                </section>
+              )}
+              {university.facilityHighlights.length > 0 && (
+                <section>
+                  <h2 className="font-display text-[24px] text-primary-900">Facility highlights</h2>
+                  <ul className="mt-4 list-disc space-y-2 pl-5 text-[16px] leading-[25px] text-slate-600">
+                    {university.facilityHighlights.map((item, index) => (
+                      <li key={`${index}-${item}`}>{item}</li>
+                    ))}
+                  </ul>
+                </section>
+              )}
+              {university.keyFacts.length > 0 && (
+                <section>
+                  <h2 className="font-display text-[24px] text-primary-900">Key facts</h2>
+                  <ul className="mt-4 list-disc space-y-2 pl-5 text-[16px] leading-[25px] text-slate-600">
+                    {university.keyFacts.map((item, index) => (
+                      <li key={`${index}-${item}`}>{item}</li>
+                    ))}
+                  </ul>
+                </section>
+              )}
             </div>
 
             <aside className="rounded-card border-[1.2px] border-slate-200 bg-white px-7 py-6">
               <h2 className="font-display text-[20px] text-primary-900">Key facts</h2>
-              <dl className="mt-4">
-                <Fact label="Type" value={university.type === "public" ? "Public" : "Private"} />
-                <Fact label="City" value={university.city} />
-                <Fact label="Tuition from" value={`${formatCurrency(university.tuitionFrom)} a year (sample)`} />
-                <Fact label="Levels" value={university.levels.join(", ")} />
-                <Fact label="Fields" value={university.fields.join(", ")} />
-                <Fact label="Scholarships" value={scholarshipLabel(university)} last />
-              </dl>
+              <KeyFacts facts={facts} />
               <div className="mt-5 space-y-3">
                 <Link
                   href="/#book"
@@ -275,11 +274,3 @@ function absoluteImage(baseUrl: string, src?: string) {
   return undefined;
 }
 
-function Fact({ label, value, last = false }: { label: string; value: string; last?: boolean }) {
-  return (
-    <div className={last ? "pt-4" : "border-b border-slate-200 py-4 first:pt-2"}>
-      <dt className="text-[13px] font-bold text-slate-600">{label}</dt>
-      <dd className="mt-1 text-[15px] text-primary-900">{value}</dd>
-    </div>
-  );
-}

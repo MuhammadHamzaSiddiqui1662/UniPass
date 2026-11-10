@@ -4,7 +4,12 @@ import { ZodError } from "zod";
 import { connectDB, University } from "@/lib/db";
 import { requireAuth } from "@/lib/auth/session";
 import { revalidatePath } from "next/cache";
-import { parseUniversityImages, universityFieldsSchema, validationError } from "@/lib/validations/university";
+import {
+  parseUniversityDetails,
+  parseUniversityImages,
+  universityFieldsSchema,
+  validationError,
+} from "@/lib/validations/university";
 import { withUniversityDefaults } from "@/lib/universities/defaults";
 import { collectImageUrls, releaseUnusedImages } from "@/lib/upload/cleanup";
 
@@ -82,8 +87,10 @@ export async function PATCH(
       return NextResponse.json({ error: validationError(parsed.error) }, { status: 400 });
     }
     let images;
+    let details;
     try {
       images = parseUniversityImages(body, current);
+      details = parseUniversityDetails(body);
     } catch (error) {
       if (error instanceof ZodError) {
         return NextResponse.json({ error: validationError(error) }, { status: 400 });
@@ -107,10 +114,16 @@ export async function PATCH(
 
     const oldUniversity = current;
     const university = await University.findByIdAndUpdate(id, {
-      ...parsed.data,
-      ...images,
-      metaTitle: typeof body.metaTitle === "string" ? body.metaTitle : current.metaTitle,
-      metaDescription: typeof body.metaDescription === "string" ? body.metaDescription : current.metaDescription,
+      $set: {
+        ...parsed.data,
+        ...images,
+        ...details.set,
+        metaTitle: typeof body.metaTitle === "string" ? body.metaTitle : current.metaTitle,
+        metaDescription: typeof body.metaDescription === "string" ? body.metaDescription : current.metaDescription,
+      },
+      ...(details.unset.length
+        ? { $unset: Object.fromEntries(details.unset.map((key) => [key, ""])) }
+        : {}),
     }, {
       new: true,
       runValidators: true,

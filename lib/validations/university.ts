@@ -83,6 +83,77 @@ function pick(body: Record<string, unknown>, key: string, fallback: unknown) {
   return Object.prototype.hasOwnProperty.call(body, key) ? body[key] : fallback;
 }
 
+const emptyNumber = (value: unknown) => {
+  if (value === "" || value === undefined || value === null || value === 0 || value === "0") return null;
+  return value;
+};
+
+const optionalWholeNumber = (min: number, max: number, message: string) =>
+  z.preprocess(
+    emptyNumber,
+    z.union([z.null(), z.coerce.number().int().min(min).max(max, message)]),
+  );
+
+const textList = z.preprocess((value) => {
+  if (!Array.isArray(value)) return [];
+  return value
+    .map((item) => String(item).trim())
+    .filter(Boolean)
+    .slice(0, 40);
+}, z.array(z.string().max(400)));
+
+export const universityDetailsSchema = z.object({
+  tuitionTo: optionalWholeNumber(1, 10_000_000, "Tuition must be a whole number"),
+  website: z.preprocess(
+    (value) => (typeof value === "string" ? value.trim() : ""),
+    z.string().max(500),
+  ),
+  foundedYear: optionalWholeNumber(1000, 2100, "Founded year must be between 1000 and 2100"),
+  studentsCount: optionalWholeNumber(1, 10_000_000, "Students count must be a whole number"),
+  internationalStudents: optionalWholeNumber(1, 10_000_000, "International students must be a whole number"),
+  ranking: optionalWholeNumber(1, 100_000, "Ranking must be a whole number"),
+  accreditations: textList,
+  facilityHighlights: textList,
+  keyFacts: textList,
+});
+
+const DETAIL_NUMBERS = [
+  "tuitionTo",
+  "foundedYear",
+  "studentsCount",
+  "internationalStudents",
+  "ranking",
+] as const;
+
+export function parseUniversityDetails(body: Record<string, unknown>) {
+  const parsed = universityDetailsSchema.parse({
+    tuitionTo: body.tuitionTo,
+    website: body.website,
+    foundedYear: body.foundedYear,
+    studentsCount: body.studentsCount,
+    internationalStudents: body.internationalStudents,
+    ranking: Object.prototype.hasOwnProperty.call(body, "rankingNational")
+      ? body.rankingNational
+      : body.ranking,
+    accreditations: body.accreditations,
+    facilityHighlights: body.facilityHighlights,
+    keyFacts: Array.isArray(body.keyFacts) ? body.keyFacts : Array.isArray(body.facts) ? body.facts : [],
+  });
+  const set: Record<string, unknown> = {
+    website: parsed.website,
+    accreditations: parsed.accreditations,
+    facilityHighlights: parsed.facilityHighlights,
+    keyFacts: parsed.keyFacts,
+  };
+  const unset: string[] = [];
+  for (const key of DETAIL_NUMBERS) {
+    const value = parsed[key];
+    if (value == null) unset.push(key);
+    else set[key] = value;
+  }
+  return { set, unset };
+}
+
 export function validationError(error: z.ZodError) {
   const issue = error.issues[0];
   return issue?.message || "Invalid university";

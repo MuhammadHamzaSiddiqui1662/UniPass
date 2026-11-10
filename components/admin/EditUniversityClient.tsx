@@ -65,13 +65,13 @@ export default function EditUniversityClient({ universityId }: { universityId: s
       type: formData.get("type"),
       city: formData.get("city"),
       tuitionFrom: parseInt(formData.get("tuitionFrom") as string) || 0,
-      tuitionTo: parseInt(formData.get("tuitionTo") as string) || 0,
+      tuitionTo: parseInt(formData.get("tuitionTo") as string) || null,
       description: formData.get("description"),
-      foundedYear: parseInt(formData.get("foundedYear") as string) || undefined,
-      studentsCount: parseInt(formData.get("studentsCount") as string) || undefined,
-      internationalStudents: parseInt(formData.get("internationalStudents") as string) || undefined,
+      foundedYear: parseInt(formData.get("foundedYear") as string) || null,
+      studentsCount: parseInt(formData.get("studentsCount") as string) || null,
+      internationalStudents: parseInt(formData.get("internationalStudents") as string) || null,
       website: formData.get("website"),
-      rankingNational: parseInt(formData.get("rankingNational") as string) || undefined,
+      rankingNational: parseInt(formData.get("rankingNational") as string) || null,
       accreditations: formData.get("accreditations") ? (formData.get("accreditations") as string).split(",").map(s => s.trim()) : [],
       fields: Array.from(formData.getAll("fields")),
       levels: Array.from(formData.getAll("levels")),
@@ -87,7 +87,7 @@ export default function EditUniversityClient({ universityId }: { universityId: s
       homeOrder: parseInt(String(formData.get("homeOrder") || "0"), 10) || 0,
       ...universityImagesPayload(images),
       facilityHighlights: formData.get("facilityHighlights") ? (formData.get("facilityHighlights") as string).split("\n").filter(Boolean) : [],
-      facts: formData.get("facts") ? (formData.get("facts") as string).split("\n").filter(Boolean) : [],
+      keyFacts: formData.get("facts") ? (formData.get("facts") as string).split("\n").map((line) => line.trim()).filter(Boolean) : [],
       status: formData.get("status"),
       metaTitle: formData.get("metaTitle"),
       metaDescription: formData.get("metaDescription"),
@@ -402,7 +402,7 @@ export default function EditUniversityClient({ universityId }: { universityId: s
                   name="facts"
                   rows={3}
                   className="input-field"
-                  defaultValue={university.facts?.join("\n")}
+                  defaultValue={university.keyFacts?.join("\n")}
                   placeholder="One per line"
                 />
               </div>

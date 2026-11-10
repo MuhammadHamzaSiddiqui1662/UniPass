@@ -33,6 +33,12 @@ export interface IUniversity {
   levels: string[];
   hasMeritScholarship: boolean;
   turkiyeBurslariEligible: boolean;
+  foundedYear?: number;
+  studentsCount?: number;
+  internationalStudents?: number;
+  accreditations: string[];
+  facilityHighlights: string[];
+  keyFacts: string[];
   facts: {
     type?: string;
     city?: string;
@@ -85,7 +91,13 @@ const universitySchema = new Schema<IUniversity>(
     fields: [String],
     levels: [String],
     hasMeritScholarship: { type: Boolean, default: false },
-    turkiyeBurslariEligible: { type: Boolean, default: true },
+    turkiyeBurslariEligible: { type: Boolean, default: false },
+    foundedYear: Number,
+    studentsCount: Number,
+    internationalStudents: Number,
+    accreditations: { type: [String], default: [] },
+    facilityHighlights: { type: [String], default: [] },
+    keyFacts: { type: [String], default: [] },
     facts: {
       type: Object,
       default: {},
@@ -103,6 +115,11 @@ universitySchema.index({ status: 1, featuredOnHome: 1, homeOrder: 1 });
 universitySchema.index({ countryCode: 1, scholarshipType: 1 });
 universitySchema.index({ fields: 1 });
 universitySchema.index({ levels: 1 });
+
+// Next.js dev keeps the first compiled model. Recompile so new paths are saved.
+if (process.env.NODE_ENV !== "production") {
+  delete mongoose.models.University;
+}
 
 export const University: Model<IUniversity> =
   mongoose.models.University ||
