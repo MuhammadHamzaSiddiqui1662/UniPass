@@ -27,9 +27,33 @@ export default async function GuidesAdminPage() {
                 UniPass Admin
               </Link>
               <div className="hidden md:flex gap-6">
-                <Link href="/admin" className="text-slate-600 hover:text-primary-900">Dashboard</Link>
-                <Link href="/admin/guides" className="text-primary font-bold border-b-2 border-primary pb-1">Guides</Link>
+                <Link href="/admin" className="text-slate-600 hover:text-primary-900">
+                  Dashboard
+                </Link>
+                <Link href="/admin/leads" className="text-slate-600 hover:text-primary-900">
+                  Leads
+                </Link>
+                <Link href="/admin/universities" className="text-slate-600 hover:text-primary-900">
+                  Universities
+                </Link>
+                <Link
+                  href="/admin/guides"
+                  className="text-primary font-bold border-b-2 border-primary pb-1"
+                >
+                  Guides
+                </Link>
               </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <span className="text-sm text-slate-600">{session.name}</span>
+              <form action="/api/auth/logout" method="POST">
+                <button
+                  type="submit"
+                  className="text-sm text-slate-600 hover:text-primary-900"
+                >
+                  Logout
+                </button>
+              </form>
             </div>
           </div>
         </div>
