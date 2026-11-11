@@ -1,124 +1,195 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 import Header from "@/components/public/Header";
 import Footer from "@/components/public/Footer";
-import Link from "next/link";
+import CompareColumnSearch from "@/components/universities/CompareColumnSearch";
+import { cityLabel, FILTER_TYPES } from "@/lib/universities/catalog";
+import { toCompareUniversity, type CompareUniversity } from "@/lib/universities/compare";
+import {
+  COMPARE_SLOT_COUNT,
+  readCompareSlots,
+  setCompareSlot,
+  writeCompareSlots,
+  type CompareSlots,
+} from "@/lib/universities/saved";
+
+function typeLabel(type: string) {
+  return FILTER_TYPES.find((item) => item.value === type)?.label || type;
+}
+
+function tuitionText(university: CompareUniversity) {
+  if (university.tuitionFrom == null) return "—";
+  const from = `$${university.tuitionFrom.toLocaleString()}`;
+  if (university.tuitionTo == null) return from;
+  return `${from} - $${university.tuitionTo.toLocaleString()}`;
+}
+
+function listText(values: string[]) {
+  return values.length ? values.join(", ") : "—";
+}
+
+const ROWS: { label: string; value: (university: CompareUniversity) => string }[] = [
+  { label: "Type", value: (university) => typeLabel(university.type) || "—" },
+  { label: "City", value: (university) => cityLabel(university.city) || "—" },
+  { label: "Tuition (USD/year)", value: tuitionText },
+  { label: "Fields Offered", value: (university) => listText(university.fields) },
+  { label: "Levels", value: (university) => listText(university.levels) },
+  { label: "Merit Scholarship", value: (university) => (university.hasMeritScholarship ? "Yes" : "No") },
+];
 
 export default function ComparePage() {
-  const [compareList, setCompareList] = useState<any[]>([]);
-  const [universities, setUniversities] = useState<any[]>([]);
+  const [slots, setSlots] = useState<CompareSlots>(Array.from({ length: COMPARE_SLOT_COUNT }, () => null));
+  const [universities, setUniversities] = useState<Record<string, CompareUniversity>>({});
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem("compareList");
-    if (stored) {
-      const ids = JSON.parse(stored);
-      fetch(`/api/universities?ids=${ids.join(",")}`)
-        .then(res => res.json())
-        .then(data => setUniversities(data.universities || []))
-        .catch(console.error);
+    const stored = readCompareSlots();
+    setSlots(stored);
+    const ids = stored.filter((id): id is string => Boolean(id));
+    if (!ids.length) {
+      setReady(true);
+      return;
     }
+
+    const controller = new AbortController();
+    fetch(`/api/universities?ids=${ids.join(",")}`, { signal: controller.signal })
+      .then((response) => response.json())
+      .then((data: { universities?: unknown[] }) => {
+        const next: Record<string, CompareUniversity> = {};
+        for (const item of data.universities || []) {
+          const university = toCompareUniversity(item as CompareUniversity);
+          if (university) next[university._id] = university;
+        }
+        setUniversities(next);
+      })
+      .catch((error: Error) => {
+        if (error.name !== "AbortError") console.error(error);
+      })
+      .finally(() => {
+        if (!controller.signal.aborted) setReady(true);
+      });
+
+    return () => controller.abort();
   }, []);
 
-  const removeFromCompare = (id: string) => {
-    const stored = localStorage.getItem("compareList");
-    if (stored) {
-      const ids = JSON.parse(stored).filter((i: string) => i !== id);
-      localStorage.setItem("compareList", JSON.stringify(ids));
-      setUniversities(universities.filter(u => u._id !== id));
+  function updateSlot(index: number, university: CompareUniversity | null) {
+    const next = setCompareSlot(slots, index, university?._id ?? null);
+    writeCompareSlots(next);
+    setSlots(next);
+    if (university) {
+      setUniversities((current) => ({ ...current, [university._id]: university }));
     }
-  };
+  }
 
   return (
     <>
       <Header />
       <main className="pt-32">
-        <section className="py-20 bg-slate-50">
+        <section className="bg-slate-50 py-16">
           <div className="container-1200">
             <h1 className="text-h1-detail mb-6">Compare Universities</h1>
-            <p className="text-lg text-slate-600 mb-8">
-              Side-by-side comparison of up to 3 universities.
+            <p className="mb-8 max-w-3xl text-lg text-slate-600">
+              Compare up to 3 universities. Search each column by name, city, field, scholarship, or keyword.
             </p>
 
-            {universities.length === 0 ? (
-              <div className="bg-white rounded-card border border-slate-200 p-12 text-center">
-                <p className="text-slate-600 mb-4">No universities selected for comparison.</p>
-                <Link href="/universities" className="btn-primary">
-                  Browse Universities
-                </Link>
-              </div>
-            ) : (
-              <div className="bg-white rounded-card border border-slate-200 overflow-x-auto">
-                <table className="min-w-full">
-                  <thead className="bg-primary-50">
-                    <tr>
-                      <th className="px-6 py-4 text-left text-sm font-bold">Feature</th>
-                      {universities.map(uni => (
-                        <th key={uni._id} className="px-6 py-4 text-left">
-                          <div className="font-bold">{uni.name}</div>
-                          <button
-                            onClick={() => removeFromCompare(uni._id)}
-                            className="text-xs text-error hover:underline mt-1"
-                          >
-                            Remove
-                          </button>
+            <div className="overflow-x-auto rounded-card border border-slate-200 bg-white">
+              <table className="min-w-full">
+                <thead className="bg-primary-50">
+                  <tr>
+                    <th className="sticky left-0 z-10 bg-primary-50 px-6 py-4 text-left text-sm font-bold">
+                      Feature
+                    </th>
+                    {slots.map((slot, index) => {
+                      const university = slot ? universities[slot] : undefined;
+                      const excludedIds = slots.filter(
+                        (id, slotIndex): id is string => slotIndex !== index && Boolean(id),
+                      );
+                      return (
+                        <th key={index} className="min-w-[260px] px-4 py-4 text-left align-top font-normal">
+                          <CompareColumnSearch
+                            label={`University ${index + 1}`}
+                            excludedIds={excludedIds}
+                            onSelect={(selected) => updateSlot(index, selected)}
+                          />
+                          {university ? (
+                            <div className="mt-3">
+                              <div className="font-bold text-primary-900">{university.name}</div>
+                              <button
+                                type="button"
+                                onClick={() => updateSlot(index, null)}
+                                className="mt-1 text-xs font-bold text-error hover:underline"
+                              >
+                                Clear
+                              </button>
+                            </div>
+                          ) : slot && !ready ? (
+                            <p className="mt-3 text-sm text-slate-600">Loading…</p>
+                          ) : slot ? (
+                            <div className="mt-3">
+                              <p className="text-sm text-slate-600">This university is no longer available.</p>
+                              <button
+                                type="button"
+                                onClick={() => updateSlot(index, null)}
+                                className="mt-1 text-xs font-bold text-error hover:underline"
+                              >
+                                Clear
+                              </button>
+                            </div>
+                          ) : (
+                            <p className="mt-3 text-sm text-slate-600">Add a university</p>
+                          )}
                         </th>
-                      ))}
+                      );
+                    })}
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border">
+                  {ROWS.map((row) => (
+                    <tr key={row.label}>
+                      <th
+                        scope="row"
+                        className="sticky left-0 z-10 bg-white px-6 py-4 text-left text-sm font-bold"
+                      >
+                        {row.label}
+                      </th>
+                      {slots.map((slot, index) => {
+                        const university = slot ? universities[slot] : undefined;
+                        return (
+                          <td key={index} className="px-6 py-4 text-sm text-primary-900">
+                            {university ? row.value(university) : "—"}
+                          </td>
+                        );
+                      })}
                     </tr>
-                  </thead>
-                  <tbody className="divide-y divide-border">
-                    <tr>
-                      <td className="px-6 py-4 font-bold text-sm">Type</td>
-                      {universities.map(uni => (
-                        <td key={uni._id} className="px-6 py-4 text-sm">{uni.type}</td>
-                      ))}
-                    </tr>
-                    <tr>
-                      <td className="px-6 py-4 font-bold text-sm">City</td>
-                      {universities.map(uni => (
-                        <td key={uni._id} className="px-6 py-4 text-sm">{uni.city}</td>
-                      ))}
-                    </tr>
-                    <tr>
-                      <td className="px-6 py-4 font-bold text-sm">Tuition (USD/year)</td>
-                      {universities.map(uni => (
-                        <td key={uni._id} className="px-6 py-4 text-sm">
-                          ${uni.tuitionFrom?.toLocaleString()} {uni.tuitionTo && `- $${uni.tuitionTo.toLocaleString()}`}
+                  ))}
+                  <tr>
+                    <th scope="row" className="sticky left-0 z-10 bg-white px-6 py-4 text-left text-sm font-bold">
+                      Details
+                    </th>
+                    {slots.map((slot, index) => {
+                      const university = slot ? universities[slot] : undefined;
+                      return (
+                        <td key={index} className="px-6 py-4">
+                          {university ? (
+                            <Link href={`/universities/${university.slug}`} className="btn-outline px-4 py-2 text-sm">
+                              View Details
+                            </Link>
+                          ) : (
+                            <span className="text-sm text-primary-900">—</span>
+                          )}
                         </td>
-                      ))}
-                    </tr>
-                    <tr>
-                      <td className="px-6 py-4 font-bold text-sm">Fields Offered</td>
-                      {universities.map(uni => (
-                        <td key={uni._id} className="px-6 py-4 text-sm">{uni.fields?.join(", ")}</td>
-                      ))}
-                    </tr>
-                    <tr>
-                      <td className="px-6 py-4 font-bold text-sm">Levels</td>
-                      {universities.map(uni => (
-                        <td key={uni._id} className="px-6 py-4 text-sm">{uni.levels?.join(", ")}</td>
-                      ))}
-                    </tr>
-                    <tr>
-                      <td className="px-6 py-4 font-bold text-sm">Merit Scholarship</td>
-                      {universities.map(uni => (
-                        <td key={uni._id} className="px-6 py-4 text-sm">{uni.hasMeritScholarship ? "Yes" : "No"}</td>
-                      ))}
-                    </tr>
-                    <tr>
-                      <td className="px-6 py-4 font-bold text-sm"></td>
-                      {universities.map(uni => (
-                        <td key={uni._id} className="px-6 py-4">
-                          <Link href={`/universities/${uni.slug}`} className="btn-outline text-sm">
-                            View Details
-                          </Link>
-                        </td>
-                      ))}
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            )}
+                      );
+                    })}
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <Link href="/universities" className="mt-6 inline-block text-[15px] font-bold text-primary hover:underline">
+              Browse all universities
+            </Link>
           </div>
         </section>
       </main>

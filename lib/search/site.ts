@@ -204,7 +204,7 @@ async function loadCatalog(): Promise<SiteCatalog> {
   return { universities, guides, programs, scholarships };
 }
 
-async function loadUniversities(): Promise<UniversitySearchRecord[]> {
+export async function loadUniversities(): Promise<UniversitySearchRecord[]> {
   try {
     await withTimeout(connectDB(), 2500);
     const docs = await withTimeout(University.find({ status: "published" }).lean(), 2500);

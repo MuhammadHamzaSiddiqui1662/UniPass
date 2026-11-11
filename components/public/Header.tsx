@@ -14,10 +14,10 @@ interface HeaderProps {
 
 const navLinks = [
   { href: "/universities", label: "Universities" },
+  { href: "/compare", label: "Compare" },
   { href: "/scholarships", label: "Scholarships" },
   { href: "/#admission-steps", label: "Admission steps" },
   { href: "/guides", label: "Guides" },
-  { href: "/#faq", label: "Questions" },
 ];
 
 export default function Header({ activeLink }: HeaderProps) {
