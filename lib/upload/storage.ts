@@ -45,6 +45,7 @@ export function getImageStorage(): ImageStorage {
 
 export function folderFor(kind: string, slug?: string) {
   if (kind === "photo") return "unipass/testimonials";
+  if (kind === "hero") return "unipass/hero";
   const safe =
     (slug || "unassigned")
       .toLowerCase()

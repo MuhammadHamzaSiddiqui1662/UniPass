@@ -8,4 +8,5 @@ export { Testimonial } from "./models/Testimonial";
 export { User } from "./models/User";
 export { SiteSettings } from "./models/SiteSettings";
 export { Taxonomy } from "./models/Taxonomy";
+export { HeroSlide } from "./models/HeroSlide";
 export { connectDB } from "./connection";

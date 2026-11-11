@@ -8,3 +8,4 @@ export { Testimonial } from "./Testimonial";
 export { Scholarship } from "./Scholarship";
 export { SiteSettings } from "./SiteSettings";
 export { Taxonomy } from "./Taxonomy";
+export { HeroSlide } from "./HeroSlide";

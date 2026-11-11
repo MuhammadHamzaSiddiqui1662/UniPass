@@ -9,6 +9,7 @@ const BASE_LINKS = [
 const ADMIN_LINKS = [
   { href: "/admin/universities", id: "universities", label: "Universities" },
   { href: "/admin/guides", id: "guides", label: "Guides" },
+  { href: "/admin/hero", id: "hero", label: "Hero" },
   { href: "/admin/settings", id: "settings", label: "Settings" },
   { href: "/admin/users", id: "users", label: "Users" },
 ];
@@ -32,7 +33,7 @@ export default function AdminNav({
             <Link href="/admin" className="font-display text-xl text-primary-900">
               UniPass Admin
             </Link>
-            <div className="hidden md:flex gap-6">
+            <div className="hidden items-center gap-4 md:flex lg:gap-5">
               {links.map((link) => (
                 <Link
                   key={link.id}

@@ -2,20 +2,16 @@ import Link from "next/link";
 import Asset from "@/components/home/Asset";
 import CampusPhoto from "@/components/home/CampusPhoto";
 import GuideArt from "@/components/home/GuideArt";
+import HeroCarousel from "@/components/home/HeroCarousel";
 import UniversitySlider from "@/components/home/UniversitySlider";
 import CountryFlag from "@/components/universities/CountryFlag";
 import ConsultationForm from "@/components/public/ConsultationForm";
 import FaqAccordion from "@/components/home/FaqAccordion";
 import { admissionSteps, type HomeFaq, type HomeGuide, type HomeUniversity } from "@/lib/home/content";
+import { fallbackHeroSlides, type PublicHeroSlide } from "@/lib/home/hero-content";
 import { cardKnownFor } from "@/lib/universities/known-for";
 import { formatCurrency } from "@/lib/utils/format";
 import { whatsappHref } from "@/lib/site/contact";
-
-const trustPoints = [
-  "Free first consultation",
-  "Scholarships explained",
-  "Support from application to arrival",
-];
 
 const consultPoints = [
   "A shortlist matched to your marks and budget",
@@ -25,55 +21,8 @@ const consultPoints = [
 
 const scholarshipCovers = ["Tuition", "Housing", "Monthly allowance", "Health insurance"];
 
-export function Hero() {
-  return (
-    <section className="relative overflow-hidden bg-primary-900 lg:h-[716px]">
-      <div
-        className="absolute inset-0 bg-cover bg-[center_bottom]"
-        style={{ backgroundImage: "url(/home/imgGroup1.svg)" }}
-        aria-hidden
-      />
-      <img
-        src="/home/imgSharedHeroOverlay.svg"
-        alt=""
-        width={1440}
-        height={716}
-        className="pointer-events-none absolute left-1/2 top-0 h-[716px] w-[1440px] max-w-none -translate-x-1/2 min-[1440px]:left-0 min-[1440px]:h-full min-[1440px]:w-full min-[1440px]:translate-x-0"
-      />
-      <div className="relative z-10 mx-auto flex max-w-[1200px] flex-col px-4 pb-16 pt-36 sm:px-6 sm:pt-40 lg:h-[716px] lg:px-0 lg:pb-0 lg:pt-[176px]">
-        <h1 className="text-h1-hero">
-          <span className="block lg:whitespace-nowrap">Your degree in Türkiye</span>
-          starts here
-        </h1>
-        <p className="mt-8 max-w-[490px] text-[18px] leading-[28px] text-primary-100 sm:text-[20px] sm:leading-[30px]">
-          Compare universities, understand scholarships and get help with every step, from
-          Pakistan to your first day on campus.
-        </p>
-        <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-          <Link
-            href="/universities"
-            className="inline-flex h-[52px] items-center justify-center rounded-input bg-white px-6 text-[16px] font-bold text-primary-900 transition-colors hover:bg-white/90 sm:min-w-[212px]"
-          >
-            Explore universities
-          </Link>
-          <Link
-            href="/#book"
-            className="btn-outline-dark h-[52px] px-6 text-[16px] sm:min-w-[252px]"
-          >
-            Book free consultation
-          </Link>
-        </div>
-        <ul className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-x-10 sm:gap-y-3">
-          {trustPoints.map((item) => (
-            <li key={item} className="flex items-center gap-2 text-[15px] text-primary-100">
-              <Asset src="/home/imgVector2.svg" width={12.2} height={9.7} />
-              {item}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-  );
+export function Hero({ slides }: { slides: PublicHeroSlide[] }) {
+  return <HeroCarousel slides={slides.length > 0 ? slides : fallbackHeroSlides} />;
 }
 
 export function Universities({

@@ -11,7 +11,8 @@ import {
   Universities,
 } from "@/components/home/HomeSections";
 import Testimonials from "@/components/home/Testimonials";
-import { connectDB, FAQ, Guide, Testimonial, University } from "@/lib/db";
+import { connectDB, FAQ, Guide, HeroSlide, Testimonial, University } from "@/lib/db";
+import { serializeHeroSlide, toPublicHeroSlide } from "@/lib/home/hero";
 import {
   CAMPUS_PHOTOS,
   fallbackFaqs,
@@ -85,7 +86,7 @@ async function getHomePageData() {
   try {
     await withTimeout(connectDB(), 3000);
 
-    const [featured, published, universityCount, guides, guideCount, faqs, testimonials, testimonialCount] =
+    const [featured, published, universityCount, guides, guideCount, faqs, testimonials, testimonialCount, heroSlides] =
       await withTimeout(
         Promise.all([
           University.find({ status: "published", featuredOnHome: true }).sort({ homeOrder: 1, name: 1 }).lean(),
@@ -96,6 +97,7 @@ async function getHomePageData() {
           FAQ.find({ status: "published" }).sort({ order: 1 }).limit(6).lean(),
           Testimonial.find({ status: "published" }).sort({ order: 1 }).limit(9).lean(),
           Testimonial.countDocuments({ status: "published" }),
+          HeroSlide.find({ status: "published" }).sort({ order: 1, createdAt: 1 }).lean(),
         ]),
         3000,
       );
@@ -148,7 +150,12 @@ async function getHomePageData() {
           }))
         : fallbackTestimonials;
 
+    const slides = heroSlides
+      .map((slide) => toPublicHeroSlide(serializeHeroSlide(slide)))
+      .filter((slide) => slide.backgroundImage);
+
     return {
+      slides,
       universities: universityCards,
       universityTotal: universities.length > 0 ? universityCount : UNIVERSITY_TOTAL_FALLBACK,
       guides: guideCards,
@@ -161,6 +168,7 @@ async function getHomePageData() {
   } catch (error) {
     console.error("Failed to fetch home page data:", error);
     return {
+      slides: [],
       universities: fallbackUniversities,
       universityTotal: UNIVERSITY_TOTAL_FALLBACK,
       guides: fallbackGuides,
@@ -181,7 +189,7 @@ export default async function Home() {
       <FAQSchema faqs={data.faqs} />
       <Header />
       <main>
-        <Hero />
+        <Hero slides={data.slides} />
         <Universities universities={data.universities} total={data.universityTotal} />
         <Scholarships />
         <AdmissionSteps />
