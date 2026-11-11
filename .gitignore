@@ -37,6 +37,9 @@ yarn-error.log*
 # local image uploads (ephemeral; use Cloudinary before go-live)
 /public/uploads
 
+# private lead PDFs when Cloudinary is not configured
+/storage
+
 # vercel
 .vercel
 

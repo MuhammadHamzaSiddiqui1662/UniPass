@@ -166,6 +166,33 @@ describe("Lead Model", () => {
     expect(updated?.status).toBe("contacted");
   });
 
+  it("should store one client document on the lead", async () => {
+    const lead = await Lead.create({
+      fullName: "Test User",
+      whatsappNumber: "+92 300 1234567",
+      city: "Karachi",
+      levelOfStudy: "Bachelor's",
+      source: "test",
+      sourcePage: "/test",
+      status: "new",
+    });
+
+    lead.document = {
+      fileName: "packet.pdf",
+      storageKey: "local-key",
+      provider: "local",
+      size: 12,
+      uploadedBy: new mongoose.Types.ObjectId(),
+      uploadedAt: new Date("2026-11-11T00:00:00.000Z"),
+    };
+    await lead.save();
+
+    const updated = await Lead.findById(lead._id);
+    expect(updated?.document?.fileName).toBe("packet.pdf");
+    expect(updated?.document?.provider).toBe("local");
+    expect(updated?.document?.size).toBe(12);
+  });
+
   it("should add activity to lead", async () => {
     const lead = await Lead.create({
       fullName: "Test User",

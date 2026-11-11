@@ -8,13 +8,15 @@ import {
   canAssignLeads,
   canDeleteLead,
 } from "@/lib/auth/permissions";
+import { deleteStoredLeadPdf, presentLead } from "@/lib/leads/document";
 import { updateLeadSchema } from "@/lib/validations/schemas";
 
 function loadLead(id: string) {
   return Lead.findById(id)
     .populate("assignedTo", "name")
     .populate("university", "name")
-    .populate("activity.user", "name");
+    .populate("activity.user", "name")
+    .populate("document.uploadedBy", "name");
 }
 
 export async function GET(
@@ -31,7 +33,7 @@ export async function GET(
       return NextResponse.json({ error: "Lead not found" }, { status: 404 });
     }
 
-    return NextResponse.json({ lead });
+    return NextResponse.json({ lead: presentLead(lead) });
   } catch (error) {
     const auth = authFailure(error);
     if (auth) return auth;
@@ -129,7 +131,7 @@ export async function PATCH(
       return NextResponse.json({ error: "Lead not found" }, { status: 404 });
     }
 
-    return NextResponse.json({ lead });
+    return NextResponse.json({ lead: presentLead(lead) });
   } catch (error) {
     const auth = authFailure(error);
     if (auth) return auth;
@@ -154,6 +156,10 @@ export async function DELETE(
     if (!lead) {
       return NextResponse.json({ error: "Lead not found" }, { status: 404 });
     }
+
+    await deleteStoredLeadPdf(lead.document).catch((error) => {
+      console.warn("Lead document delete skipped:", error);
+    });
 
     return NextResponse.json({ success: true });
   } catch (error) {

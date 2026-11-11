@@ -6,6 +6,7 @@ import { formatDate, formatPhoneNumber } from "@/lib/utils/format";
 import { LEAD_STATUSES } from "@/lib/utils/constants";
 import AdminNav from "@/components/admin/AdminNav";
 import { canBulkExport, canViewAllLeads, leadListFilter } from "@/lib/auth/permissions";
+import { presentLead } from "@/lib/leads/document";
 
 interface SearchParams {
   search?: string;
@@ -53,7 +54,7 @@ async function getLeads(searchParams: SearchParams, session: SessionData) {
     ]);
 
     return {
-      leads: JSON.parse(JSON.stringify(leads)),
+      leads: JSON.parse(JSON.stringify(leads.map((lead) => presentLead(lead)))),
       total,
       currentPage: page,
       totalPages: Math.ceil(total / limit),

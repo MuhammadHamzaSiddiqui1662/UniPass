@@ -84,6 +84,10 @@ export function canExportLead(role: UserRole): boolean {
   return role === "supervisor" || isAdminTier(role);
 }
 
+export function canDownloadLeadDocument(role: UserRole): boolean {
+  return canExportLead(role);
+}
+
 export function canBulkExport(role: UserRole): boolean {
   return isAdminTier(role);
 }

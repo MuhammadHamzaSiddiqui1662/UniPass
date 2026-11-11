@@ -29,6 +29,14 @@ export interface ILead {
     | "lost";
   assignedTo?: mongoose.Types.ObjectId;
   notes: string;
+  document?: {
+    fileName: string;
+    storageKey: string;
+    provider: "local" | "cloudinary";
+    size: number;
+    uploadedBy: mongoose.Types.ObjectId;
+    uploadedAt: Date;
+  };
   activity: {
     action: string;
     note?: string;
@@ -39,6 +47,18 @@ export interface ILead {
   createdAt: Date;
   updatedAt: Date;
 }
+
+const leadDocumentSchema = new Schema(
+  {
+    fileName: { type: String, required: true },
+    storageKey: { type: String, required: true },
+    provider: { type: String, enum: ["local", "cloudinary"], required: true },
+    size: { type: Number, required: true },
+    uploadedBy: { type: Schema.Types.ObjectId, ref: "User" },
+    uploadedAt: { type: Date, required: true },
+  },
+  { _id: false }
+);
 
 const leadSchema = new Schema<ILead>(
   {
@@ -65,6 +85,7 @@ const leadSchema = new Schema<ILead>(
     },
     assignedTo: { type: Schema.Types.ObjectId, ref: "User" },
     notes: { type: String, default: "" },
+    document: leadDocumentSchema,
     activity: [
       {
         action: { type: String, required: true },
@@ -105,5 +126,7 @@ leadSchema.pre("save", async function () {
   this.trackingId = formatLeadTrackingId(createdAt, sequence);
 });
 
-export const Lead: Model<ILead> =
-  mongoose.models.Lead || mongoose.model<ILead>("Lead", leadSchema);
+if (mongoose.models.Lead) {
+  mongoose.deleteModel("Lead");
+}
+export const Lead: Model<ILead> = mongoose.model<ILead>("Lead", leadSchema);

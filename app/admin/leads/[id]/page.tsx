@@ -9,8 +9,10 @@ import {
   canAccessLead,
   canAssignLeads,
   canDeleteLead,
+  canDownloadLeadDocument,
   canExportLead,
 } from "@/lib/auth/permissions";
+import { presentLead } from "@/lib/leads/document";
 
 async function getLeadDetail(id: string, userId: string, role: "super_admin" | "admin" | "supervisor" | "staff") {
   try {
@@ -20,6 +22,7 @@ async function getLeadDetail(id: string, userId: string, role: "super_admin" | "
       .populate("assignedTo", "name email role")
       .populate("university", "name")
       .populate("activity.user", "name")
+      .populate("document.uploadedBy", "name")
       .lean();
 
     if (!lead || !canAccessLead(role, userId, lead.assignedTo)) {
@@ -39,11 +42,12 @@ async function getLeadDetail(id: string, userId: string, role: "super_admin" | "
     }
 
     return {
-      lead: JSON.parse(JSON.stringify(lead)),
+      lead: JSON.parse(JSON.stringify(presentLead(lead))),
       users: JSON.parse(JSON.stringify(users)),
       canDelete: canDeleteLead(role),
       canAssign: canAssignLeads(role),
       canExport: canExportLead(role),
+      canDownload: canDownloadLeadDocument(role),
     };
   } catch (error) {
     console.error("Failed to fetch lead:", error);
@@ -63,7 +67,7 @@ export default async function LeadDetailPage({
   const data = await getLeadDetail(params.id, session.userId, session.role);
   if (!data) notFound();
 
-  const { lead, users, canDelete, canAssign, canExport } = data;
+  const { lead, users, canDelete, canAssign, canExport, canDownload } = data;
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -163,6 +167,7 @@ export default async function LeadDetailPage({
               canDelete={canDelete}
               canAssign={canAssign}
               canExport={canExport}
+              canDownload={canDownload}
             />
           </div>
         </div>

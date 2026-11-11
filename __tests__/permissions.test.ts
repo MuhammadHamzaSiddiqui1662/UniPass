@@ -6,6 +6,7 @@ import {
   canChangeUserRole,
   canDeleteUser,
   canEditUser,
+  canDownloadLeadDocument,
   canExportLead,
   leadListFilter,
 } from "../lib/auth/permissions";
@@ -74,6 +75,13 @@ describe("lead scope", () => {
     expect(canBulkExport("supervisor")).toBe(false);
     expect(canExportLead("staff")).toBe(false);
     expect(canBulkExport("admin")).toBe(true);
+  });
+
+  test("staff cannot download a client PDF; supervisors and admins can", () => {
+    expect(canDownloadLeadDocument("staff")).toBe(false);
+    expect(canDownloadLeadDocument("supervisor")).toBe(true);
+    expect(canDownloadLeadDocument("admin")).toBe(true);
+    expect(canDownloadLeadDocument("super_admin")).toBe(true);
   });
 
   test("staff and supervisors cannot manage each other", () => {
