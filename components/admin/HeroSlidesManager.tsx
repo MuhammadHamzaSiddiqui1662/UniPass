@@ -196,7 +196,7 @@ export default function HeroSlidesManager({ initialSlides }: { initialSlides: Ad
               </p>
               <button
                 type="button"
-                className="btn-outline mt-5 h-11 px-5 text-[15px]"
+                className="btn-outline mt-5 h-11 py-0 px-5 text-[15px]"
                 onClick={() => setEditor({ ...currentHeroContent, buttons: currentHeroContent.buttons.map((button) => ({ ...button })) })}
               >
                 Start from the current hero
@@ -234,7 +234,7 @@ export default function HeroSlidesManager({ initialSlides }: { initialSlides: Ad
                   <div className="flex flex-wrap gap-2">
                     <button
                       type="button"
-                      className="btn-outline h-9 px-3 text-sm disabled:cursor-not-allowed disabled:opacity-40"
+                      className="btn-outline h-9 py-0 px-3 text-sm disabled:cursor-not-allowed disabled:opacity-40"
                       onClick={() => move(index, -1)}
                       disabled={saving || index === 0}
                     >
@@ -242,13 +242,13 @@ export default function HeroSlidesManager({ initialSlides }: { initialSlides: Ad
                     </button>
                     <button
                       type="button"
-                      className="btn-outline h-9 px-3 text-sm disabled:cursor-not-allowed disabled:opacity-40"
+                      className="btn-outline h-9 py-0 px-3 text-sm disabled:cursor-not-allowed disabled:opacity-40"
                       onClick={() => move(index, 1)}
                       disabled={saving || index === slides.length - 1}
                     >
                       Down
                     </button>
-                    <button type="button" className="btn-outline h-9 px-3 text-sm" onClick={() => openEdit(slide)}>
+                    <button type="button" className="btn-outline h-9 py-0 px-3 text-sm" onClick={() => openEdit(slide)}>
                       Edit
                     </button>
                     <button
@@ -423,7 +423,7 @@ function SlideEditor({
           <button type="submit" className="btn-primary h-11 px-5 text-[15px]" disabled={saving}>
             {saving ? "Saving..." : editor.id ? "Save slide" : "Add slide"}
           </button>
-          <button type="button" className="btn-outline h-11 px-5 text-[15px]" onClick={onCancel} disabled={saving}>
+          <button type="button" className="btn-outline h-11 py-0 px-5 text-[15px]" onClick={onCancel} disabled={saving}>
             Cancel
           </button>
         </div>
@@ -496,7 +496,7 @@ function ButtonFields({
         {editor.buttons.length < 2 ? (
           <button
             type="button"
-            className="btn-outline h-10 px-4 text-sm"
+            className="btn-outline h-10 py-0 px-4 text-sm"
             onClick={() =>
               onChange({
                 ...editor,

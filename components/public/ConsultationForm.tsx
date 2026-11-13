@@ -147,7 +147,7 @@ export default function ConsultationForm({ context }: ConsultationFormProps) {
             <span className="font-mono font-bold text-primary-900">{trackingId}</span>
           </p>
         )}
-        <button type="button" onClick={() => setStatus("idle")} className="btn-outline h-11 px-6 text-[15px]">
+        <button type="button" onClick={() => setStatus("idle")} className="btn-outline h-11 py-0 px-6 text-[15px]">
           Submit another request
         </button>
       </div>

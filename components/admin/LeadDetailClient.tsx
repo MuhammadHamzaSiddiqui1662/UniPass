@@ -248,13 +248,13 @@ export default function LeadDetailClient({
               )}
               <div className="mt-3 flex flex-wrap gap-2">
                 {canDownload && (
-                  <a href={`/api/admin/leads/${lead._id}/document`} className="btn-outline h-9 px-3 text-sm">
+                  <a href={`/api/admin/leads/${lead._id}/document`} className="btn-outline h-9 py-0 px-3 text-sm">
                     Download
                   </a>
                 )}
                 <button
                   type="button"
-                  className="btn-outline h-9 px-3 text-sm"
+                  className="btn-outline h-9 py-0 px-3 text-sm"
                   disabled={uploading}
                   onClick={() => fileInputRef.current?.click()}
                 >
@@ -363,7 +363,7 @@ export default function LeadDetailClient({
           <button
             onClick={handleDelete}
             disabled={saving}
-            className="px-4 py-2 bg-error text-white rounded-input hover:bg-error/90 disabled:opacity-50"
+            className="btn-danger"
           >
             Delete Lead
           </button>

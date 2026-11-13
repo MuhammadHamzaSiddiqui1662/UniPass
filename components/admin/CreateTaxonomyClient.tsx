@@ -94,7 +94,7 @@ export default function CreateTaxonomyClient() {
             </div>
           </div>
 
-          <div className="flex gap-4">
+          <div className="flex flex-wrap items-center gap-4">
             <button type="submit" disabled={saving} className="btn-primary">
               {saving ? "Creating..." : "Create Taxonomy"}
             </button>

@@ -36,12 +36,12 @@ export default async function AdminUniversitiesPage() {
             homeOrder: university.homeOrder ?? 0,
           }))}
         />
-        <div className="flex justify-between items-center mb-6">
+        <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
           <h1 className="text-2xl font-display">
             Universities ({universities.length})
           </h1>
-          <div className="flex gap-3">
-            <Link href="/admin/universities/import" className="btn-outline px-4">
+          <div className="flex flex-wrap gap-3">
+            <Link href="/admin/universities/import" className="btn-outline">
               Bulk import
             </Link>
             <Link href="/admin/universities/new" className="btn-primary">

@@ -188,13 +188,13 @@ export default function BulkImportClient() {
         </p>
 
         <div className="mt-6 flex flex-wrap gap-3">
-          <button type="button" className="btn-outline h-11 px-4" onClick={() => download("/api/admin/universities/import/sample", "unipass-universities-sample.csv")}>
+          <button type="button" className="btn-outline h-11 py-0 px-4" onClick={() => download("/api/admin/universities/import/sample", "unipass-universities-sample.csv")}>
             Download sample CSV
           </button>
-          <button type="button" className="btn-outline h-11 px-4" onClick={() => download("/api/admin/universities/import/guide", "unipass-university-import-guide.md")}>
+          <button type="button" className="btn-outline h-11 py-0 px-4" onClick={() => download("/api/admin/universities/import/guide", "unipass-university-import-guide.md")}>
             Download template guide
           </button>
-          <button type="button" className="btn-outline h-11 px-4" onClick={() => download("/api/admin/universities/export", "unipass-universities.csv")}>
+          <button type="button" className="btn-outline h-11 py-0 px-4" onClick={() => download("/api/admin/universities/export", "unipass-universities.csv")}>
             Export current universities as CSV
           </button>
         </div>
@@ -314,7 +314,7 @@ export default function BulkImportClient() {
               <Result label="Skipped" value={summary.skipped} />
               <Result label="Image failures" value={summary.imageFailures} />
             </dl>
-            <button type="button" className="btn-outline mt-5 h-11 px-4" onClick={downloadReport}>
+            <button type="button" className="btn-outline mt-5 h-11 py-0 px-4" onClick={downloadReport}>
               Download error report CSV
             </button>
           </section>

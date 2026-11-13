@@ -135,7 +135,7 @@ export default function EditTaxonomyClient({ taxonomyId }: { taxonomyId: string 
             </div>
           </div>
 
-          <div className="flex gap-4">
+          <div className="flex flex-wrap items-center gap-4">
             <button type="submit" disabled={saving} className="btn-primary">
               {saving ? "Saving..." : "Save Changes"}
             </button>
@@ -144,7 +144,7 @@ export default function EditTaxonomyClient({ taxonomyId }: { taxonomyId: string 
               type="button"
               onClick={handleDelete}
               disabled={deleting}
-              className="ml-auto px-4 py-2 bg-error text-white rounded-input hover:bg-error/90 disabled:opacity-50"
+              className="btn-danger ml-auto"
             >
               {deleting ? "Deleting..." : "Delete"}
             </button>

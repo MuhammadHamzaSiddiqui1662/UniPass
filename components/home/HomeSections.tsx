@@ -234,7 +234,7 @@ export function Guides({ guides, total }: { guides: HomeGuide[]; total: number }
                   <span className="text-[14px] text-slate-600">{guide.readTime} min read</span>
                   <Link
                     href={`/guides/${guide.slug}`}
-                    className="btn-outline h-10 px-4 text-[15px]"
+                    className="btn-outline h-10 py-0 px-4 text-[15px]"
                   >
                     Read guide
                   </Link>

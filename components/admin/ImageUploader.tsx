@@ -196,7 +196,7 @@ export default function ImageUploader({
               <div className="mt-3 flex flex-wrap gap-2">
                 <button
                   type="button"
-                  className="btn-outline h-9 px-3 text-sm"
+                  className="btn-outline h-9 py-0 px-3 text-sm"
                   onClick={() => {
                     replaceIndex.current = index;
                     replaceRef.current?.click();
@@ -205,17 +205,17 @@ export default function ImageUploader({
                 >
                   Replace
                 </button>
-                <button type="button" className="btn-outline h-9 px-3 text-sm" onClick={() => remove(index)} disabled={busy}>
+                <button type="button" className="btn-outline h-9 py-0 px-3 text-sm" onClick={() => remove(index)} disabled={busy}>
                   Remove
                 </button>
                 {multiple && (
                   <>
-                    <button type="button" className="btn-outline h-9 px-3 text-sm" onClick={() => move(index, index - 1)} disabled={index === 0}>
+                    <button type="button" className="btn-outline h-9 py-0 px-3 text-sm" onClick={() => move(index, index - 1)} disabled={index === 0}>
                       Move up
                     </button>
                     <button
                       type="button"
-                      className="btn-outline h-9 px-3 text-sm"
+                      className="btn-outline h-9 py-0 px-3 text-sm"
                       onClick={() => move(index, index + 1)}
                       disabled={index === images.length - 1}
                     >
@@ -285,7 +285,7 @@ export default function ImageUploader({
           inputMode="url"
           disabled={busy || atCapacity}
         />
-        <button type="button" className="btn-outline h-12 shrink-0 px-4" onClick={() => void addUrl()} disabled={busy || atCapacity || !urlDraft.trim()}>
+        <button type="button" className="btn-outline h-12 shrink-0 py-0 px-4" onClick={() => void addUrl()} disabled={busy || atCapacity || !urlDraft.trim()}>
           Add URL
         </button>
       </div>
