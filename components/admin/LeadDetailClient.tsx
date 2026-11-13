@@ -37,22 +37,23 @@ export default function LeadDetailClient({
   users,
   canDelete,
   canAssign,
-  canExport,
   canDownload,
 }: {
   lead: Lead;
   users: User[];
   canDelete: boolean;
   canAssign: boolean;
-  canExport: boolean;
   canDownload: boolean;
 }) {
   const router = useRouter();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [lead, setLead] = useState(initialLead);
-  const [pdfFile, setPdfFile] = useState<File | null>(null);
   const [newNote, setNewNote] = useState("");
   const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [dragOver, setDragOver] = useState(false);
+  const [uploadError, setUploadError] = useState("");
+  const [progress, setProgress] = useState<number | null>(null);
 
   const handleStatusChange = async (newStatus: string) => {
     setSaving(true);
@@ -103,39 +104,30 @@ export default function LeadDetailClient({
     }
   };
 
-  const handleUploadPdf = async (e: FormEvent) => {
-    e.preventDefault();
-    if (!pdfFile) return;
-    if (pdfFile.type && pdfFile.type !== "application/pdf") {
-      alert("Only PDF files can be uploaded.");
+  const handleUploadPdf = async (file: File | null) => {
+    if (fileInputRef.current) fileInputRef.current.value = "";
+    if (!file || uploading) return;
+    if (file.type && file.type !== "application/pdf" && !file.name.toLowerCase().endsWith(".pdf")) {
+      setUploadError("Only PDF files can be uploaded.");
       return;
     }
-    if (pdfFile.size > 15 * 1024 * 1024) {
-      alert("PDF must be 15 MB or smaller.");
+    if (file.size > 15 * 1024 * 1024) {
+      setUploadError("PDF must be 15 MB or smaller.");
       return;
     }
 
-    setSaving(true);
+    setUploadError("");
+    setUploading(true);
+    setProgress(0);
     try {
-      const body = new FormData();
-      body.set("file", pdfFile);
-      const response = await fetch(`/api/admin/leads/${lead._id}/document`, {
-        method: "POST",
-        body,
-      });
-      const data = await response.json().catch(() => null);
-      if (!response.ok || !data?.lead) {
-        throw new Error(data?.error || "Failed to upload PDF");
-      }
-
-      setLead(data.lead);
-      setPdfFile(null);
-      if (fileInputRef.current) fileInputRef.current.value = "";
+      const updated = await postLeadPdf(lead._id, file, setProgress);
+      setLead(updated);
       router.refresh();
     } catch (error) {
-      alert(error instanceof Error ? error.message : "Failed to upload PDF");
+      setUploadError(error instanceof Error ? error.message : "Failed to upload PDF");
     } finally {
-      setSaving(false);
+      setUploading(false);
+      setProgress(null);
     }
   };
 
@@ -190,12 +182,6 @@ export default function LeadDetailClient({
 
   return (
     <div className="space-y-6">
-      {canExport && (
-        <a href={`/admin/leads/${lead._id}/export`} className="btn-outline inline-block text-sm px-4 py-2">
-          Export this lead
-        </a>
-      )}
-
       {/* Status Pipeline */}
       <div className="bg-white rounded-card border border-slate-200 p-6">
         <h2 className="font-display text-xl mb-4">Status Pipeline</h2>
@@ -245,50 +231,78 @@ export default function LeadDetailClient({
           note and every PDF change stays in the history.
         </p>
 
-        <div className="mb-6 rounded-input border border-slate-200 p-4">
+        <div className="mb-6">
           {lead.document ? (
-            <div className="mb-3">
-              <p className="font-bold text-sm">{lead.document.fileName}</p>
-              <p className="text-xs text-slate-600">
+            <div className="rounded-input border border-slate-200 bg-slate-50 p-3">
+              <p className="text-sm font-bold text-primary-900">{lead.document.fileName}</p>
+              <p className="mt-1 text-xs text-slate-600">
                 {formatFileSize(lead.document.size)}
                 {" · "}
                 Uploaded {new Date(lead.document.uploadedAt).toLocaleString()}
                 {lead.document.uploadedBy?.name ? ` by ${lead.document.uploadedBy.name}` : ""}
               </p>
-              {canDownload ? (
-                <a
-                  href={`/api/admin/leads/${lead._id}/document`}
-                  className="btn-outline inline-block text-sm px-4 py-2 mt-3"
-                >
-                  Download PDF
-                </a>
-              ) : (
-                <p className="text-xs text-slate-600 mt-2">
+              {!canDownload && (
+                <p className="mt-2 text-xs text-slate-600">
                   This file is on record. You can replace it, but only a supervisor or admin can download it.
                 </p>
               )}
+              <div className="mt-3 flex flex-wrap gap-2">
+                {canDownload && (
+                  <a href={`/api/admin/leads/${lead._id}/document`} className="btn-outline h-9 px-3 text-sm">
+                    Download
+                  </a>
+                )}
+                <button
+                  type="button"
+                  className="btn-outline h-9 px-3 text-sm"
+                  disabled={uploading}
+                  onClick={() => fileInputRef.current?.click()}
+                >
+                  {uploading ? "Uploading…" : "Replace"}
+                </button>
+              </div>
             </div>
           ) : (
-            <p className="text-sm text-slate-600 mb-3">No PDF uploaded yet.</p>
+            <button
+              type="button"
+              disabled={uploading}
+              onClick={() => fileInputRef.current?.click()}
+              onDragOver={(event) => {
+                event.preventDefault();
+                if (!uploading) setDragOver(true);
+              }}
+              onDragLeave={() => setDragOver(false)}
+              onDrop={(event) => {
+                event.preventDefault();
+                setDragOver(false);
+                void handleUploadPdf(event.dataTransfer.files?.[0] || null);
+              }}
+              className={`flex w-full flex-col items-center justify-center rounded-input border border-dashed px-4 py-8 text-center disabled:opacity-60 ${
+                dragOver ? "border-primary bg-primary/5" : "border-slate-200 bg-white"
+              }`}
+            >
+              <span className="text-sm font-bold text-primary-900">
+                {uploading ? "Uploading…" : "Drag a PDF here, or click to browse"}
+              </span>
+              <span className="mt-1 text-xs text-slate-600">PDF · 15 MB max</span>
+            </button>
           )}
 
-          <form onSubmit={handleUploadPdf} className="flex flex-col gap-3 sm:flex-row sm:items-center">
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept="application/pdf,.pdf"
-              disabled={saving}
-              onChange={(e) => setPdfFile(e.target.files?.[0] || null)}
-              className="text-sm text-slate-600"
-            />
-            <button
-              type="submit"
-              disabled={saving || !pdfFile}
-              className="btn-primary whitespace-nowrap"
-            >
-              {lead.document ? "Replace PDF" : "Upload PDF"}
-            </button>
-          </form>
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept="application/pdf,.pdf"
+            disabled={uploading}
+            onChange={(event) => void handleUploadPdf(event.target.files?.[0] || null)}
+            className="sr-only"
+          />
+
+          {progress !== null && (
+            <div className="mt-3 h-2 overflow-hidden rounded-full bg-slate-200" aria-label="Upload progress">
+              <div className="h-full bg-primary" style={{ width: `${progress}%` }} />
+            </div>
+          )}
+          {uploadError && <p className="mt-2 text-sm text-error">{uploadError}</p>}
         </div>
 
         <form onSubmit={handleAddNote} className="mb-6">
@@ -357,6 +371,30 @@ export default function LeadDetailClient({
       )}
     </div>
   );
+}
+
+function postLeadPdf(leadId: string, file: File, onProgress: (value: number) => void) {
+  return new Promise<Lead>((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    const body = new FormData();
+    body.append("file", file);
+    xhr.open("POST", `/api/admin/leads/${leadId}/document`);
+    xhr.upload.onprogress = (event) => {
+      if (event.lengthComputable) onProgress(Math.round((event.loaded / event.total) * 100));
+    };
+    xhr.onload = () => {
+      let data: { lead?: Lead; error?: string } = {};
+      try {
+        data = JSON.parse(xhr.responseText || "{}") as { lead?: Lead; error?: string };
+      } catch {
+        data = {};
+      }
+      if (xhr.status >= 200 && xhr.status < 300 && data.lead) resolve(data.lead);
+      else reject(new Error(data.error || "Failed to upload PDF"));
+    };
+    xhr.onerror = () => reject(new Error("Failed to upload PDF"));
+    xhr.send(body);
+  });
 }
 
 function formatFileSize(bytes: number) {

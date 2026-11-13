@@ -74,13 +74,18 @@ export default async function LeadDetailPage({
       <AdminNav role={session.role} name={session.name} current="leads" />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="mb-6">
+        <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
           <Link
             href="/admin/leads"
             className="text-primary hover:underline text-sm"
           >
             ← Back to leads
           </Link>
+          {canExport && (
+            <a href={`/admin/leads/${lead._id}/export`} className="btn-outline text-sm px-4 py-2">
+              Export this lead
+            </a>
+          )}
         </div>
 
         <div className="grid lg:grid-cols-3 gap-6">
@@ -166,7 +171,6 @@ export default async function LeadDetailPage({
               users={users}
               canDelete={canDelete}
               canAssign={canAssign}
-              canExport={canExport}
               canDownload={canDownload}
             />
           </div>
