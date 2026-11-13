@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import { getSession } from "@/lib/auth/session";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 import { connectDB, Lead } from "@/lib/db";
 import AdminNav from "@/components/admin/AdminNav";
 import { leadListFilter } from "@/lib/auth/permissions";
@@ -99,7 +100,21 @@ export default async function AdminDashboard() {
 
         <div className="grid lg:grid-cols-2 gap-8">
           <div className="bg-white p-6 rounded-card border border-slate-200">
-            <h3 className="font-display text-xl mb-4">Recent Leads</h3>
+            <div className="mb-4 flex items-center justify-between gap-4">
+              <h3 className="font-display text-xl">Recent Leads</h3>
+              <Link href="/admin/leads" className="btn-primary h-10 shrink-0 gap-2 px-4 py-2 text-sm">
+                View all leads
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path
+                    d="M3 8h10M9 4l4 4-4 4"
+                    stroke="currentColor"
+                    strokeWidth="1.75"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </Link>
+            </div>
             <div className="space-y-4">
               {data.recentLeads.map((lead: any) => (
                 <div
@@ -132,12 +147,6 @@ export default async function AdminDashboard() {
                 </div>
               ))}
             </div>
-            <a
-              href="/admin/leads"
-              className="block mt-4 text-center btn-outline"
-            >
-              View all leads
-            </a>
           </div>
 
           <div className="bg-white p-6 rounded-card border border-slate-200">
