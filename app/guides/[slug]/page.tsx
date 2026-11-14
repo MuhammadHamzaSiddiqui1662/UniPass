@@ -2,6 +2,7 @@ import Header from "@/components/public/Header";
 import Footer from "@/components/public/Footer";
 import { connectDB, Guide } from "@/lib/db";
 import { fallbackGuides } from "@/lib/guides/catalog";
+import { sanitizeGuideHtml } from "@/lib/guides/html";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -31,6 +32,7 @@ export async function generateMetadata({
     };
   }
 
+  const image = guide.ogImage || guide.coverImage;
   return {
     title: guide.metaTitle || `${guide.title} | UniPass Guides`,
     description: guide.metaDescription || guide.description,
@@ -38,6 +40,7 @@ export async function generateMetadata({
       title: guide.metaTitle || guide.title,
       description: guide.metaDescription || guide.description,
       type: "article",
+      images: image ? [{ url: image }] : undefined,
     },
   };
 }
@@ -73,6 +76,13 @@ export default async function GuideDetailPage({
               <div className="mb-8">
                 <span className="chip-tint mb-4">{guide.category}</span>
                 <h1 className="text-h1-detail mb-4">{guide.title}</h1>
+                {guide.coverImage ? (
+                  <img
+                    src={guide.coverImage}
+                    alt=""
+                    className="mb-6 max-h-[420px] w-full rounded-[16px] object-cover"
+                  />
+                ) : null}
                 <p className="text-lg text-slate-600">{guide.description}</p>
                 <div className="flex items-center gap-4 mt-6 text-sm text-slate-600">
                   <span>{guide.readTime} min read</span>
@@ -88,8 +98,8 @@ export default async function GuideDetailPage({
               </div>
 
               <div
-                className="prose prose-lg max-w-none"
-                dangerouslySetInnerHTML={{ __html: guide.content }}
+                className="guide-article"
+                dangerouslySetInnerHTML={{ __html: sanitizeGuideHtml(guide.content || "") }}
               />
 
               <div className="mt-12 pt-8 border-t border-slate-200">

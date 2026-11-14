@@ -65,6 +65,7 @@ async function loadGuides(): Promise<GuideArticle[]> {
       readTime: guide.readTime,
       featured: Boolean(guide.featured),
       content: guide.content,
+      coverImage: guide.coverImage || undefined,
       createdAt: guide.createdAt ? new Date(guide.createdAt).toISOString() : new Date().toISOString(),
     }));
   } catch (error) {
@@ -172,14 +173,20 @@ export default async function GuidesPage({
             {featured ? (
               <article className="mt-6 overflow-hidden rounded-[20px] bg-primary-50 lg:grid lg:min-h-[340px] lg:grid-cols-[46%_1fr]">
                 <div className="relative min-h-[200px] lg:min-h-[340px]">
-                  <div className="absolute left-1/2 top-[46%] h-[168px] w-[168px] -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-[18px] border border-primary-200" />
-                  <div className="absolute left-1/2 top-[46%] h-[108px] w-[108px] -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-[14px] border border-primary-200" />
-                  <div className="absolute left-[22%] top-[42%] grid h-[52px] w-[52px] -translate-y-1/2 place-items-center rounded-full border border-primary-200">
-                    <span className="text-[18px] text-primary-300">A</span>
-                  </div>
-                  <p className="absolute bottom-5 left-6 rounded-md bg-black/40 px-2.5 py-1 text-[12px] text-white">
-                    Guide cover placeholder
-                  </p>
+                  {featured.coverImage ? (
+                    <img src={featured.coverImage} alt="" className="absolute inset-0 h-full w-full object-cover" />
+                  ) : (
+                    <>
+                      <div className="absolute left-1/2 top-[46%] h-[168px] w-[168px] -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-[18px] border border-primary-200" />
+                      <div className="absolute left-1/2 top-[46%] h-[108px] w-[108px] -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-[14px] border border-primary-200" />
+                      <div className="absolute left-[22%] top-[42%] grid h-[52px] w-[52px] -translate-y-1/2 place-items-center rounded-full border border-primary-200">
+                        <span className="text-[18px] text-primary-300">A</span>
+                      </div>
+                      <p className="absolute bottom-5 left-6 rounded-md bg-black/40 px-2.5 py-1 text-[12px] text-white">
+                        Guide cover placeholder
+                      </p>
+                    </>
+                  )}
                 </div>
                 <div className="px-6 pb-8 pt-7 sm:px-8 lg:pr-10 lg:pt-8">
                   <p className="text-[13px] font-bold text-primary">Start here</p>
@@ -227,7 +234,11 @@ export default async function GuidesPage({
               <div className="mt-5 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
                 {guides.map((guide) => (
                   <article key={guide.slug} className="flex flex-col rounded-[16px] border border-slate-200 bg-white px-6 pb-5 pt-6 md:min-h-[400px] md:pt-6">
-                    <div className="hidden h-[132px] md:block" />
+                    {guide.coverImage ? (
+                      <img src={guide.coverImage} alt="" className="mb-4 h-[132px] w-full rounded-[12px] object-cover" />
+                    ) : (
+                      <div className="hidden h-[132px] md:block" />
+                    )}
                     <CategoryChip category={guide.category} />
                     <h3 className="mt-4 font-display text-[20px] font-bold leading-[1.25] text-primary-900">{guide.title}</h3>
                     <p className="mt-3 text-[15px] leading-relaxed text-slate-600">{guide.description}</p>

@@ -7,6 +7,7 @@ export type GuideArticle = {
   featured: boolean;
   bullets?: string[];
   content: string;
+  coverImage?: string;
   createdAt: string;
 };
 

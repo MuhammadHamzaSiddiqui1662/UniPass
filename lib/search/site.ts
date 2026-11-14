@@ -270,6 +270,7 @@ async function loadGuides(): Promise<GuideArticle[]> {
       readTime: guide.readTime,
       featured: Boolean(guide.featured),
       content: guide.content,
+      coverImage: guide.coverImage || undefined,
       createdAt: guide.createdAt ? new Date(guide.createdAt).toISOString() : new Date().toISOString(),
     }));
   } catch (error) {

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { connectDB, Guide } from "@/lib/db";
 import { requireAdmin } from "@/lib/auth/session";
+import { parseGuideWrite } from "@/lib/guides/html";
 import { revalidatePath } from "next/cache";
 
 export async function POST(request: NextRequest) {
@@ -8,9 +9,10 @@ export async function POST(request: NextRequest) {
     await requireAdmin();
     await connectDB();
 
-    const body = await request.json();
+    const parsed = parseGuideWrite(await request.json());
+    if (!parsed.ok) return NextResponse.json({ error: parsed.error }, { status: 400 });
+    const body = parsed.data;
 
-    // Check for duplicate slug
     const existing = await Guide.findOne({ slug: body.slug });
     if (existing) {
       return NextResponse.json(

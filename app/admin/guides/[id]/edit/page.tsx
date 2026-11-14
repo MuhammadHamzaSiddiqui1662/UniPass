@@ -1,10 +1,10 @@
-import EditGuideClient from "@/components/admin/EditGuideClient";
+import GuideForm from "@/components/admin/GuideForm";
 
 export default async function EditGuidePage({
-  params: rawParams,
+  params,
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const params = await rawParams;
-  return <EditGuideClient guideId={params.id} />;
+  const { id } = await params;
+  return <GuideForm guideId={id} />;
 }

@@ -8,7 +8,7 @@ export type UploadedImage = {
   publicId?: string;
 };
 
-type ImageKind = "logo" | "featured" | "gallery" | "photo" | "hero";
+type ImageKind = "logo" | "featured" | "gallery" | "photo" | "hero" | "guide";
 
 type StoredResponse = {
   url?: string;
@@ -23,6 +23,7 @@ const ACCEPT: Record<ImageKind, string> = {
   gallery: "image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp",
   photo: "image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp",
   hero: "image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp",
+  guide: "image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp",
 };
 
 export default function ImageUploader({

@@ -52,6 +52,7 @@ export function folderFor(kind: string, slug?: string) {
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/^-+|-+$/g, "")
       .slice(0, 80) || "unassigned";
+  if (kind === "guide") return `unipass/guides/${safe}`;
   return `unipass/universities/${safe}`;
 }
 

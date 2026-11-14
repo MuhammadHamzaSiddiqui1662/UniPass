@@ -4,12 +4,12 @@ import { ImageValidationError, MAX_IMAGE_BYTES, inspectImage } from "@/lib/uploa
 import { folderFor, getImageStorage, imageProviderName, type StoredImage } from "@/lib/upload/storage";
 import { isStoredImageReference } from "@/lib/upload/urls";
 
-export type ImageKind = "logo" | "featured" | "gallery" | "photo" | "hero";
+export type ImageKind = "logo" | "featured" | "gallery" | "photo" | "hero" | "guide";
 
 const BLOCKED_HOSTS = new Set(["localhost", "metadata.google.internal", "metadata.internal"]);
 
 export function normalizeKind(value: unknown): ImageKind {
-  if (value === "logo" || value === "featured" || value === "gallery" || value === "photo" || value === "hero") return value;
+  if (value === "logo" || value === "featured" || value === "gallery" || value === "photo" || value === "hero" || value === "guide") return value;
   return "photo";
 }
 
