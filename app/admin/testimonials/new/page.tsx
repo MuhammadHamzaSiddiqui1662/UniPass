@@ -1,5 +1,5 @@
-import CreateTestimonialClient from "@/components/admin/CreateTestimonialClient";
+import TestimonialForm from "@/components/admin/TestimonialForm";
 
-export default function CreateTestimonialPage() {
-  return <CreateTestimonialClient />;
+export default function NewTestimonialPage() {
+  return <TestimonialForm />;
 }

@@ -1,10 +1,10 @@
-import EditTestimonialClient from "@/components/admin/EditTestimonialClient";
+import TestimonialForm from "@/components/admin/TestimonialForm";
 
 export default async function EditTestimonialPage({
-  params: rawParams,
+  params,
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const params = await rawParams;
-  return <EditTestimonialClient testimonialId={params.id} />;
+  const { id } = await params;
+  return <TestimonialForm testimonialId={id} />;
 }

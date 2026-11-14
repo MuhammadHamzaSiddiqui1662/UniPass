@@ -1,6 +1,7 @@
 import { requireAdminPage } from "@/lib/auth/guards";
 import { connectDB, Testimonial } from "@/lib/db";
 import Link from "next/link";
+import AdminNav from "@/components/admin/AdminNav";
 
 async function getTestimonials() {
   try {
@@ -13,44 +14,41 @@ async function getTestimonials() {
 }
 
 export default async function TestimonialsAdminPage() {
-  await requireAdminPage();
+  const session = await requireAdminPage();
   const testimonials = await getTestimonials();
 
   return (
     <div className="min-h-screen bg-slate-50">
-      <nav className="bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16 items-center">
-            <Link href="/admin" className="font-display text-xl text-primary-900">UniPass Admin</Link>
-          </div>
-        </div>
-      </nav>
+      <AdminNav role={session.role} name={session.name} current="testimonials" />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-2xl font-display">Testimonials ({testimonials.length})</h1>
-          <Link href="/admin/testimonials/new" className="btn-primary">Add Testimonial</Link>
+          <Link href="/admin/testimonials/new" className="btn-primary">Add testimonial</Link>
         </div>
 
         <div className="bg-white rounded-card border border-slate-200 overflow-hidden">
           <table className="min-w-full divide-y divide-border">
             <thead className="bg-primary-50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">Order</th>
-                <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">Name</th>
+                <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">Student</th>
+                <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">From</th>
                 <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">University</th>
                 <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">Status</th>
                 <th className="px-6 py-3 text-left text-xs font-bold text-slate-600 uppercase">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border">
-              {testimonials.map((testimonial: any) => (
+              {testimonials.map((testimonial: { _id: string; studentName: string; initials: string; origin: string; university: string; status: string }) => (
                 <tr key={testimonial._id} className="hover:bg-primary-50/50">
-                  <td className="px-6 py-4 text-sm">{testimonial.order}</td>
-                  <td className="px-6 py-4 text-sm font-bold text-primary-900">{testimonial.studentName}</td>
+                  <td className="px-6 py-4">
+                    <div className="text-sm font-bold text-primary-900">{testimonial.studentName}</div>
+                    <div className="text-xs text-slate-600">{testimonial.initials}</div>
+                  </td>
+                  <td className="px-6 py-4 text-sm">{testimonial.origin}</td>
                   <td className="px-6 py-4 text-sm">{testimonial.university}</td>
                   <td className="px-6 py-4">
-                    <span className={`chip ${testimonial.status === 'published' ? 'bg-success-tint text-primary-800' : 'bg-slate-100 text-slate-700'}`}>
+                    <span className={`chip ${testimonial.status === "published" ? "bg-success-tint text-primary-800" : "bg-slate-100 text-slate-700"}`}>
                       {testimonial.status}
                     </span>
                   </td>

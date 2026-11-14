@@ -9,6 +9,7 @@ const BASE_LINKS = [
 const ADMIN_LINKS = [
   { href: "/admin/universities", id: "universities", label: "Universities" },
   { href: "/admin/guides", id: "guides", label: "Guides" },
+  { href: "/admin/testimonials", id: "testimonials", label: "Testimonials" },
   { href: "/admin/hero", id: "hero", label: "Hero" },
   { href: "/admin/settings", id: "settings", label: "Settings" },
   { href: "/admin/users", id: "users", label: "Users" },

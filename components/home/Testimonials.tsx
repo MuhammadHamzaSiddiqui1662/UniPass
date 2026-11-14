@@ -22,8 +22,9 @@ export default function Testimonials({
       <div className="container-1200">
         <h2 className="text-h2 max-w-[720px]">Students who made the move</h2>
         <p className="mt-4 max-w-[640px] text-[18px] leading-[28px] text-slate-600">
-          Sample stories for layout. Replace with real quotes from students who have
-          agreed to share them.
+          {testimonials.some((story) => !story.sample)
+            ? "A few words from students who made the move, shared with their permission."
+            : "Sample stories for layout. Replace with real quotes from students who have agreed to share them."}
         </p>
 
         <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">

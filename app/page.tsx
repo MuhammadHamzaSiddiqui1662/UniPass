@@ -95,7 +95,7 @@ async function getHomePageData() {
           Guide.find({ status: "published" }).sort({ order: 1 }).limit(3).lean(),
           Guide.countDocuments({ status: "published" }),
           FAQ.find({ status: "published" }).sort({ order: 1 }).limit(6).lean(),
-          Testimonial.find({ status: "published" }).sort({ order: 1 }).limit(9).lean(),
+          Testimonial.find({ status: "published" }).sort({ order: 1, createdAt: -1 }).lean(),
           Testimonial.countDocuments({ status: "published" }),
           HeroSlide.find({ status: "published" }).sort({ order: 1, createdAt: 1 }).lean(),
         ]),
