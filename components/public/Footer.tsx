@@ -8,8 +8,20 @@ import { useSiteContact } from "@/components/public/SiteContactProvider";
 
 const linkClass = "text-[15px] leading-6 text-primary-100 transition-colors hover:text-white";
 
+const socialLabels = [
+  ["facebook", "Facebook"],
+  ["instagram", "Instagram"],
+  ["twitter", "X"],
+  ["linkedin", "LinkedIn"],
+  ["youtube", "YouTube"],
+] as const;
+
 export default function Footer() {
-  const { email, officeAddress } = useSiteContact();
+  const { email, officeAddress, tagline, socials } = useSiteContact();
+  const socialLinks = socialLabels.flatMap(([key, label]) => {
+    const href = socials[key];
+    return href ? [{ href, label }] : [];
+  });
 
   return (
     <footer className="relative overflow-hidden bg-primary-950 text-primary-100">
@@ -26,10 +38,7 @@ export default function Footer() {
             <Link href="/" className="mb-4 inline-flex">
               <LogoMark tone="light" />
             </Link>
-            <p className="max-w-[280px] text-[15px] leading-[23px] text-primary-100">
-              Advisors for students applying to universities in Türkiye. UniPass is your
-              bridge to Turkish education.
-            </p>
+            <p className="max-w-[280px] text-[15px] leading-[23px] text-primary-100">{tagline}</p>
           </div>
 
           <div className="lg:col-span-2">
@@ -88,6 +97,13 @@ export default function Footer() {
               <li>
                 <span className="text-[15px] leading-6">{officeAddress}</span>
               </li>
+              {socialLinks.map((item) => (
+                <li key={item.href}>
+                  <a href={item.href} className={linkClass} target="_blank" rel="noopener noreferrer">
+                    {item.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

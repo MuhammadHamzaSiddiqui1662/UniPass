@@ -13,8 +13,9 @@ export async function GET(request: NextRequest) {
     // Create default settings if none exist
     if (!settings) {
       settings = await SiteSettings.create({
-        siteName: "UniPass",
-        tagline: "Your degree in Türkiye starts here",
+        brandName: "UniPass",
+        tagline:
+          "Advisors for students applying to universities in Türkiye. UniPass is your bridge to Turkish education.",
         notificationRecipients: ["admin@unipass.example.com"],
       });
     }

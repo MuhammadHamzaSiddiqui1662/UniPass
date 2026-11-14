@@ -53,6 +53,13 @@ export default async function ContactPage() {
                     </a>
                   </div>
 
+                  {contact.phone ? (
+                    <div>
+                      <h3 className="font-bold text-primary-900 mb-2">Phone</h3>
+                      <p className="text-slate-600">{contact.phone}</p>
+                    </div>
+                  ) : null}
+
                   <div>
                     <h3 className="font-bold text-primary-900 mb-2">Office</h3>
                     <p className="text-slate-600">{contact.officeAddress}</p>
@@ -60,13 +67,7 @@ export default async function ContactPage() {
 
                   <div>
                     <h3 className="font-bold text-primary-900 mb-2">Hours</h3>
-                    <p className="text-slate-600">
-                      Monday - Friday: 9:00 AM - 6:00 PM (PKT)
-                      <br />
-                      Saturday: 10:00 AM - 4:00 PM (PKT)
-                      <br />
-                      Sunday: Closed
-                    </p>
+                    <p className="whitespace-pre-line text-slate-600">{contact.officeHours}</p>
                   </div>
                 </div>
               </div>

@@ -1,23 +1,27 @@
-export function OrganizationSchema() {
+import { getPublicContact } from "@/lib/site/public-contact";
+
+export async function OrganizationSchema() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:43123";
-  
+  const contact = await getPublicContact();
+  const sameAs = Object.values(contact.socials).filter(Boolean);
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "UniPass",
+    name: contact.brandName,
     url: baseUrl,
     logo: `${baseUrl}/assets/logo.jpeg`,
-    description:
-      "UniPass helps Pakistani students compare universities in Türkiye, understand scholarships, and get support from application to arrival.",
+    description: contact.tagline,
+    email: contact.email,
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "Customer Service",
       areaServed: "PK",
       availableLanguage: ["English", "Urdu"],
+      ...(contact.phone ? { telephone: contact.phone } : {}),
+      ...(contact.email ? { email: contact.email } : {}),
     },
-    sameAs: [
-      // Add social media URLs from settings
-    ],
+    sameAs,
   };
 
   return (

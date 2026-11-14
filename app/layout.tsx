@@ -22,38 +22,40 @@ export const viewport: Viewport = {
   themeColor: "#453F78",
 };
 
-export const metadata: Metadata = {
-  title: "UniPass | Study in Türkiye from Pakistan",
-  description:
-    "Advisors for Pakistani students applying to universities in Türkiye. Explore programs, scholarships, and get expert guidance from application to arrival.",
-  keywords: [
-    "study in turkey",
-    "turkish universities",
-    "pakistan students",
-    "scholarships",
-    "study abroad",
-    "turkiye burslari",
-  ],
-  openGraph: {
-    type: "website",
-    locale: "en_PK",
-    url: "https://unipass.example.com",
-    siteName: "UniPass",
-    title: "UniPass | Study in Türkiye from Pakistan",
-    description:
-      "Expert guidance for Pakistani students applying to Turkish universities. Free consultation, scholarship info, and full application support.",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "UniPass | Study in Türkiye from Pakistan",
-    description:
-      "Expert guidance for Pakistani students applying to Turkish universities.",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const contact = await getPublicContact();
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:43123";
+
+  return {
+    title: contact.metaTitle,
+    description: contact.metaDescription,
+    keywords: [
+      "study in turkey",
+      "turkish universities",
+      "pakistan students",
+      "scholarships",
+      "study abroad",
+      "turkiye burslari",
+    ],
+    openGraph: {
+      type: "website",
+      locale: "en_PK",
+      url: baseUrl,
+      siteName: contact.brandName,
+      title: contact.metaTitle,
+      description: contact.metaDescription,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: contact.metaTitle,
+      description: contact.metaDescription,
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 export default async function RootLayout({
   children,

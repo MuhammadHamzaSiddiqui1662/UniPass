@@ -27,18 +27,20 @@ export default function SettingsPage() {
 
     const formData = new FormData(e.currentTarget);
     const data = {
-      siteName: formData.get("siteName"),
+      brandName: formData.get("brandName"),
       tagline: formData.get("tagline"),
       whatsappNumber: formData.get("whatsappNumber"),
       phone: formData.get("phone"),
       email: formData.get("email"),
       officeAddress: formData.get("officeAddress"),
       officeHours: formData.get("officeHours"),
-      facebookUrl: formData.get("facebookUrl"),
-      instagramUrl: formData.get("instagramUrl"),
-      twitterUrl: formData.get("twitterUrl"),
-      linkedinUrl: formData.get("linkedinUrl"),
-      youtubeUrl: formData.get("youtubeUrl"),
+      socials: {
+        facebook: formData.get("facebookUrl"),
+        instagram: formData.get("instagramUrl"),
+        twitter: formData.get("twitterUrl"),
+        linkedin: formData.get("linkedinUrl"),
+        youtube: formData.get("youtubeUrl"),
+      },
       notificationRecipients: formData.get("notificationRecipients")
         ? (formData.get("notificationRecipients") as string).split(",").map(s => s.trim())
         : [],
@@ -89,9 +91,9 @@ export default function SettingsPage() {
                 <label className="block text-sm font-bold mb-1">Site Name</label>
                 <input
                   type="text"
-                  name="siteName"
+                  name="brandName"
                   className="input-field"
-                  defaultValue={settings?.siteName || "UniPass"}
+                  defaultValue={settings?.brandName || "UniPass"}
                 />
               </div>
 
@@ -177,7 +179,7 @@ export default function SettingsPage() {
                   type="url"
                   name="facebookUrl"
                   className="input-field"
-                  defaultValue={settings?.facebookUrl}
+                  defaultValue={settings?.socials?.facebook}
                 />
               </div>
 
@@ -187,7 +189,7 @@ export default function SettingsPage() {
                   type="url"
                   name="instagramUrl"
                   className="input-field"
-                  defaultValue={settings?.instagramUrl}
+                  defaultValue={settings?.socials?.instagram}
                 />
               </div>
 
@@ -197,7 +199,7 @@ export default function SettingsPage() {
                   type="url"
                   name="twitterUrl"
                   className="input-field"
-                  defaultValue={settings?.twitterUrl}
+                  defaultValue={settings?.socials?.twitter}
                 />
               </div>
 
@@ -207,7 +209,7 @@ export default function SettingsPage() {
                   type="url"
                   name="linkedinUrl"
                   className="input-field"
-                  defaultValue={settings?.linkedinUrl}
+                  defaultValue={settings?.socials?.linkedin}
                 />
               </div>
 
@@ -217,7 +219,7 @@ export default function SettingsPage() {
                   type="url"
                   name="youtubeUrl"
                   className="input-field"
-                  defaultValue={settings?.youtubeUrl}
+                  defaultValue={settings?.socials?.youtube}
                 />
               </div>
             </div>

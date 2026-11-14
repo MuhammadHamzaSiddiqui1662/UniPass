@@ -14,7 +14,9 @@ export interface ISiteSettings {
     instagram?: string;
     linkedin?: string;
     twitter?: string;
+    youtube?: string;
   };
+  officeHours: string;
   notificationRecipients: string[];
   defaultMetaTitle: string;
   defaultMetaDescription: string;
@@ -50,11 +52,17 @@ const siteSettingsSchema = new Schema<ISiteSettings>(
       type: String,
       default: "[Office address in Pakistan - PLACEHOLDER]",
     },
+    officeHours: {
+      type: String,
+      default:
+        "Monday - Friday: 9:00 AM - 6:00 PM (PKT)\nSaturday: 10:00 AM - 4:00 PM (PKT)\nSunday: Closed",
+    },
     socials: {
       facebook: String,
       instagram: String,
       linkedin: String,
       twitter: String,
+      youtube: String,
     },
     notificationRecipients: {
       type: [String],
@@ -88,6 +96,10 @@ const siteSettingsSchema = new Schema<ISiteSettings>(
   },
   { timestamps: { createdAt: false, updatedAt: true } }
 );
+
+if (process.env.NODE_ENV !== "production") {
+  delete mongoose.models.SiteSettings;
+}
 
 export const SiteSettings: Model<ISiteSettings> =
   mongoose.models.SiteSettings ||
