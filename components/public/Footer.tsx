@@ -1,11 +1,16 @@
+"use client";
+
 import Link from "next/link";
 import Asset from "@/components/home/Asset";
 import LogoMark from "@/components/public/LogoMark";
-import { CONTACT_EMAIL, OFFICE_ADDRESS, whatsappHref } from "@/lib/site/contact";
+import WhatsAppContact from "@/components/public/WhatsAppContact";
+import { useSiteContact } from "@/components/public/SiteContactProvider";
 
 const linkClass = "text-[15px] leading-6 text-primary-100 transition-colors hover:text-white";
 
 export default function Footer() {
+  const { email, officeAddress } = useSiteContact();
+
   return (
     <footer className="relative overflow-hidden bg-primary-950 text-primary-100">
       <img
@@ -73,22 +78,15 @@ export default function Footer() {
             <h2 className="mb-4 font-display text-[16px] text-white">Contact</h2>
             <ul className="space-y-2">
               <li>
-                <a
-                  href={whatsappHref()}
-                  className={linkClass}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  WhatsApp
-                </a>
+                <WhatsAppContact className={linkClass}>WhatsApp</WhatsAppContact>
               </li>
               <li>
-                <a href={`mailto:${CONTACT_EMAIL}`} className={linkClass}>
+                <a href={`mailto:${email}`} className={linkClass}>
                   Email
                 </a>
               </li>
               <li>
-                <span className="text-[15px] leading-6">{OFFICE_ADDRESS}</span>
+                <span className="text-[15px] leading-6">{officeAddress}</span>
               </li>
             </ul>
           </div>

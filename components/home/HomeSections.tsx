@@ -11,7 +11,7 @@ import { admissionSteps, type HomeFaq, type HomeGuide, type HomeUniversity } fro
 import { fallbackHeroSlides, type PublicHeroSlide } from "@/lib/home/hero-content";
 import { cardKnownFor } from "@/lib/universities/known-for";
 import { formatCurrency } from "@/lib/utils/format";
-import { whatsappHref } from "@/lib/site/contact";
+import WhatsAppContact from "@/components/public/WhatsAppContact";
 
 const consultPoints = [
   "A shortlist matched to your marks and budget",
@@ -282,14 +282,9 @@ export function BookConsultation() {
               </li>
             ))}
           </ul>
-          <a
-            href={whatsappHref()}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-outline-dark mt-8 h-[52px] px-6 text-[16px]"
-          >
+          <WhatsAppContact className="btn-outline-dark mt-8 h-[52px] px-6 text-[16px]">
             Message on WhatsApp instead
-          </a>
+          </WhatsAppContact>
         </div>
         <ConsultationForm />
       </div>
@@ -319,12 +314,7 @@ export function Questions({ faqs }: { faqs: HomeFaq[] }) {
           <p className="mt-5 max-w-[280px] text-[17px] leading-[26px] text-slate-600">
             Cannot find your answer? Ask us on WhatsApp and we will reply.
           </p>
-          <a
-            href={whatsappHref()}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative mt-6 inline-flex h-12 w-[220px] items-center justify-center"
-          >
+          <WhatsAppContact className="relative mt-6 inline-flex h-12 w-[220px] items-center justify-center">
             <Asset
               src="/home/imgVector92.svg"
               width={220}
@@ -332,7 +322,7 @@ export function Questions({ faqs }: { faqs: HomeFaq[] }) {
               className="absolute left-0 top-0"
             />
             <span className="relative text-[15px] font-bold text-white">Ask on WhatsApp</span>
-          </a>
+          </WhatsAppContact>
         </div>
         <FaqAccordion faqs={faqs} />
       </div>

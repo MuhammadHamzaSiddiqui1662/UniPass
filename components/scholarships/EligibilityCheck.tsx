@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { whatsappHref } from "@/lib/site/contact";
+import WhatsAppContact from "@/components/public/WhatsAppContact";
 
 export type BursCriteria = {
   level: string;
@@ -91,9 +91,7 @@ export default function EligibilityCheck({ criteria }: { criteria: BursCriteria[
                 Book a free consultation
               </Link>{" "}
               or{" "}
-              <a href={whatsappHref()} className="font-bold text-whatsapp" target="_blank" rel="noreferrer">
-                message on WhatsApp
-              </a>
+              <WhatsAppContact className="font-bold text-whatsapp">message on WhatsApp</WhatsAppContact>
               .
             </p>
           )

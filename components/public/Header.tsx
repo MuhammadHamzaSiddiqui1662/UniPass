@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import LogoMark from "@/components/public/LogoMark";
 import Asset from "@/components/home/Asset";
 import GlobalSearch, { SearchIconButton } from "@/components/public/GlobalSearch";
-import { whatsappHref } from "@/lib/site/contact";
+import WhatsAppContact from "@/components/public/WhatsAppContact";
 
 interface HeaderProps {
   activeLink?: string;
@@ -24,7 +24,6 @@ export default function Header({ activeLink }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const pathname = usePathname();
-  const wa = whatsappHref();
 
   function openSearch() {
     setMobileMenuOpen(false);
@@ -76,15 +75,10 @@ export default function Header({ activeLink }: HeaderProps) {
                   {link.label}
                 </Link>
               ))}
-              <a
-                href={wa}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-[16px] font-bold text-whatsapp hover:opacity-80"
-              >
+              <WhatsAppContact className="inline-flex items-center gap-2 text-[16px] font-bold text-whatsapp hover:opacity-80">
                 <Asset src="/home/imgVector31.svg" width={24} height={21} />
                 WhatsApp
-              </a>
+              </WhatsAppContact>
             </nav>
 
             <div className="hidden items-center gap-3 min-[1180px]:flex">
@@ -141,16 +135,13 @@ export default function Header({ activeLink }: HeaderProps) {
                   {link.label}
                 </Link>
               ))}
-              <a
-                href={wa}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setMobileMenuOpen(false)}
+              <WhatsAppContact
+                onNavigate={() => setMobileMenuOpen(false)}
                 className="inline-flex items-center gap-2 py-2 text-[16px] font-bold text-whatsapp"
               >
                 <Asset src="/home/imgVector31.svg" width={24} height={21} />
                 WhatsApp
-              </a>
+              </WhatsAppContact>
               <Link
                 href="/#book"
                 onClick={() => setMobileMenuOpen(false)}

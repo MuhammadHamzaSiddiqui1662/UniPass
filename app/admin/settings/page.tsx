@@ -32,7 +32,7 @@ export default function SettingsPage() {
       whatsappNumber: formData.get("whatsappNumber"),
       phone: formData.get("phone"),
       email: formData.get("email"),
-      address: formData.get("address"),
+      officeAddress: formData.get("officeAddress"),
       officeHours: formData.get("officeHours"),
       facebookUrl: formData.get("facebookUrl"),
       instagramUrl: formData.get("instagramUrl"),
@@ -146,10 +146,10 @@ export default function SettingsPage() {
               <div>
                 <label className="block text-sm font-bold mb-1">Office Address</label>
                 <textarea
-                  name="address"
+                  name="officeAddress"
                   rows={2}
                   className="input-field"
-                  defaultValue={settings?.address}
+                  defaultValue={settings?.officeAddress}
                 />
               </div>
 

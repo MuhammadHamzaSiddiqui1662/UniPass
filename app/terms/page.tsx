@@ -1,13 +1,18 @@
 import Header from "@/components/public/Header";
 import Footer from "@/components/public/Footer";
 import { Metadata } from "next";
+import { whatsappDisplayNumber } from "@/lib/site/contact";
+import { getPublicContact } from "@/lib/site/public-contact";
 
 export const metadata: Metadata = {
   title: "Terms of Service | UniPass",
   description: "UniPass terms of service and user agreement.",
 };
 
-export default function TermsPage() {
+export default async function TermsPage() {
+  const contact = await getPublicContact();
+  const whatsapp = whatsappDisplayNumber(contact.whatsappNumber);
+
   return (
     <>
       <Header />
@@ -88,9 +93,13 @@ export default function TermsPage() {
               <p className="text-slate-600 leading-relaxed">
                 Questions about these terms? Contact us at:
                 <br />
-                Email: hello@unipass.example.com
-                <br />
-                WhatsApp: +92-XXX-XXXXXXX
+                Email: {contact.email}
+                {whatsapp ? (
+                  <>
+                    <br />
+                    WhatsApp: {whatsapp}
+                  </>
+                ) : null}
               </p>
             </div>
           </div>

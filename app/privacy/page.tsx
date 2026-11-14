@@ -1,13 +1,18 @@
 import Header from "@/components/public/Header";
 import Footer from "@/components/public/Footer";
 import { Metadata } from "next";
+import { whatsappDisplayNumber } from "@/lib/site/contact";
+import { getPublicContact } from "@/lib/site/public-contact";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | UniPass",
   description: "UniPass privacy policy and data protection practices.",
 };
 
-export default function PrivacyPage() {
+export default async function PrivacyPage() {
+  const contact = await getPublicContact();
+  const whatsapp = whatsappDisplayNumber(contact.whatsappNumber);
+
   return (
     <>
       <Header />
@@ -74,9 +79,13 @@ export default function PrivacyPage() {
               <p className="text-slate-600 leading-relaxed">
                 For privacy-related questions or requests, contact us at:
                 <br />
-                Email: hello@unipass.example.com
-                <br />
-                WhatsApp: +92-XXX-XXXXXXX
+                Email: {contact.email}
+                {whatsapp ? (
+                  <>
+                    <br />
+                    WhatsApp: {whatsapp}
+                  </>
+                ) : null}
               </p>
             </div>
           </div>

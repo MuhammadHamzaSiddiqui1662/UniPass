@@ -9,7 +9,7 @@ import SmartImage from "@/components/media/SmartImage";
 import UniversityActions from "@/components/universities/UniversityActions";
 import { BreadcrumbSchema, UniversitySchema } from "@/components/seo/StructuredData";
 import { connectDB, University } from "@/lib/db";
-import { whatsappHref } from "@/lib/site/contact";
+import WhatsAppContact from "@/components/public/WhatsAppContact";
 import {
   detailFacts,
   fallbackDetail,
@@ -93,7 +93,6 @@ export default async function UniversityDetailPage({
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:43123";
   const bookmarkId = university._id || university.slug;
-  const whatsapp = whatsappHref();
   const campusImages = campusShots(university);
   const facts = detailFacts(university);
 
@@ -209,14 +208,9 @@ export default async function UniversityDetailPage({
                 >
                   Book free consultation
                 </Link>
-                <a
-                  href={whatsapp}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex h-[50px] w-full items-center justify-center rounded-input bg-whatsapp text-[16px] font-bold text-white hover:bg-whatsapp/90"
-                >
+                <WhatsAppContact className="inline-flex h-[50px] w-full items-center justify-center rounded-input bg-whatsapp text-[16px] font-bold text-white hover:bg-whatsapp/90">
                   Message on WhatsApp
-                </a>
+                </WhatsAppContact>
               </div>
             </aside>
           </div>
@@ -237,14 +231,9 @@ export default async function UniversityDetailPage({
               >
                 Book free consultation
               </Link>
-              <a
-                href={whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex h-12 items-center justify-center rounded-input border-[1.5px] border-white/70 px-5 text-[15px] font-bold text-white hover:bg-white/10"
-              >
+              <WhatsAppContact className="inline-flex h-12 items-center justify-center rounded-input border-[1.5px] border-white/70 px-5 text-[15px] font-bold text-white hover:bg-white/10">
                 Message on WhatsApp instead
-              </a>
+              </WhatsAppContact>
             </div>
           </div>
         </section>

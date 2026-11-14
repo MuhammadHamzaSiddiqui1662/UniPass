@@ -3,6 +3,8 @@ import Footer from "@/components/public/Footer";
 import ConsultationForm from "@/components/public/ConsultationForm";
 import { Metadata } from "next";
 import { BreadcrumbSchema } from "@/components/seo/StructuredData";
+import { WhatsAppNumberCopy } from "@/components/public/WhatsAppContact";
+import { getPublicContact } from "@/lib/site/public-contact";
 
 export const metadata: Metadata = {
   title: "Contact Us | UniPass",
@@ -14,8 +16,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ContactPage() {
+export default async function ContactPage() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:43123";
+  const contact = await getPublicContact();
 
   return (
     <>
@@ -40,31 +43,19 @@ export default function ContactPage() {
                 <div className="space-y-6">
                   <div>
                     <h3 className="font-bold text-primary-900 mb-2">WhatsApp</h3>
-                    <a
-                      href="https://wa.me/PLACEHOLDER"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-whatsapp hover:underline"
-                    >
-                      +92-XXX-XXXXXXX (PLACEHOLDER)
-                    </a>
+                    <WhatsAppNumberCopy />
                   </div>
 
                   <div>
                     <h3 className="font-bold text-primary-900 mb-2">Email</h3>
-                    <a
-                      href="mailto:hello@unipass.example.com"
-                      className="text-primary hover:underline"
-                    >
-                      hello@unipass.example.com (PLACEHOLDER)
+                    <a href={`mailto:${contact.email}`} className="text-primary hover:underline">
+                      {contact.email}
                     </a>
                   </div>
 
                   <div>
                     <h3 className="font-bold text-primary-900 mb-2">Office</h3>
-                    <p className="text-slate-600">
-                      [Office address in Pakistan - PLACEHOLDER]
-                    </p>
+                    <p className="text-slate-600">{contact.officeAddress}</p>
                   </div>
 
                   <div>

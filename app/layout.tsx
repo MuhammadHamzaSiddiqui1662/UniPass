@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Hanken_Grotesk } from "next/font/google";
+import { SiteContactProvider } from "@/components/public/SiteContactProvider";
+import { getPublicContact } from "@/lib/site/public-contact";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
@@ -53,15 +55,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const contact = await getPublicContact();
+
   return (
     <html lang="en" className={`${bricolage.variable} ${hanken.variable}`}>
       <body className="font-body antialiased bg-slate-50 text-primary-900">
-        {children}
+        <SiteContactProvider value={contact}>{children}</SiteContactProvider>
       </body>
     </html>
   );
