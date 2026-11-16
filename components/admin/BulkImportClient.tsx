@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { rowMessages, rowStatus, willImport } from "@/lib/universities/import/preview";
 
@@ -85,6 +85,28 @@ export default function BulkImportClient() {
     return body;
   }
 
+  function chooseCsv(file: File | null) {
+    if (file && !looksLikeCsv(file)) {
+      setError("Choose a CSV file.");
+      return;
+    }
+    setError("");
+    setCsv(file);
+    setRows(null);
+    setSummary(null);
+  }
+
+  function chooseZip(file: File | null) {
+    if (file && !looksLikeZip(file)) {
+      setError("Choose a ZIP file.");
+      return;
+    }
+    setError("");
+    setZip(file);
+    setRows(null);
+    setSummary(null);
+  }
+
   async function preview() {
     if (!csv) {
       setError("Choose a CSV file.");
@@ -167,104 +189,128 @@ export default function BulkImportClient() {
   }
 
   const blocked = !skipErrors && counts.Error > 0;
+  const locked = busy !== null;
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      <nav className="bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center">
-            <Link href="/admin/universities" className="text-primary hover:underline">
-              ← Universities
-            </Link>
-          </div>
-        </div>
-      </nav>
+    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="mb-6">
+        <Link href="/admin/universities" className="text-sm text-primary hover:underline">
+          ← Back to universities
+        </Link>
+      </div>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h1 className="font-display text-3xl text-primary-900">Bulk import</h1>
-        <p className="mt-2 max-w-3xl text-slate-600">
-          Add or update universities from a CSV. Attach a ZIP when image cells name files. Up to 1,000 rows and a 100 MB ZIP.
-          Hosts such as Vercel may refuse a body smaller than that; use image URLs if an upload is rejected.
+      <h1 className="font-display text-2xl text-primary-900">Bulk import</h1>
+      <p className="mt-2 max-w-3xl text-sm text-slate-600">
+        Add or update universities from a CSV. Attach a ZIP when image cells name files in the archive. Up to 1,000 rows,
+        and a ZIP of up to 100 MB. If a large upload is rejected, put public image URLs in the CSV instead.
+      </p>
+
+      <section className="mt-6 rounded-card border border-slate-200 bg-white p-6">
+        <h2 className="font-display text-xl text-primary-900">Start from a template</h2>
+        <p className="mt-1 text-sm text-slate-600">
+          Download the sample, read the column guide, or export the universities already in UniPass and edit that file.
         </p>
-
-        <div className="mt-6 flex flex-wrap gap-3">
-          <button type="button" className="btn-outline h-11 py-0 px-4" onClick={() => download("/api/admin/universities/import/sample", "unipass-universities-sample.csv")}>
-            Download sample CSV
+        <div className="mt-4 flex flex-wrap gap-2">
+          <button type="button" className="btn-outline h-10 px-4 py-0 text-sm" onClick={() => download("/api/admin/universities/import/sample", "unipass-universities-sample.csv")}>
+            Sample CSV
           </button>
-          <button type="button" className="btn-outline h-11 py-0 px-4" onClick={() => download("/api/admin/universities/import/guide", "unipass-university-import-guide.md")}>
-            Download template guide
+          <button type="button" className="btn-outline h-10 px-4 py-0 text-sm" onClick={() => download("/api/admin/universities/import/guide", "unipass-university-import-guide.md")}>
+            Template guide
           </button>
-          <button type="button" className="btn-outline h-11 py-0 px-4" onClick={() => download("/api/admin/universities/export", "unipass-universities.csv")}>
-            Export current universities as CSV
+          <button type="button" className="btn-outline h-10 px-4 py-0 text-sm" onClick={() => download("/api/admin/universities/export", "unipass-universities.csv")}>
+            Export current universities
           </button>
         </div>
+      </section>
 
-        <section className="mt-8 rounded-card border border-slate-200 bg-white p-6">
-          <h2 className="font-display text-xl text-primary-900">Upload</h2>
-          <div className="mt-4 grid gap-4 md:grid-cols-2">
-            <label className="block text-sm font-bold">
-              CSV file
-              <input
-                type="file"
-                accept=".csv,text/csv"
-                className="input-field mt-1"
-                onChange={(event) => {
-                  setCsv(event.target.files?.[0] || null);
-                  setRows(null);
-                  setSummary(null);
-                }}
-              />
-            </label>
-            <label className="block text-sm font-bold">
-              ZIP of images (optional)
-              <input
-                type="file"
-                accept=".zip,application/zip"
-                className="input-field mt-1"
-                onChange={(event) => {
-                  setZip(event.target.files?.[0] || null);
-                  setRows(null);
-                  setSummary(null);
-                }}
-              />
-            </label>
-          </div>
-          <div className="mt-4 flex flex-wrap gap-6">
-            <label className="flex items-center gap-2 text-sm font-bold">
-              <input type="checkbox" checked={updateExisting} onChange={(event) => setUpdateExisting(event.target.checked)} />
-              Update existing
-            </label>
-            <label className="flex items-center gap-2 text-sm font-bold">
-              <input type="checkbox" checked={skipErrors} onChange={(event) => setSkipErrors(event.target.checked)} />
-              Skip rows with errors
-            </label>
-          </div>
-          <button type="button" className="btn-primary mt-5" disabled={busy !== null} onClick={() => void preview()}>
-            {busy === "preview" ? "Reading…" : "Preview import"}
-          </button>
-          {error && <p className="mt-3 text-sm text-error">{error}</p>}
-        </section>
+      <section className="mt-6 rounded-card border border-slate-200 bg-white p-6">
+        <h2 className="font-display text-xl text-primary-900">Files</h2>
+        <div className="mt-4 grid gap-6 md:grid-cols-2">
+          <FileDrop
+            label="CSV file"
+            hint="One spreadsheet of universities."
+            accept=".csv,text/csv"
+            file={csv}
+            emptyTitle="Drag a CSV here, or click to browse"
+            emptyDetail="CSV file"
+            disabled={locked}
+            onFile={chooseCsv}
+          />
+          <FileDrop
+            label="ZIP of images"
+            hint="Optional. Use this when the CSV names image files instead of URLs."
+            accept=".zip,application/zip"
+            file={zip}
+            emptyTitle="Drag a ZIP here, or click to browse"
+            emptyDetail="Optional · 100 MB max"
+            disabled={locked}
+            onFile={chooseZip}
+          />
+        </div>
 
-        {prepared.length > 0 && (
-          <section className="mt-8 rounded-card border border-slate-200 bg-white p-6">
-            <div className="flex flex-wrap items-end justify-between gap-3">
+        <div className="mt-6 grid gap-3 md:grid-cols-2">
+          <OptionCard
+            checked={updateExisting}
+            disabled={locked}
+            title="Update existing"
+            description="Universities that match an existing slug are updated. Leave this off to leave those records unchanged."
+            onChange={setUpdateExisting}
+          />
+          <OptionCard
+            checked={skipErrors}
+            disabled={locked}
+            title="Skip rows with errors"
+            description="Problem rows are left out and the rest are imported. Leave this off to stop the whole import when any row has an error."
+            onChange={setSkipErrors}
+          />
+        </div>
+
+        <button
+          type="button"
+          className="btn-primary mt-6 h-11 px-5 py-0 text-sm disabled:cursor-not-allowed disabled:opacity-50"
+          disabled={locked || !csv}
+          onClick={() => void preview()}
+        >
+          {busy === "preview" ? "Reading…" : "Preview import"}
+        </button>
+        {error && <p className="mt-3 text-sm text-error">{error}</p>}
+      </section>
+
+      {prepared.length > 0 && (
+        <section className="mt-6 overflow-hidden rounded-card border border-slate-200 bg-white">
+          <div className="border-b border-slate-200 p-6">
+            <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
                 <h2 className="font-display text-xl text-primary-900">Preview</h2>
                 <p className="mt-1 text-sm text-slate-600">
-                  {counts.New} new · {counts.Update} updates · {counts.Warning} warnings · {counts.Error} errors
+                  {importable} {importable === 1 ? "row" : "rows"} will be imported
                   {zip ? ` · ${zipFiles} files in the ZIP` : ""}
                 </p>
               </div>
-              <button type="button" className="btn-primary" disabled={busy !== null || blocked || importable === 0} onClick={() => void runImport()}>
+              <button
+                type="button"
+                className="btn-primary h-11 px-5 py-0 text-sm disabled:cursor-not-allowed disabled:opacity-50"
+                disabled={locked || blocked || importable === 0}
+                onClick={() => void runImport()}
+              >
                 {busy === "import" ? "Importing…" : `Import ${importable} ${importable === 1 ? "row" : "rows"}`}
               </button>
             </div>
+            <dl className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+              <Result label="New" value={counts.New} />
+              <Result label="Updates" value={counts.Update} />
+              <Result label="Warnings" value={counts.Warning} />
+              <Result label="Errors" value={counts.Error} />
+            </dl>
             {blocked && (
               <p className="mt-3 text-sm text-error">Turn on “Skip rows with errors”, or fix the CSV before importing.</p>
             )}
+            {!blocked && importable === 0 && (
+              <p className="mt-3 text-sm text-slate-600">No rows will be imported with these options.</p>
+            )}
             {progress && (
               <div className="mt-4">
-                <div className="h-2 overflow-hidden rounded-full bg-slate-200">
+                <div className="h-2 overflow-hidden rounded-full bg-slate-200" aria-label="Import progress">
                   <div className="h-full bg-primary" style={{ width: `${Math.round((progress.completed / progress.total) * 100)}%` }} />
                 </div>
                 <p className="mt-2 text-sm text-slate-600">
@@ -273,54 +319,179 @@ export default function BulkImportClient() {
                 </p>
               </div>
             )}
-            <div className="mt-4 overflow-x-auto">
-              <table className="min-w-full divide-y divide-slate-200 text-sm">
-                <thead>
-                  <tr className="text-left text-xs font-bold uppercase text-slate-600">
-                    <th className="py-2 pr-4">Row</th>
-                    <th className="py-2 pr-4">Status</th>
-                    <th className="py-2 pr-4">Name</th>
-                    <th className="py-2 pr-4">Images</th>
-                    <th className="py-2">Messages</th>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="min-w-full divide-y divide-slate-200 text-sm">
+              <thead className="bg-primary-50">
+                <tr className="text-left text-xs font-bold uppercase text-slate-600">
+                  <th className="px-6 py-3">Row</th>
+                  <th className="px-6 py-3">Status</th>
+                  <th className="px-6 py-3">Name</th>
+                  <th className="px-6 py-3">Images</th>
+                  <th className="px-6 py-3">Messages</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-200">
+                {prepared.map((row) => (
+                  <tr key={row.rowNumber} className="align-top hover:bg-primary-50/50">
+                    <td className="px-6 py-4 text-slate-600">{row.rowNumber}</td>
+                    <td className="px-6 py-4">
+                      <span className={`chip font-bold ${TONE[row.status]}`}>{row.status}</span>
+                    </td>
+                    <td className="px-6 py-4">
+                      <div className="font-bold text-primary-900">{row.name || "—"}</div>
+                      {row.slug && <div className="text-xs text-slate-600">{row.slug}</div>}
+                    </td>
+                    <td className="px-6 py-4 text-slate-600">{imageSummary(row.images)}</td>
+                    <td className="max-w-md px-6 py-4 text-slate-600">
+                      {row.messages.length === 0 ? (
+                        "Ready"
+                      ) : (
+                        <ul className="space-y-1">
+                          {row.messages.map((message, index) => (
+                            <li key={`${row.rowNumber}-${index}`}>{message}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </td>
                   </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-200">
-                  {prepared.map((row) => (
-                    <tr key={row.rowNumber}>
-                      <td className="py-3 pr-4">{row.rowNumber}</td>
-                      <td className="py-3 pr-4">
-                        <span className={`inline-flex rounded-full px-2 py-1 text-xs font-bold ${TONE[row.status]}`}>{row.status}</span>
-                      </td>
-                      <td className="py-3 pr-4">
-                        <div className="font-bold text-primary-900">{row.name || "—"}</div>
-                        <div className="text-xs text-slate-600">{row.slug}</div>
-                      </td>
-                      <td className="py-3 pr-4 text-slate-600">{imageSummary(row.images)}</td>
-                      <td className="py-3 text-slate-600">{row.messages.join(" ") || "Ready"}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </section>
-        )}
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )}
 
-        {summary && (
-          <section className="mt-8 rounded-card border border-slate-200 bg-white p-6">
-            <h2 className="font-display text-xl text-primary-900">Import result</h2>
-            <dl className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
-              <Result label="Created" value={summary.created} />
-              <Result label="Updated" value={summary.updated} />
-              <Result label="Skipped" value={summary.skipped} />
-              <Result label="Image failures" value={summary.imageFailures} />
-            </dl>
-            <button type="button" className="btn-outline mt-5 h-11 py-0 px-4" onClick={downloadReport}>
-              Download error report CSV
+      {summary && (
+        <section className="mt-6 rounded-card border border-slate-200 bg-white p-6">
+          <h2 className="font-display text-xl text-primary-900">Import result</h2>
+          <dl className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <Result label="Created" value={summary.created} />
+            <Result label="Updated" value={summary.updated} />
+            <Result label="Skipped" value={summary.skipped} />
+            <Result label="Image failures" value={summary.imageFailures} />
+          </dl>
+          <button type="button" className="btn-outline mt-5 h-10 px-4 py-0 text-sm" onClick={downloadReport}>
+            Download error report
+          </button>
+        </section>
+      )}
+    </main>
+  );
+}
+
+function FileDrop({
+  label,
+  hint,
+  accept,
+  file,
+  emptyTitle,
+  emptyDetail,
+  disabled,
+  onFile,
+}: {
+  label: string;
+  hint: string;
+  accept: string;
+  file: File | null;
+  emptyTitle: string;
+  emptyDetail: string;
+  disabled: boolean;
+  onFile: (file: File | null) => void;
+}) {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [dragOver, setDragOver] = useState(false);
+
+  function take(list: FileList | null) {
+    if (disabled) return;
+    const next = list?.[0] || null;
+    if (inputRef.current) inputRef.current.value = "";
+    onFile(next);
+  }
+
+  return (
+    <div>
+      <p className="text-sm font-bold text-primary-900">{label}</p>
+      <p className="mt-1 text-xs text-slate-600">{hint}</p>
+      {file ? (
+        <div className="mt-2 rounded-input border border-slate-200 bg-slate-50 p-3">
+          <p className="break-all text-sm font-bold text-primary-900">{file.name}</p>
+          <p className="mt-1 text-xs text-slate-600">{formatFileSize(file.size)}</p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <button type="button" className="btn-outline h-9 px-3 py-0 text-sm" disabled={disabled} onClick={() => inputRef.current?.click()}>
+              Replace
             </button>
-          </section>
-        )}
-      </main>
+            <button type="button" className="btn-outline h-9 px-3 py-0 text-sm" disabled={disabled} onClick={() => onFile(null)}>
+              Remove
+            </button>
+          </div>
+        </div>
+      ) : (
+        <button
+          type="button"
+          disabled={disabled}
+          onClick={() => inputRef.current?.click()}
+          onDragOver={(event) => {
+            event.preventDefault();
+            if (!disabled) setDragOver(true);
+          }}
+          onDragLeave={() => setDragOver(false)}
+          onDrop={(event) => {
+            event.preventDefault();
+            setDragOver(false);
+            take(event.dataTransfer.files);
+          }}
+          className={`mt-2 flex w-full flex-col items-center justify-center rounded-input border border-dashed px-4 py-8 text-center disabled:opacity-60 ${
+            dragOver ? "border-primary bg-primary/5" : "border-slate-200 bg-white"
+          }`}
+        >
+          <span className="text-sm font-bold text-primary-900">{emptyTitle}</span>
+          <span className="mt-1 text-xs text-slate-600">{emptyDetail}</span>
+        </button>
+      )}
+      <input
+        ref={inputRef}
+        type="file"
+        accept={accept}
+        disabled={disabled}
+        className="sr-only"
+        onChange={(event) => take(event.target.files)}
+      />
     </div>
+  );
+}
+
+function OptionCard({
+  checked,
+  disabled,
+  title,
+  description,
+  onChange,
+}: {
+  checked: boolean;
+  disabled: boolean;
+  title: string;
+  description: string;
+  onChange: (checked: boolean) => void;
+}) {
+  return (
+    <label
+      className={`flex items-start gap-3 rounded-input border p-4 ${
+        checked ? "border-primary bg-primary/5" : "border-slate-200 bg-white"
+      } ${disabled ? "cursor-not-allowed opacity-60" : "cursor-pointer"}`}
+    >
+      <input
+        type="checkbox"
+        className="mt-0.5 h-4 w-4 accent-primary"
+        checked={checked}
+        disabled={disabled}
+        onChange={(event) => onChange(event.target.checked)}
+      />
+      <span>
+        <span className="block text-sm font-bold text-primary-900">{title}</span>
+        <span className="mt-1 block text-xs font-normal text-slate-600">{description}</span>
+      </span>
+    </label>
   );
 }
 
@@ -335,7 +506,34 @@ function Result({ label, value }: { label: string; value: number }) {
 
 function imageSummary(images: ApiRow["images"]) {
   if (!images.length) return "—";
-  return images.map((image) => `${image.field}: ${image.detail}`).join(" · ");
+  return (
+    <ul className="space-y-1">
+      {images.map((image, index) => (
+        <li key={`${image.field}-${index}`}>
+          <span className="font-bold text-primary-900">{image.field}</span>
+          {" · "}
+          {image.detail}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function formatFileSize(bytes: number) {
+  if (!Number.isFinite(bytes) || bytes < 0) return "";
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${Math.round(bytes / 1024)} KB`;
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
+
+function looksLikeCsv(file: File) {
+  const name = file.name.toLowerCase();
+  return name.endsWith(".csv") || file.type === "text/csv" || file.type === "application/vnd.ms-excel";
+}
+
+function looksLikeZip(file: File) {
+  const name = file.name.toLowerCase();
+  return name.endsWith(".zip") || file.type === "application/zip" || file.type === "application/x-zip-compressed";
 }
 
 function csvCell(value: string | number) {
