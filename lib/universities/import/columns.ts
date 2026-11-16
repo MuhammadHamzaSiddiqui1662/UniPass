@@ -7,6 +7,7 @@ export const IMPORT_COLUMNS = [
   { key: "countryCode", header: "countryCode", hint: "Two-letter code. Defaults to TR." },
   { key: "scholarshipType", header: "scholarshipType", hint: "fully_funded, partially_funded, or none." },
   { key: "fields", header: "fields", hint: "Programs or fields, separated by |. Example: Engineering|Architecture" },
+  { key: "knownFor", header: "knownFor", hint: "Up to three highlights, separated by |. Each one must also appear in fields. Example: Engineering|Architecture" },
   { key: "levels", header: "levels", hint: "Study levels separated by |. Example: Bachelor's|Master's|PhD" },
   { key: "languages", header: "languages", hint: "Languages separated by |. Example: English|Turkish" },
   { key: "tuitionFrom", header: "tuitionFrom", required: true, hint: "Minimum yearly tuition as a number. 1,200 is accepted." },
@@ -18,15 +19,25 @@ export const IMPORT_COLUMNS = [
   { key: "campusLife", header: "campusLife", hint: "Optional campus-life paragraph." },
   { key: "website", header: "website", hint: "https URL of the university site." },
   { key: "ranking", header: "ranking", hint: "Optional whole number." },
-  { key: "facts", header: "facts", hint: "Pairs separated by |. Example: Founded: 1773|Campus: Ayazağa" },
+  { key: "foundedYear", header: "foundedYear", hint: "Year the university was founded, from 1000 to 2100." },
+  { key: "studentsCount", header: "studentsCount", hint: "Total students, as a whole number." },
+  { key: "internationalStudents", header: "internationalStudents", hint: "International students, as a whole number." },
+  { key: "accreditations", header: "accreditations", hint: "Accreditations separated by |. Example: YÖK|ABET" },
+  { key: "facilityHighlights", header: "facilityHighlights", hint: "Facility highlights separated by |. Example: Central library|Sports hall" },
+  { key: "keyFacts", header: "keyFacts", hint: "Bullet list on the university page, separated by |. Example: Historic technical university|Ayazağa campus" },
+  { key: "facts", header: "facts", hint: "Extra sidebar pairs that do not already have a column, separated by |. Example: Campus: Ayazağa. Put the founded year in foundedYear and the bullet list in keyFacts." },
   { key: "aliases", header: "aliases", hint: "Search aliases separated by |. Example: ITU|Istanbul Teknik" },
   { key: "featuredOnHome", header: "featuredOnHome", hint: "true or false. Defaults to false." },
   { key: "homeOrder", header: "homeOrder", hint: "Whole number. Lower numbers appear first on the home slider." },
   { key: "hasMeritScholarship", header: "hasMeritScholarship", hint: "true or false." },
+  { key: "turkiyeBurslariEligible", header: "turkiyeBurslariEligible", hint: "true or false. Eligible for Türkiye Bursları." },
   { key: "published", header: "published", hint: "true publishes the page. false or blank keeps it as a draft." },
   { key: "logo", header: "logo", hint: "ZIP filename (any folder, case-insensitive) or an https URL. SVG is allowed for logos." },
+  { key: "logoAlt", header: "logoAlt", hint: "Alt text for the logo." },
   { key: "featuredImage", header: "featured_image", hint: "Campus photo used on cards and the detail hero. ZIP filename or https URL." },
+  { key: "featuredImageAlt", header: "featuredImageAlt", hint: "Alt text for the featured campus photo." },
   { key: "gallery", header: "gallery", hint: "Extra campus photos separated by |. Each is a ZIP filename or https URL." },
+  { key: "galleryAlts", header: "galleryAlts", hint: "Alt text for gallery photos, separated by |, in the same order as gallery." },
   { key: "metaTitle", header: "metaTitle", hint: "Optional SEO title." },
   { key: "metaDescription", header: "metaDescription", hint: "Optional SEO description." },
   { key: "ogImage", header: "ogImage", hint: "Optional share image. ZIP filename, https URL, or a path already hosted by UniPass." },
@@ -49,6 +60,12 @@ HEADER_ALIASES.featuredimage = "featuredImage";
 HEADER_ALIASES.status = "published";
 HEADER_ALIASES.minitution = "tuitionFrom";
 HEADER_ALIASES.maxtuition = "tuitionTo";
+HEADER_ALIASES.languagesoffered = "languages";
+HEADER_ALIASES.rankingnational = "ranking";
+HEADER_ALIASES.founded = "foundedYear";
+HEADER_ALIASES.students = "studentsCount";
+HEADER_ALIASES.keyfacts = "keyFacts";
+HEADER_ALIASES.knownfor = "knownFor";
 
 export function normalizeHeader(value: string) {
   return value.replace(/^\uFEFF/, "").trim().toLowerCase().replace(/[\s_-]+/g, "");
@@ -69,6 +86,7 @@ export function sampleCsv() {
   itu.countryCode = "TR";
   itu.scholarshipType = "none";
   itu.fields = "Engineering|Architecture|Sciences";
+  itu.knownFor = "Engineering|Architecture";
   itu.levels = "Bachelor's|Master's|PhD";
   itu.languages = "Turkish|English";
   itu.tuitionFrom = "1200";
@@ -77,15 +95,25 @@ export function sampleCsv() {
   itu.description = "A public technical university in İstanbul, strong in engineering and architecture.";
   itu.website = "https://www.itu.edu.tr";
   itu.ranking = "1";
-  itu.facts = "Founded: 1773|Campus: Ayazağa";
+  itu.foundedYear = "1773";
+  itu.studentsCount = "37000";
+  itu.internationalStudents = "2500";
+  itu.accreditations = "YÖK";
+  itu.facilityHighlights = "Ayazağa campus library";
+  itu.keyFacts = "Historic technical university|Strong in engineering and architecture";
+  itu.facts = "Campus: Ayazağa";
   itu.aliases = "ITU|Istanbul Teknik";
   itu.featuredOnHome = "false";
   itu.homeOrder = "0";
   itu.hasMeritScholarship = "false";
+  itu.turkiyeBurslariEligible = "true";
   itu.published = "true";
   itu.logo = "itu-logo.png";
+  itu.logoAlt = "İstanbul Teknik Üniversitesi logo";
   itu.featuredImage = "photos/itu-campus.jpg";
+  itu.featuredImageAlt = "İstanbul Teknik Üniversitesi campus";
   itu.gallery = "photos/itu-quad.jpg|photos/itu-library.jpg";
+  itu.galleryAlts = "ITU quad|ITU library";
   itu.metaTitle = "İstanbul Teknik Üniversitesi | UniPass";
   itu.metaDescription = "Explore İstanbul Teknik Üniversitesi with UniPass.";
 
@@ -98,6 +126,7 @@ export function sampleCsv() {
   boun.countryCode = "TR";
   boun.scholarshipType = "partially_funded";
   boun.fields = "Engineering|Sciences|Business";
+  boun.knownFor = "Engineering|Sciences";
   boun.levels = "Bachelor's|Master's|PhD";
   boun.languages = "English|Turkish";
   boun.tuitionFrom = "1800";
@@ -105,15 +134,25 @@ export function sampleCsv() {
   boun.description = "A public university on the Bosphorus with teaching in English and Turkish.";
   boun.website = "https://www.boun.edu.tr";
   boun.ranking = "2";
-  boun.facts = "Founded: 1863|Campus: Bebek";
+  boun.foundedYear = "1863";
+  boun.studentsCount = "15000";
+  boun.internationalStudents = "2000";
+  boun.accreditations = "YÖK";
+  boun.facilityHighlights = "Bosphorus campus";
+  boun.keyFacts = "Teaching in English and Turkish|Campus on the Bosphorus";
+  boun.facts = "Campus: Bebek";
   boun.aliases = "BOUN|Boğaziçi";
   boun.featuredOnHome = "true";
   boun.homeOrder = "1";
   boun.hasMeritScholarship = "true";
+  boun.turkiyeBurslariEligible = "true";
   boun.published = "true";
   boun.logo = "https://images.example.com/boun-logo.png";
+  boun.logoAlt = "Boğaziçi University logo";
   boun.featuredImage = "https://images.example.com/boun-campus.jpg";
+  boun.featuredImageAlt = "Boğaziçi University campus";
   boun.gallery = "https://images.example.com/boun-south.jpg|https://images.example.com/boun-library.jpg";
+  boun.galleryAlts = "South campus|Library";
   boun.metaTitle = "Boğaziçi University | UniPass";
   boun.metaDescription = "Explore Boğaziçi University with UniPass.";
 
@@ -142,7 +181,9 @@ export function templateGuide() {
     "## Examples",
     "",
     "- ZIP row: `logo` = `itu-logo.png`, `featured_image` = `photos/itu-campus.jpg`, `gallery` = `photos/itu-quad.jpg|photos/itu-library.jpg`.",
+    "- Gallery alt text lines up with `gallery`: `galleryAlts` = `ITU quad|ITU library`.",
     "- URL row: `logo` = `https://images.example.com/boun-logo.png`.",
+    "- Key facts are a bullet list: `keyFacts` = `Historic technical university|Ayazağa campus`. Extra sidebar pairs stay in `facts`, for example `Campus: Ayazağa`.",
     "- Scholarship: `fully_funded`, `partially_funded`, or `none`.",
     "- Published: `true` or `false`. Blank means draft.",
   ];
@@ -159,6 +200,7 @@ function blank(): Record<ImportKey, string> {
     countryCode: "",
     scholarshipType: "",
     fields: "",
+    knownFor: "",
     levels: "",
     languages: "",
     tuitionFrom: "",
@@ -170,15 +212,25 @@ function blank(): Record<ImportKey, string> {
     campusLife: "",
     website: "",
     ranking: "",
+    foundedYear: "",
+    studentsCount: "",
+    internationalStudents: "",
+    accreditations: "",
+    facilityHighlights: "",
+    keyFacts: "",
     facts: "",
     aliases: "",
     featuredOnHome: "",
     homeOrder: "",
     hasMeritScholarship: "",
+    turkiyeBurslariEligible: "",
     published: "",
     logo: "",
+    logoAlt: "",
     featuredImage: "",
+    featuredImageAlt: "",
     gallery: "",
+    galleryAlts: "",
     metaTitle: "",
     metaDescription: "",
     ogImage: "",

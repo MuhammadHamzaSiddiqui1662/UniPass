@@ -17,6 +17,7 @@ export function universityToCsvRow(university: Record<string, unknown>) {
   row.countryCode = text(university.countryCode);
   row.scholarshipType = text(university.scholarshipType);
   row.fields = list(university.fields);
+  row.knownFor = list(university.knownFor);
   row.levels = list(university.levels);
   row.languages = list(university.languages);
   row.tuitionFrom = university.tuitionFrom == null ? "" : String(university.tuitionFrom);
@@ -28,15 +29,25 @@ export function universityToCsvRow(university: Record<string, unknown>) {
   row.campusLife = text(university.campusLife);
   row.website = text(university.website);
   row.ranking = university.ranking == null ? "" : String(university.ranking);
+  row.foundedYear = university.foundedYear == null ? "" : String(university.foundedYear);
+  row.studentsCount = university.studentsCount == null ? "" : String(university.studentsCount);
+  row.internationalStudents = university.internationalStudents == null ? "" : String(university.internationalStudents);
+  row.accreditations = list(university.accreditations);
+  row.facilityHighlights = list(university.facilityHighlights);
+  row.keyFacts = list(university.keyFacts);
   row.facts = facts;
   row.aliases = list(university.aliases);
   row.featuredOnHome = university.featuredOnHome ? "true" : "false";
   row.homeOrder = university.homeOrder == null ? "0" : String(university.homeOrder);
   row.hasMeritScholarship = university.hasMeritScholarship ? "true" : "false";
+  row.turkiyeBurslariEligible = university.turkiyeBurslariEligible ? "true" : "false";
   row.published = university.status === "published" ? "true" : "false";
   row.logo = text(university.logo);
+  row.logoAlt = text(university.logoAlt);
   row.featured_image = text(university.featuredImage);
+  row.featuredImageAlt = text(university.featuredImageAlt);
   row.gallery = list(university.gallery);
+  row.galleryAlts = alignedList(university.galleryAlts);
   row.metaTitle = text(university.metaTitle);
   row.metaDescription = text(university.metaDescription);
   row.ogImage = text(university.ogImage);
@@ -49,4 +60,9 @@ function text(value: unknown) {
 
 function list(value: unknown) {
   return Array.isArray(value) ? value.filter(Boolean).join("|") : "";
+}
+
+function alignedList(value: unknown) {
+  if (!Array.isArray(value)) return "";
+  return value.map((item) => (item == null ? "" : String(item))).join("|");
 }

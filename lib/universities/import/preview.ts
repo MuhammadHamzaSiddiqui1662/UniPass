@@ -35,6 +35,7 @@ export type ParsedValues = {
   countryCode: string;
   scholarshipType: "fully_funded" | "partially_funded" | "none" | "";
   fields: string[];
+  knownFor: string[];
   levels: string[];
   languages: string[];
   tuitionFrom: number | null;
@@ -46,15 +47,25 @@ export type ParsedValues = {
   campusLife: string;
   website: string;
   ranking: number | null;
+  foundedYear: number | null;
+  studentsCount: number | null;
+  internationalStudents: number | null;
+  accreditations: string[];
+  facilityHighlights: string[];
+  keyFacts: string[];
   facts: Record<string, string>;
   aliases: string[];
   featuredOnHome: boolean;
   homeOrder: number;
   hasMeritScholarship: boolean;
+  turkiyeBurslariEligible: boolean;
   status: "draft" | "published";
   logo: string;
+  logoAlt: string;
   featuredImage: string;
+  featuredImageAlt: string;
   gallery: string[];
+  galleryAlts: string[];
   metaTitle: string;
   metaDescription: string;
   ogImage: string;
@@ -82,6 +93,7 @@ export function previewImport(table: CsvTable, zip: ZipIndex, existing: Existing
     const warnings: string[] = [];
     const cells = row.cells;
     const values = parseValues(cells, table.present, errors);
+    warnDetailFields(values, table.present, warnings);
     if (values.slug) {
       const previous = seenSlugs.get(values.slug);
       if (previous) errors.push(`Slug ${values.slug} is also used on row ${previous}.`);
@@ -188,10 +200,14 @@ function parseValues(cells: CsvTable["rows"][number]["cells"], present: Set<Impo
   const website = cell(cells, "website");
   if (website && !/^https?:\/\//i.test(website)) errors.push("Website must start with http:// or https://.");
   const ranking = parseInteger(cell(cells, "ranking"), "Ranking", errors);
+  const foundedYear = parseBoundedInteger(cell(cells, "foundedYear"), "Founded year", 1000, 2100, errors);
+  const studentsCount = parseBoundedInteger(cell(cells, "studentsCount"), "Students count", 1, 10_000_000, errors);
+  const internationalStudents = parseBoundedInteger(cell(cells, "internationalStudents"), "International students", 1, 10_000_000, errors);
   const homeOrderRaw = cell(cells, "homeOrder");
   const homeOrder = homeOrderRaw ? parseInteger(homeOrderRaw, "Home order", errors) || 0 : 0;
   const featured = parseBool(cell(cells, "featuredOnHome"), false, "Show on home", errors);
   const merit = parseBool(cell(cells, "hasMeritScholarship"), false, "Merit scholarship", errors);
+  const burslari = parseBool(cell(cells, "turkiyeBurslariEligible"), false, "Türkiye Bursları", errors);
   const status = parseStatus(cell(cells, "published"), errors);
 
   return {
@@ -203,6 +219,7 @@ function parseValues(cells: CsvTable["rows"][number]["cells"], present: Set<Impo
     countryCode,
     scholarshipType,
     fields: splitList(cell(cells, "fields")),
+    knownFor: splitList(cell(cells, "knownFor")),
     levels: splitList(cell(cells, "levels")),
     languages: splitList(cell(cells, "languages")),
     tuitionFrom,
@@ -214,19 +231,41 @@ function parseValues(cells: CsvTable["rows"][number]["cells"], present: Set<Impo
     campusLife: cell(cells, "campusLife"),
     website,
     ranking,
+    foundedYear,
+    studentsCount,
+    internationalStudents,
+    accreditations: splitList(cell(cells, "accreditations")),
+    facilityHighlights: splitList(cell(cells, "facilityHighlights")),
+    keyFacts: splitList(cell(cells, "keyFacts")),
     facts: parseFacts(cell(cells, "facts")),
     aliases: splitList(cell(cells, "aliases")),
     featuredOnHome: featured,
     homeOrder,
     hasMeritScholarship: merit,
+    turkiyeBurslariEligible: burslari,
     status,
     logo: firstSingle(cell(cells, "logo")),
+    logoAlt: cell(cells, "logoAlt"),
     featuredImage: firstSingle(cell(cells, "featuredImage")),
+    featuredImageAlt: cell(cells, "featuredImageAlt"),
     gallery: splitList(cell(cells, "gallery")),
+    galleryAlts: splitSlots(cell(cells, "galleryAlts")),
     metaTitle: cell(cells, "metaTitle"),
     metaDescription: cell(cells, "metaDescription"),
     ogImage: firstSingle(cell(cells, "ogImage")),
   };
+}
+
+function warnDetailFields(values: ParsedValues, present: Set<ImportKey>, warnings: string[]) {
+  if (present.has("knownFor") && present.has("fields")) {
+    const allowed = new Set(values.fields);
+    for (const item of values.knownFor) {
+      if (!allowed.has(item)) warnings.push(`${item} is not in fields, so it will not be saved as a highlight.`);
+    }
+  }
+  if (present.has("gallery") && present.has("galleryAlts") && values.gallery.length !== values.galleryAlts.length) {
+    warnings.push("Gallery and gallery alts have different counts. Extra alts are dropped and missing alts are left blank.");
+  }
 }
 
 function imageReport(
@@ -293,6 +332,11 @@ export function splitList(value: string) {
   return value.split("|").map((part) => part.trim()).filter(Boolean);
 }
 
+function splitSlots(value: string) {
+  if (!value) return [];
+  return value.split("|").map((part) => part.trim());
+}
+
 function firstSingle(value: string) {
   return splitList(value)[0] || "";
 }
@@ -335,6 +379,16 @@ function parseInteger(value: string, label: string, errors: string[]) {
     return null;
   }
   return Number(value.replace(/,/g, ""));
+}
+
+function parseBoundedInteger(value: string, label: string, min: number, max: number, errors: string[]) {
+  const parsed = parseInteger(value, label, errors);
+  if (parsed === null) return null;
+  if (parsed < min || parsed > max) {
+    errors.push(`${label} must be between ${min} and ${max}.`);
+    return null;
+  }
+  return parsed;
 }
 
 function parseBool(value: string, fallback: boolean, label: string, errors: string[]) {

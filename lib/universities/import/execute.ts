@@ -5,6 +5,7 @@ import { rehostRemoteImage, storeImageFile, type ImageKind } from "@/lib/upload/
 import type { ImportKey } from "@/lib/universities/import/columns";
 import { rowMessages, rowStatus, type PreviewRow } from "@/lib/universities/import/preview";
 import type { ZipIndex } from "@/lib/universities/import/zip";
+import { sanitizeKnownFor } from "@/lib/universities/known-for";
 
 export type ImportOptions = {
   updateExisting: boolean;
@@ -55,10 +56,10 @@ export async function executeImport(
     const failures: string[] = [];
     const images = await placeImages(row, present, zip, failures);
     result.imageFailures += failures.length;
-    const document = documentFor(row, present, images);
+    const current = row.match && options.updateExisting ? await University.findById(row.match.id).lean() : null;
+    const document = documentFor(row, present, images, current?.fields);
     try {
       if (row.match && options.updateExisting) {
-        const current = await University.findById(row.match.id).lean();
         await University.updateOne({ _id: row.match.id }, { $set: document });
         if (current) {
           const before: Array<string | undefined> = [];
@@ -168,6 +169,7 @@ function documentFor(
   row: PreviewRow,
   present: Set<ImportKey>,
   images: { slug: string; logo: Placed; featuredImage: Placed; ogImage: Placed; gallery: Placed[] },
+  currentFields?: string[],
 ) {
   const values = row.values;
   const document: Record<string, unknown> = { name: values.name, slug: images.slug };
@@ -189,26 +191,48 @@ function documentFor(
   ];
   for (const [key, value] of text) if (present.has(key)) document[key] = value;
   if (present.has("fields")) document.fields = values.fields;
+  if (present.has("knownFor")) {
+    const fields = present.has("fields") ? values.fields : currentFields || [];
+    document.knownFor = sanitizeKnownFor(fields, values.knownFor);
+  }
   if (present.has("levels")) document.levels = values.levels;
   if (present.has("languages")) document.languages = values.languages;
   if (present.has("aliases")) document.aliases = values.aliases;
+  if (present.has("accreditations")) document.accreditations = values.accreditations;
+  if (present.has("facilityHighlights")) document.facilityHighlights = values.facilityHighlights;
+  if (present.has("keyFacts")) document.keyFacts = values.keyFacts;
   if (present.has("facts")) document.facts = values.facts;
   if (present.has("tuitionTo")) document.tuitionTo = values.tuitionTo ?? undefined;
   if (present.has("ranking")) document.ranking = values.ranking ?? undefined;
+  if (present.has("foundedYear")) document.foundedYear = values.foundedYear ?? undefined;
+  if (present.has("studentsCount")) document.studentsCount = values.studentsCount ?? undefined;
+  if (present.has("internationalStudents")) document.internationalStudents = values.internationalStudents ?? undefined;
   if (present.has("featuredOnHome")) document.featuredOnHome = values.featuredOnHome;
   if (present.has("homeOrder")) document.homeOrder = values.homeOrder;
   if (present.has("hasMeritScholarship")) document.hasMeritScholarship = values.hasMeritScholarship;
+  if (present.has("turkiyeBurslariEligible")) document.turkiyeBurslariEligible = values.turkiyeBurslariEligible;
   if (present.has("published")) document.status = values.status;
+  if (present.has("logoAlt")) document.logoAlt = values.logoAlt;
+  if (present.has("featuredImageAlt")) document.featuredImageAlt = values.featuredImageAlt;
   assignImage(document, "logo", images.logo, present.has("logo"));
   assignImage(document, "featuredImage", images.featuredImage, present.has("featuredImage"));
   assignImage(document, "ogImage", images.ogImage, present.has("ogImage"));
   if (present.has("gallery")) {
-    const urls = images.gallery.flatMap((item) => ("url" in item ? [item.url] : []));
+    const saved: { url: string; index: number }[] = [];
+    images.gallery.forEach((item, index) => {
+      if ("url" in item) saved.push({ url: item.url, index });
+    });
     const failed = images.gallery.some((item) => "keep" in item);
-    if (!failed || urls.length) {
-      document.gallery = urls;
-      document.galleryAlts = urls.map(() => "");
+    if (!failed || saved.length) {
+      document.gallery = saved.map((item) => item.url);
+      if (present.has("galleryAlts")) {
+        document.galleryAlts = saved.map((item) => values.galleryAlts[item.index] || "");
+      } else if (!row.match) {
+        document.galleryAlts = saved.map(() => "");
+      }
     }
+  } else if (present.has("galleryAlts")) {
+    document.galleryAlts = values.galleryAlts;
   }
   return document;
 }
