@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 
 export type SliderUniversity = {
   id: string;
@@ -11,122 +10,167 @@ export type SliderUniversity = {
   homeOrder: number;
 };
 
-export default function HomeSliderManager({ universities }: { universities: SliderUniversity[] }) {
-  const router = useRouter();
-  const [items, setItems] = useState(() =>
-    [...universities].sort((a, b) => {
-      if (a.featuredOnHome !== b.featuredOnHome) return a.featuredOnHome ? -1 : 1;
-      if (a.featuredOnHome) return a.homeOrder - b.homeOrder;
-      return a.name.localeCompare(b.name);
-    }),
-  );
-  const [saving, setSaving] = useState(false);
-  const [message, setMessage] = useState("");
+type HomeSliderManagerProps = {
+  featured: SliderUniversity[];
+  available: SliderUniversity[];
+  saving: boolean;
+  message: string;
+  error: string;
+  onMove: (id: string, direction: -1 | 1) => void;
+  onRemove: (id: string) => void;
+  onAdd: (id: string) => void;
+  onSave: () => void;
+};
 
-  const featured = items.filter((item) => item.featuredOnHome);
+export default function HomeSliderManager({
+  featured,
+  available,
+  saving,
+  message,
+  error,
+  onMove,
+  onRemove,
+  onAdd,
+  onSave,
+}: HomeSliderManagerProps) {
+  const [open, setOpen] = useState(false);
+  const [query, setQuery] = useState("");
+  const normalizedQuery = query.trim().toLowerCase();
+  const matches = available.filter((item) => {
+    if (!normalizedQuery) return true;
+    return `${item.name} ${item.city}`.toLowerCase().includes(normalizedQuery);
+  });
 
-  const move = (id: string, direction: -1 | 1) => {
-    setItems((current) => {
-      const next = [...current];
-      const visible = next.filter((item) => item.featuredOnHome);
-      const from = visible.findIndex((item) => item.id === id);
-      const to = from + direction;
-      if (from < 0 || to < 0 || to >= visible.length) return current;
-      const fromIndex = next.findIndex((item) => item.id === visible[from].id);
-      const toIndex = next.findIndex((item) => item.id === visible[to].id);
-      const [row] = next.splice(fromIndex, 1);
-      next.splice(toIndex, 0, row);
-      return next;
-    });
-  };
-
-  const toggle = (id: string) => {
-    setItems((current) =>
-      current.map((item) => (item.id === id ? { ...item, featuredOnHome: !item.featuredOnHome } : item)),
-    );
-  };
-
-  const save = async () => {
-    setSaving(true);
-    setMessage("");
-    const chosen = items.filter((item) => item.featuredOnHome);
-    const payload = items.map((item) => ({
-      id: item.id,
-      featuredOnHome: item.featuredOnHome,
-      homeOrder: item.featuredOnHome ? chosen.findIndex((row) => row.id === item.id) + 1 : 0,
-    }));
-    try {
-      const response = await fetch("/api/admin/universities/home", {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ items: payload }),
-      });
-      if (!response.ok) throw new Error("Could not save the home slider");
-      setMessage("Home slider saved.");
-      router.refresh();
-    } catch (error) {
-      setMessage(error instanceof Error ? error.message : "Could not save the home slider");
-    } finally {
-      setSaving(false);
-    }
+  const addUniversity = (id: string) => {
+    if (!id) return;
+    onAdd(id);
+    setQuery("");
   };
 
   return (
-    <section className="mb-8 rounded-card border border-slate-200 bg-white p-6">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <div>
+    <section className="rounded-card border border-slate-200 bg-white lg:sticky lg:top-6 lg:col-start-2 lg:row-start-1 lg:max-h-[calc(100vh-3rem)] lg:overflow-y-auto">
+      <button
+        type="button"
+        className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left lg:hidden"
+        aria-expanded={open}
+        aria-controls="home-slider-panel"
+        onClick={() => setOpen((value) => !value)}
+      >
+        <span className="font-display text-base text-primary-900">Home slider · {featured.length}</span>
+        <span className="text-sm font-bold text-primary">{open ? "Hide" : "Edit"}</span>
+      </button>
+
+      <div id="home-slider-panel" className={open ? "border-t border-slate-200 p-4 lg:border-t-0 lg:p-5" : "hidden lg:block lg:p-5"}>
+        <div className="hidden lg:block">
           <h2 className="font-display text-xl text-primary-900">Home slider</h2>
           <p className="mt-1 text-sm text-slate-600">
-            Choose which published universities appear on the home page, and the order they slide in.
+            Published universities on the home page, in the order they appear.
           </p>
         </div>
-        <button type="button" className="btn-primary h-11 px-5 text-[15px]" onClick={save} disabled={saving}>
+
+        {featured.length === 0 ? (
+          <p className="mt-4 text-sm text-slate-600">
+            No universities are on the home slider. The home page will show the first three published universities.
+          </p>
+        ) : (
+          <ol className="mt-4 divide-y divide-slate-200">
+            {featured.map((item, index) => (
+              <li key={item.id} className="py-3">
+                <div className="flex items-start justify-between gap-2">
+                  <div className="min-w-0">
+                    <p className="truncate text-sm font-bold text-primary-900" title={item.name}>
+                      {index + 1}. {item.name}
+                    </p>
+                    <p className="truncate text-xs text-slate-600">{item.city}</p>
+                  </div>
+                  <button
+                    type="button"
+                    className="shrink-0 text-sm font-bold text-slate-600 hover:text-error disabled:opacity-40"
+                    onClick={() => onRemove(item.id)}
+                    disabled={saving}
+                    aria-label={`Remove ${item.name} from the home slider`}
+                  >
+                    Remove
+                  </button>
+                </div>
+                <div className="mt-2 flex gap-2">
+                  <button
+                    type="button"
+                    className="rounded-input border border-primary-200 px-3 py-1 text-sm font-bold text-primary disabled:opacity-40"
+                    disabled={saving || index === 0}
+                    onClick={() => onMove(item.id, -1)}
+                    aria-label={`Move ${item.name} earlier`}
+                  >
+                    Up
+                  </button>
+                  <button
+                    type="button"
+                    className="rounded-input border border-primary-200 px-3 py-1 text-sm font-bold text-primary disabled:opacity-40"
+                    disabled={saving || index === featured.length - 1}
+                    onClick={() => onMove(item.id, 1)}
+                    aria-label={`Move ${item.name} later`}
+                  >
+                    Down
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ol>
+        )}
+
+        <div className="mt-4 space-y-2">
+          {available.length === 0 ? (
+            <p className="text-sm text-slate-600">
+              {featured.length === 0
+                ? "Publish a university before adding it to the slider."
+                : "Every published university is already on the slider."}
+            </p>
+          ) : (
+            <>
+              <label htmlFor="home-slider-filter" className="block text-sm font-bold text-primary-900">
+                Add a university
+              </label>
+              <input
+                id="home-slider-filter"
+                type="search"
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder="Filter by name or city"
+                className="input-field"
+                autoComplete="off"
+                disabled={saving}
+              />
+              <select
+                className="input-field"
+                value=""
+                disabled={saving || matches.length === 0}
+                aria-label="Add a published university to the home slider"
+                onChange={(event) => addUniversity(event.target.value)}
+              >
+                <option value="">{matches.length === 0 ? "No matches" : "Choose a university"}</option>
+                {matches.map((item) => (
+                  <option key={item.id} value={item.id}>
+                    {item.name}
+                    {item.city ? ` — ${item.city}` : ""}
+                  </option>
+                ))}
+              </select>
+            </>
+          )}
+        </div>
+
+        {message ? <p className="mt-3 text-sm font-bold text-primary">{message}</p> : null}
+        {error ? <p className="mt-3 text-sm font-bold text-error">{error}</p> : null}
+
+        <button
+          type="button"
+          className="btn-primary mt-4 h-11 w-full px-5 text-[15px] disabled:opacity-50"
+          onClick={onSave}
+          disabled={saving}
+        >
           {saving ? "Saving…" : "Save slider"}
         </button>
       </div>
-      {message ? <p className="mt-3 text-sm font-bold text-primary">{message}</p> : null}
-      <ol className="mt-4 divide-y divide-slate-200">
-        {items.map((item) => {
-          const position = featured.findIndex((row) => row.id === item.id);
-          return (
-            <li key={item.id} className="flex flex-wrap items-center gap-3 py-3">
-              <label className="inline-flex min-w-[220px] flex-1 items-center gap-3">
-                <input
-                  type="checkbox"
-                  checked={item.featuredOnHome}
-                  onChange={() => toggle(item.id)}
-                  aria-label={`Show ${item.name} on the home slider`}
-                />
-                <span>
-                  <span className="block font-bold text-primary-900">{item.name}</span>
-                  <span className="text-sm text-slate-600">{item.city}</span>
-                </span>
-              </label>
-              {item.featuredOnHome ? (
-                <span className="text-sm font-bold text-secondary-800">Slide {position + 1}</span>
-              ) : null}
-              <div className="ml-auto flex gap-2">
-                <button
-                  type="button"
-                  className="rounded-input border border-primary-200 px-3 py-1 text-sm font-bold text-primary disabled:opacity-40"
-                  disabled={!item.featuredOnHome || position === 0}
-                  onClick={() => move(item.id, -1)}
-                >
-                  Up
-                </button>
-                <button
-                  type="button"
-                  className="rounded-input border border-primary-200 px-3 py-1 text-sm font-bold text-primary disabled:opacity-40"
-                  disabled={!item.featuredOnHome || position === featured.length - 1}
-                  onClick={() => move(item.id, 1)}
-                >
-                  Down
-                </button>
-              </div>
-            </li>
-          );
-        })}
-      </ol>
     </section>
   );
 }
