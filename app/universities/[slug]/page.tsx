@@ -14,6 +14,8 @@ import {
   detailFacts,
   fallbackDetail,
   publicUniversity,
+  websiteHref,
+  websiteLabel,
   type DetailUniversity,
 } from "@/lib/universities/details";
 
@@ -95,6 +97,7 @@ export default async function UniversityDetailPage({
   const bookmarkId = university._id || university.slug;
   const campusImages = campusShots(university);
   const facts = detailFacts(university);
+  const website = university.website ? websiteHref(university.website) : undefined;
 
   return (
     <>
@@ -148,6 +151,41 @@ export default async function UniversityDetailPage({
               {university.type === "public" ? "Public" : "Private"}
             </span>
             <span className="chip-outline">{university.city}</span>
+            {website && (
+              <a
+                href={website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="chip-outline gap-1.5 font-bold text-primary hover:border-primary"
+              >
+                {websiteLabel(university.website || website)}
+                <svg viewBox="0 0 16 16" className="h-3 w-3 shrink-0" aria-hidden="true">
+                  <path
+                    d="M6.5 3.5H3.75A1.25 1.25 0 0 0 2.5 4.75v7.5A1.25 1.25 0 0 0 3.75 13.5h7.5a1.25 1.25 0 0 0 1.25-1.25V9.5"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.4"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M9 2.5h4.5V7"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M13.5 2.5 7.5 8.5"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.4"
+                    strokeLinecap="round"
+                  />
+                </svg>
+                <span className="sr-only"> (opens in a new tab)</span>
+              </a>
+            )}
           </div>
 
           <div className="mt-8 grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_420px]">

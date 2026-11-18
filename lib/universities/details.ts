@@ -207,7 +207,7 @@ function count(value?: number) {
   return value ? new Intl.NumberFormat("en-US").format(value) : undefined;
 }
 
-function websiteHref(value: string) {
+export function websiteHref(value: string) {
   try {
     const url = new URL(value);
     if (url.protocol === "http:" || url.protocol === "https:") return url.toString();
@@ -217,7 +217,7 @@ function websiteHref(value: string) {
   return undefined;
 }
 
-function websiteLabel(value: string) {
+export function websiteLabel(value: string) {
   return value.replace(/^https?:\/\//, "").replace(/\/$/, "");
 }
 
