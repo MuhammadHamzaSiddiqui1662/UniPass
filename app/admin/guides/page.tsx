@@ -1,21 +1,34 @@
 import { requireAdminPage } from "@/lib/auth/guards";
+import { adminSlice } from "@/lib/admin/pagination";
 import { connectDB, Guide } from "@/lib/db";
 import Link from "next/link";
 import AdminNav from "@/components/admin/AdminNav";
+import AdminPagination from "@/components/admin/AdminPagination";
 
-async function getGuides() {
+async function getGuides(pageParam?: string) {
   try {
     await connectDB();
-    const guides = await Guide.find().sort({ featured: -1, order: 1, createdAt: -1 }).lean();
-    return JSON.parse(JSON.stringify(guides));
+    const total = await Guide.countDocuments();
+    const { page, totalPages, skip, limit } = adminSlice(pageParam, total);
+    const guides = await Guide.find()
+      .sort({ featured: -1, order: 1, createdAt: -1 })
+      .skip(skip)
+      .limit(limit)
+      .lean();
+    return { guides: JSON.parse(JSON.stringify(guides)), total, page, totalPages };
   } catch (error) {
-    return [];
+    return { guides: [], total: 0, page: 1, totalPages: 0 };
   }
 }
 
-export default async function GuidesAdminPage() {
+export default async function GuidesAdminPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) {
   const session = await requireAdminPage();
-  const guides = await getGuides();
+  const { page: pageParam } = await searchParams;
+  const { guides, total, page, totalPages } = await getGuides(pageParam);
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -23,7 +36,7 @@ export default async function GuidesAdminPage() {
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-display">Guides ({guides.length})</h1>
+          <h1 className="text-2xl font-display">Guides ({total})</h1>
           <Link href="/admin/guides/new" className="btn-primary">Add Guide</Link>
         </div>
 
@@ -58,6 +71,8 @@ export default async function GuidesAdminPage() {
               ))}
             </tbody>
           </table>
+
+          <AdminPagination page={page} totalPages={totalPages} />
 
           {guides.length === 0 && (
             <div className="text-center py-12">

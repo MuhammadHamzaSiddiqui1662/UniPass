@@ -1,16 +1,25 @@
 import { requireAdminPage } from "@/lib/auth/guards";
 import { canEditUser, ROLE_LABELS, type UserRole } from "@/lib/auth/permissions";
+import { adminSlice } from "@/lib/admin/pagination";
 import { connectDB, User } from "@/lib/db";
 import AdminNav from "@/components/admin/AdminNav";
+import AdminPagination from "@/components/admin/AdminPagination";
 import Link from "next/link";
 
-async function getUsers() {
+async function getUsers(pageParam?: string) {
   try {
     await connectDB();
-    const users = await User.find().select("-password").sort({ createdAt: -1 }).lean();
-    return JSON.parse(JSON.stringify(users));
+    const total = await User.countDocuments();
+    const { page, totalPages, skip, limit } = adminSlice(pageParam, total);
+    const users = await User.find()
+      .select("-password")
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit)
+      .lean();
+    return { users: JSON.parse(JSON.stringify(users)), total, page, totalPages };
   } catch (error) {
-    return [];
+    return { users: [], total: 0, page: 1, totalPages: 0 };
   }
 }
 
@@ -20,9 +29,14 @@ function roleChip(role: UserRole) {
   return "bg-slate-100 text-slate-700";
 }
 
-export default async function UsersPage() {
+export default async function UsersPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) {
   const session = await requireAdminPage();
-  const users = await getUsers();
+  const { page: pageParam } = await searchParams;
+  const { users, total, page, totalPages } = await getUsers(pageParam);
   const actor = { id: session.userId, role: session.role };
 
   return (
@@ -31,7 +45,7 @@ export default async function UsersPage() {
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-display">Users ({users.length})</h1>
+          <h1 className="text-2xl font-display">Users ({total})</h1>
           <Link href="/admin/users/new" className="btn-primary">
             Add User
           </Link>
@@ -79,6 +93,8 @@ export default async function UsersPage() {
               })}
             </tbody>
           </table>
+
+          <AdminPagination page={page} totalPages={totalPages} />
 
           {users.length === 0 && (
             <div className="text-center py-12">

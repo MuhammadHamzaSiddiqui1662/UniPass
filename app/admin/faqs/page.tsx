@@ -1,20 +1,29 @@
 import { requireAdminPage } from "@/lib/auth/guards";
+import { adminSlice } from "@/lib/admin/pagination";
 import { connectDB, FAQ } from "@/lib/db";
 import Link from "next/link";
+import AdminPagination from "@/components/admin/AdminPagination";
 
-async function getFAQs() {
+async function getFAQs(pageParam?: string) {
   try {
     await connectDB();
-    const faqs = await FAQ.find().sort({ order: 1, createdAt: -1 }).lean();
-    return JSON.parse(JSON.stringify(faqs));
+    const total = await FAQ.countDocuments();
+    const { page, totalPages, skip, limit } = adminSlice(pageParam, total);
+    const faqs = await FAQ.find().sort({ order: 1, createdAt: -1 }).skip(skip).limit(limit).lean();
+    return { faqs: JSON.parse(JSON.stringify(faqs)), total, page, totalPages };
   } catch (error) {
-    return [];
+    return { faqs: [], total: 0, page: 1, totalPages: 0 };
   }
 }
 
-export default async function FAQsPage() {
+export default async function FAQsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) {
   await requireAdminPage();
-  const faqs = await getFAQs();
+  const { page: pageParam } = await searchParams;
+  const { faqs, total, page, totalPages } = await getFAQs(pageParam);
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -40,7 +49,7 @@ export default async function FAQsPage() {
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-display">FAQs ({faqs.length})</h1>
+          <h1 className="text-2xl font-display">FAQs ({total})</h1>
           <Link href="/admin/faqs/new" className="btn-primary">
             Add FAQ
           </Link>
@@ -83,6 +92,8 @@ export default async function FAQsPage() {
               ))}
             </tbody>
           </table>
+
+          <AdminPagination page={page} totalPages={totalPages} />
 
           {faqs.length === 0 && (
             <div className="text-center py-12">

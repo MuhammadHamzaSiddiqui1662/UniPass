@@ -1,4 +1,5 @@
 import { requireAdminPage } from "@/lib/auth/guards";
+import { adminPage } from "@/lib/admin/pagination";
 import { connectDB, University } from "@/lib/db";
 import AdminNav from "@/components/admin/AdminNav";
 import UniversitiesWorkspace, { type AdminUniversity } from "@/components/admin/UniversitiesWorkspace";
@@ -34,8 +35,13 @@ async function getUniversities(): Promise<AdminUniversity[]> {
   }
 }
 
-export default async function AdminUniversitiesPage() {
+export default async function AdminUniversitiesPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) {
   const session = await requireAdminPage();
+  const { page } = await searchParams;
   const universities = await getUniversities();
 
   return (
@@ -43,7 +49,7 @@ export default async function AdminUniversitiesPage() {
       <AdminNav role={session.role} name={session.name} current="universities" />
 
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <UniversitiesWorkspace universities={universities} />
+        <UniversitiesWorkspace universities={universities} page={adminPage(page)} />
       </main>
     </div>
   );

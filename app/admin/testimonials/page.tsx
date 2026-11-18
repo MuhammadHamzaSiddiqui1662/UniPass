@@ -1,21 +1,34 @@
 import { requireAdminPage } from "@/lib/auth/guards";
+import { adminSlice } from "@/lib/admin/pagination";
 import { connectDB, Testimonial } from "@/lib/db";
 import Link from "next/link";
 import AdminNav from "@/components/admin/AdminNav";
+import AdminPagination from "@/components/admin/AdminPagination";
 
-async function getTestimonials() {
+async function getTestimonials(pageParam?: string) {
   try {
     await connectDB();
-    const testimonials = await Testimonial.find().sort({ order: 1, createdAt: -1 }).lean();
-    return JSON.parse(JSON.stringify(testimonials));
+    const total = await Testimonial.countDocuments();
+    const { page, totalPages, skip, limit } = adminSlice(pageParam, total);
+    const testimonials = await Testimonial.find()
+      .sort({ order: 1, createdAt: -1 })
+      .skip(skip)
+      .limit(limit)
+      .lean();
+    return { testimonials: JSON.parse(JSON.stringify(testimonials)), total, page, totalPages };
   } catch (error) {
-    return [];
+    return { testimonials: [], total: 0, page: 1, totalPages: 0 };
   }
 }
 
-export default async function TestimonialsAdminPage() {
+export default async function TestimonialsAdminPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) {
   const session = await requireAdminPage();
-  const testimonials = await getTestimonials();
+  const { page: pageParam } = await searchParams;
+  const { testimonials, total, page, totalPages } = await getTestimonials(pageParam);
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -23,7 +36,7 @@ export default async function TestimonialsAdminPage() {
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-display">Testimonials ({testimonials.length})</h1>
+          <h1 className="text-2xl font-display">Testimonials ({total})</h1>
           <Link href="/admin/testimonials/new" className="btn-primary">Add testimonial</Link>
         </div>
 
@@ -59,6 +72,8 @@ export default async function TestimonialsAdminPage() {
               ))}
             </tbody>
           </table>
+
+          <AdminPagination page={page} totalPages={totalPages} />
 
           {testimonials.length === 0 && (
             <div className="text-center py-12"><p className="text-slate-600">No testimonials yet</p></div>

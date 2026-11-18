@@ -1,3 +1,4 @@
+import TaxonomyGroup from "@/components/admin/TaxonomyGroup";
 import { requireAdminPage } from "@/lib/auth/guards";
 import { connectDB, Taxonomy } from "@/lib/db";
 import Link from "next/link";
@@ -47,28 +48,8 @@ export default async function TaxonomiesAdminPage() {
         </div>
 
         <div className="space-y-6">
-          {Object.keys(typeLabels).map(type => (
-            <div key={type} className="bg-white rounded-card border border-slate-200 p-6">
-              <h2 className="font-display text-xl mb-4">{typeLabels[type]}</h2>
-              {grouped[type] && grouped[type].length > 0 ? (
-                <div className="space-y-2">
-                  {grouped[type].map((tax: any) => (
-                    <div key={tax._id} className="flex items-center justify-between py-2 border-b border-slate-200">
-                      <div>
-                        <span className="font-bold">{tax.label}</span>
-                        <span className="text-sm text-slate-600 ml-2">({tax.value})</span>
-                        {!tax.active && <span className="ml-2 text-xs text-error">Inactive</span>}
-                      </div>
-                      <Link href={`/admin/taxonomies/${tax._id}/edit`} className="text-primary hover:underline text-sm">
-                        Edit
-                      </Link>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <p className="text-sm text-slate-600">No items yet</p>
-              )}
-            </div>
+          {Object.keys(typeLabels).map((type) => (
+            <TaxonomyGroup key={type} title={typeLabels[type]} items={grouped[type] ?? []} />
           ))}
         </div>
       </main>

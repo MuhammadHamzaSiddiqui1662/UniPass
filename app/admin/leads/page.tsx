@@ -5,6 +5,7 @@ import Link from "next/link";
 import { formatDate, formatPhoneNumber } from "@/lib/utils/format";
 import { LEAD_STATUSES } from "@/lib/utils/constants";
 import AdminNav from "@/components/admin/AdminNav";
+import AdminPagination from "@/components/admin/AdminPagination";
 import { canBulkExport, canViewAllLeads, leadListFilter } from "@/lib/auth/permissions";
 import { presentLead } from "@/lib/leads/document";
 
@@ -238,33 +239,11 @@ export default async function LeadsPage({
             </table>
           </div>
 
-          {totalPages > 1 && (
-            <div className="border-t border-slate-200 px-6 py-4 flex justify-center gap-2">
-              {currentPage > 1 && (
-                <Link
-                  href={{
-                    query: { ...searchParams, page: currentPage - 1 },
-                  }}
-                  className="px-4 py-2 border border-slate-200 rounded-input text-sm hover:bg-primary-50"
-                >
-                  Previous
-                </Link>
-              )}
-              <span className="px-4 py-2 text-sm text-slate-600">
-                Page {currentPage} of {totalPages}
-              </span>
-              {currentPage < totalPages && (
-                <Link
-                  href={{
-                    query: { ...searchParams, page: currentPage + 1 },
-                  }}
-                  className="px-4 py-2 border border-slate-200 rounded-input text-sm hover:bg-primary-50"
-                >
-                  Next
-                </Link>
-              )}
-            </div>
-          )}
+          <AdminPagination
+            page={currentPage}
+            totalPages={totalPages}
+            hrefFor={(page) => ({ query: { ...searchParams, page } })}
+          />
 
           {leads.length === 0 && (
             <div className="text-center py-12">

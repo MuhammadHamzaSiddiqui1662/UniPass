@@ -2,6 +2,8 @@
 
 import { useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import AdminPagination from "@/components/admin/AdminPagination";
+import { clientPage } from "@/lib/admin/pagination";
 import { rowMessages, rowStatus, willImport } from "@/lib/universities/import/preview";
 
 type ApiRow = {
@@ -42,6 +44,7 @@ export default function BulkImportClient() {
   const [error, setError] = useState("");
   const [progress, setProgress] = useState<{ completed: number; total: number; name: string } | null>(null);
   const [summary, setSummary] = useState<Summary | null>(null);
+  const [previewPage, setPreviewPage] = useState(1);
 
   const prepared = useMemo(() => {
     if (!rows) return [];
@@ -60,6 +63,7 @@ export default function BulkImportClient() {
     { New: 0, Update: 0, Error: 0, Warning: 0 },
   );
   const importable = prepared.filter((row) => willImport(row, updateExisting)).length;
+  const previewWindow = clientPage(prepared, previewPage);
 
   async function download(url: string, filename: string) {
     setError("");
@@ -94,6 +98,7 @@ export default function BulkImportClient() {
     setCsv(file);
     setRows(null);
     setSummary(null);
+    setPreviewPage(1);
   }
 
   function chooseZip(file: File | null) {
@@ -105,6 +110,7 @@ export default function BulkImportClient() {
     setZip(file);
     setRows(null);
     setSummary(null);
+    setPreviewPage(1);
   }
 
   async function preview() {
@@ -121,6 +127,7 @@ export default function BulkImportClient() {
       if (!response.ok) throw new Error(data.error || "Could not preview that file.");
       setRows(data.rows);
       setZipFiles(data.zipFiles || 0);
+      setPreviewPage(1);
     } catch (previewError) {
       setError(previewError instanceof Error ? previewError.message : "Could not preview that file.");
     } finally {
@@ -332,7 +339,7 @@ export default function BulkImportClient() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-200">
-                {prepared.map((row) => (
+                {previewWindow.items.map((row) => (
                   <tr key={row.rowNumber} className="align-top hover:bg-primary-50/50">
                     <td className="px-6 py-4 text-slate-600">{row.rowNumber}</td>
                     <td className="px-6 py-4">
@@ -359,6 +366,11 @@ export default function BulkImportClient() {
               </tbody>
             </table>
           </div>
+          <AdminPagination
+            page={previewWindow.page}
+            totalPages={previewWindow.totalPages}
+            onPage={setPreviewPage}
+          />
         </section>
       )}
 

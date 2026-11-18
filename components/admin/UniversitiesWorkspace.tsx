@@ -3,7 +3,9 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import AdminPagination from "@/components/admin/AdminPagination";
 import HomeSliderManager, { type SliderUniversity } from "@/components/admin/HomeSliderManager";
+import { clientPage } from "@/lib/admin/pagination";
 
 export type AdminUniversity = {
   id: string;
@@ -59,7 +61,13 @@ function moveFeatured(items: SliderUniversity[], id: string, direction: -1 | 1) 
   return arrange(next, items.filter((item) => !item.featuredOnHome));
 }
 
-export default function UniversitiesWorkspace({ universities }: { universities: AdminUniversity[] }) {
+export default function UniversitiesWorkspace({
+  universities,
+  page,
+}: {
+  universities: AdminUniversity[];
+  page: number;
+}) {
   const router = useRouter();
   const [items, setItems] = useState(() => initialSliderItems(universities));
   const [saving, setSaving] = useState(false);
@@ -69,6 +77,7 @@ export default function UniversitiesWorkspace({ universities }: { universities: 
   const featured = items.filter((item) => item.featuredOnHome);
   const available = items.filter((item) => !item.featuredOnHome);
   const slideNumber = new Map(featured.map((item, index) => [item.id, index + 1]));
+  const listing = clientPage(universities, page);
 
   const edit = (recipe: (current: SliderUniversity[]) => SliderUniversity[]) => {
     setMessage("");
@@ -143,7 +152,7 @@ export default function UniversitiesWorkspace({ universities }: { universities: 
                 </tr>
               </thead>
               <tbody className="divide-y divide-border">
-                {universities.map((university) => {
+                {listing.items.map((university) => {
                   const slide = slideNumber.get(university.id);
                   const published = university.status === "published";
                   return (
@@ -208,6 +217,12 @@ export default function UniversitiesWorkspace({ universities }: { universities: 
               </tbody>
             </table>
           </div>
+
+          <AdminPagination
+            page={listing.page}
+            totalPages={listing.totalPages}
+            hrefFor={(next) => ({ pathname: "/admin/universities", query: { page: next } })}
+          />
 
           {universities.length === 0 && (
             <div className="py-12 text-center">

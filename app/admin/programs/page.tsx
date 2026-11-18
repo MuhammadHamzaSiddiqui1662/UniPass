@@ -1,20 +1,34 @@
 import { requireAdminPage } from "@/lib/auth/guards";
+import { adminSlice } from "@/lib/admin/pagination";
 import { connectDB, Program } from "@/lib/db";
 import Link from "next/link";
+import AdminPagination from "@/components/admin/AdminPagination";
 
-async function getPrograms() {
+async function getPrograms(pageParam?: string) {
   try {
     await connectDB();
-    const programs = await Program.find().populate("university", "name").sort({ createdAt: -1 }).lean();
-    return JSON.parse(JSON.stringify(programs));
+    const total = await Program.countDocuments();
+    const { page, totalPages, skip, limit } = adminSlice(pageParam, total);
+    const programs = await Program.find()
+      .populate("university", "name")
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit)
+      .lean();
+    return { programs: JSON.parse(JSON.stringify(programs)), total, page, totalPages };
   } catch (error) {
-    return [];
+    return { programs: [], total: 0, page: 1, totalPages: 0 };
   }
 }
 
-export default async function ProgramsAdminPage() {
+export default async function ProgramsAdminPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) {
   await requireAdminPage();
-  const programs = await getPrograms();
+  const { page: pageParam } = await searchParams;
+  const { programs, total, page, totalPages } = await getPrograms(pageParam);
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -28,7 +42,7 @@ export default async function ProgramsAdminPage() {
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-display">Programs ({programs.length})</h1>
+          <h1 className="text-2xl font-display">Programs ({total})</h1>
           <Link href="/admin/programs/new" className="btn-primary">Add Program</Link>
         </div>
 
@@ -61,6 +75,8 @@ export default async function ProgramsAdminPage() {
               ))}
             </tbody>
           </table>
+
+          <AdminPagination page={page} totalPages={totalPages} />
 
           {programs.length === 0 && (
             <div className="text-center py-12"><p className="text-slate-600">No programs yet</p></div>

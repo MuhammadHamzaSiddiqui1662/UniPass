@@ -1,20 +1,34 @@
 import { requireAdminPage } from "@/lib/auth/guards";
+import { adminSlice } from "@/lib/admin/pagination";
 import { connectDB, Scholarship } from "@/lib/db";
 import Link from "next/link";
+import AdminPagination from "@/components/admin/AdminPagination";
 
-async function getScholarships() {
+async function getScholarships(pageParam?: string) {
   try {
     await connectDB();
-    const scholarships = await Scholarship.find().populate("university", "name").sort({ createdAt: -1 }).lean();
-    return JSON.parse(JSON.stringify(scholarships));
+    const total = await Scholarship.countDocuments();
+    const { page, totalPages, skip, limit } = adminSlice(pageParam, total);
+    const scholarships = await Scholarship.find()
+      .populate("university", "name")
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit)
+      .lean();
+    return { scholarships: JSON.parse(JSON.stringify(scholarships)), total, page, totalPages };
   } catch (error) {
-    return [];
+    return { scholarships: [], total: 0, page: 1, totalPages: 0 };
   }
 }
 
-export default async function ScholarshipsAdminPage() {
+export default async function ScholarshipsAdminPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) {
   await requireAdminPage();
-  const scholarships = await getScholarships();
+  const { page: pageParam } = await searchParams;
+  const { scholarships, total, page, totalPages } = await getScholarships(pageParam);
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -28,7 +42,7 @@ export default async function ScholarshipsAdminPage() {
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-display">Scholarships ({scholarships.length})</h1>
+          <h1 className="text-2xl font-display">Scholarships ({total})</h1>
           <Link href="/admin/scholarships/new" className="btn-primary">Add Scholarship</Link>
         </div>
 
@@ -61,6 +75,8 @@ export default async function ScholarshipsAdminPage() {
               ))}
             </tbody>
           </table>
+
+          <AdminPagination page={page} totalPages={totalPages} />
 
           {scholarships.length === 0 && (
             <div className="text-center py-12"><p className="text-slate-600">No scholarships yet</p></div>
