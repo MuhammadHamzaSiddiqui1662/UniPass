@@ -4,9 +4,8 @@ import Link from "next/link";
 import Header from "@/components/public/Header";
 import Footer from "@/components/public/Footer";
 import Asset from "@/components/home/Asset";
-import ListingPagination from "@/components/universities/ListingPagination";
 import SortSelect from "@/components/universities/SortSelect";
-import UniversityCard from "@/components/universities/UniversityCard";
+import UniversityScrollList from "@/components/universities/UniversityScrollList";
 import { connectDB, University } from "@/lib/db";
 import {
   FILTER_CITIES,
@@ -20,6 +19,7 @@ import {
   filterCatalog,
   scholarshipLabel,
   sortCatalog,
+  type CatalogUniversity,
   type ListingQuery,
 } from "@/lib/universities/catalog";
 import { searchUniversities, type UniversitySearchRecord } from "@/lib/universities/search";
@@ -143,7 +143,6 @@ export default async function UniversitiesPage({
   const page = Math.max(1, parseInt(query.page || "1", 10) || 1);
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const currentPage = Math.min(page, totalPages);
-  const universities = filtered.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
 
   const chips = [
     ...(query.q?.trim() ? [{ key: "q" as const, value: `“${query.q.trim()}”` }] : []),
@@ -313,7 +312,7 @@ export default async function UniversitiesPage({
               </div>
             )}
 
-            {universities.length === 0 ? (
+            {filtered.length === 0 ? (
               <div className="mt-10 rounded-card border border-slate-200 bg-white px-6 py-16 text-center">
                 <p className="text-[18px] text-slate-600">No universities found matching your criteria.</p>
                 <Link href="/universities" className="btn-primary mt-6">
@@ -321,34 +320,40 @@ export default async function UniversitiesPage({
                 </Link>
               </div>
             ) : (
-              <div className="mt-4 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-                {universities.map((university) => (
-                  <UniversityCard key={university.slug} university={university} />
-                ))}
-              </div>
+              <UniversityScrollList
+                universities={filtered.map(toCard)}
+                initialCount={currentPage * PAGE_SIZE}
+              />
             )}
-
-            <ListingPagination
-              page={currentPage}
-              totalPages={totalPages}
-              query={{
-                q: query.q,
-                city: query.city,
-                field: query.field,
-                type: query.type,
-                level: query.level,
-                country: asList(query.country).join(",") || undefined,
-                scholarship: asList(query.scholarship).join(",") || undefined,
-                sort: query.sort,
-                cleared: query.cleared,
-              }}
-            />
           </div>
         </section>
       </main>
       <Footer />
     </>
   );
+}
+
+function toCard(university: UniversitySearchRecord): CatalogUniversity {
+  return {
+    _id: university._id,
+    slug: university.slug,
+    name: university.name,
+    type: university.type,
+    city: university.city,
+    country: university.country,
+    countryCode: university.countryCode,
+    scholarshipType: university.scholarshipType,
+    aliases: university.aliases,
+    featuredOnHome: university.featuredOnHome,
+    homeOrder: university.homeOrder,
+    fields: university.fields,
+    knownFor: university.knownFor,
+    levels: university.levels,
+    tuitionFrom: university.tuitionFrom,
+    hasMeritScholarship: university.hasMeritScholarship,
+    featuredImage: university.featuredImage,
+    featuredImageAlt: university.featuredImageAlt,
+  };
 }
 
 function labelForType(value: string) {
