@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useId, useRef, useState, type KeyboardEvent as ReactKeyboardEvent } from "react";
+import { createPortal } from "react-dom";
 
 export type SliderUniversity = {
   id: string;
@@ -9,6 +10,202 @@ export type SliderUniversity = {
   featuredOnHome: boolean;
   homeOrder: number;
 };
+
+function AddUniversityCombobox({
+  available,
+  saving,
+  onAdd,
+}: {
+  available: SliderUniversity[];
+  saving: boolean;
+  onAdd: (id: string) => void;
+}) {
+  const listId = useId().replace(/:/g, "");
+  const inputRef = useRef<HTMLInputElement>(null);
+  const listRef = useRef<HTMLUListElement>(null);
+  const [query, setQuery] = useState("");
+  const [listOpen, setListOpen] = useState(false);
+  const [active, setActive] = useState(0);
+  const [box, setBox] = useState<{
+    left: number;
+    width: number;
+    maxHeight: number;
+    top?: number;
+    bottom?: number;
+  } | null>(null);
+
+  const normalizedQuery = query.trim().toLowerCase();
+  const matches = available.filter((item) => {
+    if (!normalizedQuery) return true;
+    return `${item.name} ${item.city}`.toLowerCase().includes(normalizedQuery);
+  });
+  const selected = matches.length ? Math.min(active, matches.length - 1) : 0;
+  const selectedId = matches[selected]?.id;
+
+  useEffect(() => {
+    setActive(0);
+  }, [normalizedQuery]);
+
+  useEffect(() => {
+    if (!listOpen) return;
+    function place() {
+      const input = inputRef.current;
+      if (!input) return;
+      const rect = input.getBoundingClientRect();
+      const gap = 4;
+      const preferred = 288;
+      const spaceBelow = window.innerHeight - rect.bottom - gap;
+      const spaceAbove = rect.top - gap;
+      const openAbove = spaceBelow < preferred && spaceAbove > spaceBelow;
+      const maxHeight = Math.min(preferred, Math.max(0, openAbove ? spaceAbove : spaceBelow));
+      setBox({
+        left: rect.left,
+        width: rect.width,
+        maxHeight,
+        ...(openAbove
+          ? { bottom: window.innerHeight - rect.top + gap }
+          : { top: rect.bottom + gap }),
+      });
+    }
+    place();
+    window.addEventListener("resize", place);
+    window.addEventListener("scroll", place, true);
+    return () => {
+      window.removeEventListener("resize", place);
+      window.removeEventListener("scroll", place, true);
+    };
+  }, [listOpen, matches.length]);
+
+  useEffect(() => {
+    if (!listOpen) return;
+    function onPointer(event: MouseEvent) {
+      const target = event.target as Node;
+      if (inputRef.current?.contains(target) || listRef.current?.contains(target)) return;
+      setListOpen(false);
+    }
+    document.addEventListener("mousedown", onPointer);
+    return () => document.removeEventListener("mousedown", onPointer);
+  }, [listOpen]);
+
+  useEffect(() => {
+    if (!listOpen || !selectedId) return;
+    document.getElementById(`${listId}-${selectedId}`)?.scrollIntoView({ block: "nearest" });
+  }, [listOpen, selectedId, listId]);
+
+  function choose(id: string) {
+    onAdd(id);
+    setQuery("");
+    setListOpen(false);
+    setActive(0);
+  }
+
+  function onInputKeyDown(event: ReactKeyboardEvent<HTMLInputElement>) {
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      if (!listOpen) {
+        setListOpen(true);
+        setActive(0);
+        return;
+      }
+      if (!matches.length) return;
+      setActive((index) => (Math.min(index, matches.length - 1) + 1) % matches.length);
+    } else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      if (!listOpen) {
+        setListOpen(true);
+        setActive(0);
+        return;
+      }
+      if (!matches.length) return;
+      setActive((index) => (Math.min(index, matches.length - 1) - 1 + matches.length) % matches.length);
+    } else if (event.key === "Enter") {
+      if (listOpen && matches[selected]) {
+        event.preventDefault();
+        choose(matches[selected].id);
+      }
+    } else if (event.key === "Escape") {
+      setListOpen(false);
+    }
+  }
+
+  const list =
+    listOpen && box && typeof document !== "undefined"
+      ? createPortal(
+          <ul
+            ref={listRef}
+            id={listId}
+            role="listbox"
+            style={{
+              top: box.top,
+              bottom: box.bottom,
+              left: box.left,
+              width: box.width,
+              maxHeight: box.maxHeight,
+            }}
+            className="fixed z-[70] overflow-y-auto rounded-panel border border-slate-200 bg-white py-1 shadow-form-card"
+          >
+            {matches.length === 0 ? (
+              <li className="px-3 py-3 text-[14px] text-slate-600">Nothing matched that search.</li>
+            ) : (
+              matches.map((item, index) => {
+                const isSelected = index === selected;
+                return (
+                  <li key={item.id} role="presentation">
+                    <button
+                      id={`${listId}-${item.id}`}
+                      type="button"
+                      role="option"
+                      aria-selected={isSelected}
+                      onMouseEnter={() => setActive(index)}
+                      onMouseDown={(event) => event.preventDefault()}
+                      onClick={() => choose(item.id)}
+                      className={`block w-full px-3 py-2 text-left ${isSelected ? "bg-primary-50" : "hover:bg-slate-50"}`}
+                    >
+                      <span className="block truncate text-[15px] font-bold text-primary-900">{item.name}</span>
+                      {item.city ? (
+                        <span className="mt-0.5 block truncate text-[13px] text-slate-600">{item.city}</span>
+                      ) : null}
+                    </button>
+                  </li>
+                );
+              })
+            )}
+          </ul>,
+          document.body,
+        )
+      : null;
+
+  return (
+    <>
+      <label htmlFor="home-slider-filter" className="block text-sm font-bold text-primary-900">
+        Add a university
+      </label>
+      <input
+        ref={inputRef}
+        id="home-slider-filter"
+        type="search"
+        value={query}
+        onChange={(event) => {
+          setQuery(event.target.value);
+          setListOpen(true);
+        }}
+        onFocus={() => setListOpen(true)}
+        onClick={() => setListOpen(true)}
+        onKeyDown={onInputKeyDown}
+        placeholder="Filter by name or city"
+        role="combobox"
+        aria-expanded={listOpen}
+        aria-controls={listId}
+        aria-autocomplete="list"
+        aria-activedescendant={listOpen && selectedId ? `${listId}-${selectedId}` : undefined}
+        className="input-field"
+        autoComplete="off"
+        disabled={saving}
+      />
+      {list}
+    </>
+  );
+}
 
 type HomeSliderManagerProps = {
   featured: SliderUniversity[];
@@ -34,18 +231,6 @@ export default function HomeSliderManager({
   onSave,
 }: HomeSliderManagerProps) {
   const [open, setOpen] = useState(false);
-  const [query, setQuery] = useState("");
-  const normalizedQuery = query.trim().toLowerCase();
-  const matches = available.filter((item) => {
-    if (!normalizedQuery) return true;
-    return `${item.name} ${item.city}`.toLowerCase().includes(normalizedQuery);
-  });
-
-  const addUniversity = (id: string) => {
-    if (!id) return;
-    onAdd(id);
-    setQuery("");
-  };
 
   return (
     <section className="rounded-card border border-slate-200 bg-white lg:sticky lg:top-6 lg:col-start-2 lg:row-start-1 lg:max-h-[calc(100vh-3rem)] lg:overflow-y-auto">
@@ -126,36 +311,7 @@ export default function HomeSliderManager({
                 : "Every published university is already on the slider."}
             </p>
           ) : (
-            <>
-              <label htmlFor="home-slider-filter" className="block text-sm font-bold text-primary-900">
-                Add a university
-              </label>
-              <input
-                id="home-slider-filter"
-                type="search"
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder="Filter by name or city"
-                className="input-field"
-                autoComplete="off"
-                disabled={saving}
-              />
-              <select
-                className="input-field"
-                value=""
-                disabled={saving || matches.length === 0}
-                aria-label="Add a published university to the home slider"
-                onChange={(event) => addUniversity(event.target.value)}
-              >
-                <option value="">{matches.length === 0 ? "No matches" : "Choose a university"}</option>
-                {matches.map((item) => (
-                  <option key={item.id} value={item.id}>
-                    {item.name}
-                    {item.city ? ` — ${item.city}` : ""}
-                  </option>
-                ))}
-              </select>
-            </>
+            <AddUniversityCombobox available={available} saving={saving} onAdd={onAdd} />
           )}
         </div>
 
