@@ -725,3 +725,25 @@
 .guide-article figure[data-align="center"] { margin-inline: auto; }
 .guide-article figure[data-align="right"] { margin-inline-start: auto; }
 .guide-article mark { padding: 0 0.15em; border-radius: 2px; }
+
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 12mm;
+  }
+
+  .compare-report {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .compare-report thead {
+    display: table-header-group;
+  }
+
+  .compare-report tr,
+  .compare-report th,
+  .compare-report td {
+    break-inside: avoid;
+  }
+}

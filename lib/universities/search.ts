@@ -11,6 +11,7 @@ export { compact, fold };
 export type UniversitySearchRecord = CatalogUniversity & {
   tuitionTo?: number;
   tuitionCurrency?: string;
+  website?: string;
   ranking?: number;
   intake?: string;
   languages?: string[];

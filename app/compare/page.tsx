@@ -5,8 +5,12 @@ import Link from "next/link";
 import Header from "@/components/public/Header";
 import Footer from "@/components/public/Footer";
 import CompareColumnSearch from "@/components/universities/CompareColumnSearch";
-import { cityLabel, FILTER_TYPES } from "@/lib/universities/catalog";
-import { toCompareUniversity, type CompareUniversity } from "@/lib/universities/compare";
+import {
+  COMPARE_EMPTY,
+  toCompareUniversity,
+  visibleCompareRows,
+  type CompareUniversity,
+} from "@/lib/universities/compare";
 import {
   COMPARE_SLOT_COUNT,
   readCompareSlots,
@@ -15,34 +19,17 @@ import {
   type CompareSlots,
 } from "@/lib/universities/saved";
 
-function typeLabel(type: string) {
-  return FILTER_TYPES.find((item) => item.value === type)?.label || type;
-}
-
-function tuitionText(university: CompareUniversity) {
-  if (university.tuitionFrom == null) return "—";
-  const from = `$${university.tuitionFrom.toLocaleString()}`;
-  if (university.tuitionTo == null) return from;
-  return `${from} - $${university.tuitionTo.toLocaleString()}`;
-}
-
-function listText(values: string[]) {
-  return values.length ? values.join(", ") : "—";
-}
-
-const ROWS: { label: string; value: (university: CompareUniversity) => string }[] = [
-  { label: "Type", value: (university) => typeLabel(university.type) || "—" },
-  { label: "City", value: (university) => cityLabel(university.city) || "—" },
-  { label: "Tuition (USD/year)", value: tuitionText },
-  { label: "Fields Offered", value: (university) => listText(university.fields) },
-  { label: "Levels", value: (university) => listText(university.levels) },
-  { label: "Merit Scholarship", value: (university) => (university.hasMeritScholarship ? "Yes" : "No") },
-];
-
 export default function ComparePage() {
   const [slots, setSlots] = useState<CompareSlots>(Array.from({ length: COMPARE_SLOT_COUNT }, () => null));
   const [universities, setUniversities] = useState<Record<string, CompareUniversity>>({});
   const [ready, setReady] = useState(false);
+  const [printedOn, setPrintedOn] = useState("");
+
+  useEffect(() => {
+    setPrintedOn(
+      new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }),
+    );
+  }, []);
 
   useEffect(() => {
     const stored = readCompareSlots();
@@ -83,22 +70,58 @@ export default function ComparePage() {
     }
   }
 
+  const selected = slots.map((slot) => (slot ? universities[slot] : undefined));
+  const rows = visibleCompareRows(selected);
+  const canPrint = ready && selected.some(Boolean);
+
+  function printReport() {
+    const names = selected.flatMap((university) => (university ? [university.name] : []));
+    const previous = document.title;
+    document.title = names.length ? `UniPass comparison - ${names.join(", ")}` : "UniPass comparison";
+    const restore = () => {
+      document.title = previous;
+      window.removeEventListener("afterprint", restore);
+    };
+    window.addEventListener("afterprint", restore);
+    window.print();
+  }
+
   return (
     <>
-      <Header />
-      <main className="pt-32">
-        <section className="bg-slate-50 py-16">
-          <div className="container-1200">
-            <h1 className="text-h1-detail mb-6">Compare Universities</h1>
-            <p className="mb-8 max-w-3xl text-lg text-slate-600">
-              Compare up to 3 universities. Search each column by name, city, field, scholarship, or keyword.
-            </p>
+      <div className="print:hidden">
+        <Header />
+      </div>
+      <main className="pt-32 print:pt-0">
+        <section className="bg-slate-50 py-16 print:bg-white print:py-0">
+          <div className="container-1200 print:max-w-none print:px-0">
+            <div className="mb-8 flex flex-wrap items-end justify-between gap-4 print:mb-4">
+              <div>
+                <h1 className="text-h1-detail mb-6 print:mb-1 print:text-[28px] print:leading-tight">
+                  Compare Universities
+                </h1>
+                <p className="max-w-3xl text-lg text-slate-600 print:hidden">
+                  Compare up to 3 universities. Search each column by name, city, field, scholarship, or keyword.
+                </p>
+                <p className="hidden text-sm text-slate-600 print:block">
+                  {printedOn ? `University comparison · ${printedOn}` : "University comparison"}
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={printReport}
+                disabled={!canPrint}
+                title={canPrint ? "Open the print dialog and choose Save as PDF" : "Add a university before saving a PDF"}
+                className="btn-outline px-5 py-2 text-sm disabled:cursor-not-allowed disabled:opacity-50 print:hidden"
+              >
+                Save as PDF
+              </button>
+            </div>
 
-            <div className="overflow-x-auto rounded-card border border-slate-200 bg-white">
-              <table className="min-w-full">
+            <div className="compare-report overflow-x-auto rounded-card border border-slate-200 bg-white print:overflow-visible print:rounded-none">
+              <table className="min-w-full print:w-full print:table-fixed print:text-xs">
                 <thead className="bg-primary-50">
                   <tr>
-                    <th className="sticky left-0 z-10 bg-primary-50 px-6 py-4 text-left text-sm font-bold">
+                    <th className="sticky left-0 z-10 w-[168px] bg-primary-50 px-6 py-4 text-left text-sm font-bold print:static print:w-[18%] print:px-3 print:py-2 print:text-xs">
                       Feature
                     </th>
                     {slots.map((slot, index) => {
@@ -107,19 +130,26 @@ export default function ComparePage() {
                         (id, slotIndex): id is string => slotIndex !== index && Boolean(id),
                       );
                       return (
-                        <th key={index} className="min-w-[260px] px-4 py-4 text-left align-top font-normal">
-                          <CompareColumnSearch
-                            label={`University ${index + 1}`}
-                            excludedIds={excludedIds}
-                            onSelect={(selected) => updateSlot(index, selected)}
-                          />
+                        <th
+                          key={index}
+                          className={`min-w-[260px] px-4 py-4 text-left align-top font-normal print:min-w-0 print:px-3 print:py-2 ${
+                            slot ? "" : "print:hidden"
+                          }`}
+                        >
+                          <div className="print:hidden">
+                            <CompareColumnSearch
+                              label={`University ${index + 1}`}
+                              excludedIds={excludedIds}
+                              onSelect={(selectedUniversity) => updateSlot(index, selectedUniversity)}
+                            />
+                          </div>
                           {university ? (
-                            <div className="mt-3">
+                            <div className="mt-3 print:mt-0">
                               <div className="font-bold text-primary-900">{university.name}</div>
                               <button
                                 type="button"
                                 onClick={() => updateSlot(index, null)}
-                                className="mt-1 text-xs font-bold text-error hover:underline"
+                                className="mt-1 text-xs font-bold text-error hover:underline print:hidden"
                               >
                                 Clear
                               </button>
@@ -132,13 +162,13 @@ export default function ComparePage() {
                               <button
                                 type="button"
                                 onClick={() => updateSlot(index, null)}
-                                className="mt-1 text-xs font-bold text-error hover:underline"
+                                className="mt-1 text-xs font-bold text-error hover:underline print:hidden"
                               >
                                 Clear
                               </button>
                             </div>
                           ) : (
-                            <p className="mt-3 text-sm text-slate-600">Add a university</p>
+                            <p className="mt-3 text-sm text-slate-600 print:hidden">Add a university</p>
                           )}
                         </th>
                       );
@@ -146,25 +176,38 @@ export default function ComparePage() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-border">
-                  {ROWS.map((row) => (
+                  {rows.map((row) => (
                     <tr key={row.label}>
                       <th
                         scope="row"
-                        className="sticky left-0 z-10 bg-white px-6 py-4 text-left text-sm font-bold"
+                        className="sticky left-0 z-10 bg-white px-6 py-4 text-left text-sm font-bold print:static print:px-3 print:py-2 print:text-xs"
                       >
                         {row.label}
                       </th>
                       {slots.map((slot, index) => {
                         const university = slot ? universities[slot] : undefined;
+                        const text = university ? row.value(university) : COMPARE_EMPTY;
+                        const href = university && text !== COMPARE_EMPTY ? row.href?.(university) : undefined;
                         return (
-                          <td key={index} className="px-6 py-4 text-sm text-primary-900">
-                            {university ? row.value(university) : "—"}
+                          <td
+                            key={index}
+                            className={`whitespace-pre-line px-6 py-4 text-sm text-primary-900 print:px-3 print:py-2 print:text-xs ${
+                              slot ? "" : "print:hidden"
+                            }`}
+                          >
+                            {href ? (
+                              <a href={href} target="_blank" rel="noreferrer" className="font-bold text-primary hover:underline">
+                                {text}
+                              </a>
+                            ) : (
+                              text
+                            )}
                           </td>
                         );
                       })}
                     </tr>
                   ))}
-                  <tr>
+                  <tr className="print:hidden">
                     <th scope="row" className="sticky left-0 z-10 bg-white px-6 py-4 text-left text-sm font-bold">
                       Details
                     </th>
@@ -177,7 +220,7 @@ export default function ComparePage() {
                               View Details
                             </Link>
                           ) : (
-                            <span className="text-sm text-primary-900">—</span>
+                            <span className="text-sm text-primary-900">{COMPARE_EMPTY}</span>
                           )}
                         </td>
                       );
@@ -187,13 +230,20 @@ export default function ComparePage() {
               </table>
             </div>
 
-            <Link href="/universities" className="mt-6 inline-block text-[15px] font-bold text-primary hover:underline">
+            <p className="mt-4 hidden text-xs text-slate-600 print:block">
+              {printedOn ? `Prepared ${printedOn} on UniPass. ` : "Prepared on UniPass. "}
+              Figures are the published university record and can change.
+            </p>
+
+            <Link href="/universities" className="mt-6 inline-block text-[15px] font-bold text-primary hover:underline print:hidden">
               Browse all universities
             </Link>
           </div>
         </section>
       </main>
-      <Footer />
+      <div className="print:hidden">
+        <Footer />
+      </div>
     </>
   );
 }
