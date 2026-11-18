@@ -1,9 +1,13 @@
+import { isStoredImageReference } from "@/lib/upload/urls";
+
 export type TestimonialWriteInput = {
   studentName: string;
   initials: string;
   quote: string;
   origin: string;
   university: string;
+  image: string;
+  imageAlt: string;
   verified: boolean;
   order: number;
   status: "draft" | "published";
@@ -24,6 +28,8 @@ export function parseTestimonialWrite(
   if (!origin) return { ok: false, error: "Origin is required" };
   if (!university) return { ok: false, error: "University is required" };
   if (!quote) return { ok: false, error: "Quote is required" };
+  const image = optionalImage(input.image);
+  if (image === null) return { ok: false, error: "Use an uploaded image or an image URL" };
   const status = input.status === "published" ? "published" : input.status === "draft" ? "draft" : "";
   if (!status) return { ok: false, error: "Choose draft or published" };
 
@@ -35,6 +41,8 @@ export function parseTestimonialWrite(
       quote,
       origin,
       university,
+      image,
+      imageAlt: image ? text(input.imageAlt, 200) : "",
       verified: input.verified === true,
       order: clampInt(input.order, -1000, 10000, 0),
       status,
@@ -56,6 +64,14 @@ function normalizeInitials(value: unknown, name: string) {
   const raw = typeof value === "string" ? value : "";
   const cleaned = raw.replace(/[^A-Za-z]/g, "").toUpperCase().slice(0, 2);
   return cleaned || initialsFromName(name);
+}
+
+function optionalImage(value: unknown) {
+  if (value == null) return "";
+  if (typeof value !== "string") return null;
+  const url = value.trim();
+  if (!url) return "";
+  return isStoredImageReference(url) ? url : null;
 }
 
 function text(value: unknown, max: number) {

@@ -33,6 +33,8 @@ export type HomeTestimonial = {
   name: string;
   origin: string;
   university: string;
+  image?: string;
+  imageAlt?: string;
   sample: boolean;
 };
 

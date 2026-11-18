@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { connectDB, Testimonial } from "@/lib/db";
 import { requireAdmin } from "@/lib/auth/session";
 import { parseTestimonialWrite } from "@/lib/testimonials/input";
+import { releaseUnusedImages } from "@/lib/upload/cleanup";
 import { revalidatePath } from "next/cache";
 
 export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
@@ -24,8 +25,10 @@ export async function PATCH(request: NextRequest, { params }: { params: Promise<
     const { id } = await params;
     const parsed = parseTestimonialWrite(await request.json());
     if (!parsed.ok) return NextResponse.json({ error: parsed.error }, { status: 400 });
+    const existing = await Testimonial.findById(id).select("image").lean();
     const testimonial = await Testimonial.findByIdAndUpdate(id, parsed.data, { new: true, runValidators: true }).lean();
     if (!testimonial) return NextResponse.json({ error: "Not found" }, { status: 404 });
+    await releaseUnusedImages([existing?.image], [testimonial.image]);
     revalidatePath("/");
     return NextResponse.json({ testimonial });
   } catch (error) {
@@ -40,6 +43,7 @@ export async function DELETE(request: NextRequest, { params }: { params: Promise
     const { id } = await params;
     const testimonial = await Testimonial.findByIdAndDelete(id);
     if (!testimonial) return NextResponse.json({ error: "Not found" }, { status: 404 });
+    await releaseUnusedImages([testimonial.image], []);
     revalidatePath("/");
     return NextResponse.json({ success: true });
   } catch (error) {

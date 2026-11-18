@@ -176,7 +176,15 @@ export default function ImageUploader({
               }}
               className="rounded-input border border-slate-200 bg-slate-50 p-3"
             >
-              <div className={`overflow-hidden rounded-lg bg-white ${kind === "logo" ? "mx-auto h-24 w-24" : "h-36 w-full"}`}>
+              <div
+                className={`overflow-hidden bg-white ${
+                  kind === "logo"
+                    ? "mx-auto h-24 w-24 rounded-lg"
+                    : kind === "photo"
+                      ? "mx-auto h-24 w-24 rounded-full"
+                      : "h-36 w-full rounded-lg"
+                }`}
+              >
                 <img
                   src={image.url}
                   alt={image.alt || ""}
@@ -190,7 +198,9 @@ export default function ImageUploader({
                     value={image.alt}
                     onChange={(event) => setAlt(index, event.target.value)}
                     className="input-field mt-1"
-                    placeholder={kind === "logo" ? "University logo" : "Campus courtyard in daylight"}
+                    placeholder={
+                      kind === "logo" ? "University logo" : kind === "photo" ? "Student portrait" : "Campus courtyard in daylight"
+                    }
                   />
                 </label>
               )}

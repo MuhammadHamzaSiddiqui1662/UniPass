@@ -3,6 +3,7 @@
 import { FormEvent, useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import ImageUploader from "@/components/admin/ImageUploader";
 import { initialsFromName } from "@/lib/testimonials/input";
 
 type TestimonialRecord = {
@@ -11,6 +12,8 @@ type TestimonialRecord = {
   quote?: string;
   origin?: string;
   university?: string;
+  image?: string;
+  imageAlt?: string;
   verified?: boolean;
   order?: number;
   status?: "draft" | "published";
@@ -29,6 +32,8 @@ export default function TestimonialForm({ testimonialId }: { testimonialId?: str
   const [origin, setOrigin] = useState("");
   const [university, setUniversity] = useState("");
   const [quote, setQuote] = useState("");
+  const [image, setImage] = useState("");
+  const [imageAlt, setImageAlt] = useState("");
   const [verified, setVerified] = useState(false);
   const [order, setOrder] = useState(0);
   const [status, setStatus] = useState<"draft" | "published">("draft");
@@ -50,6 +55,8 @@ export default function TestimonialForm({ testimonialId }: { testimonialId?: str
         setOrigin(story.origin || "");
         setUniversity(story.university || "");
         setQuote(story.quote || "");
+        setImage(story.image || "");
+        setImageAlt(story.imageAlt || "");
         setVerified(Boolean(story.verified));
         setOrder(story.order || 0);
         setStatus(story.status === "published" ? "published" : "draft");
@@ -79,6 +86,8 @@ export default function TestimonialForm({ testimonialId }: { testimonialId?: str
           origin,
           university,
           quote,
+          image,
+          imageAlt,
           verified,
           order,
           status,
@@ -167,6 +176,16 @@ export default function TestimonialForm({ testimonialId }: { testimonialId?: str
                   Quote
                   <textarea value={quote} onChange={(event) => setQuote(event.target.value)} required rows={5} className="input-field mt-1 h-auto py-3" />
                 </label>
+                <ImageUploader
+                  label="Photo"
+                  hint="Optional. JPEG, PNG, or WebP. A square portrait works best. Initials show when there is no photo."
+                  kind="photo"
+                  images={image ? [{ url: image, alt: imageAlt }] : []}
+                  onChange={(images) => {
+                    setImage(images[0]?.url || "");
+                    setImageAlt(images[0]?.alt || "");
+                  }}
+                />
               </div>
             </section>
 

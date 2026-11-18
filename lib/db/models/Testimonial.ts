@@ -7,6 +7,8 @@ export interface ITestimonial {
   quote: string;
   origin: string;
   university: string;
+  image: string;
+  imageAlt: string;
   verified: boolean;
   order: number;
   status: "draft" | "published";
@@ -21,6 +23,8 @@ const testimonialSchema = new Schema<ITestimonial>(
     quote: { type: String, required: true },
     origin: { type: String, required: true },
     university: { type: String, required: true },
+    image: { type: String, default: "" },
+    imageAlt: { type: String, default: "" },
     verified: { type: Boolean, default: false },
     order: { type: Number, default: 0 },
     status: { type: String, enum: ["draft", "published"], default: "draft" },
@@ -29,6 +33,11 @@ const testimonialSchema = new Schema<ITestimonial>(
 );
 
 testimonialSchema.index({ status: 1, order: 1 });
+
+// Next.js dev keeps the first compiled model. Recompile so new paths are saved.
+if (process.env.NODE_ENV !== "production") {
+  delete mongoose.models.Testimonial;
+}
 
 export const Testimonial: Model<ITestimonial> =
   mongoose.models.Testimonial ||

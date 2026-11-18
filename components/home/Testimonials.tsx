@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Asset from "@/components/home/Asset";
+import SmartImage from "@/components/media/SmartImage";
 import type { HomeTestimonial } from "@/lib/home/content";
 
 export default function Testimonials({
@@ -42,15 +43,26 @@ export default function Testimonials({
               <p className="mt-3 text-[17px] leading-[26px] text-primary-900">{story.quote}</p>
               <div className="mt-auto border-t border-slate-200 pt-4">
                 <div className="flex items-center gap-3">
-                  <span className="relative grid h-12 w-12 shrink-0 place-items-center">
-                    <Asset
-                      src="/home/imgVector50.svg"
-                      width={48}
-                      height={48}
-                      className="absolute inset-0"
-                    />
-                    <span className="relative text-[15px] font-bold text-primary">{story.initials}</span>
-                  </span>
+                  {story.image ? (
+                    <span className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full">
+                      <SmartImage
+                        src={story.image}
+                        alt={story.imageAlt || story.name}
+                        sizes="48px"
+                        className="object-cover"
+                      />
+                    </span>
+                  ) : (
+                    <span className="relative grid h-12 w-12 shrink-0 place-items-center">
+                      <Asset
+                        src="/home/imgVector50.svg"
+                        width={48}
+                        height={48}
+                        className="absolute inset-0"
+                      />
+                      <span className="relative text-[15px] font-bold text-primary">{story.initials}</span>
+                    </span>
+                  )}
                   <span>
                     <span className="block text-[16px] font-bold leading-5 text-primary-900">{story.name}</span>
                     <span className="mt-0.5 block text-[14px] leading-5 text-slate-600">

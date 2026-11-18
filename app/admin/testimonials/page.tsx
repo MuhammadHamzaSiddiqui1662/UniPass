@@ -52,11 +52,22 @@ export default async function TestimonialsAdminPage({
               </tr>
             </thead>
             <tbody className="divide-y divide-border">
-              {testimonials.map((testimonial: { _id: string; studentName: string; initials: string; origin: string; university: string; status: string }) => (
+              {testimonials.map((testimonial: { _id: string; studentName: string; initials: string; origin: string; university: string; status: string; image?: string }) => (
                 <tr key={testimonial._id} className="hover:bg-primary-50/50">
                   <td className="px-6 py-4">
-                    <div className="text-sm font-bold text-primary-900">{testimonial.studentName}</div>
-                    <div className="text-xs text-slate-600">{testimonial.initials}</div>
+                    <div className="flex items-center gap-3">
+                      {testimonial.image ? (
+                        <img src={testimonial.image} alt="" className="h-10 w-10 rounded-full object-cover" />
+                      ) : (
+                        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary-50 text-xs font-bold text-primary">
+                          {testimonial.initials}
+                        </span>
+                      )}
+                      <div>
+                        <div className="text-sm font-bold text-primary-900">{testimonial.studentName}</div>
+                        <div className="text-xs text-slate-600">{testimonial.initials}</div>
+                      </div>
+                    </div>
                   </td>
                   <td className="px-6 py-4 text-sm">{testimonial.origin}</td>
                   <td className="px-6 py-4 text-sm">{testimonial.university}</td>

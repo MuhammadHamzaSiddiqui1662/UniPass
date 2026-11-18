@@ -146,6 +146,8 @@ async function getHomePageData() {
             name: story.studentName,
             origin: story.origin,
             university: story.university,
+            image: story.image || "",
+            imageAlt: story.imageAlt || "",
             sample: false,
           }))
         : fallbackTestimonials;
