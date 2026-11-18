@@ -52,8 +52,59 @@ export function leadsToCsv(leads: ExportLead[]): string {
     lead.createdAt ? new Date(lead.createdAt).toISOString() : "",
   ]);
 
+  return toCsv(HEADERS, rows);
+}
+
+export interface ActivityLogSource {
+  action?: string;
+  note?: string;
+  user?: unknown;
+  timestamp?: Date | string | null;
+}
+
+export interface ActivityLogRow {
+  when: string;
+  action: string;
+  note: string;
+  user: string;
+}
+
+/** Newest activity first, then any leftover free-text note stored before the log existed. */
+export function activityLogRows(
+  activity: ActivityLogSource[] | null | undefined,
+  notes?: string | null
+): ActivityLogRow[] {
+  const rows = [...(activity || [])].reverse().map((item) => ({
+    when: item.timestamp ? new Date(item.timestamp).toISOString() : "",
+    action: item.action || "",
+    note: item.note || "",
+    user: activityUserName(item.user),
+  }));
+
+  const earlier = notes?.trim();
+  if (earlier) rows.push({ when: "", action: "Earlier note", note: earlier, user: "" });
+  return rows;
+}
+
+export function leadActivityToCsv(
+  activity: ActivityLogSource[] | null | undefined,
+  notes?: string | null
+): string {
+  const rows = activityLogRows(activity, notes).map((row) => [row.when, row.action, row.note, row.user]);
+  return toCsv(["When", "Action", "Note", "By"], rows);
+}
+
+function activityUserName(user: unknown): string {
+  if (user && typeof user === "object" && "name" in user) {
+    const name = (user as { name?: unknown }).name;
+    return typeof name === "string" ? name : "";
+  }
+  return "";
+}
+
+function toCsv(headers: string[], rows: string[][]): string {
   return [
-    HEADERS.join(","),
+    headers.join(","),
     ...rows.map((row) => row.map((cell) => `"${String(cell).replace(/"/g, '""')}"`).join(",")),
   ].join("\n");
 }

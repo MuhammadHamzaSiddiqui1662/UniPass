@@ -11,6 +11,7 @@ import {
   canDeleteLead,
   canDownloadLeadDocument,
   canExportLead,
+  canExportLeadActivity,
 } from "@/lib/auth/permissions";
 import { presentLead } from "@/lib/leads/document";
 
@@ -47,6 +48,7 @@ async function getLeadDetail(id: string, userId: string, role: "super_admin" | "
       canDelete: canDeleteLead(role),
       canAssign: canAssignLeads(role),
       canExport: canExportLead(role),
+      canExportLogs: canExportLeadActivity(role),
       canDownload: canDownloadLeadDocument(role),
     };
   } catch (error) {
@@ -67,7 +69,7 @@ export default async function LeadDetailPage({
   const data = await getLeadDetail(params.id, session.userId, session.role);
   if (!data) notFound();
 
-  const { lead, users, canDelete, canAssign, canExport, canDownload } = data;
+  const { lead, users, canDelete, canAssign, canExport, canExportLogs, canDownload } = data;
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -172,6 +174,7 @@ export default async function LeadDetailPage({
               canDelete={canDelete}
               canAssign={canAssign}
               canDownload={canDownload}
+              canExportLogs={canExportLogs}
             />
           </div>
         </div>

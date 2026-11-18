@@ -92,6 +92,10 @@ export function canBulkExport(role: UserRole): boolean {
   return isAdminTier(role);
 }
 
+export function canExportLeadActivity(role: UserRole): boolean {
+  return isAdminTier(role);
+}
+
 export function canDeleteLead(role: UserRole): boolean {
   return isAdminTier(role);
 }

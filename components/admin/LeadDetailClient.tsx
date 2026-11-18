@@ -1,8 +1,13 @@
 "use client";
 
-import { useRef, useState, FormEvent } from "react";
+import { useEffect, useMemo, useRef, useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
+import AdminPagination from "@/components/admin/AdminPagination";
+import { clientPage } from "@/lib/admin/pagination";
+import { activityLogRows } from "@/lib/leads/csv";
 import { LEAD_STATUSES } from "@/lib/utils/constants";
+
+const LOG_PAGE_SIZE = 15;
 
 interface Lead {
   _id: string;
@@ -38,12 +43,14 @@ export default function LeadDetailClient({
   canDelete,
   canAssign,
   canDownload,
+  canExportLogs,
 }: {
   lead: Lead;
   users: User[];
   canDelete: boolean;
   canAssign: boolean;
   canDownload: boolean;
+  canExportLogs: boolean;
 }) {
   const router = useRouter();
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -54,6 +61,14 @@ export default function LeadDetailClient({
   const [dragOver, setDragOver] = useState(false);
   const [uploadError, setUploadError] = useState("");
   const [progress, setProgress] = useState<number | null>(null);
+  const [logPage, setLogPage] = useState(1);
+
+  const logRows = useMemo(() => activityLogRows(lead.activity, lead.notes), [lead.activity, lead.notes]);
+  const logListing = clientPage(logRows, logPage, LOG_PAGE_SIZE);
+
+  useEffect(() => {
+    setLogPage(1);
+  }, [lead.activity.length, lead.notes]);
 
   const handleStatusChange = async (newStatus: string) => {
     setSaving(true);
@@ -324,33 +339,65 @@ export default function LeadDetailClient({
           </div>
         </form>
 
-        <div className="space-y-4">
-          {lead.activity.length === 0 && !lead.notes?.trim() && (
-            <p className="text-slate-600 text-sm">No activity yet</p>
-          )}
-          {lead.notes?.trim() && (
-            <div className="border-l-2 border-slate-300 pl-4 py-2">
-              <span className="font-bold text-sm">Earlier note</span>
-              <p className="text-sm text-slate-600 whitespace-pre-wrap">{lead.notes}</p>
+        <div>
+          <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <h3 className="font-display text-lg">Action log</h3>
+              <p className="text-xs text-slate-600">
+                {logRows.length} {logRows.length === 1 ? "entry" : "entries"}
+              </p>
             </div>
-          )}
-          {lead.activity.map((item, i) => (
-            <div
-              key={i}
-              className="border-l-2 border-primary pl-4 py-2"
-            >
-              <div className="flex justify-between items-start mb-1">
-                <span className="font-bold text-sm">{item.action}</span>
-                <span className="text-xs text-slate-600">
-                  {new Date(item.timestamp).toLocaleString()}
-                </span>
+            {canExportLogs && (
+              <a
+                href={`/admin/leads/${lead._id}/activity/export`}
+                className="btn-outline h-9 px-3 py-0 text-sm"
+              >
+                Export logs
+              </a>
+            )}
+          </div>
+
+          {logRows.length === 0 ? (
+            <p className="text-sm text-slate-600">No activity yet</p>
+          ) : (
+            <div className="overflow-hidden rounded-input border border-slate-200">
+              <div className="overflow-x-auto">
+                <table className="min-w-full divide-y divide-slate-200 text-xs">
+                  <thead className="bg-primary-50">
+                    <tr>
+                      <th className="whitespace-nowrap px-3 py-1.5 text-left font-bold uppercase tracking-wide text-slate-600">
+                        When
+                      </th>
+                      <th className="whitespace-nowrap px-3 py-1.5 text-left font-bold uppercase tracking-wide text-slate-600">
+                        Action
+                      </th>
+                      <th className="px-3 py-1.5 text-left font-bold uppercase tracking-wide text-slate-600">
+                        Note
+                      </th>
+                      <th className="whitespace-nowrap px-3 py-1.5 text-left font-bold uppercase tracking-wide text-slate-600">
+                        By
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-200">
+                    {logListing.items.map((item, index) => (
+                      <tr key={`${item.when}-${item.action}-${index}`} className="align-top">
+                        <td className="whitespace-nowrap px-3 py-1.5 text-slate-600">
+                          {item.when ? new Date(item.when).toLocaleString() : "—"}
+                        </td>
+                        <td className="whitespace-nowrap px-3 py-1.5 font-bold text-primary-900">{item.action}</td>
+                        <td className="max-w-md px-3 py-1.5 text-slate-600">
+                          {item.note ? <span className="whitespace-pre-wrap break-words">{item.note}</span> : "—"}
+                        </td>
+                        <td className="whitespace-nowrap px-3 py-1.5 text-slate-600">{item.user || "—"}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
-              {item.note && (
-                <p className="text-sm text-slate-600 whitespace-pre-wrap">{item.note}</p>
-              )}
-              <p className="text-xs text-slate-600 mt-1">by {item.user?.name}</p>
+              <AdminPagination page={logListing.page} totalPages={logListing.totalPages} onPage={setLogPage} />
             </div>
-          ))}
+          )}
         </div>
       </div>
 
