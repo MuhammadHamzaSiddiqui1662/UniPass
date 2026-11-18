@@ -218,11 +218,7 @@ export default function UniversitiesWorkspace({
             </table>
           </div>
 
-          <AdminPagination
-            page={listing.page}
-            totalPages={listing.totalPages}
-            hrefFor={(next) => ({ pathname: "/admin/universities", query: { page: next } })}
-          />
+          <AdminPagination page={listing.page} totalPages={listing.totalPages} pathname="/admin/universities" />
 
           {universities.length === 0 && (
             <div className="py-12 text-center">

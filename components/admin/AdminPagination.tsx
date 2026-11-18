@@ -2,17 +2,17 @@
 
 import Link from "next/link";
 
-type PageHref = string | { pathname?: string; query: Record<string, string | number | undefined> };
-
 export default function AdminPagination({
   page,
   totalPages,
-  hrefFor,
+  pathname,
+  query,
   onPage,
 }: {
   page: number;
   totalPages: number;
-  hrefFor?: (page: number) => PageHref;
+  pathname?: string;
+  query?: Record<string, string | undefined>;
   onPage?: (page: number) => void;
 }) {
   if (totalPages <= 1) return null;
@@ -28,8 +28,9 @@ export default function AdminPagination({
       );
     }
 
+    const nextQuery = { ...query, page: String(target) };
     return (
-      <Link href={hrefFor ? hrefFor(target) : { query: { page: target } }} className={className}>
+      <Link href={pathname ? { pathname, query: nextQuery } : { query: nextQuery }} className={className}>
         {label}
       </Link>
     );

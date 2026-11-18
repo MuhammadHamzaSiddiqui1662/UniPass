@@ -239,11 +239,7 @@ export default async function LeadsPage({
             </table>
           </div>
 
-          <AdminPagination
-            page={currentPage}
-            totalPages={totalPages}
-            hrefFor={(page) => ({ query: { ...searchParams, page } })}
-          />
+          <AdminPagination page={currentPage} totalPages={totalPages} query={searchParams} />
 
           {leads.length === 0 && (
             <div className="text-center py-12">
