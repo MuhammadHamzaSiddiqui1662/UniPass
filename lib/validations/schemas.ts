@@ -16,12 +16,6 @@ export const leadSchema = z.object({
   program: z.string().optional(),
 });
 
-export const eligibilityCheckSchema = z.object({
-  level: z.enum(["Bachelor's", "Master's", "PhD"]),
-  age: z.number().min(16).max(50),
-  marks: z.number().min(0).max(100),
-});
-
 export const loginSchema = z.object({
   email: z.string().email("Please enter a valid email"),
   password: z.string().min(6, "Password must be at least 6 characters"),

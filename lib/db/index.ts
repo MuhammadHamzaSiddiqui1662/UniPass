@@ -9,4 +9,7 @@ export { User } from "./models/User";
 export { SiteSettings } from "./models/SiteSettings";
 export { Taxonomy } from "./models/Taxonomy";
 export { HeroSlide } from "./models/HeroSlide";
+export { ScorecardConfig } from "./models/ScorecardConfig";
+export { FundingRoute } from "./models/FundingRoute";
+export { CountryOutlook } from "./models/CountryOutlook";
 export { connectDB } from "./connection";

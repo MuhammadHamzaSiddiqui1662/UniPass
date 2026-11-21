@@ -11,6 +11,7 @@ const ADMIN_LINKS = [
   { href: "/admin/guides", id: "guides", label: "Guides" },
   { href: "/admin/testimonials", id: "testimonials", label: "Testimonials" },
   { href: "/admin/hero", id: "hero", label: "Hero" },
+  { href: "/admin/scholarship-calculator", id: "calculator", label: "Scholarship calculator" },
   { href: "/admin/settings", id: "settings", label: "Settings" },
   { href: "/admin/users", id: "users", label: "Users" },
 ];

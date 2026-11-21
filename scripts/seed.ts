@@ -1,4 +1,5 @@
 import { connectDB, University, Guide, FAQ, Testimonial, User, SiteSettings, Scholarship } from "../lib/db";
+import { ensureScorecardDefaults } from "../lib/scholarships/store";
 import { hashPassword } from "../lib/auth/session";
 
 async function ensureSuperAdmin(email: string, password: string) {
@@ -372,6 +373,9 @@ async function seed() {
     );
   }
   console.log(`✅ Seeded ${scholarships.length} scholarships`);
+
+  await ensureScorecardDefaults();
+  console.log("✅ Seeded scholarship scorecard rules, routes, and countries");
 
   console.log("\n🎉 Seeding completed!");
   console.log("\n📝 Super Admin credentials:");
